@@ -2,9 +2,8 @@ import React, { useState } from "react";
 import "./Hero.css";
 import { Dialog, DialogContent, IconButton } from "@mui/material";
 import { FaTimes } from "react-icons/fa";
-import BusinessInfo from "./BusinessInfo"; // Import BusinessInfo
 import Subhero from "./Subhero"; // Import Subhero
-import video from "../../public/car.mp4";
+import video from "../../public/cinematic.mp4";
 import SubIcons from './SubIcons'
 
 const Hero = () => {
@@ -23,9 +22,6 @@ const Hero = () => {
   return (
     <>
       <section className="hero">
-        {/* Business Info Overlay */}
-        <BusinessInfo />
-
         {/* Video Background */}
         <video className="hero-video" autoPlay loop muted playsInline>
           <source src={video} type="video/mp4" />
@@ -38,12 +34,12 @@ const Hero = () => {
         {/* Hero Content */}
         <div className="hero-content">
           <h1>
-            Precision Tinting for a <br /> Sleek, Private, and Cool Ride
+            ELITE CARE FOR THE<br /> ELITE ATHLETE
           </h1>
 
           {/* Learn More Button - Opens Modal */}
           <button className="learn-more-btn" onClick={handleOpen}>
-            MESSAGE FOR A FAST QUOTE
+            BOOK NOW 
           </button>
         </div>
 

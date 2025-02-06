@@ -19,42 +19,42 @@ import "slick-carousel/slick/slick-theme.css";
 const servicesData = [
   {
     id: "vehicle-window-tinting",
-    title: "VEHICLE WINDOW TINTING",
+    title: "ORTHOPEDIC INJURIES",
     description:
       "Enhance privacy, reduce glare, and protect your vehicle’s interior.",
-    image: "/TintTek-Website/v-window-tint.jpg",
+    image: "/M2M-Website/ortho-inj.jpg",
   },
   {
     id: "tesla-window-tinting",
-    title: "TESLA WINDOW TINTING",
+    title: "POST-OP REHABILITATION",
     description:
       "Remove swirls and scratches for a flawless, mirror-like finish.",
-    image: "/TintTek-Website/tesla.jpg",
+    image: "/M2M-Website/post-op.jpg",
   },
   {
     id: "commercial-window-tinting",
-    title: "COMMERCIAL WINDOW TINTING",
+    title: "RECOVERY",
     description:
       "Protect your paint from chips, scratches, and environmental damage.",
-    image: "/TintTek-Website/commercial.jpg",
+      image: "/M2M-Website/recovery.jpg",
   },
   {
     id: "residential-window-tinting",
-    title: "RESIDENTIAL WINDOW TINTING",
+    title: "DRY NEEDLING",
     description: "Long-lasting protection against dirt and contaminants.",
-    image: "/TintTek-Website/residential-tint.png",
+    image: "/M2M-Website/needling.jpg",
   },
   {
     id: "vehicle-paint-correction",
-    title: "VEHICLE PAINT CORRECTION",
+    title: "CUPPING THERAPY",
     description: "Restore your vehicle’s original shine inside and out.",
-    image: "/TintTek-Website/paint-correction.jpeg",
+    image: "/M2M-Website/cupping.jpg",
   },
   {
     id: "vehicle-paint-protection",
-    title: "VEHICLE PAINT PROTECTION",
+    title: "SOFT TISSUE MOBILIZATION",
     description: "Customize your vehicle’s look with high-quality vinyl wraps.",
-    image: "/TintTek-Website/paint-protection.jpg",
+    image: "/M2M-Website/soft-tissue.jpg",
   },
 ];
 

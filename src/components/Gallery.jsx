@@ -10,8 +10,7 @@ import {
   Button,
 } from "@mui/material";
 import Footer from "../components/Footer";
-import Contact from "../components/Contact";
-import Video from "../../public/car.mp4";
+import Video from "../../public/cinematic.mp4";
 import { ChevronLeft, ChevronRight } from "@mui/icons-material"; // Import icons for arrows
 
 const images = [
@@ -207,11 +206,6 @@ const Gallery = () => {
             SEE MORE PHOTOS ON INSTAGRAM
           </Button>
         </Box>
-      </Box>
-
-      {/* Contact Section */}
-      <Box sx={{ width: "100%", color: "#fff" }}>
-        <Contact />
       </Box>
 
       {/* Footer Section */}

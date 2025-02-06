@@ -23,7 +23,7 @@ import {
 } from "react-icons/fa"; // ✅ Import Icons
 import { useMediaQuery } from "@mui/material";
 import { styled } from "@mui/system";
-import logo from "../../public/logo.png"; // Ensure correct path
+import logo from "../../public/logo-1.png"; // Ensure correct path
 
 const NavbarContainer = styled(Box)({
   width: "100%",
@@ -82,8 +82,8 @@ const Topbar = () => {
       <AppBar
         position="fixed"
         sx={{
-          backgroundColor: scrolling ? "white" : "transparent",
-          color: scrolling ? "black" : "white",
+          backgroundColor: scrolling ? "black" : "transparent",
+          color: scrolling ? "white" : "white",
           boxShadow: scrolling ? "0px 2px 10px rgba(0, 0, 0, 0.1)" : "none",
           transition: "all 0.3s ease-in-out",
           width: "100vw",
@@ -128,7 +128,7 @@ const Topbar = () => {
                     onClick={() => scrollToSection(item.toLowerCase())}
                     sx={{
                       fontFamily: "Poppins, sans-serif",
-                      fontSize: "16px",
+                      fontSize: "18px",
                       fontWeight: 500,
                       letterSpacing: "0.5px",
                       transition: "color 0.3s",

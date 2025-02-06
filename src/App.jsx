@@ -4,20 +4,18 @@ import { useEffect } from "react";  // ✅ Import useEffect
 import './App.css';
 import Topbar from './components/Topbar';
 import Hero from './components/Hero';
-import Testimonials from './components/Testimonials';
+// import Testimonials from './components/Testimonials';
 import Services from './components/Services';
-import Contact from './components/Contact';
+// import Contact from './components/Contact';
 import Vision from './components/Vision';
 import Footer from './components/Footer';
-import PricingComponent from './components/Pricing';
-import ServicesPage from './components/ServicesPage';
-import Chatbot from './ChatBot';
-import TintSelector from './components/TintSelector';
-import TintedCar from './components/TintedCar';
+// import Chatbot from './ChatBot';
 import WhyChooseUs from './components/WhyChooseUs';
 import Gallery from './components/Gallery';
 import ScrollToTop from './components/ScrollToTop';
 import PrivacyPolicy from './components/PrivacyPolicy';
+import FrameworkCarousel from './components/FrameworkCarousel';
+import MeetTheTeam from './components/Team';
 
 const theme = createTheme({
     palette: {
@@ -53,7 +51,7 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <Router basename="/TintTek-Website"> 
+      <Router basename="/M2M-Website/"> 
         <ScrollToTop />
         <ScrollHandler />  {/* ✅ New component to handle scrolling */}
         <Topbar /> {/* ✅ Keep Topbar on all pages for navigation */}
@@ -63,24 +61,23 @@ function App() {
             element={
               <>
                 <Hero />
+                <MeetTheTeam />
+                <FrameworkCarousel />
                 <Services />
-                {/* <TintSelector /> */}
-                {/* <TintedCar />  */}
-                <WhyChooseUs />
-                <Testimonials />
+                {/* <WhyChooseUs /> */}
+                {/* <Testimonials /> */}
                 <Vision />
-                <PricingComponent />
-                <Contact />
+                {/* <Contact /> */}
                 <Footer />
               </>
             } 
           />
           {/* ✅ Dynamic Route for Individual Service Pages */}
-          <Route path="/services/:serviceId" element={<ServicesPage />} />
+          {/* <Route path="/services/:serviceId" element={<ServicesPage />} /> */}
           <Route path="/gallery" element={<Gallery />} />
           <Route path="/privacy-policy" element={<PrivacyPolicy />} />
         </Routes>
-        <Chatbot /> {/* ✅ Keep chatbot outside of <Routes> to persist across all pages */}
+        {/* <Chatbot /> */}
       </Router>
     </ThemeProvider>
   );
