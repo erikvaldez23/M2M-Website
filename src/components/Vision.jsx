@@ -45,22 +45,14 @@ const Vision = () => {
     <Box
       sx={{
         py: 8,
-        background: "linear-gradient(to bottom, #0D0D0D, #000)", // Gradient background
+        background: "#000", // Gradient background
         textAlign: "center",
+        color: "fff",
       }}
     >
       <Container maxWidth="md">
         {/* Vision Title */}
-        <Typography
-          variant="h3"
-          sx={{
-            fontWeight: "bold",
-            color: "#fff",
-            fontFamily: "Poppins, sans-serif",
-            mb: 4,
-            textShadow: "3px 3px 10px rgba(255, 255, 255, 0.2)",
-          }}
-        >
+        <Typography variant="h4" sx={{ mb: 2, fontWeight: "bold", color:"#fff" }}>
           Our Vision
         </Typography>
 
@@ -77,15 +69,14 @@ const Vision = () => {
             textShadow: "1px 1px 5px rgba(255, 255, 255, 0.1)",
           }}
         >
-          At TintTek+, our vision is to be your choice for high-quality window
-          tinting services, delivering craftsmanship and exceptional value We
-          are dedicated to enhancing the comfort, style, and privacy of every
-          vehicle and building we serve, ensuring customer satisfaction through
-          precision, professionalism, and affordable pricing.
+          TO BE THE PREMIER DESTINATION FOR ATHLETES & ACTIVE INDIVIDUALS
+          SEEKING EXCEPTIONAL CARE WHERE OUR PASSION FOR HEALING AND LOVE FOR
+          THE HUMAN BODY DRIVES US TO EXCEED EXPECTATIONS & FOSTER A THRIVING,
+          RESILIENT COMMUNITY OF PEAK PERFORMERS
         </Typography>
 
         {/* Vision Points */}
-        <Grid container spacing={4}>
+        {/* <Grid container spacing={4}>
           {visionPoints.map((point, index) => (
             <Grid item xs={12} sm={6} key={point.id}>
               <motion.div
@@ -137,7 +128,7 @@ const Vision = () => {
               </motion.div>
             </Grid>
           ))}
-        </Grid>
+        </Grid> */}
       </Container>
     </Box>
   );

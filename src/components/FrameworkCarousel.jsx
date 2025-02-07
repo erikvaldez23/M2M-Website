@@ -4,33 +4,26 @@ import './FrameworkCarousel.css';
 import { FaReact, FaNodeJs, FaJava, FaPython, FaDocker, FaAws, FaGitAlt } from 'react-icons/fa';
 import { SiFirebase, SiMongodb, SiMysql, SiKubernetes, SiTypescript, SiJavascript, SiOpenai, SiKotlin, SiSwift, SiApple, SiAndroid } from 'react-icons/si';
 import { PiStack } from "react-icons/pi";
+import fullThrottle from '/M2M-Website/full-throttle.png';
+import hyperIce from '/M2M-Website/hyperice.png';
+import mba from '/M2M-Website/mba.png';
+import proSkills from '/M2M-Website/pro-skills.png';
+import solidCore from '/M2M-Website/solid-core.png';
+import spb from '/M2M-Website/spb.png';
+import swinCity from '/M2M-Website/swin-city.png';
 
 const frameworksRow1 = [
-  { name: 'React', icon: <FaReact />, url: 'https://reactjs.org/' },
-  { name: 'Node.js', icon: <FaNodeJs />, url: 'https://nodejs.org/' },
-  { name: 'Java', icon: <FaJava />, url: 'https://www.java.com/' },
-  { name: 'Python', icon: <FaPython />, url: 'https://www.python.org/' },
-  { name: 'Firebase', icon: <SiFirebase />, url: 'https://firebase.google.com/' },
-  { name: 'AWS', icon: <FaAws />, url: 'https://aws.amazon.com/' },
-  { name: 'ChatGPT', icon: <SiOpenai />, url: 'https://openai.com/chatgpt' }, // New Entry
-  { name: 'AI', icon: <SiOpenai />, url: 'https://openai.com' }, // New Entry
-  { name: 'Kotlin', icon: <SiKotlin />, url: 'https://kotlinlang.org' },
-  { name: 'SwiftUI', icon: <SiSwift />, url: 'https://www.swift.org/getting-started/swiftui/'},
-  { name: 'Swift', icon: <SiSwift />, url: 'https://www.swift.org'},
-  { name: 'Combine', icon: <PiStack />, url: 'https://developer.apple.com/documentation/combine' },
+  { name: 'Full Throttle', icon: <img src={fullThrottle} alt="Full Throttle" style={{ width: '40px', height: '40px' }} />, url: 'https://reactjs.org/' },
+  { name: 'HyperIce', icon: <img src={hyperIce} alt="HyperIce" style={{ width: '40px', height: '40px' }} />, url: 'https://nodejs.org/' },
+  { name: 'MBA', icon: <img src={mba} alt="MBA" style={{ width: '40px', height: '40px' }} />, url: 'https://www.java.com/' },
+  { name: 'Pro Skills', icon: <img src={proSkills} alt="Pro Skills" style={{ width: '40px', height: '40px' }} />, url: 'https://www.python.org/' },
 ];
 
+
 const frameworksRow2 = [
-  { name: 'MongoDB', icon: <SiMongodb />, url: 'https://www.mongodb.com/' },
-  { name: 'MySQL', icon: <SiMysql />, url: 'https://www.mysql.com/' },
-  { name: 'Docker', icon: <FaDocker />, url: 'https://www.docker.com/' },
-  { name: 'Kubernetes', icon: <SiKubernetes />, url: 'https://kubernetes.io/' },
-  { name: 'TypeScript', icon: <SiTypescript />, url: 'https://www.typescriptlang.org/' },
-  { name: 'JavaScript', icon: <SiJavascript />, url: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript' },
-  { name: 'Git', icon: <FaGitAlt />, url: 'https://git-scm.com/' },
-  { name: 'iOS', icon: <SiApple />, url: 'https://www.apple.com/ios/ios-18/' },
-  { name: 'Android', icon: <SiAndroid />, url: 'https://www.android.com' },
-  { name: 'Jetpack Compose', icon: <PiStack />, url: 'https://developer.android.com/compose' },
+  { name: 'Solid Core', icon: <img src={solidCore} alt="Solid Core" style={{ width: '40px', height: '40px' }} />, url: 'https://firebase.google.com/' },
+  { name: 'SPB', icon: <img src={spb} alt="SPB" style={{ width: '40px', height: '40px' }} />, url: 'https://aws.amazon.com/' },
+  { name: 'Swin City', icon: <img src={swinCity} alt="Swin City" style={{ width: '40px', height: '40px' }} />, url: 'https://openai.com/chatgpt' },
 ];
 
 const FrameworkCarousel = () => {
@@ -70,7 +63,7 @@ const FrameworkCarousel = () => {
     <div className="framework-carousel">
       <h2 className="carousel-title">WHO WE WORK WITH</h2>
       <p className="carousel-subtitle">
-        We consider ourselves to be technology agnostic, choosing the right tool for the job.
+        Description
       </p>
       <div className="marquee-wrapper">
         {/* First Row */}

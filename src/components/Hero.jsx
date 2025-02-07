@@ -6,6 +6,7 @@ import Subhero from "./Subhero"; // Import Subhero
 import video from "../../public/cinematic.mp4";
 import SubIcons from './SubIcons'
 
+
 const Hero = () => {
   const [open, setOpen] = useState(false);
 
