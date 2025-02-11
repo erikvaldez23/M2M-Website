@@ -16,6 +16,7 @@ import ScrollToTop from './components/ScrollToTop';
 import PrivacyPolicy from './components/PrivacyPolicy';
 import FrameworkCarousel from './components/FrameworkCarousel';
 import MeetTheTeam from './components/Team';
+import CTA from './components/cta'
 
 const theme = createTheme({
     palette: {
@@ -61,6 +62,7 @@ function App() {
             element={
               <>
                 <Hero />
+                <CTA /> 
                 <MeetTheTeam />
                 <FrameworkCarousel />
                 <Services />

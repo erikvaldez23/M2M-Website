@@ -58,7 +58,7 @@ const servicesData = [
 
 // Styled Components for Modern Look
 const GradientBackground = styled(Box)(({ theme }) => ({
-  background: "linear-gradient(135deg, #000428, #004e92)", // Dark Blue Gradient
+  background: "#000", // Dark Blue Gradient
   color: "#fff",
   padding: theme.spacing(6, 2),
   textAlign: "center",
@@ -95,13 +95,14 @@ const Overlay = styled(Box)({
 });
 
 const CTAButton = styled(Button)(({ theme }) => ({
-  backgroundColor: "#00e676", // Vibrant Green
-  color: "#000",
+  backgroundColor: "transparent", 
+  color: "#fff",
   fontWeight: "bold",
   borderRadius: 50,
+  border: "3px solid #fff",
   marginTop: theme.spacing(2),
   "&:hover": {
-    backgroundColor: "#1de9b6",
+    backgroundColor: "#000",
   },
 }));
 

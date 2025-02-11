@@ -12,5 +12,6 @@ html, body {
     padding: 0;
     width: 100%;
     overflow-x: hidden;
+    overscroll-behavior: none;
     font-family: "Poppins", sans-serif;
   }

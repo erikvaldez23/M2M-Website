@@ -1,11 +1,12 @@
 import React, { useState } from "react";
 import "./Hero.css";
-import { Dialog, DialogContent, IconButton } from "@mui/material";
+import { Dialog, DialogContent, IconButton, Button } from "@mui/material";
 import { FaTimes } from "react-icons/fa";
+import { motion } from "framer-motion";
 import Subhero from "./Subhero"; // Import Subhero
 import video from "../../public/cinematic.mp4";
-import SubIcons from './SubIcons'
-
+import SubIcons from "./SubIcons";
+import wordLogo from "/M2M-Website/word-logo.png";
 
 const Hero = () => {
   const [open, setOpen] = useState(false);
@@ -34,14 +35,41 @@ const Hero = () => {
 
         {/* Hero Content */}
         <div className="hero-content">
-          <h1>
-            ELITE CARE FOR THE<br /> ELITE ATHLETE
-          </h1>
+          <motion.img
+            src={wordLogo}
+            alt="Elite Care Logo"
+            className="word-logo"
+            initial={{ opacity: 0, scale: 0.8, y: -50 }} // Initial state: hidden, slightly smaller, moves up
+            animate={{ opacity: 1, scale: 1, y: 0 }} // Final state: fully visible, normal size
+            transition={{
+              duration: 1,
+              ease: "easeOut",
+              delay: 0.2, // Adds a slight delay after page load
+            }}
+          />
 
-          {/* Learn More Button - Opens Modal */}
-          <button className="learn-more-btn" onClick={handleOpen}>
-            BOOK NOW 
-          </button>
+          <motion.div
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.95 }}
+            transition={{ type: "spring", stiffness: 300 }}
+          >
+            <Button
+              variant="contained"
+              sx={{
+                backgroundColor: "transparent",
+                color: "#fff",
+                fontFamily: "Poppins, sans-serif",
+                fontWeight: "bold",
+                px: 4,
+                py: 1.5,
+                border: "3px solid #fff",
+                fontSize: "1.1rem",
+                borderRadius: "30px",
+              }}
+            >
+              Book Your Appointment
+            </Button>
+          </motion.div>
         </div>
 
         {/* Subhero Overlay */}

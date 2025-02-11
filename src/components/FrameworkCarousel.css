@@ -1,133 +1,78 @@
 :root {
   --font-primary: "Poppins", sans-serif;
   --font-secondary: "Montserrat", sans-serif;
-  --primary-color: #007bff;
-  --secondary-color: #ffffff;
-  --bg-color-dark: #1a1a1a;
-  --bg-color-light: #333;
   --text-light: #cccccc;
-  --card-shadow: rgba(0, 0, 0, 0.2);
 }
 
 .framework-carousel {
-    background-color: #000;
-    color: #fff; 
-    text-align: center;
-    padding: 40px 20px;
-    overflow: hidden; 
-    margin: 0 auto; 
-  }
-  
-  .carousel-title {
-    font-family: var(--font-primary);
-    font-size: 3rem;
-    font-weight: bold;
-    color: var(--secondary-color);
-    text-transform: uppercase;
-    position: relative;
-    animation: fadeInSlideUp 1s ease-out;
-  }
-  
-  .carousel-subtitle {
-    font-family: var(--font-secondary);
-    font-size: 1.4rem;
-    margin-bottom: 40px;
-    color: #bbb; 
-  }
-  
-  .marquee-wrapper {
-    display: flex;
-    flex-direction: column;
-    gap: 30px; 
-    overflow: hidden; 
-  }
+  background-color: #000;
+  color: #fff;
+  text-align: center;
+  padding: 40px 20px;
+  overflow: hidden;
+}
 
-  .framework-card {
-    display: inline-block; 
-    margin: 0 20px; 
-    background-color: #000000; 
-    border: 4px solid #fff;
-    border-radius: 12px; 
-    padding: 30px; 
-    text-align: center; 
-    cursor: pointer; 
-    transition: transform 0.2s ease, box-shadow 0.2s ease; 
-    width: 230px; 
-    height: 250px; 
-    overflow: hidden; 
-    display: flex; 
-    flex-direction: column; 
-    justify-content: center; 
-    align-items: center; 
-  }
-  
-  .framework-card:hover {
-    transform: scale(0.9); 
-    box-shadow: 0px 6px 12px rgba(255, 255, 255, 0.3); 
-  }
-  
-  .framework-icon {
-    font-size: 4rem; 
-    margin-bottom: 15px; 
-    color: #fff; 
-  }
-  
-  .framework-name {
-    font-size: 1.2rem; 
-    font-weight: 600;
-    color: #ddd; 
-    text-overflow: ellipsis;
-    overflow: hidden; 
-    white-space: nowrap; 
-    width: 100%;
-    text-align: center;
-  } 
-  
-  @media (max-width: 1024px) {
-    .framework-carousel {
-      padding: 20px; 
-    }
-  
-    .framework-card {
-      width: 170px;
-      padding: 25px;
-      margin: 0 15px;  
-    }
-  
-    .framework-icon {
-      font-size: 3.5rem; 
-    }
-  
-    .framework-name {
-      font-size: 1rem;
-    }
-  }
-  
+.carousel-title {
+  font-family: var(--font-primary);
+  font-size: 1.2rem;
+  color: #aaa;
+  margin-bottom: 20px;
+  text-transform: none;
+}
+
+.marquee-wrapper {
+  position: relative;
+  overflow: hidden;
+}
+
+.framework-card {
+  cursor: pointer;
+  transition: transform 0.3s ease;
+  margin: 0 30px;
+}
+
+.framework-card:hover {
+  transform: scale(1.1);
+}
+
+.framework-icon img {
+  width: 130px; /* Ensure all images have the same width */
+  height: 100px; /* Ensure all images have the same height */
+  object-fit: contain; /* Maintain aspect ratio without stretching */
+}
+
+.framework-carousel::before,
+.framework-carousel::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 100px;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.framework-carousel::before {
+  left: 0;
+  background: linear-gradient(to right, #000, transparent);
+}
+
+.framework-carousel::after {
+  right: 0;
+  background: linear-gradient(to left, #000, transparent);
+}
+
 @media (max-width: 768px) {
-  .framework-carousel {
-    padding: 1px; 
-  }
-  
-  .carousel-title {
-    font-size: 2rem; 
-  }
-
-  .carousel-subtitle {
-    font-size: 1.3rem; 
-  }
-
   .framework-card {
-    width: 120px; 
-    height: 170px;
-    padding: 12px;
+    margin: 0 15px;
   }
 
-  .framework-icon {
-    font-size: 2.5rem; 
+  .framework-icon img {
+    width: 60px;
+    height: 60px;
   }
 
-  .framework-name {
-    font-size: 0.8rem; 
+  .carousel-title {
+    font-size: 1rem;
   }
 }
-  

@@ -22,6 +22,15 @@
   z-index: -2;
 }
 
+.word-logo {
+  width: 500px;  /* Adjust the size as needed */
+  max-width: 100%;  /* Make it responsive */
+  height: auto;  /* Maintain aspect ratio */
+  margin-bottom: 20px;  /* Spacing between logo and button */
+  filter: drop-shadow(2px 4px 6px rgba(0, 0, 0, 0.5));  /* Optional shadow for better visibility */
+}
+
+
 /* Dark Overlay */
 .overlay {
   position: absolute;
