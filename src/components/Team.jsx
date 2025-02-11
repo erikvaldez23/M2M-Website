@@ -2,8 +2,6 @@
 import React, { useState } from "react";
 import {
   Card,
-  CardContent,
-  CardMedia,
   Typography,
   Button,
   Grid,
@@ -18,20 +16,22 @@ import { motion } from "framer-motion";
 
 const teamMembers = [
   {
-    name: "Dr. Alex Johnson",
-    title: "Senior Physical Therapist",
-    certifications: "DPT, OCS, CSCS",
+    name: "NICLOE CRUISE",
+    title: "Designer",
+    description: "The beach, brown fox jumps over a lazy dog. This black or silver, Mr. white or gray, thick fish very good for the web design team like this quick company.",
     image: "/M2M-Website/natalie.jpg",
+    backgroundColor: "#FF4B4B",
     socials: {
       linkedin: "https://linkedin.com/in/alex-johnson",
       instagram: "https://instagram.com/dr.alexjohnson",
     },
   },
   {
-    name: "Dr. Taylor Smith",
-    title: "Physical Therapist",
-    certifications: "DPT, COMT",
+    name: "PAUL SAM GEORGIA",
+    title: "Programmer",
+    description: "The beach, brown fox jumps over a lazy dog. This black or silver, Mr. white or gray, thick fish very good for the programming team like this quick company.",
     image: "/M2M-Website/drea.jpg",
+    backgroundColor: "#3B82F6",
     socials: {
       linkedin: "https://linkedin.com/in/taylor-smith",
       instagram: "https://instagram.com/dr.taylorsmith",
@@ -61,19 +61,29 @@ const MeetTheTeam = () => {
         width: "100vw",
         backgroundColor: "#000",
         display: "flex",
-        justifyContent: "center",
+        flexDirection: "column",
+        alignItems: "center",
         paddingY: 4,
-        color: "#fff",
+        color: "#333",
+        overflowX: "hidden", // Fix for the top overflow issue
       }}
     >
       <Container maxWidth="lg">
-        <Typography variant="h4" align="center" gutterBottom>
-          Meet the Team
+        <Typography
+          variant="h3"
+          sx={{
+            fontWeight: "bold",
+            mb: 4,
+            textAlign: "center",
+            color: "#fff"
+          }}
+        >
+          MEET THE TEAM
         </Typography>
 
         <Grid container spacing={4} justifyContent="center">
           {teamMembers.map((member, index) => (
-            <Grid item xs={12} sm={6} md={4} key={index}>
+            <Grid item xs={12} sm={6} key={index}>
               <motion.div
                 custom={index}
                 initial="hidden"
@@ -87,97 +97,112 @@ const MeetTheTeam = () => {
               >
                 <Card
                   sx={{
-                    maxWidth: 400,
-                    margin: "auto",
-                    borderRadius: 15,
-                    boxShadow: 5,
-                    height: "100%",
+                    display: "flex",
+                    flexDirection: "row",
+                    borderRadius: 3,
+                    boxShadow: 3,
                     overflow: "hidden",
+                    height: 350,
                   }}
                 >
-                  <CardMedia
-                    component="img"
-                    image={member.image}
-                    alt={member.name}
+                  <Box
                     sx={{
-                      width: "100%",
-                      height: 500,
-                      objectFit: "cover",
-                      transition: "transform 0.3s ease-in-out",
-                      "&:hover": {
-                        transform: "scale(1.05)",
-                      },
+                      width: "50%",
+                      backgroundImage: `url(${member.image})`,
+                      backgroundSize: "cover",
+                      backgroundPosition: "center",
+                      filter: "grayscale(100%)",
                     }}
                   />
-                  <CardContent
+                  <Box
                     sx={{
+                      width: "50%",
+                      backgroundColor: member.backgroundColor,
+                      color: "#fff",
+                      padding: 3,
+                      position: "relative",
                       display: "flex",
                       flexDirection: "column",
+                      justifyContent: "center",
                       alignItems: "center",
+                      textAlign: "center",
+                      height: "100%",
                     }}
                   >
-                    <Typography variant="h5" component="div" align="center">
+                    {/* Circular Icons */}
+                    <Box
+                      sx={{
+                        position: "absolute",
+                        top: 16,
+                        left: 16,
+                        display: "flex",
+                        gap: 1,
+                      }}
+                    >
+                      <IconButton
+                        sx={{
+                          backgroundColor: "#000",
+                          borderRadius: "50%",
+                          width: 40,
+                          height: 40,
+                          display: "flex",
+                          justifyContent: "center",
+                          alignItems: "center",
+                          zIndex: 1,
+                        }}
+                        onClick={() => window.open(member.socials.linkedin, '_blank')}
+                      >
+                        <FaLinkedin color="#fff" size={20} />
+                      </IconButton>
+                      <IconButton
+                        sx={{
+                          backgroundColor: "#000",
+                          borderRadius: "50%",
+                          width: 40,
+                          height: 40,
+                          display: "flex",
+                          justifyContent: "center",
+                          alignItems: "center",
+                          zIndex: 1,
+                        }}
+                        onClick={() => window.open(member.socials.instagram, '_blank')}
+                      >
+                        <FaInstagram color="#fff" size={20} />
+                      </IconButton>
+                    </Box>
+
+                    <Typography variant="h5" sx={{ fontWeight: "bold" }}>
                       {member.name}
                     </Typography>
                     <Typography
                       variant="subtitle1"
-                      color="text.secondary"
-                      align="center"
+                      sx={{ fontStyle: "italic", mb: 2 }}
                     >
                       {member.title}
                     </Typography>
                     <Typography
                       variant="body2"
-                      color="text.secondary"
-                      align="center"
-                      sx={{ marginTop: 1 }}
+                      sx={{ lineHeight: 1.5, mb: 2 }}
                     >
-                      Certifications: {member.certifications}
+                      {member.description}
                     </Typography>
-
-                    {/* Social Icons */}
-                    <Box sx={{ display: "flex", gap: 2, mt: 2 }}>
-                      <IconButton
-                        component="a"
-                        href={member.socials.linkedin}
-                        target="_blank"
-                        sx={{ color: "#0077b5" }}
-                      >
-                        <FaLinkedin size={24} />
-                      </IconButton>
-                      <IconButton
-                        component="a"
-                        href={member.socials.instagram}
-                        target="_blank"
-                        sx={{ color: "#E4405F" }}
-                      >
-                        <FaInstagram size={24} />
-                      </IconButton>
-                    </Box>
-
-                    <motion.div
-                      whileHover={{ scale: 1.1, transition: { duration: 0.3 } }}
-                    >
-                      <Button
-                        variant="contained"
-                        color="primary"
-                        onClick={() => setSelectedMember(member)}
-                        sx={{
-                          borderRadius: 8,
-                          marginTop: 2,
+                    <Button
+                      variant="contained"
+                      onClick={() => setSelectedMember(member)}
+                      sx={{
+                        backgroundColor: "#fff",
+                        color: member.backgroundColor,
+                        fontWeight: "bold",
+                        "&:hover": {
+                          backgroundColor: member.backgroundColor,
                           color: "#fff",
-                          backgroundColor: "#000",
-                          "&:hover": {
-                            backgroundColor: "#fff",
-                            color: "#000",
-                            border: "3px solid #000",
-                          },
-                        }}
-                      >
-                        Learn More
-                      </Button>
-                    </motion.div>
-                  </CardContent>
+                          border: "2px solid #fff",
+                        },
+                      }}
+                    >
+                      Read More
+                    </Button>
+                  </Box>
                 </Card>
               </motion.div>
             </Grid>
@@ -185,7 +210,12 @@ const MeetTheTeam = () => {
         </Grid>
 
         {/* Modal for Detailed Info */}
-        <Dialog open={!!selectedMember} onClose={() => setSelectedMember(null)} maxWidth="sm" fullWidth>
+        <Dialog
+          open={!!selectedMember}
+          onClose={() => setSelectedMember(null)}
+          maxWidth="sm"
+          fullWidth
+        >
           <DialogContent sx={{ position: "relative", padding: 4 }}>
             <IconButton
               onClick={() => setSelectedMember(null)}
@@ -219,10 +249,7 @@ const MeetTheTeam = () => {
                   {selectedMember.title}
                 </Typography>
                 <Typography variant="body1" sx={{ mt: 2 }}>
-                  {selectedMember.certifications}
-                </Typography>
-                <Typography variant="body2" sx={{ mt: 2 }}>
-                  Dr. {selectedMember.name} specializes in sports injury recovery and holistic physical therapy techniques, ensuring personalized care tailored to each individual’s needs.
+                  {selectedMember.description}
                 </Typography>
               </Box>
             )}

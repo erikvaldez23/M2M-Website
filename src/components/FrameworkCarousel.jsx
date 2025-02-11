@@ -9,6 +9,7 @@ import proSkills from '/M2M-Website/pro-skills.png';
 import solidCore from '/M2M-Website/solid-core.png';
 import spb from '/M2M-Website/spb.png';
 import swinCity from '/M2M-Website/swin-city.png';
+import { Typography } from '@mui/material';
 
 const frameworks = [
   { name: 'Full Throttle', icon: <img src={fullThrottle} alt="Full Throttle" /> },
@@ -44,7 +45,9 @@ const FrameworkCarousel = () => {
 
   return (
     <div className="framework-carousel">
-      <h2 className="carousel-title">You're in good hands:</h2>
+      <Typography variant="h3" sx={{ fontWeight: "bold", mb: 2 }}>
+        Our Clients
+      </Typography>
       <div className="marquee-wrapper">
         <Marquee velocity={velocity} direction="ltr">
           {repeatFrameworks.map((framework, index) => (

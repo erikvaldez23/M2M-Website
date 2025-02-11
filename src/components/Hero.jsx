@@ -48,7 +48,7 @@ const Hero = () => {
             }}
           />
 
-          <motion.div
+          {/* <motion.div
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.95 }}
             transition={{ type: "spring", stiffness: 300 }}
@@ -69,7 +69,7 @@ const Hero = () => {
             >
               Book Your Appointment
             </Button>
-          </motion.div>
+          </motion.div> */}
         </div>
 
         {/* Subhero Overlay */}
