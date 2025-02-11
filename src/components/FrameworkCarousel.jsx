@@ -9,6 +9,8 @@ import proSkills from '/M2M-Website/pro-skills.png';
 import solidCore from '/M2M-Website/solid-core.png';
 import spb from '/M2M-Website/spb.png';
 import swinCity from '/M2M-Website/swin-city.png';
+import suddenExposure from '/M2M-Website/sudden-exposure.png';
+import northCrowley from '/M2M-Website/north-crowley.png';
 import { Typography } from '@mui/material';
 
 const frameworks = [
@@ -19,6 +21,8 @@ const frameworks = [
   { name: 'Solid Core', icon: <img src={solidCore} alt="Solid Core" /> },
   { name: 'SPB', icon: <img src={spb} alt="SPB" /> },
   { name: 'Swin City', icon: <img src={swinCity} alt="Swin City" /> },
+  { name: 'Sudden Exposute', icon: <img src={suddenExposure} alt="Swin City" /> },
+  { name: 'North Crowley', icon: <img src={northCrowley} alt="North Crowley" /> },
 ];
 
 const repeatFrameworks = [...frameworks, ...frameworks, ...frameworks]; // Repeat to ensure continuous loop

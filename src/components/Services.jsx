@@ -70,7 +70,6 @@ const ServiceCard = styled(Card)(({ theme }) => ({
   position: "relative",
   borderRadius: 20,
   overflow: "hidden",
-  cursor: "pointer",
   background: "rgba(255, 255, 255, 0.1)",
   backdropFilter: "blur(10px)", // Glass effect
   transition: "transform 0.3s ease, box-shadow 0.3s ease",
@@ -141,64 +140,69 @@ const Services = () => {
         Discover personalized fitness solutions tailored to your needs.
       </Typography>
 
-      {/* Mobile View: Carousel */}
       {isMobile ? (
-        <Slider {...sliderSettings}>
-          {servicesData.map((service) => (
-            <Box key={service.id} sx={{ px: 2 }}>
-              <ServiceCard onClick={() => handleServiceClick(service.id)}>
-                <CardMedia
-                  component="img"
-                  image={service.image}
-                  alt={service.title}
-                  sx={{
-                    width: "100%",
-                    height: 400,
-                    objectFit: "cover",
-                  }}
-                />
-                <Overlay>
-                  <Typography variant="h5" sx={{ fontWeight: "bold" }}>
-                    {service.title}
-                  </Typography>
-                  <CTAButton>See Details</CTAButton>
-                </Overlay>
-              </ServiceCard>
-            </Box>
-          ))}
-        </Slider>
-      ) : (
-        // Desktop View: Grid Layout
-        <Container maxWidth="lg">
-          <Grid container spacing={4} justifyContent="center">
-            {servicesData.map((service) => (
-              <Grid item xs={12} sm={6} md={4} key={service.id}>
-                <ServiceCard onClick={() => handleServiceClick(service.id)}>
-                  <CardMedia
-                    component="img"
-                    image={service.image}
-                    alt={service.title}
-                    sx={{
-                      width: "100%",
-                      height: 300,
-                      objectFit: "cover",
-                    }}
-                  />
-                  <Overlay>
-                    <Typography variant="h5" sx={{ fontWeight: "bold" }}>
-                      {service.title}
-                    </Typography>
-                    <Typography variant="body2" sx={{ mb: 2 }}>
-                      {service.description}
-                    </Typography>
-                    <CTAButton>Learn More</CTAButton>
-                  </Overlay>
-                </ServiceCard>
-              </Grid>
-            ))}
-          </Grid>
-        </Container>
-      )}
+  <Slider {...sliderSettings}>
+    {servicesData.map((service) => (
+      <Box key={service.id} sx={{ px: 2 }}>
+        <ServiceCard>
+          <CardMedia
+            component="img"
+            image={service.image}
+            alt={service.title}
+            sx={{
+              width: "100%",
+              height: 400,
+              objectFit: "cover",
+            }}
+          />
+          <Overlay>
+            <Typography variant="h5" sx={{ fontWeight: "bold" }}>
+              {service.title}
+            </Typography>
+            {/* Move the click handler to the button */}
+            <CTAButton onClick={() => handleServiceClick(service.id)}>
+              See Details
+            </CTAButton>
+          </Overlay>
+        </ServiceCard>
+      </Box>
+    ))}
+  </Slider>
+) : (
+  <Container maxWidth="lg">
+    <Grid container spacing={4} justifyContent="center">
+      {servicesData.map((service) => (
+        <Grid item xs={12} sm={6} md={4} key={service.id}>
+          <ServiceCard>
+            <CardMedia
+              component="img"
+              image={service.image}
+              alt={service.title}
+              sx={{
+                width: "100%",
+                height: 300,
+                objectFit: "cover",
+              }}
+            />
+            <Overlay>
+              <Typography variant="h5" sx={{ fontWeight: "bold" }}>
+                {service.title}
+              </Typography>
+              <Typography variant="body2" sx={{ mb: 2 }}>
+                {service.description}
+              </Typography>
+              {/* Move the click handler to the button */}
+              <CTAButton onClick={() => handleServiceClick(service.id)}>
+                Learn More
+              </CTAButton>
+            </Overlay>
+          </ServiceCard>
+        </Grid>
+      ))}
+    </Grid>
+  </Container>
+)}
+
     </GradientBackground>
   );
 };
