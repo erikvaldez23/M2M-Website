@@ -85,13 +85,14 @@ const Overlay = styled(Box)({
   left: 0,
   width: "100%",
   height: "100%",
-  background: "linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(0,0,0,0.9))",
+  background: "linear-gradient(to bottom, rgba(0,0,0,0.2), rgba(0,0,0,0.7))",
   display: "flex",
   flexDirection: "column",
   justifyContent: "flex-end",
   color: "#fff",
   padding: "20px",
 });
+
 
 const CTAButton = styled(Button)(({ theme }) => ({
   backgroundColor: "transparent", 
@@ -151,7 +152,7 @@ const Services = () => {
             alt={service.title}
             sx={{
               width: "100%",
-              height: 400,
+              height: 500,
               objectFit: "cover",
             }}
           />

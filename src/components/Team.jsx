@@ -14,8 +14,8 @@ import { motion } from "framer-motion";
 
 const teamMembers = [
   {
-    name: "NICLOE CRUISE",
-    title: "Designer",
+    name: "Dr. Natlie Valdez",
+    title: "Physical Therapist",
     description:
       "Specializes in modern, dynamic fitness studio designs that inspire motivation and energy.",
     image: "/M2M-Website/natalie-removebg.png",
@@ -25,11 +25,11 @@ const teamMembers = [
     },
   },
   {
-    name: "PAUL SAM GEORGIA",
-    title: "Programmer",
+    name: "Dr. Andrea Sigsbee",
+    title: "Physical Therapist",
     description:
       "Expert in developing interactive fitness tracking and performance-enhancing applications.",
-    image: "/M2M-Website/drea.jpg",
+    image: "/M2M-Website/drea-removebg.png",
     socials: {
       linkedin: "https://linkedin.com/in/taylor-smith",
       instagram: "https://instagram.com/dr.taylorsmith",
@@ -67,14 +67,14 @@ const MeetTheTeam = () => {
     >
       <Container maxWidth="lg">
         <Typography
-          variant="h3"
+          variant="h2"
           sx={{
             fontWeight: "bold",
             mb: 6,
             textAlign: "center",
             letterSpacing: "4px",
             textTransform: "uppercase",
-            background: "linear-gradient(90deg, #a8dadc, #457b9d)",
+            background: "#fff",
             WebkitBackgroundClip: "text",
             WebkitTextFillColor: "transparent",
           }}
@@ -133,6 +133,42 @@ const MeetTheTeam = () => {
                   >
                     {member.title}
                   </Typography>
+
+                  {/* Social Media Icons Moved Here */}
+                  <Box
+                    sx={{
+                      display: "flex",
+                      gap: 1,
+                    }}
+                  >
+                    <IconButton
+                      sx={{
+                        backgroundColor: "#fff",
+                        p: 1,
+                        borderRadius: "50%",
+                        boxShadow: "0 4px 10px rgba(0,0,0,0.5)",
+                      }}
+                      onClick={() =>
+                        window.open(member.socials.linkedin, "_blank")
+                      }
+                    >
+                      <FaLinkedin color="#000" size={20} />
+                    </IconButton>
+                    <IconButton
+                      sx={{
+                        backgroundColor: "#fff",
+                        p: 1,
+                        borderRadius: "50%",
+                        boxShadow: "0 4px 10px rgba(0,0,0,0.5)",
+                      }}
+                      onClick={() =>
+                        window.open(member.socials.instagram, "_blank")
+                      }
+                    >
+                      <FaInstagram color="#000" size={20} />
+                    </IconButton>
+                  </Box>
+
                   <Button
                     variant="outlined"
                     onClick={() => setSelectedMember(member)}
@@ -144,32 +180,11 @@ const MeetTheTeam = () => {
                         backgroundColor: "#fff",
                         color: "#000",
                       },
+                      mt: 2, // Adds spacing below social icons
                     }}
                   >
                     Read More
                   </Button>
-                  <Box
-                    sx={{
-                      position: "absolute",
-                      bottom: 16,
-                      right: 16,
-                      display: "flex",
-                      gap: 1.5,
-                    }}
-                  >
-                    <IconButton
-                      sx={{ backgroundColor: "#fff", p: 1, borderRadius: "50%", boxShadow: "0 4px 10px rgba(0,0,0,0.5)" }}
-                      onClick={() => window.open(member.socials.linkedin, "_blank")}
-                    >
-                      <FaLinkedin color="#000" size={20} />
-                    </IconButton>
-                    <IconButton
-                      sx={{ backgroundColor: "#fff", p: 1, borderRadius: "50%", boxShadow: "0 4px 10px rgba(0,0,0,0.5)" }}
-                      onClick={() => window.open(member.socials.instagram, "_blank")}
-                    >
-                      <FaInstagram color="#000" size={20} />
-                    </IconButton>
-                  </Box>
                 </Box>
               </motion.div>
             </Grid>

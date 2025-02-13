@@ -34,10 +34,10 @@ const NavbarContainer = styled(Box)({
   margin: "0 auto",
 });
 
-const Topbar = () => {
+const Topbar = ({ notFound }) => {  // Accepting `notFound` prop
   const [drawerOpen, setDrawerOpen] = useState(false);
   const [scrolling, setScrolling] = useState(false);
-  const [quoteOpen, setQuoteOpen] = useState(false); // 🏆 New State for Modal
+  const [quoteOpen, setQuoteOpen] = useState(false);
   const isMobile = useMediaQuery("(max-width:900px)");
   const navigate = useNavigate();
   const location = useLocation();
@@ -50,22 +50,34 @@ const Topbar = () => {
   }, []);
 
   const scrollToSection = (sectionId) => {
+    const subPages = ["gallery", "privacy-policy"]; // Add more subpages here if needed
+  
+    if (subPages.includes(sectionId)) {
+      // Navigate to the subpage instead of scrolling
+      navigate(`/${sectionId}`);
+      setDrawerOpen(false);
+      return;
+    }
+  
     if (location.pathname !== "/") {
+      // If not on the homepage, navigate to home and scroll to the section
       navigate("/", { state: { scrollTo: sectionId } });
       setDrawerOpen(false);
       return;
     }
-
+  
+    // Scroll to section on the homepage
     const targetSection = document.getElementById(sectionId);
     if (!targetSection) return;
-
-    const offset = 80;
+  
+    const offset = 80; // Adjust offset based on your Topbar height
     const targetPosition =
       targetSection.getBoundingClientRect().top + window.scrollY - offset;
-
+  
     window.scrollTo({ top: targetPosition, behavior: "smooth" });
     setDrawerOpen(false);
   };
+  
 
   // 🏆 Handlers for Modal
   const handleOpenQuote = () => {
@@ -80,40 +92,52 @@ const Topbar = () => {
   return (
     <>
       <AppBar
-        position="fixed"
-        sx={{
-          backgroundColor: scrolling ? "black" : "transparent",
-          color: scrolling ? "white" : "white",
-          boxShadow: scrolling ? "0px 2px 10px rgba(0, 0, 0, 0.1)" : "none",
-          transition: "all 0.3s ease-in-out",
-          width: "100vw",
-          left: 0,
-          top: 0,
-          zIndex: 1100,
-        }}
-      >
-        <Toolbar sx={{ justifyContent: "center" }}>
+  position="fixed"
+  sx={{
+    background: scrolling
+      ? "rgba(0, 0, 0, 0.95)" // ✅ Black background when scrolling
+      : "transparent", // ✅ Semi-transparent when at the top
+    backdropFilter: "blur(10px)", // ✅ Glass effect
+    color: "#fff", // ✅ White text always
+    boxShadow: scrolling
+      ? "0 4px 10px rgba(0, 0, 0, 0.3)" // ✅ Slight shadow on scroll
+      : "none",
+    transition: "all 0.4s ease-in-out",
+    width: "100vw",
+    left: 0,
+    top: 0,
+    zIndex: 1100,
+    borderBottom: scrolling ? "1px solid rgba(255, 255, 255, 0.1)" : "none",
+  }}
+>
+
+        <Toolbar sx={{ justifyContent: "center", padding: "0 20px" }}>
           <NavbarContainer>
-            {/* Logo */}
+            {/* Logo with subtle hover effect */}
             <Box
               display="flex"
               alignItems="center"
-              sx={{ cursor: "pointer" }}
+              sx={{
+                cursor: "pointer",
+                transition: "transform 0.3s",
+                "&:hover": { transform: "scale(1.05)" },
+              }}
               onClick={() => navigate("/")}
             >
               <img
                 src={logo}
                 alt="Logo"
-                style={{ height: "50px", marginRight: "10px" }}
+                style={{
+                  height: "55px",
+                  marginRight: "10px",
+                  borderRadius: "8px",
+                }} // Slightly bigger logo with rounded edges
               />
             </Box>
 
-            {isMobile ? (
-              <IconButton color="inherit" onClick={() => setDrawerOpen(true)}>
-                <FaBars />
-              </IconButton>
-            ) : (
-              <Box display="flex" gap={3}>
+            {/* Desktop Navigation */}
+            {!isMobile && (
+              <Box display="flex" gap={4}>
                 {[
                   "Services",
                   "Gallery",
@@ -127,18 +151,49 @@ const Topbar = () => {
                     color="inherit"
                     onClick={() => scrollToSection(item.toLowerCase())}
                     sx={{
-                      fontFamily: "Poppins, sans-serif",
+                      fontFamily: "Montserrat, sans-serif", // Sleek modern font
                       fontSize: "18px",
-                      fontWeight: 500,
-                      letterSpacing: "0.5px",
-                      transition: "color 0.3s",
-                      "&:hover": { color: "#007bff" },
+                      fontWeight: 600,
+                      letterSpacing: "1.5px",
+                      textTransform: "uppercase",
+                      position: "relative",
+                      padding: "10px 20px",
+                      color: scrolling ? "#fff" : "#fff", // Dynamic text color
+                      transition: "all 0.3s ease-in-out",
+                      "&:after": {
+                        content: '""',
+                        position: "absolute",
+                        width: "0%",
+                        height: "3px",
+                        bottom: "0",
+                        left: "50%",
+                        transform: "translateX(-50%)",
+                        background: "linear-gradient(90deg, #007bff, #00c6ff)", // Gradient underline
+                        transition: "width 0.4s ease-in-out",
+                        borderRadius: "2px",
+                      },
+                      "&:hover": {
+                        color: "#00c6ff", // Bright hover color
+                        textShadow: "0 0 8px rgba(0, 198, 255, 0.8)", // Glowing text
+                        "&:after": { width: "100%" }, // Underline expands
+                      },
                     }}
                   >
                     {item}
                   </Button>
                 ))}
               </Box>
+            )}
+            {isMobile && (
+              <IconButton
+                edge="start"
+                color="inherit"
+                aria-label="menu"
+                onClick={() => setDrawerOpen(true)}
+                sx={{ fontSize: 30 }}
+              >
+                <FaBars />
+              </IconButton>
             )}
           </NavbarContainer>
         </Toolbar>
@@ -209,7 +264,7 @@ const Topbar = () => {
                     "@media (max-width: 375px)": { fontSize: "18px" }, // iPhone 13 Mini (375px)
                     "@media (max-width: 360px)": { fontSize: "16px" }, // Small Androids (Pixel 4a)
                     "@media (max-width: 320px)": { fontSize: "14px" }, // iPhone SE (320px)
-                    "&:hover": { color: "#007bff", cursor:"pointer" },
+                    "&:hover": { color: "#007bff", cursor: "pointer" },
                   },
                 }}
               />
@@ -241,11 +296,11 @@ const Topbar = () => {
               alignItems: "center",
               justifyContent: "center",
               textTransform: "none",
-              "&:hover": { 
+              "&:hover": {
                 backgroundColor: "#000",
                 border: "3px solid #fff",
-                color: "#fff"
-              }
+                color: "#fff",
+              },
             }}
           >
             GET A QUOTE
@@ -267,11 +322,11 @@ const Topbar = () => {
               alignItems: "center",
               justifyContent: "center",
               textTransform: "none",
-              "&:hover": { 
+              "&:hover": {
                 backgroundColor: "#000",
                 border: "3px solid #fff",
-                color: "#fff"
-              }
+                color: "#fff",
+              },
             }}
           >
             ASK A QUESTION
@@ -287,10 +342,17 @@ const Topbar = () => {
             mb: "calc(env(safe-area-inset-bottom, 20px) + 10px)", // Prevents overlap with bottom bar
           }}
         >
-          {[FaFacebook, FaTiktok, FaInstagram, FaYoutube].map((Icon, index) => (
-            <IconButton key={index} sx={{ color: "white", fontSize: "36px",  "&:hover": { 
-              color: "#007bff",
-            } }}>
+          {[FaFacebook, FaInstagram ].map((Icon, index) => (
+            <IconButton
+              key={index}
+              sx={{
+                color: "white",
+                fontSize: "36px",
+                "&:hover": {
+                  color: "#007bff",
+                },
+              }}
+            >
               <Icon />
             </IconButton>
           ))}
