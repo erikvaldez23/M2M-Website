@@ -34,7 +34,8 @@ const NavbarContainer = styled(Box)({
   margin: "0 auto",
 });
 
-const Topbar = ({ notFound }) => {  // Accepting `notFound` prop
+const Topbar = ({ notFound }) => {
+  // Accepting `notFound` prop
   const [drawerOpen, setDrawerOpen] = useState(false);
   const [scrolling, setScrolling] = useState(false);
   const [quoteOpen, setQuoteOpen] = useState(false);
@@ -51,33 +52,32 @@ const Topbar = ({ notFound }) => {  // Accepting `notFound` prop
 
   const scrollToSection = (sectionId) => {
     const subPages = ["gallery", "privacy-policy"]; // Add more subpages here if needed
-  
+
     if (subPages.includes(sectionId)) {
       // Navigate to the subpage instead of scrolling
       navigate(`/${sectionId}`);
       setDrawerOpen(false);
       return;
     }
-  
+
     if (location.pathname !== "/") {
       // If not on the homepage, navigate to home and scroll to the section
       navigate("/", { state: { scrollTo: sectionId } });
       setDrawerOpen(false);
       return;
     }
-  
+
     // Scroll to section on the homepage
     const targetSection = document.getElementById(sectionId);
     if (!targetSection) return;
-  
+
     const offset = 80; // Adjust offset based on your Topbar height
     const targetPosition =
       targetSection.getBoundingClientRect().top + window.scrollY - offset;
-  
+
     window.scrollTo({ top: targetPosition, behavior: "smooth" });
     setDrawerOpen(false);
   };
-  
 
   // 🏆 Handlers for Modal
   const handleOpenQuote = () => {
@@ -92,25 +92,25 @@ const Topbar = ({ notFound }) => {  // Accepting `notFound` prop
   return (
     <>
       <AppBar
-  position="fixed"
-  sx={{
-    background: scrolling
-      ? "rgba(0, 0, 0, 0.95)" // ✅ Black background when scrolling
-      : "transparent", // ✅ Semi-transparent when at the top
-    backdropFilter: "blur(10px)", // ✅ Glass effect
-    color: "#fff", // ✅ White text always
-    boxShadow: scrolling
-      ? "0 4px 10px rgba(0, 0, 0, 0.3)" // ✅ Slight shadow on scroll
-      : "none",
-    transition: "all 0.4s ease-in-out",
-    width: "100vw",
-    left: 0,
-    top: 0,
-    zIndex: 1100,
-    borderBottom: scrolling ? "1px solid rgba(255, 255, 255, 0.1)" : "none",
-  }}
->
-
+        position="fixed"
+        sx={{
+          background: scrolling
+            ? "rgba(0, 0, 0, 0.95)" // ✅ Black background when scrolling
+            : "transparent", // ✅ Semi-transparent when at the top
+          color: "#fff", // ✅ White text always
+          boxShadow: scrolling
+            ? "0 4px 10px rgba(0, 0, 0, 0.3)" // ✅ Slight shadow on scroll
+            : "none",
+          transition: "all 0.4s ease-in-out",
+          width: "100vw",
+          left: 0,
+          top: 0,
+          zIndex: 1100,
+          borderBottom: scrolling
+            ? "1px solid rgba(255, 255, 255, 0.1)"
+            : "none",
+        }}
+      >
         <Toolbar sx={{ justifyContent: "center", padding: "0 20px" }}>
           <NavbarContainer>
             {/* Logo with subtle hover effect */}
@@ -218,6 +218,7 @@ const Topbar = ({ notFound }) => {  // Accepting `notFound` prop
             textAlign: "center",
             padding: "5vh 0",
             paddingBottom: "calc(env(safe-area-inset-bottom, 20px) + 10px)", // Ensures content isn't hidden by Safari bar
+            overflow: "hidden"
           },
           "& .MuiBackdrop-root": {
             backgroundColor: "#000 !important",
@@ -342,7 +343,7 @@ const Topbar = ({ notFound }) => {  // Accepting `notFound` prop
             mb: "calc(env(safe-area-inset-bottom, 20px) + 10px)", // Prevents overlap with bottom bar
           }}
         >
-          {[FaFacebook, FaInstagram ].map((Icon, index) => (
+          {[FaFacebook, FaInstagram].map((Icon, index) => (
             <IconButton
               key={index}
               sx={{

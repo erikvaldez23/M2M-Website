@@ -18,6 +18,7 @@ import FrameworkCarousel from './components/FrameworkCarousel';
 import MeetTheTeam from './components/Team';
 import CTA from './components/cta'
 import ErrorPage from "./components/ErrorPage";
+import ServicePage from './components/ServicePage';
 
 const theme = createTheme({
     palette: {
@@ -79,6 +80,7 @@ function App() {
           {/* <Route path="/services/:serviceId" element={<ServicesPage />} /> */}
           <Route path="/gallery" element={<Gallery />} />
           <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+          <Route path="/services/:serviceId" element={<ServicePage />} />
           <Route path="*" element={<ErrorPage />} />
         </Routes>
         {/* <Chatbot /> */}

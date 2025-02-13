@@ -3,6 +3,7 @@ import { Box, Typography, Button } from "@mui/material";
 import Topbar from "./Topbar";
 import Contact from "./Contact";
 import Footer from "./Footer";
+import CTA from "./cta";
 
 const ErrorPage = () => {
   return (
@@ -94,6 +95,9 @@ const ErrorPage = () => {
         </Box>
       </Box>
 
+      <Box>
+        <CTA />
+      </Box>
       {/* Contact Section */}
       <Box sx={{ backgroundColor: "#f9f9f9", width: "100vw" }}>
         <Contact />

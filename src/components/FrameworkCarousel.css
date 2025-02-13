@@ -54,12 +54,10 @@
 
 .framework-carousel::before {
   left: 0;
-  background: linear-gradient(to right, #000, transparent);
 }
 
 .framework-carousel::after {
   right: 0;
-  background: linear-gradient(to left, #000, transparent);
 }
 
 @media (max-width: 768px) {
