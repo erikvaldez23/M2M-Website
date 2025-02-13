@@ -13,6 +13,7 @@ import {
 import { motion } from "framer-motion";
 import { styled } from "@mui/system";
 import CTA from "./cta";
+import Footer from "./Footer"
 
 const servicesData = {
   "orthopedic-injuries": {
@@ -394,6 +395,10 @@ const ServicePage = () => {
       </Container>
       <Box sx={{ width: "100vw" }}>
         <CTA />
+      </Box>
+
+      <Box>
+        <Footer />
       </Box>
     </motion.div>
   );

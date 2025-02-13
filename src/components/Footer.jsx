@@ -12,15 +12,15 @@ import logo from "../../public/logo.png"; // Ensure correct path
 
 const Footer = () => {
   return (
-    <Box
-      component="footer"
-      sx={{
-        backgroundColor: "#111", // Dark modern background
-        color: "white",
-        py: 4,
-        mt: 4,
-      }}
-    >
+<Box
+  component="footer"
+  sx={{
+    backgroundColor: "#111",
+    color: "white",
+    py: 4,
+  }}
+>
+
       <Container maxWidth="lg">
         {/* Top Section: Logo + Social Media */}
         <Box
