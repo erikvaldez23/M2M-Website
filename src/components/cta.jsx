@@ -16,6 +16,7 @@ const CTA = () => {
         justifyContent: "center",
         textAlign: "center",
         color: "#fff",
+        height: "40vh"
       }}
     >
       <motion.div

@@ -56,7 +56,7 @@ const MeetTheTeam = () => {
     <Box
       sx={{
         width: "100vw",
-        background: "linear-gradient(135deg, #000, #1a1a1a)",
+        backgroundColor: "#1E1E1E",
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
