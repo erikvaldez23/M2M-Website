@@ -58,7 +58,7 @@ const MeetTheTeam = () => {
     <Box
       sx={{
         width: "100vw",
-        backgroundColor: "#fff",
+        backgroundColor: "#F7E7CE",
         display: "flex",
         flexDirection: "column",
         alignItems: "center",

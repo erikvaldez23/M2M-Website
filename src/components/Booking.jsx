@@ -43,7 +43,7 @@ const Booking = () => {
       {/* ✅ Booking Section */}
       <Box
         sx={{
-          background: "linear-gradient(to bottom, #f5f5f7, #e5e5ea)",
+          background: "#F7E7CE",
           py: { xs: 8, md: 12 },
           textAlign: "center",
         }}

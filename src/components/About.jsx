@@ -1,6 +1,6 @@
 import React from "react";
 import { Box, Container, Typography, Button, Grid } from "@mui/material";
-import { styled } from "@mui/system";
+import { minHeight, styled } from "@mui/system";
 import { motion } from "framer-motion";
 
 import Topbar from "./Topbar";
@@ -10,7 +10,7 @@ import Footer from "./Footer"; // ✅ Import Footer component
 
 // ✅ Styled Components for Modern Look
 const SectionWrapper = styled(Box)({
-  background: "#f8f9fa", // Light background for contrast
+  background: "#F7E7CE", // Light background for contrast
   padding: "100px 20px",
 });
 
@@ -37,11 +37,7 @@ const About = () => {
       <Topbar />
 
       {/* ✅ Hero Section with Custom Props */}
-      <Hero
-        title="About Us"
-        subtitle="Dedicated to helping you move better, feel stronger, and live pain-free. Learn about our mission and values."
-        backgroundImage="/M2M-Website/about-hero.jpg"
-      />
+      <Hero/>
 
       {/* ✅ About Section */}
       <SectionWrapper id="about">

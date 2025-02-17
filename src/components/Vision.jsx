@@ -36,7 +36,7 @@ const Vision = () => {
     <Box
       sx={{
         py: 10,
-        background: "linear-gradient(to bottom, #f5f5f7, #e5e5ea)",
+        background: "#F7E7CE",
         textAlign: "center",
       }}
     >
@@ -53,7 +53,7 @@ const Vision = () => {
               fontWeight: "bold",
               letterSpacing: 1.5,
               mb: 3,
-              background: "linear-gradient(90deg, #007AFF, #34C759)",
+              background: "#000",
               WebkitBackgroundClip: "text",
               WebkitTextFillColor: "transparent",
               fontFamily: '"SF Pro Display", "Inter", sans-serif',
