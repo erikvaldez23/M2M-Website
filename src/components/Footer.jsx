@@ -110,7 +110,7 @@ const Footer = () => {
             color="inherit"
             underline="hover"
           >
-            www.tinttekplus.com
+            www.m2mdfw.com
           </Link>
           <Link href="/privacy-policy" color="inherit" underline="hover">
             Privacy Policy
@@ -122,7 +122,7 @@ const Footer = () => {
           variant="body2"
           sx={{ textAlign: "center", mt: 2, fontSize: "12px", opacity: 0.7 }}
         >
-          © {new Date().getFullYear()} Tint Tek + . All rights reserved.
+          © {new Date().getFullYear()} Made2Move . All rights reserved.
         </Typography>
       </Container>
     </Box>

@@ -51,33 +51,33 @@ const Topbar = ({ notFound }) => {
   }, []);
 
   const scrollToSection = (sectionId) => {
-    const subPages = ["gallery", "privacy-policy"]; // Add more subpages here if needed
-
+    const subPages = ["about", "gallery", "privacy-policy", "booking", "testimonials"]; // ✅ Add all subpages here
+  
     if (subPages.includes(sectionId)) {
-      // Navigate to the subpage instead of scrolling
+      // ✅ Navigate to subpage instead of scrolling
       navigate(`/${sectionId}`);
       setDrawerOpen(false);
       return;
     }
-
+  
     if (location.pathname !== "/") {
-      // If not on the homepage, navigate to home and scroll to the section
+      // ✅ If not on the homepage, navigate to home first and scroll
       navigate("/", { state: { scrollTo: sectionId } });
       setDrawerOpen(false);
       return;
     }
-
-    // Scroll to section on the homepage
+  
+    // ✅ Scroll to section on the homepage
     const targetSection = document.getElementById(sectionId);
     if (!targetSection) return;
-
-    const offset = 80; // Adjust offset based on your Topbar height
-    const targetPosition =
-      targetSection.getBoundingClientRect().top + window.scrollY - offset;
-
+  
+    const offset = 80;
+    const targetPosition = targetSection.getBoundingClientRect().top + window.scrollY - offset;
+  
     window.scrollTo({ top: targetPosition, behavior: "smooth" });
     setDrawerOpen(false);
   };
+  
 
   // 🏆 Handlers for Modal
   const handleOpenQuote = () => {
@@ -141,7 +141,7 @@ const Topbar = ({ notFound }) => {
                 {[
                   "About",
                   "Services",
-                  // "Gallery",
+                  "Booking",
                   // "Pricing",
                   "Testimonials",
                   "Contact",
@@ -240,7 +240,7 @@ const Topbar = ({ notFound }) => {
           {[
              "About",
              "Services",
-             // "Gallery",
+             "Booking",
             //  "Pricing",
              "Testimonials",
              "Contact",

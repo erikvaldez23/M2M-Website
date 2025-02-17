@@ -1,154 +1,123 @@
-import React, { useEffect, useState } from "react";
-import { Box, Card, CardContent, Typography, Avatar, Rating, Container, CircularProgress, Button } from "@mui/material";
+import React from "react";
+import { Box, Container, Typography, Grid, Card, CardContent, Avatar } from "@mui/material";
+import { motion } from "framer-motion";
 
-const API_URL = "http://localhost:5001/api/reviews"; // Call the backend server
-const GOOGLE_REVIEWS_URL = "https://maps.app.goo.gl/oUyTRQm7dfdzJmvy9"; // Google Reviews URL
-const GOOGLE_LOGO = "/TintTek-Website/google-logo.png"; // Local Google logo in 'public/' folder
+import Topbar from "./Topbar";
+import Hero from "./Hero";
+import CTA from "./cta";
+import Footer from "./Footer";
+
+// ✅ Hardcoded Testimonials Data
+const testimonialsData = [
+  {
+    name: "Sarah L.",
+    review: "M2M Physical Therapy helped me regain my mobility after a knee injury. Their personalized care made all the difference!",
+    image: "/M2M-Website/sarah.jpg",
+  },
+  {
+    name: "James W.",
+    review: "Highly recommend M2M! Their therapists are knowledgeable, friendly, and truly care about your progress.",
+    image: "/M2M-Website/james.jpg",
+  },
+  {
+    name: "Emily R.",
+    review: "The one-on-one attention and custom treatment plan at M2M were game-changers for my recovery.",
+    image: "/M2M-Website/emily.jpg",
+  },
+  {
+    name: "Michael B.",
+    review: "Fantastic experience! My shoulder pain has significantly improved thanks to their hands-on approach.",
+    image: "/M2M-Website/michael.jpg",
+  },
+];
 
 const Testimonials = () => {
-  const [reviews, setReviews] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
-
-  useEffect(() => {
-    const fetchReviews = async () => {
-      try {
-        const response = await fetch(API_URL);
-        const data = await response.json();
-        console.log("Google API Response:", data);
-        
-        if (data.length > 0) {
-          setReviews(data.slice(0, 4)); // ✅ Show only 4 reviews
-        } else {
-          setError("No reviews found.");
-        }
-      } catch (error) {
-        setError("Error fetching reviews.");
-        console.error("Error fetching reviews:", error);
-      } finally {
-        setLoading(false);
-      }
-    };
-    fetchReviews();
-  }, []);
-
   return (
-    <Box id="reviews" sx={{ py: 8, textAlign: "center", backgroundColor: "#e3eff4" }}>
-      <Container maxWidth="xl"> {/* ✅ Keeps section centered & max width 1200px */}
-        <Typography variant="h4" gutterBottom sx={{ fontWeight: "bold", paddingBottom: "30px" }}>
-          What Our Customers Say (Google Reviews)
-        </Typography>
+    <>
+      {/* ✅ Navigation Bar */}
+      <Topbar />
 
-        {loading ? (
-          <CircularProgress />
-        ) : error ? (
-          <Typography variant="body1" color="text.secondary">
-            {error}
-          </Typography>
-        ) : (
-          <Box 
-            sx={{ 
-              display: "grid", 
-              gridTemplateColumns: "repeat(4, 1fr)", // ✅ Show exactly 4 reviews in a row
-              gap: 2, 
-              justifyContent: "center",
-              alignItems: "stretch",
-            }}
+      {/* ✅ Hero Section */}
+      <Hero
+        title="What Our Clients Say"
+        subtitle="Real stories from real people. See how M2M Physical Therapy has transformed lives."
+        backgroundImage="/M2M-Website/testimonials-hero.jpg"
+      />
+
+      {/* ✅ Testimonials Section */}
+      <Box sx={{ background: "#f8f9fa", py: { xs: 8, md: 12 }, textAlign: "center" }}>
+        <Container maxWidth="lg">
+          {/* ✅ Title */}
+          <motion.div
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
           >
-            {reviews.map((review, index) => (
-              <Card 
-              key={index}
-              sx={{ 
-                p: 3, 
-                borderRadius: 3, 
-                boxShadow: 3, 
-                textAlign: "left",
-                minHeight: 300, 
-                maxHeight: 350, 
-                display: "flex",
-                flexDirection: "column",
-                position: "relative", // ✅ Make this the reference for absolute positioning
+            <Typography
+              variant="h3"
+              sx={{
+                fontWeight: "bold",
+                letterSpacing: 1.5,
+                mb: 3,
+                background: "linear-gradient(90deg, #007AFF, #34C759)",
+                WebkitBackgroundClip: "text",
+                WebkitTextFillColor: "transparent",
+                fontFamily: '"SF Pro Display", "Inter", sans-serif',
               }}
             >
-              <CardContent
-                sx={{
-                  flex: "1 1 auto", 
-                  display: "flex",
-                  flexDirection: "column",
-                  justifyContent: "space-between",
-                  overflow: "hidden",
-                }}
-              >
-                {/* ✅ Google Logo (Top-Right) */}
-                <Box sx={{ position: "absolute", top: 10, right: 10, width: 25, height: 25 }}>
-                  <img src={GOOGLE_LOGO} alt="Google" width="100%" />
-                </Box>
-            
-                {/* ✅ User Profile Info */}
-                <Box sx={{ display: "flex", alignItems: "center", mb: 2 }}>
-                  <Avatar sx={{ width: 40, height: 40, mr: 2 }} src={review.profile_photo_url} alt={review.author_name} />
-                  <Box>
-                    <Typography variant="h6" sx={{ fontWeight: "bold", fontSize: "0.9rem" }}>
-                      {review.author_name}
-                    </Typography>
-                    <Typography variant="body2" color="text.secondary">
-                      {new Date(review.time * 1000).toLocaleDateString()}
-                    </Typography>
-                  </Box>
-                </Box>
-            
-                {/* ✅ Star Rating */}
-                <Rating value={review.rating} precision={0.5} readOnly sx={{ mb: 1 }} />
-            
-                {/* ✅ Review Text (No Scrolling) */}
-                <Typography 
-                  variant="body2" 
-                  sx={{ 
-                    flexGrow: 1,
-                    display: "-webkit-box",
-                    overflowY: "scroll",
-                    textOverflow: "ellipsis",
-                    fontStyle: "italic",
-                    fontSize: "0.9rem",
-                    lineHeight: 1.5,
-                  }}
-                >
-                  "{review.text}"
-                </Typography>
-              </CardContent>
-            </Card>
-            
-            ))}
-          </Box>
-        )}
+              Our Clients Love Us
+            </Typography>
+          </motion.div>
 
-        {/* ✅ View More Reviews Button */}
-        <Button 
-          variant="contained" 
-          sx={{
-            mt: 4,
-            backgroundColor: "#4285F4", 
-            color: "white",
-            fontWeight: "bold",
-            padding: "10px 20px",
-            borderRadius: "20px",
-            textTransform: "none",
-            fontSize: "0.9rem",
-            transition: "0.3s",
-            "&:hover": { 
-              backgroundColor: "#fff", 
-              border: "5px solid #000", 
-              color:"#000" 
-            },
-          }}
-          href={GOOGLE_REVIEWS_URL}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          VIEW MORE REVIEWS ON GOOGLE
-        </Button>
-      </Container>
-    </Box>
+          {/* ✅ Testimonials Grid */}
+          <Grid container spacing={4} justifyContent="center">
+            {testimonialsData.map((testimonial, index) => (
+              <Grid item xs={12} sm={6} md={4} key={index}>
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: index * 0.2 }}
+                  viewport={{ once: true }}
+                >
+                  <Card
+                    sx={{
+                      background: "rgba(255, 255, 255, 0.9)",
+                      borderRadius: "20px",
+                      boxShadow: "0 5px 15px rgba(0, 0, 0, 0.1)",
+                      padding: "20px",
+                      textAlign: "center",
+                      transition: "transform 0.3s ease-in-out",
+                      "&:hover": { transform: "scale(1.05)" },
+                    }}
+                  >
+                    <CardContent>
+                      {/* ✅ Avatar */}
+                      <Avatar
+                        src={testimonial.image}
+                        alt={testimonial.name}
+                        sx={{ width: 80, height: 80, margin: "0 auto 15px" }}
+                      />
+                      <Typography variant="h6" sx={{ fontWeight: "bold", mb: 1 }}>
+                        {testimonial.name}
+                      </Typography>
+                      <Typography sx={{ color: "#6e6e73", fontSize: "16px" }}>
+                        "{testimonial.review}"
+                      </Typography>
+                    </CardContent>
+                  </Card>
+                </motion.div>
+              </Grid>
+            ))}
+          </Grid>
+        </Container>
+      </Box>
+
+      {/* ✅ CTA Section */}
+      <CTA />
+
+      {/* ✅ Footer */}
+      <Footer />
+    </>
   );
 };
 

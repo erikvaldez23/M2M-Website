@@ -1,141 +1,120 @@
 import React from "react";
-import { Box, Typography, Button, Container, Grid } from "@mui/material";
+import { Box, Container, Typography, Button, Grid } from "@mui/material";
+import { styled } from "@mui/system";
 import { motion } from "framer-motion";
+
+import Topbar from "./Topbar";
+import Hero from "./Hero"; // ✅ Import Hero component
+import CTA from "./cta"; // ✅ Import CTA component
+import Footer from "./Footer"; // ✅ Import Footer component
+
+// ✅ Styled Components for Modern Look
+const SectionWrapper = styled(Box)({
+  background: "#f8f9fa", // Light background for contrast
+  padding: "100px 20px",
+});
+
+const ContentWrapper = styled(Box)({
+  display: "flex",
+  flexDirection: "column",
+  justifyContent: "center",
+  alignItems: "flex-start",
+  padding: "20px",
+});
+
+const StyledImage = styled("img")({
+  width: "100%",
+  height: "100%",
+  objectFit: "cover",
+  borderRadius: "20px",
+  boxShadow: "0px 10px 30px rgba(0, 0, 0, 0.2)",
+});
 
 const About = () => {
   return (
-    <Box
-      sx={{
-        background: "linear-gradient(to bottom, #f5f5f7, #e5e5ea)", // Soft Apple gradient
-        color: "#1d1d1f",
-        py: { xs: 8, md: 12 },
-        px: 4,
-      }}
-    >
-      <Container maxWidth="lg">
-        <Grid container spacing={6} alignItems="center">
-          {/* Left Side - Image with Soft Glassmorphism */}
-          <Grid item xs={12} md={6}>
-            <motion.div
-              initial={{ opacity: 0, x: -50 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8, ease: "easeOut" }}
-              style={{
-                borderRadius: "20px",
-                overflow: "hidden",
-                backdropFilter: "blur(15px)",
-                background: "rgba(255, 255, 255, 0.6)",
-                boxShadow: "0 10px 30px rgba(0, 0, 0, 0.1)", // Softer shadow
-              }}
-            >
-              <img
-                src="/M2M-Website/both.jpg"
-                alt="Our Story"
-                style={{
-                  width: "100%",
-                  height: "100%",
-                  objectFit: "cover",
-                  borderRadius: "20px",
-                }}
-              />
-            </motion.div>
-          </Grid>
+    <>
+      {/* ✅ Navigation Bar */}
+      <Topbar />
 
-          {/* Right Side - Text with Apple-Inspired Styling */}
-          <Grid item xs={12} md={6}>
-            <motion.div
-              initial={{ opacity: 0, x: 50 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8, ease: "easeOut" }}
-            >
-              <Typography
-                variant="h3"
-                sx={{
-                  fontWeight: "bold",
-                  textTransform: "uppercase",
-                  letterSpacing: 1.5,
-                  mb: 3,
-                  background: "linear-gradient(90deg, #007AFF, #34C759)", // Apple-like blue-green gradient
-                  WebkitBackgroundClip: "text",
-                  WebkitTextFillColor: "transparent",
-                  display: "inline-block",
-                  fontFamily: '"SF Pro Display", "Inter", sans-serif',
-                }}
-              >
-                About Us
-              </Typography>
+      {/* ✅ Hero Section with Custom Props */}
+      <Hero
+        title="About Us"
+        subtitle="Dedicated to helping you move better, feel stronger, and live pain-free. Learn about our mission and values."
+        backgroundImage="/M2M-Website/about-hero.jpg"
+      />
 
-              <Typography
-                variant="h6"
-                sx={{
-                  fontWeight: 400,
-                  lineHeight: 1.8,
-                  color: "#1d1d1f",
-                  mb: 3,
-                  fontFamily: '"SF Pro Text", "Inter", sans-serif',
-                }}
-              >
-                <strong>
-                  PT school big and little turned best friends and now business
-                  partners -
-                </strong>{" "}
-                Together, we bring a wealth of knowledge and passion for helping
-                you achieve your movement goals and improve your overall health.
-              </Typography>
-
-              <Typography
-                variant="body1"
-                sx={{
-                  color: "#6e6e73",
-                  lineHeight: 1.7,
-                  mb: 4,
-                  fontSize: "18px",
-                  fontFamily: '"SF Pro Text", "Inter", sans-serif',
-                }}
-              >
-                After several years of experience in the sports medicine and
-                orthopedic field, we found that clinics sacrificed quality
-                patient care for increased income, and decided we wanted to take
-                a different approach. At <strong>M2M</strong>, we believe in
-                empowering athletes and active individuals to achieve optimal
-                health and full recovery through expert, personalized one-on-one
-                care.
-              </Typography>
-
-              {/* CTA Button - Apple-Like Soft Button */}
+      {/* ✅ About Section */}
+      <SectionWrapper id="about">
+        <Container maxWidth="lg">
+          <Grid container spacing={6} alignItems="center">
+            {/* ✅ Left Side - Image */}
+            <Grid item xs={12} md={6}>
               <motion.div
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.97 }}
-                transition={{ type: "spring", stiffness: 300 }}
+                initial={{ opacity: 0, x: -50 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.8, ease: "easeOut" }}
               >
-                <Button
-                  variant="contained"
-                  sx={{
-                    background:
-                      "linear-gradient(to right, #007AFF, #0A84FF)", // Apple blue gradient
-                    color: "white",
-                    fontWeight: "bold",
-                    fontSize: "1rem",
-                    px: 4,
-                    py: 1.5,
-                    borderRadius: "30px",
-                    boxShadow: "0 5px 15px rgba(0, 122, 255, 0.4)",
-                    textTransform: "capitalize",
-                    transition: "all 0.3s ease-in-out",
-                    "&:hover": {
-                      background: "linear-gradient(to right, #0056CC, #007AFF)",
-                      boxShadow: "0 8px 20px rgba(0, 86, 204, 0.6)",
-                    },
-                  }}
-                >
-                  Learn More
-                </Button>
+                <StyledImage src="/M2M-Website/both.jpg" alt="Physical Therapy Clinic" />
               </motion.div>
-            </motion.div>
+            </Grid>
+
+            {/* ✅ Right Side - Text Content */}
+            <Grid item xs={12} md={6}>
+              <ContentWrapper>
+                <motion.div
+                  initial={{ opacity: 0, x: 50 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.8, ease: "easeOut" }}
+                >
+                  <Typography
+                    variant="h3"
+                    sx={{
+                      fontWeight: "bold",
+                      color: "#007bff",
+                      textTransform: "uppercase",
+                      mb: 3,
+                    }}
+                  >
+                    Who We Are
+                  </Typography>
+
+                  <Typography
+                    variant="h6"
+                    sx={{
+                      color: "#333",
+                      fontWeight: 400,
+                      lineHeight: 1.8,
+                      mb: 3,
+                    }}
+                  >
+                    At <strong>M2M Physical Therapy</strong>, we are committed to helping you **move better, feel stronger, and live pain-free**.
+                    Our team of expert physical therapists offers personalized, **one-on-one care** tailored to your needs.
+                  </Typography>
+
+                  <Typography
+                    variant="body1"
+                    sx={{
+                      color: "#555",
+                      lineHeight: 1.7,
+                      mb: 4,
+                    }}
+                  >
+                    With a focus on **evidence-based rehabilitation**, we provide a **holistic approach** to healing,
+                    ensuring every patient gets the highest level of care. Whether you’re recovering from an injury, surgery, or just looking to **enhance your movement**, we're here to guide you every step of the way.
+                  </Typography>
+                </motion.div>
+              </ContentWrapper>
+            </Grid>
           </Grid>
-        </Grid>
-      </Container>
-    </Box>
+        </Container>
+      </SectionWrapper>
+
+      {/* ✅ CTA Section */}
+      <CTA />
+
+      {/* ✅ Footer */}
+      <Footer />
+    </>
   );
 };
 

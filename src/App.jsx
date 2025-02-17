@@ -4,13 +4,11 @@ import { useEffect } from "react";  // ✅ Import useEffect
 import './App.css';
 import Topbar from './components/Topbar';
 import Hero from './components/Hero';
-// import Testimonials from './components/Testimonials';
+import Testimonials from './components/Testimonials';
 import Services from './components/Services';
-// import Contact from './components/Contact';
+import Contact from './components/Contact';
 import Vision from './components/Vision';
 import Footer from './components/Footer';
-// import Chatbot from './ChatBot';
-import WhyChooseUs from './components/WhyChooseUs';
 import Gallery from './components/Gallery';
 import ScrollToTop from './components/ScrollToTop';
 import PrivacyPolicy from './components/PrivacyPolicy';
@@ -68,28 +66,24 @@ function App() {
               <>
                 <Hero />
                 <CTA /> 
-                <About />
                 <MeetTheTeam />
                 <FrameworkCarousel />
                 <Services />
-                <Map />
-                <Booking />
-                {/* <WhyChooseUs /> */}
-                {/* <Testimonials /> */}
+                {/* <Map /> */}
                 <Vision />
-                {/* <Contact /> */}
+                <Contact />
                 <Footer />
               </>
             } 
           />
-          {/* ✅ Dynamic Route for Individual Service Pages */}
-          {/* <Route path="/services/:serviceId" element={<ServicesPage />} /> */}
           <Route path="/gallery" element={<Gallery />} />
+          <Route path="/testimonials" element={<Testimonials />} />
+          <Route path="/booking" element={<Booking />} />
+          <Route path="/about" element={<About />} />
           <Route path="/privacy-policy" element={<PrivacyPolicy />} />
           <Route path="/services/:serviceId" element={<ServicePage />} />
           <Route path="*" element={<ErrorPage />} />
         </Routes>
-        {/* <Chatbot /> */}
       </Router>
     </ThemeProvider>
   );

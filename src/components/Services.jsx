@@ -1,20 +1,8 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import Slider from "react-slick";
-import {
-  Box,
-  Card,
-  CardMedia,
-  CardContent,
-  Container,
-  Grid,
-  Typography,
-  Button,
-  useMediaQuery,
-} from "@mui/material";
+import { Box, Card, CardMedia, Typography, Button } from "@mui/material";
 import { styled } from "@mui/system";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
+import { motion } from "framer-motion";
 
 // Sample Services Data
 const servicesData = [
@@ -33,7 +21,8 @@ const servicesData = [
   {
     id: "recovery",
     title: "RECOVERY",
-    description: "Accelerate your performance recovery using modern techniques.",
+    description:
+      "Accelerate your performance recovery using modern techniques.",
     image: "/M2M-Website/recovery.jpg",
   },
   {
@@ -56,30 +45,39 @@ const servicesData = [
   },
 ];
 
-// Styled Components for Modern Look
-const GradientBackground = styled(Box)(({ theme }) => ({
-  background: "#000", // Dark Blue Gradient
-  color: "#fff",
-  padding: theme.spacing(6, 2),
-  textAlign: "center",
-  position: "relative",
-  overflow: "hidden",
-}));
+// Styled Components
+const GridContainer = styled(Box)({
+  display: "grid",
+  gridTemplateColumns: "repeat(auto-fit, minmax(250px, 1fr))",
+  gap: "20px",
+  padding: "50px 10%",
+  justifyContent: "center",
+});
 
-const ServiceCard = styled(Card)(({ theme }) => ({
+const ServiceCard = styled(motion(Card))({
   position: "relative",
   borderRadius: 20,
   overflow: "hidden",
   background: "rgba(255, 255, 255, 0.1)",
-  backdropFilter: "blur(10px)", // Glass effect
-  transition: "transform 0.3s ease, box-shadow 0.3s ease",
+  backdropFilter: "blur(10px)",
+  height: "400px", // ✅ Fixed height for consistency
+  transition: "all 0.4s ease", // ✅ Smooth transition for both effects
   "&:hover": {
-    transform: "scale(1.05)",
-    boxShadow: "0 8px 20px rgba(0, 0, 0, 0.5)",
+    transform: "scale(1.05)", // ✅ Scale up on hover
   },
-}));
+  "&:hover img": {
+    filter: "brightness(1.2)", // ✅ Brighten image on hover
+  },
+});
 
-const Overlay = styled(Box)({
+const CardMediaStyled = styled(CardMedia)({
+  width: "100%",
+  height: "100%",
+  objectFit: "cover",
+});
+
+
+const CardOverlay = styled(Box)({
   position: "absolute",
   top: 0,
   left: 0,
@@ -91,120 +89,81 @@ const Overlay = styled(Box)({
   justifyContent: "flex-end",
   color: "#fff",
   padding: "20px",
+  transition: "opacity 0.3s ease",
 });
 
-
-const CTAButton = styled(Button)(({ theme }) => ({
-  backgroundColor: "transparent", 
+const CTAButton = styled(Button)({
+  backgroundColor: "transparent",
   color: "#fff",
   fontWeight: "bold",
   borderRadius: 50,
   border: "3px solid #fff",
-  marginTop: theme.spacing(2),
+  marginTop: "10px",
+  transition: "background 0.3s ease",
   "&:hover": {
-    backgroundColor: "#000",
+    backgroundColor: "#fff",
+    color: "#000",
   },
-}));
+});
+
+// Animation Variants
+const fadeInVariant = {
+  hidden: { opacity: 0, y: 20 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
+};
 
 const Services = () => {
   const navigate = useNavigate();
-  const isMobile = useMediaQuery("(max-width: 768px)");
 
   const handleServiceClick = (serviceId) => {
     navigate(`/services/${serviceId}`);
   };
 
-  const sliderSettings = {
-    dots: true,
-    infinite: true, // Enable infinite scroll
-    speed: 700,
-    slidesToShow: 1.2,
-    slidesToScroll: 1,
-    centerMode: true,
-    arrows: false,
-    responsive: [
-      {
-        breakpoint: 768,
-        settings: {
-          slidesToShow: 1.1,
-        },
-      },
-    ],
-  };
-
   return (
-    <GradientBackground id="services">
-      <Typography variant="h3" sx={{ fontWeight: "bold", mb: 2 }}>
-        Our Services
+    <Box
+      id="services"
+      sx={{ backgroundColor: "#000", padding: "80px 0", color: "#fff" }}
+    >
+      <Typography
+        variant="h2"
+        sx={{ textAlign: "center", fontWeight: "bold", mb: 4 }}
+      >
+        SERVICES
       </Typography>
-      <Typography variant="h6" sx={{ mb: 4, opacity: 0.8 }}>
+      <Typography
+        variant="h6"
+        sx={{ textAlign: "center", opacity: 0.8, mb: 4 }}
+      >
         Discover personalized fitness solutions tailored to your needs.
       </Typography>
 
-      {isMobile ? (
-  <Slider {...sliderSettings}>
-    {servicesData.map((service) => (
-      <Box key={service.id} sx={{ px: 2 }}>
-        <ServiceCard>
-          <CardMedia
-            component="img"
-            image={service.image}
-            alt={service.title}
-            sx={{
-              width: "100%",
-              height: 500,
-              objectFit: "cover",
-            }}
-          />
-          <Overlay>
-            <Typography variant="h5" sx={{ fontWeight: "bold" }}>
-              {service.title}
-            </Typography>
-            {/* Move the click handler to the button */}
-            <CTAButton onClick={() => handleServiceClick(service.id)}>
-              See Details
-            </CTAButton>
-          </Overlay>
-        </ServiceCard>
-      </Box>
-    ))}
-  </Slider>
-) : (
-  <Container maxWidth="lg">
-    <Grid container spacing={4} justifyContent="center">
-      {servicesData.map((service) => (
-        <Grid item xs={12} sm={6} md={4} key={service.id}>
-          <ServiceCard>
-            <CardMedia
+      <GridContainer>
+        {servicesData.map((service, index) => (
+          <ServiceCard
+            key={service.id}
+            initial="hidden"
+            animate="visible"
+            variants={fadeInVariant}
+            transition={{ delay: index * 0.15 }}
+          >
+            <CardMediaStyled
               component="img"
               image={service.image}
               alt={service.title}
-              sx={{
-                width: "100%",
-                height: 300,
-                objectFit: "cover",
-              }}
             />
-            <Overlay>
+            <CardOverlay>
               <Typography variant="h5" sx={{ fontWeight: "bold" }}>
                 {service.title}
               </Typography>
-              <Typography variant="body2" sx={{ mb: 2 }}>
-                {service.description}
-              </Typography>
-              {/* Move the click handler to the button */}
+              <Typography variant="body2">{service.description}</Typography>
               <CTAButton onClick={() => handleServiceClick(service.id)}>
-                Learn More
+                See Details
               </CTAButton>
-            </Overlay>
+            </CardOverlay>
           </ServiceCard>
-        </Grid>
-      ))}
-    </Grid>
-  </Container>
-)}
-
-    </GradientBackground>
+        ))}
+      </GridContainer>
+    </Box>
   );
 };
 

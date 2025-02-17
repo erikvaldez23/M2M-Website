@@ -48,7 +48,7 @@ const Vision = () => {
           transition={{ duration: 0.8, ease: "easeOut" }}
         >
           <Typography
-            variant="h3"
+            variant="h2"
             sx={{
               fontWeight: "bold",
               letterSpacing: 1.5,
@@ -59,7 +59,7 @@ const Vision = () => {
               fontFamily: '"SF Pro Display", "Inter", sans-serif',
             }}
           >
-            Our Vision & Mission
+            VISION & MISSION
           </Typography>
           <Typography variant="h6" sx={{ color: "#6e6e73", mb: 5 }}>
             Excellence through innovation, commitment, and personalized care.
