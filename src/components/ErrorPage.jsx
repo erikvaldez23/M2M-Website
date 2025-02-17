@@ -1,7 +1,7 @@
 import React from "react";
 import { Box, Typography, Button } from "@mui/material";
 import Topbar from "./Topbar";
-import Contact from "./Contact";
+// import Contact from "./Contact";
 import Footer from "./Footer";
 import CTA from "./cta";
 
@@ -99,9 +99,9 @@ const ErrorPage = () => {
         <CTA />
       </Box>
       {/* Contact Section */}
-      <Box sx={{ backgroundColor: "#f9f9f9", width: "100vw" }}>
+      {/* <Box sx={{ backgroundColor: "#f9f9f9", width: "100vw" }}>
         <Contact />
-      </Box>
+      </Box> */}
 
       {/* Footer */}
       <Footer />

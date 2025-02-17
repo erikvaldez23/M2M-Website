@@ -139,11 +139,11 @@ const Topbar = ({ notFound }) => {
             {!isMobile && (
               <Box display="flex" gap={4}>
                 {[
-                  "Services",
-                  "Gallery",
-                  "Pricing",
                   "About",
-                  "Reviews",
+                  "Services",
+                  // "Gallery",
+                  // "Pricing",
+                  "Testimonials",
                   "Contact",
                 ].map((item) => (
                   <Button
@@ -238,12 +238,12 @@ const Topbar = ({ notFound }) => {
         {/* Navigation Links */}
         <List sx={{ textAlign: "center", p: 0 }}>
           {[
-            "Services",
-            "Gallery",
-            "Pricing",
-            "About",
-            "Reviews",
-            "Contact",
+             "About",
+             "Services",
+             // "Gallery",
+            //  "Pricing",
+             "Testimonials",
+             "Contact",
           ].map((item) => (
             <ListItem
               button

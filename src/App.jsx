@@ -6,7 +6,7 @@ import Topbar from './components/Topbar';
 import Hero from './components/Hero';
 // import Testimonials from './components/Testimonials';
 import Services from './components/Services';
-import Contact from './components/Contact';
+// import Contact from './components/Contact';
 import Vision from './components/Vision';
 import Footer from './components/Footer';
 // import Chatbot from './ChatBot';
@@ -19,6 +19,9 @@ import MeetTheTeam from './components/Team';
 import CTA from './components/cta'
 import ErrorPage from "./components/ErrorPage";
 import ServicePage from './components/ServicePage';
+import About from './components/About';
+import Booking from './components/Booking';
+import Map from './components/Map';
 
 const theme = createTheme({
     palette: {
@@ -65,13 +68,16 @@ function App() {
               <>
                 <Hero />
                 <CTA /> 
+                <About />
                 <MeetTheTeam />
                 <FrameworkCarousel />
                 <Services />
+                <Map />
+                <Booking />
                 {/* <WhyChooseUs /> */}
                 {/* <Testimonials /> */}
                 <Vision />
-                <Contact />
+                {/* <Contact /> */}
                 <Footer />
               </>
             } 

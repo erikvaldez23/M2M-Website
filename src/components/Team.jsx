@@ -17,8 +17,9 @@ const teamMembers = [
     name: "Dr. Natlie Valdez",
     title: "Physical Therapist",
     description:
-      "Specializes in modern, dynamic fitness studio designs that inspire motivation and energy.",
-    image: "/M2M-Website/natalie-removebg.png",
+      "Dr. Natalie Valdez, a Dallas native, earned her Doctorate of Physical Therapy from Texas Women's University - Dallas. As a former athlete herself, she has always had the passion for working with the sports active population. She has experience working with athletes of all levels (professional, collegiate, high school, and youth sports) for return to sport. Natalie also has a background in strenfgth and conditioning and is a Certified and Conditioning Specialist. She has a passion for strength and wellness and is commited to helping individuals achieve their optimal health and performance. When she is not working you can catch her traveling with her husband walking thier dogs on the Katy trail, and doing pilates.",
+    image: "/M2M-Website/natalie.jpg",
+    modalImage: "/M2M-Website/natalie.jpg",
     socials: {
       linkedin: "https://linkedin.com/in/alex-johnson",
       instagram: "https://instagram.com/dr.alexjohnson",
@@ -28,8 +29,9 @@ const teamMembers = [
     name: "Dr. Andrea Sigsbee",
     title: "Physical Therapist",
     description:
-      "Expert in developing interactive fitness tracking and performance-enhancing applications.",
-    image: "/M2M-Website/drea-removebg.png",
+      "Dr. Andrea Sigsbee, born and raised in Dallas, has a strong passion for combining her love for health and wellness with healing and serving others. She attained her Doctorate of Physical Therapy at Texas Women's University in Dallas and has experience working with professional, high school, and college athletes as well as the activbe population. She also has a love for personal training and nutrition as she has had to use her own personal goals and experiences. When not working, you can catch her lifting weights in the gym, doing pilates, or traveling to a new place on the map.",
+    image: "/M2M-Website/drea.jpg",
+    modalImage: "/M2M-Website/drea.jpg",
     socials: {
       linkedin: "https://linkedin.com/in/taylor-smith",
       instagram: "https://instagram.com/dr.taylorsmith",
@@ -56,7 +58,7 @@ const MeetTheTeam = () => {
     <Box
       sx={{
         width: "100vw",
-        backgroundColor: "#1E1E1E",
+        backgroundColor: "#fff",
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
@@ -74,7 +76,7 @@ const MeetTheTeam = () => {
             textAlign: "center",
             letterSpacing: "4px",
             textTransform: "uppercase",
-            background: "#fff",
+            background: "#000",
             WebkitBackgroundClip: "text",
             WebkitTextFillColor: "transparent",
           }}
@@ -195,7 +197,7 @@ const MeetTheTeam = () => {
         <Dialog
           open={!!selectedMember}
           onClose={() => setSelectedMember(null)}
-          maxWidth="sm"
+          maxWidth="md"
           fullWidth
         >
           <DialogContent
@@ -206,6 +208,7 @@ const MeetTheTeam = () => {
               color: "#fff",
             }}
           >
+            {/* Close Button */}
             <IconButton
               onClick={() => setSelectedMember(null)}
               sx={{
@@ -220,37 +223,95 @@ const MeetTheTeam = () => {
             </IconButton>
 
             {selectedMember && (
-              <Box textAlign="center">
-                <img
-                  src={selectedMember.image}
-                  alt={selectedMember.name}
-                  style={{
-                    width: "100%",
-                    height: "auto",
-                    borderRadius: "12px",
-                    marginBottom: "20px",
-                    boxShadow: "0 8px 20px rgba(0,0,0,0.5)",
-                  }}
-                />
-                <Typography
-                  variant="h4"
-                  sx={{
-                    textShadow: "2px 2px 8px rgba(0,0,0,0.7)",
-                  }}
-                  gutterBottom
-                >
-                  {selectedMember.name}
-                </Typography>
-                <Typography
-                  variant="subtitle1"
-                  sx={{ color: "#bbb", fontStyle: "italic" }}
-                >
-                  {selectedMember.title}
-                </Typography>
-                <Typography variant="body1" sx={{ mt: 2 }}>
-                  {selectedMember.description}
-                </Typography>
-              </Box>
+              <Grid container spacing={4} alignItems="center">
+                {/* Employee Image (Left Side) */}
+                <Grid item xs={12} sm={5}>
+                  <Box
+                    sx={{
+                      width: "100%",
+                      height: "auto",
+                      overflow: "hidden",
+                      borderRadius: "12px",
+                      boxShadow: "0 8px 20px rgba(0,0,0,0.5)",
+                    }}
+                  >
+                    <img
+                      src={selectedMember.modalImage}
+                      alt={selectedMember.name}
+                      style={{
+                        width: "100%",
+                        height: "auto",
+                        borderRadius: "12px",
+                      }}
+                    />
+                  </Box>
+                </Grid>
+
+                {/* Employee Details (Right Side) */}
+                <Grid item xs={12} sm={7}>
+                  <Box>
+                    <Typography
+                      variant="h4"
+                      sx={{
+                        textShadow: "2px 2px 8px rgba(0,0,0,0.7)",
+                        fontWeight: "bold",
+                      }}
+                      gutterBottom
+                    >
+                      {selectedMember.name}
+                    </Typography>
+                    <Typography
+                      variant="subtitle1"
+                      sx={{ color: "#bbb", fontStyle: "italic", mb: 2 }}
+                    >
+                      {selectedMember.title}
+                    </Typography>
+                    <Typography variant="body1" sx={{ mb: 3 }}>
+                      {selectedMember.description}
+                    </Typography>
+
+                    {/* Social Media Links */}
+                    <Box sx={{ display: "flex", gap: 2, mt: 2 }}>
+                      {selectedMember.socials.linkedin && (
+                        <IconButton
+                          sx={{
+                            backgroundColor: "#fff",
+                            p: 1.2,
+                            borderRadius: "50%",
+                            boxShadow: "0 4px 10px rgba(0,0,0,0.5)",
+                          }}
+                          onClick={() =>
+                            window.open(
+                              selectedMember.socials.linkedin,
+                              "_blank"
+                            )
+                          }
+                        >
+                          <FaLinkedin color="#000" size={24} />
+                        </IconButton>
+                      )}
+                      {selectedMember.socials.instagram && (
+                        <IconButton
+                          sx={{
+                            backgroundColor: "#fff",
+                            p: 1.2,
+                            borderRadius: "50%",
+                            boxShadow: "0 4px 10px rgba(0,0,0,0.5)",
+                          }}
+                          onClick={() =>
+                            window.open(
+                              selectedMember.socials.instagram,
+                              "_blank"
+                            )
+                          }
+                        >
+                          <FaInstagram color="#000" size={24} />
+                        </IconButton>
+                      )}
+                    </Box>
+                  </Box>
+                </Grid>
+              </Grid>
             )}
           </DialogContent>
         </Dialog>
