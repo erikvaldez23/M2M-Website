@@ -1,7 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import { Box, Card, CardMedia, Typography, Button } from "@mui/material";
-import { styled } from "@mui/system";
+import { maxWidth, styled } from "@mui/system";
 import { motion } from "framer-motion";
 
 // Sample Services Data
