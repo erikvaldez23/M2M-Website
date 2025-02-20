@@ -1,406 +1,313 @@
 import React from "react";
-import { useParams, useNavigate } from "react-router-dom";
-import {
-  Box,
-  Typography,
-  Container,
-  Button,
-  Grid,
-  Card,
-  CardMedia,
-  CardContent,
-} from "@mui/material";
-import { motion } from "framer-motion";
-import { styled } from "@mui/system";
-import CTA from "./cta";
-import Footer from "./Footer"
+import { useParams } from "react-router-dom";
+import { Box, Typography, Container, Button, List, ListItem, ListItemText, Paper } from "@mui/material";
 
-const servicesData = {
-  "orthopedic-injuries": {
-    title: "Orthopedic Injuries",
-    description: "Sports & Performance Rehab for Joint and Muscle Injuries.",
-    image: "/M2M-Website/ortho-inj.jpg",
-    tagline: "Recover Stronger. Move Better. Prevent Re-Injury.",
-    details:
-      "Our orthopedic rehabilitation program is designed for athletes and active individuals recovering from fractures, sprains, ligament tears, and overuse injuries. We focus on restoring strength, mobility, and performance through personalized treatment plans.",
-
-    commonInjuries: [
-      { name: "ACL / MCL Tears", sports: "Soccer, Basketball, Football" },
-      {
-        name: "Rotator Cuff Injuries",
-        sports: "Baseball, Tennis, Weightlifting",
-      },
-      { name: "Achilles Tendonitis", sports: "Running, Basketball, Soccer" },
-      { name: "Stress Fractures", sports: "Running, Gymnastics" },
-      { name: "Muscle Strains", sports: "Sprinting, Weightlifting" },
-      { name: "Shin Splints", sports: "Running, Jumping Sports" },
+const servicesDetails = {
+  "physical-therapy": {
+    title: "PHYSICAL THERAPY",
+    shortDescription: "Rehabilitate injuries and improve mobility with our expert care.",
+    fullDescription:
+      "Our physical therapy programs are designed to help individuals recover from injuries, surgeries, or chronic conditions. We use evidence-based techniques, personalized treatment plans, and state-of-the-art equipment to enhance recovery and restore function.",
+    conditionsTreated: [
+      "Post-surgical rehabilitation",
+      "Chronic pain management",
+      "Sports injuries",
+      "Mobility impairments",
+      "Neurological disorders (e.g., stroke recovery)"
     ],
-
-    recoveryPhases: [
-      {
-        phase: "Acute Phase (0-2 Weeks)",
-        focus: "Reducing swelling, pain, and inflammation.",
-      },
-      {
-        phase: "Rehabilitation Phase (2-8 Weeks)",
-        focus: "Restoring range of motion, flexibility, and coordination.",
-      },
-      {
-        phase: "Strength Phase (2-3 Months)",
-        focus: "Building muscle endurance and power.",
-      },
-      {
-        phase: "Return to Play (3+ Months)",
-        focus: "Sport-specific training and injury prevention.",
-      },
+    whoCanBenefit: [
+      "Athletes recovering from injuries",
+      "Elderly individuals with mobility issues",
+      "Post-operative patients",
+      "People suffering from chronic pain",
+      "Individuals with movement impairments"
     ],
-
-    treatmentOptions: [
-      {
-        name: "Physical Therapy",
-        description:
-          "Personalized exercise plans for flexibility, strength, and mobility.",
-        image: "/M2M-Website/physical-therapy.jpg",
-      },
-      {
-        name: "Dry Needling",
-        description: "Relieves muscle tension and improves flexibility.",
-        image: "/M2M-Website/dry-needling.jpg",
-      },
-      {
-        name: "Cupping Therapy",
-        description: "Boosts circulation and relieves muscle tightness.",
-        image: "/M2M-Website/cupping-therapy.jpg",
-      },
-      {
-        name: "Blood Flow Restriction (BFR)",
-        description:
-          "Accelerates strength recovery while reducing joint stress.",
-        image: "/M2M-Website/bfr-training.jpg",
-      },
-      {
-        name: "Manual Therapy",
-        description: "Hands-on techniques for joint mobility and pain relief.",
-        image: "/M2M-Website/manual-therapy.jpg",
-      },
+    benefits: [
+      "Improved mobility and flexibility",
+      "Pain relief and management",
+      "Faster post-surgery recovery",
+      "Injury rehabilitation",
     ],
-
-    testimonials: [
-      {
-        name: "Jake Thompson",
-        quote:
-          "After tearing my ACL, this rehab program got me back on the field in just 7 months!",
-        image: "/M2M-Website/athlete1.jpg",
-      },
-      {
-        name: "Sophia Martinez",
-        quote:
-          "The dry needling therapy helped relieve my muscle tightness faster than I expected.",
-        image: "/M2M-Website/athlete2.jpg",
-      },
-    ],
-  },
-
-  "post-op-rehabilitation": {
-    title: "Post-Op Rehabilitation",
-    description: "Rebuild Strength & Mobility After Surgery.",
-    image: "/M2M-Website/post-op.jpg",
-    tagline: "Recover with Confidence. Move Without Limits.",
-    details:
-      "Post-surgical rehabilitation is critical for restoring strength, mobility, and function after orthopedic surgery. Our expert-guided therapy programs help you recover faster and regain full movement safely.",
-
-    commonSurgeries: [
-      { name: "Knee Replacement", recoveryTime: "3-6 Months" },
-      { name: "Rotator Cuff Repair", recoveryTime: "4-6 Months" },
-      { name: "Spinal Fusion", recoveryTime: "6-12 Months" },
-      { name: "Hip Replacement", recoveryTime: "4-6 Months" },
-    ],
-
-    treatmentOptions: [
-      {
-        name: "Physical Therapy",
-        description: "Restores movement and prevents stiffness.",
-        image: "/M2M-Website/physical-therapy.jpg",
-      },
-      {
-        name: "Manual Therapy",
-        description: "Hands-on techniques to aid joint recovery.",
-        image: "/M2M-Website/manual-therapy.jpg",
-      },
-      {
-        name: "Strength Training",
-        description: "Targeted exercises to rebuild muscle.",
-        image: "/M2M-Website/strength-training.jpg",
-      },
-    ],
-
-    testimonials: [
-      {
-        name: "David Richardson",
-        quote:
-          "Post-op therapy here was life-changing. I got back to full strength after my knee surgery.",
-        image: "/M2M-Website/testimonial1.jpg",
-      },
-    ],
-  },
-
-  recovery: {
-    title: "Recovery",
-    description: "Maximize Healing & Performance Recovery.",
-    image: "/M2M-Website/recovery.jpg",
-    tagline: "Train Hard. Recover Smarter.",
-    details:
-      "Recovery is essential for peak athletic performance. Our recovery programs use cutting-edge techniques to reduce muscle fatigue, prevent injuries, and accelerate healing.",
-
-    recoveryMethods: [
-      {
-        name: "Cryotherapy",
-        description: "Cold therapy for reducing inflammation.",
-        image: "/M2M-Website/cryotherapy.jpg",
-      },
-      {
-        name: "Compression Therapy",
-        description: "Enhances blood flow and speeds recovery.",
-        image: "/M2M-Website/compression.jpg",
-      },
-      {
-        name: "Massage Therapy",
-        description: "Deep tissue work for muscle relaxation.",
-        image: "/M2M-Website/massage.jpg",
-      },
-    ],
-
-    testimonials: [
-      {
-        name: "Emily Carter",
-        quote:
-          "This recovery program helped me bounce back stronger than ever!",
-        image: "/M2M-Website/athlete3.jpg",
-      },
-    ],
-  },
-
-  "dry-needling": {
-    title: "Dry Needling",
-    description: "Target Muscle Pain with Precision Therapy.",
-    image: "/M2M-Website/needling.jpg",
-    tagline: "Release Tension. Improve Flexibility. Recover Faster.",
-    details:
-      "Dry needling is a highly effective treatment for reducing muscle tension, improving mobility, and relieving chronic pain. Our licensed therapists use this technique to accelerate recovery.",
-
-    treatmentFocus: [
-      {
-        name: "Trigger Point Therapy",
-        description: "Targets muscle knots for pain relief.",
-      },
-      {
-        name: "Chronic Pain Management",
-        description: "Used for long-term injury recovery.",
-      },
-      {
-        name: "Sports Performance",
-        description: "Enhances flexibility and range of motion.",
-      },
-    ],
-
-    testimonials: [
-      {
-        name: "Mark Davis",
-        quote: "Dry needling made a massive difference in my shoulder pain!",
-        image: "/M2M-Website/athlete4.jpg",
-      },
-    ],
-  },
-
-  "cupping-therapy": {
-    title: "Cupping Therapy",
-    description: "Ancient Healing for Modern Athletes.",
-    image: "/M2M-Website/cupping.jpg",
-    tagline: "Boost Circulation. Relieve Muscle Tension.",
-    details:
-      "Cupping therapy improves blood circulation, reduces inflammation, and speeds up muscle recovery. It's widely used by professional athletes for post-workout relief.",
-
-    cuppingMethods: [
-      {
-        name: "Dynamic Cupping",
-        description: "Sliding cups for deeper tissue work.",
-      },
-      {
-        name: "Static Cupping",
-        description: "Fixed suction therapy for muscle recovery.",
-      },
-    ],
-
-    testimonials: [
-      {
-        name: "Sarah Thompson",
-        quote:
-          "Cupping therapy helped my muscles recover faster after intense training.",
-        image: "/M2M-Website/athlete5.jpg",
-      },
-    ],
-  },
-
-  "soft-tissue-mobilization": {
-    title: "Soft Tissue Mobilization",
-    description: "Advanced Therapy for Muscle & Joint Mobility.",
-    image: "/M2M-Website/soft-tissue.jpg",
-    tagline: "Break Up Scar Tissue. Improve Movement.",
-    details:
-      "Soft tissue mobilization is a specialized technique to reduce muscle tightness, improve flexibility, and break down scar tissue. It's ideal for post-injury recovery and performance enhancement.",
-
     techniques: [
-      {
-        name: "Instrument-Assisted Therapy",
-        description: "Breaks down scar tissue.",
-      },
-      {
-        name: "Trigger Point Release",
-        description: "Reduces chronic muscle tension.",
-      },
+      "Manual Therapy",
+      "Therapeutic Exercises",
+      "Electrotherapy",
+      "Postural Training",
     ],
-
+    image: "/M2M-Website/ortho-inj.jpg",
     testimonials: [
       {
-        name: "James Lee",
-        quote:
-          "This therapy restored my range of motion after a serious injury.",
-        image: "/M2M-Website/athlete6.jpg",
+        name: "John Doe",
+        feedback: "The therapy sessions helped me regain full motion in my knee. Highly recommended!",
+      },
+      {
+        name: "Jane Smith",
+        feedback: "Amazing experience! The therapists are very knowledgeable and caring.",
       },
     ],
+    faqs: [
+      {
+        question: "How long does a therapy session last?",
+        answer: "Sessions typically last between 30 to 60 minutes, depending on the treatment plan."
+      },
+      {
+        question: "Will insurance cover physical therapy?",
+        answer: "Many insurance plans cover physical therapy. Contact your provider for details."
+      }
+    ],
+    cta: "Book a consultation today and start your journey to recovery."
   },
+  "athletic-recovery": {
+    title: "ATHLETIC RECOVERY",
+    shortDescription: "Enhance your performance with our specialized recovery programs.",
+    fullDescription:
+      "Our athletic recovery program is designed for professional and recreational athletes looking to maximize recovery and reduce the risk of future injuries. We use a combination of soft tissue work, mobility drills, and guided exercises to ensure optimal performance.",
+    conditionsTreated: [
+      "Muscle soreness and fatigue",
+      "Overuse injuries",
+      "Tendonitis and inflammation",
+      "Delayed Onset Muscle Soreness (DOMS)",
+      "Joint stiffness"
+    ],
+    whoCanBenefit: [
+      "Professional and amateur athletes",
+      "Weekend warriors",
+      "Gym enthusiasts",
+      "Marathon runners",
+      "Weightlifters"
+    ],
+    benefits: [
+      "Faster muscle recovery",
+      "Reduced soreness and fatigue",
+      "Injury prevention",
+      "Performance optimization",
+    ],
+    techniques: [
+      "Deep Tissue Massage",
+      "Cryotherapy",
+      "Stretching and Mobility Work",
+      "Foam Rolling and Myofascial Release",
+    ],
+    image: "/M2M-Website/post-op.jpg",
+    testimonials: [
+      {
+        name: "Michael Johnson",
+        feedback: "I felt a significant difference in my recovery after just a few sessions.",
+      },
+      {
+        name: "Emma Lee",
+        feedback: "The recovery techniques helped me stay at my peak performance for my competitions!"
+      }
+    ],
+    faqs: [
+      {
+        question: "How often should I do recovery sessions?",
+        answer: "It depends on your training intensity. Athletes benefit from at least one session per week."
+      },
+      {
+        question: "Can I still train while undergoing recovery treatments?",
+        answer: "Yes! Recovery techniques are designed to support your training and help reduce fatigue."
+      }
+    ],
+    cta: "Take your recovery to the next level. Book a session today!"
+  },
+  "injury-prevention": {
+    title: "INJURY PREVENTION",
+    shortDescription: "Stay ahead of injuries with our tailored prevention strategies.",
+    fullDescription:
+      "Our injury prevention programs focus on assessing movement patterns, strengthening key muscle groups, and educating patients on techniques to reduce injury risk. We tailor our programs to athletes, active individuals, and those at risk of repetitive strain injuries.",
+    conditionsTreated: [
+      "Repetitive strain injuries",
+      "Poor movement patterns",
+      "Joint instability",
+      "Muscle imbalances",
+      "Postural misalignments"
+    ],
+    whoCanBenefit: [
+      "Athletes looking to avoid injuries",
+      "People with past injuries seeking prevention",
+      "Office workers with poor posture",
+      "Runners and cyclists",
+      "Anyone engaging in physical activity"
+    ],
+    benefits: [
+      "Reduced risk of future injuries",
+      "Enhanced stability and balance",
+      "Corrective movement patterns",
+      "Strength and flexibility improvement",
+    ],
+    techniques: [
+      "Functional Movement Screening",
+      "Strength and Stability Exercises",
+      "Biomechanical Analysis",
+      "Joint Mobilization",
+    ],
+    image: "/M2M-Website/recovery.jpg",
+    testimonials: [
+      {
+        name: "Sarah Williams",
+        feedback: "Thanks to their injury prevention program, I haven't had any issues with my ankle since starting!",
+      },
+      {
+        name: "Kevin Brooks",
+        feedback: "The screening process helped me correct my form and avoid future knee pain!"
+      }
+    ],
+    faqs: [
+      {
+        question: "How do I know if I need injury prevention training?",
+        answer: "If you've had past injuries, experience discomfort during activity, or want to improve movement quality, prevention training can help."
+      },
+      {
+        question: "Can injury prevention help with existing injuries?",
+        answer: "While injury prevention focuses on reducing future injuries, it can also support existing injury management when combined with rehabilitation."
+      }
+    ],
+    cta: "Take control of your health and prevent injuries before they happen. Schedule a screening today!"
+  }
 };
 
-// Styled Components
-const HeroSection = styled(Box)(({ theme }) => ({
-  width: "100%",
-  height: "50vh",
-  backgroundSize: "cover",
-  backgroundPosition: "center",
-  display: "flex",
-  alignItems: "center",
-  justifyContent: "center",
-  color: "#fff",
-  textAlign: "center",
-  fontWeight: "bold",
-  textTransform: "uppercase",
-}));
+
+
 
 const ServicePage = () => {
   const { serviceId } = useParams();
-  const navigate = useNavigate();
-  const service = servicesData[serviceId];
+  const service = servicesDetails[serviceId];
 
   if (!service) {
-    return <Typography variant="h4">Service Not Found</Typography>;
+    return <Typography variant="h6" textAlign="center">Service not found</Typography>;
   }
 
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 50 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.8 }}
-    >
+    <Box>
       {/* Hero Section */}
-      <HeroSection style={{ backgroundImage: `url(${service.image})` }}>
-        <Typography
-          variant="h3"
-          sx={{ textShadow: "2px 2px 10px rgba(0,0,0,0.8)" }}
-        >
-          {service.title}
-        </Typography>
-      </HeroSection>
-
-      <Container sx={{ textAlign: "center", py: 5 }}>
-        <Typography variant="h4" sx={{ fontWeight: "bold" }}>
-          {service.tagline}
-        </Typography>
-        <Typography
-          variant="h6"
-          sx={{ opacity: 0.8, maxWidth: "800px", mx: "auto", mt: 2 }}
-        >
-          {service.details}
-        </Typography>
-
-        {/* Common Injuries Section */}
-        <Box sx={{ mt: 5 }}>
-          <Typography variant="h5" sx={{ fontWeight: "bold", mb: 2 }}>
-            Common Injuries We Treat
+      <Box
+        sx={{
+          height: "30vh",
+          backgroundImage: `url(${service.image})`,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          textAlign: "center",
+          position: "relative",
+          color: "white",
+          "&::before": {
+            content: '""',
+            position: "absolute",
+            top: 0,
+            left: 0,
+            width: "100%",
+            height: "100%",
+            background: "rgba(0, 0, 0, 0.5)", // Dark overlay
+          },
+        }}
+      >
+        <Container sx={{ position: "relative", zIndex: 1 }}>
+          <Typography variant="h3" fontWeight="bold">
+            {service.title}
           </Typography>
-          <Grid container spacing={2} justifyContent="center">
-            {service.commonInjuries.map((injury, index) => (
-              <Grid item key={index}>
-                <Typography variant="h6">
-                  ✅ {injury.name} <br /> <small>({injury.sports})</small>
-                </Typography>
-              </Grid>
-            ))}
-          </Grid>
-        </Box>
+          <Typography variant="h6">{service.shortDescription}</Typography>
+        </Container>
+      </Box>
 
-        {/* Recovery Timeline */}
-        <Box sx={{ mt: 5 }}>
-          <Typography variant="h5" sx={{ fontWeight: "bold", mb: 2 }}>
-            Recovery Timeline
-          </Typography>
-          {service.recoveryPhases.map((phase, index) => (
-            <Typography key={index} variant="h6">
-              🔹 <strong>{phase.phase}:</strong> {phase.focus}
+      {/* Content Section */}
+      <Container sx={{ mt: 4, pb: 4 }}>
+        <Typography variant="h5" fontWeight="bold" gutterBottom>
+          About {service.title}
+        </Typography>
+        <Typography variant="body1" paragraph>
+          {service.fullDescription}
+        </Typography>
+
+        {/* Conditions Treated (If Applicable) */}
+        {service.conditionsTreated && (
+          <>
+            <Typography variant="h5" mt={3} mb={1}>
+              Conditions Treated
             </Typography>
-          ))}
-        </Box>
+            <List>
+              {service.conditionsTreated.map((condition, index) => (
+                <ListItem key={index}>
+                  <ListItemText primary={condition} />
+                </ListItem>
+              ))}
+            </List>
+          </>
+        )}
 
-        {/* Treatment Options */}
-        <Grid container spacing={4} justifyContent="center" sx={{ mt: 5 }}>
-          {service.treatmentOptions.map((treatment, index) => (
-            <Grid item xs={12} sm={6} md={4} key={index}>
-              <Card sx={{ borderRadius: "15px", overflow: "hidden" }}>
-                <CardMedia
-                  component="img"
-                  height="200"
-                  image={treatment.image}
-                  alt={treatment.name}
-                />
-                <CardContent>
-                  <Typography variant="h6">{treatment.name}</Typography>
-                  <Typography variant="body2">
-                    {treatment.description}
-                  </Typography>
-                </CardContent>
-              </Card>
-            </Grid>
+        {/* Who Can Benefit */}
+        <Typography variant="h5" mt={3} mb={1}>
+          Who Can Benefit?
+        </Typography>
+        <List>
+          {service.whoCanBenefit.map((group, index) => (
+            <ListItem key={index}>
+              <ListItemText primary={group} />
+            </ListItem>
           ))}
-        </Grid>
+        </List>
 
-        {/* Athlete Testimonials */}
-        <Box sx={{ mt: 5 }}>
-          <Typography variant="h5" sx={{ fontWeight: "bold", mb: 2 }}>
-            Athlete Success Stories
-          </Typography>
-          {service.testimonials.map((testimonial, index) => (
-            <Typography key={index} variant="h6">
-              “{testimonial.quote}” - {testimonial.name}
+        {/* Benefits */}
+        <Typography variant="h5" mt={3} mb={1}>
+          Benefits
+        </Typography>
+        <List>
+          {service.benefits.map((benefit, index) => (
+            <ListItem key={index}>
+              <ListItemText primary={benefit} />
+            </ListItem>
+          ))}
+        </List>
+
+        {/* Techniques Used */}
+        <Typography variant="h5" mt={3} mb={1}>
+          Techniques Used
+        </Typography>
+        <List>
+          {service.techniques.map((technique, index) => (
+            <ListItem key={index}>
+              <ListItemText primary={technique} />
+            </ListItem>
+          ))}
+        </List>
+
+        {/* Testimonials */}
+        <Typography variant="h5" mt={3} mb={1}>
+          Testimonials
+        </Typography>
+        {service.testimonials.map((testimonial, index) => (
+          <Paper key={index} sx={{ mt: 2, p: 2, bgcolor: "grey.100", borderRadius: "8px" }}>
+            <Typography variant="body1">"{testimonial.feedback}"</Typography>
+            <Typography variant="subtitle2" fontWeight="bold">
+              — {testimonial.name}
             </Typography>
-          ))}
-        </Box>
+          </Paper>
+        ))}
+
+        {/* FAQs */}
+        <Typography variant="h5" mt={3} mb={1}>
+          Frequently Asked Questions
+        </Typography>
+        {service.faqs.map((faq, index) => (
+          <Box key={index} sx={{ mt: 2, p: 2, bgcolor: "grey.200", borderRadius: "8px" }}>
+            <Typography variant="subtitle1" fontWeight="bold">{faq.question}</Typography>
+            <Typography variant="body2">{faq.answer}</Typography>
+          </Box>
+        ))}
 
         {/* Call to Action */}
-        <Button
-          variant="contained"
-          sx={{ mt: 4, px: 4, py: 1.5, borderRadius: "30px" }}
-          onClick={() => navigate(-1)}
-        >
-          Schedule Your Evaluation
-        </Button>
+        <Box sx={{ textAlign: "center", mt: 4 }}>
+          <Typography variant="h5" fontWeight="bold">
+            {service.cta}
+          </Typography>
+          <Button variant="contained" color="primary" sx={{ mt: 2 }}>
+            Book a Consultation
+          </Button>
+        </Box>
       </Container>
-      <Box sx={{ width: "100vw" }}>
-        <CTA />
-      </Box>
-
-      <Box>
-        <Footer />
-      </Box>
-    </motion.div>
+    </Box>
   );
 };
 

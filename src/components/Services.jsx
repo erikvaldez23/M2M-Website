@@ -7,43 +7,26 @@ import { motion } from "framer-motion";
 // Sample Services Data
 const servicesData = [
   {
-    id: "orthopedic-injuries",
-    title: "ORTHOPEDIC INJURIES",
-    description: "Customized recovery plans for joint and muscle injuries.",
+    id: "physical-therapy",
+    title: "PHYSICAL THERAPY",
+    description: "Rehabilitate injuries and improve mobility with our expert care.",
     image: "/M2M-Website/ortho-inj.jpg",
   },
   {
-    id: "post-op-rehabilitation",
-    title: "POST-OP REHABILITATION",
-    description: "Get back on track with specialized post-surgery programs.",
+    id: "athletic-recovery",
+    title: "ATHLETIC RECOVERY",
+    description: "Enhance your performance with our specialized recovery programs.",
     image: "/M2M-Website/post-op.jpg",
   },
   {
-    id: "recovery",
-    title: "RECOVERY",
+    id: "injury-prevention",
+    title: "INJURY PREVENTION",
     description:
-      "Accelerate your performance recovery using modern techniques.",
+      "Stay ahead of injuries with our tailored prevention strategies.",
     image: "/M2M-Website/recovery.jpg",
   },
-  {
-    id: "dry-needling",
-    title: "DRY NEEDLING",
-    description: "Alleviate muscle pain and improve flexibility.",
-    image: "/M2M-Website/needling.jpg",
-  },
-  {
-    id: "cupping-therapy",
-    title: "CUPPING THERAPY",
-    description: "Boost circulation and relieve muscle tension.",
-    image: "/M2M-Website/cupping.jpg",
-  },
-  {
-    id: "soft-tissue-mobilization",
-    title: "SOFT TISSUE MOBILIZATION",
-    description: "Advanced techniques for muscle recovery and mobility.",
-    image: "/M2M-Website/soft-tissue.jpg",
-  },
-];
+]
+
 
 // Styled Components
 const GridContainer = styled(Box)({
