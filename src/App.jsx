@@ -20,6 +20,7 @@ import ServicePage from './components/ServicePage';
 import About from './components/About';
 import Booking from './components/Booking';
 import Map from './components/Map';
+import Instagram from './components/Instagram';
 
 const theme = createTheme({
     palette: {
@@ -69,10 +70,10 @@ function App() {
                 <MeetTheTeam />
                 <FrameworkCarousel />
                 <Services />
+                <Instagram />
                 {/* <Map /> */}
                 <Vision />
                 <Contact />
-                <Footer />
               </>
             } 
           />
@@ -84,6 +85,7 @@ function App() {
           <Route path="/services/:serviceId" element={<ServicePage />} />
           <Route path="*" element={<ErrorPage />} />
         </Routes>
+        <Footer />
       </Router>
     </ThemeProvider>
   );

@@ -207,9 +207,6 @@ const Testimonials = () => {
 
       {/* ✅ CTA Section */}
       <CTA />
-
-      {/* ✅ Footer */}
-      <Footer />
     </>
   );
 };

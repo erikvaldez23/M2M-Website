@@ -105,17 +105,17 @@ const Services = () => {
   return (
     <Box
       id="services"
-      sx={{ backgroundColor: "#000", padding: "80px 0", color: "#fff" }}
+      sx={{ backgroundColor: "#000", padding: "40px 0", color: "#fff" }}
     >
       <Typography
         variant="h2"
-        sx={{ textAlign: "center", fontWeight: "bold", mb: 4 }}
+        sx={{ textAlign: "center", fontWeight: "bold", mb: 2 }}
       >
         SERVICES
       </Typography>
       <Typography
         variant="h6"
-        sx={{ textAlign: "center", opacity: 0.8, mb: 4 }}
+        sx={{ textAlign: "center", opacity: 0.8}}
       >
         Discover personalized fitness solutions tailored to your needs.
       </Typography>
