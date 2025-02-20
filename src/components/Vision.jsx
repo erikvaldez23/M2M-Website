@@ -1,5 +1,12 @@
 import React from "react";
-import { Box, Container, Typography, Grid, Card, CardContent } from "@mui/material";
+import {
+  Box,
+  Container,
+  Typography,
+  Grid,
+  Card,
+  CardContent,
+} from "@mui/material";
 import { FaTools, FaShieldAlt, FaCar, FaHandHoldingUsd } from "react-icons/fa";
 import { motion } from "framer-motion";
 
@@ -7,29 +14,32 @@ const visionPoints = [
   {
     id: 1,
     title: "Expert Care & Precision",
-    description: "Providing evidence-based treatments with expert hands-on care to restore movement and function.",
-    icon: <FaTools size={50} color="#007AFF" />,  
+    description:
+      "Providing evidence-based treatments with expert hands-on care to restore movement and function.",
+    icon: <FaTools size={50} color="#007AFF" />,
   },
   {
     id: 2,
     title: "Personalized Rehabilitation",
-    description: "Customizing treatment plans to fit each individual's goals, lifestyle, and recovery needs.",
-    icon: <FaShieldAlt size={50} color="#34C759" />, 
+    description:
+      "Customizing treatment plans to fit each individual's goals, lifestyle, and recovery needs.",
+    icon: <FaShieldAlt size={50} color="#34C759" />,
   },
   {
     id: 3,
     title: "Holistic Healing",
-    description: "Addressing the body as a whole—mind, muscles, and mobility—to achieve long-term wellness.",
-    icon: <FaCar size={50} color="#FF9500" />, 
+    description:
+      "Addressing the body as a whole—mind, muscles, and mobility—to achieve long-term wellness.",
+    icon: <FaCar size={50} color="#FF9500" />,
   },
   {
     id: 4,
     title: "Empowering Movement",
-    description: "Helping patients regain confidence in their movement and prevent future injuries.",
-    icon: <FaHandHoldingUsd size={50} color="#FF3B30" />, 
+    description:
+      "Helping patients regain confidence in their movement and prevent future injuries.",
+    icon: <FaHandHoldingUsd size={50} color="#FF3B30" />,
   },
 ];
-
 
 const Vision = () => {
   return (
@@ -82,13 +92,24 @@ const Vision = () => {
                   borderRadius: "20px",
                   boxShadow: "0 10px 30px rgba(0, 0, 0, 0.1)",
                   textAlign: "left",
+                  height: "320px", // ✅ Fixed height for uniformity
+                  display: "flex",
+                  flexDirection: "column",
+                  justifyContent: "flex-start", // ✅ Keeps text vertically centered
                 }}
               >
                 <Typography variant="h4" sx={{ fontWeight: "bold", mb: 2 }}>
                   Our Vision
                 </Typography>
-                <Typography variant="h6" sx={{ color: "#1d1d1f", lineHeight: 1.8 }}>
-                  To be the premier destination for athletes & active individuals seeking exceptional care, where our passion for healing and love for the human body drives us to exceed expectations & foster a thriving, resilient community of peak performers.
+                <Typography
+                  variant="h6"
+                  sx={{ color: "#1d1d1f", lineHeight: 1.8 }}
+                >
+                  To be the premier destination for athletes & active
+                  individuals seeking exceptional care, where our passion for
+                  healing and love for the human body drives us to exceed
+                  expectations & foster a thriving, resilient community of peak
+                  performers.
                 </Typography>
               </Box>
             </motion.div>
@@ -108,13 +129,23 @@ const Vision = () => {
                   borderRadius: "20px",
                   boxShadow: "0 10px 30px rgba(0, 0, 0, 0.1)",
                   textAlign: "left",
+                  height: "320px", // ✅ Fixed height for uniformity
+                  display: "flex",
+                  flexDirection: "column",
+                  justifyContent: "flex-start", // ✅ Keeps text vertically centered
                 }}
               >
                 <Typography variant="h4" sx={{ fontWeight: "bold", mb: 2 }}>
                   Our Mission
                 </Typography>
-                <Typography variant="h6" sx={{ color: "#1d1d1f", lineHeight: 1.8 }}>
-                  To empower individuals through personalized physical therapy, fostering recovery, enhancing performance, and promoting lifelong wellness with a compassionate, evidence-based approach.
+                <Typography
+                  variant="h6"
+                  sx={{ color: "#1d1d1f", lineHeight: 1.8 }}
+                >
+                  To empower individuals through personalized physical therapy,
+                  fostering recovery, enhancing performance, and promoting
+                  lifelong wellness with a compassionate, evidence-based
+                  approach.
                 </Typography>
               </Box>
             </motion.div>
@@ -134,7 +165,7 @@ const Vision = () => {
                 <Card
                   sx={{
                     width: "280px",
-                    height: "300px",
+                    height: "320px", // ✅ Fixed height for consistency
                     background: "rgba(255, 255, 255, 0.3)",
                     backdropFilter: "blur(20px)",
                     borderRadius: "20px",
@@ -154,7 +185,13 @@ const Vision = () => {
                     <Typography variant="h5" sx={{ fontWeight: "bold", mb: 1 }}>
                       {point.title}
                     </Typography>
-                    <Typography sx={{ color: "#6e6e73", textAlign: "center", fontSize: "14px" }}>
+                    <Typography
+                      sx={{
+                        color: "#6e6e73",
+                        textAlign: "center",
+                        fontSize: "14px",
+                      }}
+                    >
                       {point.description}
                     </Typography>
                   </CardContent>

@@ -51,7 +51,7 @@ const Topbar = ({ notFound }) => {
   }, []);
 
   const scrollToSection = (sectionId) => {
-    const subPages = ["about", "gallery", "privacy-policy", "booking", "testimonials"]; // ✅ Add all subpages here
+    const subPages = ["about", "gallery", "privacy-policy", "testimonials"]; // ✅ Add all subpages here
   
     if (subPages.includes(sectionId)) {
       // ✅ Navigate to subpage instead of scrolling
@@ -141,8 +141,6 @@ const Topbar = ({ notFound }) => {
                 {[
                   "About",
                   "Services",
-                  "Booking",
-                  // "Pricing",
                   "Testimonials",
                   "Contact",
                 ].map((item) => (
@@ -240,8 +238,6 @@ const Topbar = ({ notFound }) => {
           {[
              "About",
              "Services",
-             "Booking",
-            //  "Pricing",
              "Testimonials",
              "Contact",
           ].map((item) => (

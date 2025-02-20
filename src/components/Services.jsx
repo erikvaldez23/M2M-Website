@@ -43,7 +43,7 @@ const ServiceCard = styled(motion(Card))({
   overflow: "hidden",
   background: "rgba(255, 255, 255, 0.1)",
   backdropFilter: "blur(10px)",
-  height: "400px", // ✅ Fixed height for consistency
+  height: "700px", // ✅ Fixed height for consistency
   transition: "all 0.4s ease", // ✅ Smooth transition for both effects
   "&:hover": {
     transform: "scale(1.05)", // ✅ Scale up on hover
