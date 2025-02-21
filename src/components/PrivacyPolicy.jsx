@@ -169,11 +169,6 @@ const PrivacyPolicy = () => {
           </Box>
         </Paper>
       </Container>
-
-      {/* Footer */}
-      <Box sx = {{width: "100%"}}>
-         <Footer />
-      </Box>
     </Box>
   );
 };
