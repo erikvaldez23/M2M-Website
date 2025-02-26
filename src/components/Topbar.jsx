@@ -51,7 +51,7 @@ const Topbar = ({ notFound }) => {
   }, []);
 
   const scrollToSection = (sectionId) => {
-    const subPages = ["about", "testimonials", "gallery", "privacy-policy"]; // ✅ Add all subpages here
+    const subPages = ["testimonials", "gallery", "privacy-policy"]; // ✅ Add all subpages here
   
     if (subPages.includes(sectionId)) {
       // ✅ Navigate to subpage instead of scrolling
@@ -139,8 +139,8 @@ const Topbar = ({ notFound }) => {
             {!isMobile && (
               <Box display="flex" gap={4}>
                 {[
-                  "About",
                   "Services",
+                  "About",
                   "Testimonials",
                   "Gallery",
                   "Contact",
@@ -167,13 +167,13 @@ const Topbar = ({ notFound }) => {
                         bottom: "0",
                         left: "50%",
                         transform: "translateX(-50%)",
-                        background: "linear-gradient(90deg, #007bff, #00c6ff)", // Gradient underline
+                        background: "#F7E7CE", // Gradient underline
                         transition: "width 0.4s ease-in-out",
                         borderRadius: "2px",
                       },
                       "&:hover": {
-                        color: "#00c6ff", // Bright hover color
-                        textShadow: "0 0 8px rgba(0, 198, 255, 0.8)", // Glowing text
+                        color: "#F7E7CE", // Bright hover color
+                        textShadow: "0 0 8px #F7E7CE", // Glowing text
                         "&:after": { width: "100%" }, // Underline expands
                       },
                     }}
@@ -237,8 +237,8 @@ const Topbar = ({ notFound }) => {
         {/* Navigation Links */}
         <List sx={{ textAlign: "center", p: 0 }}>
           {[
+            "Services",
              "About",
-             "Services",
              "Testimonials",
              "Gallery",
              "Contact",
@@ -263,7 +263,7 @@ const Topbar = ({ notFound }) => {
                     "@media (max-width: 375px)": { fontSize: "18px" }, // iPhone 13 Mini (375px)
                     "@media (max-width: 360px)": { fontSize: "16px" }, // Small Androids (Pixel 4a)
                     "@media (max-width: 320px)": { fontSize: "14px" }, // iPhone SE (320px)
-                    "&:hover": { color: "#007bff", cursor: "pointer" },
+                    "&:hover": { color: "#F7E7CE", cursor: "pointer" },
                   },
                 }}
               />
@@ -284,7 +284,7 @@ const Topbar = ({ notFound }) => {
             variant="contained"
             onClick={handleOpenQuote}
             sx={{
-              backgroundColor: "#007bff",
+              backgroundColor: "#F7E7CE",
               color: "black",
               fontSize: "22px",
               fontWeight: "bold",
@@ -348,7 +348,7 @@ const Topbar = ({ notFound }) => {
                 color: "white",
                 fontSize: "36px",
                 "&:hover": {
-                  color: "#007bff",
+                  color: "#F7E7CE",
                 },
               }}
             >

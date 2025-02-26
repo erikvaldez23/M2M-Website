@@ -1,28 +1,93 @@
 import React from "react";
 import { Container, Grid, Typography, Box } from "@mui/material";
-import aboutImage from "/M2M-Website/both.jpg"; // Replace with your image path
-import Vision from "./Vision";
-import CTA from "./cta";
-import Contact from "./Contact"
+import aboutImage from "../../public/vertical-both.jpg"; // Replace with your image path
 
 const About = () => {
   return (
-    <Box sx={{ backgroundColor: "black", py: 12}} id="about">
+    <Box
+      sx={{ backgroundColor: "#F7E7CE", paddingTop: 5, paddingBottom: 8 }}
+      id="about"
+    >
       <Container maxWidth="lg">
         {/* Header Title */}
-        <Typography 
-          variant="h2" 
-          fontWeight="bold" 
-          textAlign="center" 
-          gutterBottom 
-          color="white"
+        <Typography
+          variant="h2"
+          fontWeight="bold"
+          textAlign="center"
+          gutterBottom
+          color="#000"
         >
           ABOUT OUR CLINIC
         </Typography>
 
         {/* Two-Column Layout */}
         <Grid container spacing={4} alignItems="flex-start">
-          {/* Left Column - Image */}
+          {/* Left Column - Description */}
+          <Grid
+            item
+            xs={12}
+            md={6}
+            sx={{
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "flex-start",
+            }}
+          >
+            <Typography
+              variant="h5"
+              fontWeight="bold"
+              color="#000"
+              gutterBottom
+            >
+              Helping You Move Better, Live Better
+            </Typography>
+            <Typography variant="body1" color="#000">
+              At <strong>M2M Physical Therapy</strong>, we believe that movement
+              is medicine. Our mission is to help you move better, feel
+              stronger, and live without pain. Whether you’re an athlete
+              recovering from an injury, a post-surgical patient regaining
+              mobility, or someone experiencing chronic pain, our expert
+              physical therapists are here to support your journey to recovery.
+            </Typography>
+
+            <Typography variant="body1" color="#000" sx={{ mt: 2 }}>
+              We take a personalized, hands-on approach to rehabilitation,
+              ensuring that every treatment plan is tailored to your unique
+              needs. No two patients are the same, which is why we focus on
+              developing customized care plans that promote healing, restore
+              function, and prevent future injuries. Our team utilizes the
+              latest evidence-based technique in manual therapy, strength
+              training, and functional movement to help you regain control of
+              your body.
+            </Typography>
+
+            <Typography variant="body1" color="#000" sx={{ mt: 2 }}>
+              Our approach goes beyond just treating symptoms—we focus on
+              long-term wellness and injury prevention. We empower our patients
+              with the knowledge and tools they need to take charge of their
+              health. Whether through guided therapeutic exercises, pain
+              management techniques, or lifestyle modifications, we ensure that
+              you leave our clinic feeling confident in your ability to stay
+              active and pain-free.
+            </Typography>
+
+            <Typography variant="body1" color="#000" sx={{ mt: 2 }}>
+              At M2M Physical Therapy, we are committed to helping you achieve
+              your goals, whether big or small. From returning to daily
+              activities pain-free to excelling in your favorite sport, we are
+              here to guide you every step of the way. Our compassionate team is
+              dedicated to providing exceptional care in a warm, welcoming
+              environment, where every patient is treated like family.
+            </Typography>
+
+            <Typography variant="body1" color="#000" sx={{ mt: 2 }}>
+              Take the first step toward a healthier, stronger you. Schedule an
+              appointment today and let us help you move better, feel better,
+              and live better.
+            </Typography>
+          </Grid>
+
+          {/* Right Column - Image */}
           <Grid item xs={12} md={6}>
             <Box
               component="img"
@@ -36,31 +101,10 @@ const About = () => {
               }}
             />
           </Grid>
-
-          {/* Right Column - Description */}
-          <Grid item xs={12} md={6} sx={{ display: "flex", flexDirection: "column", justifyContent: "flex-start" }}>
-            <Typography variant="h5" fontWeight="bold" color="white" gutterBottom>
-              Helping You Move Better, Live Better
-            </Typography>
-            <Typography variant="body1" color="white">
-            At <strong>M2M Physical Therapy</strong>, we are committed to helping you move better, feel stronger, and live pain-free.
-            Our team of expert physical therapists offers personalized, one-on-one care tailored to your needs.
-            </Typography>
-            <Typography variant="body1" color="white" sx={{ mt: 2 }}>
-            With a focus on evidence-based rehabilitation, we provide a holistic approach to healing,
-            ensuring every patient gets the highest level of care. Whether you’re recovering from an injury, surgery, or just looking to **enhance your movement**, we're here to guide you every step of the way.
-            </Typography>
-          </Grid>
         </Grid>
       </Container>
-      <Vision />
-      <CTA />
-      <Contact />
     </Box>
-    
   );
 };
 
 export default About;
-
-

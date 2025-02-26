@@ -21,7 +21,7 @@ const CTA = () => {
           alignItems: "center",
           justifyContent: "center",
           textAlign: "center",
-          color: "#fff",
+          color: "#F7E7CE",
           height: "40vh",
         }}
       >
@@ -71,12 +71,12 @@ const CTA = () => {
               onClick={handleOpenModal}
               sx={{
                 backgroundColor: "#000",
-                color: "#fff",
+                color: "#F7E7CE",
                 fontFamily: "Poppins, sans-serif",
                 fontWeight: "bold",
                 px: 4,
                 py: 1.5,
-                border: "3px solid #fff",
+                border: "3px solid #F7E7CE",
                 fontSize: "1.1rem",
                 borderRadius: "30px",
               }}

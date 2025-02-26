@@ -8,9 +8,10 @@ import {
   Dialog,
   IconButton,
   Button,
+  Container,
 } from "@mui/material";
-import Footer from "../components/Footer";
-import Video from "../../public/cinematic.mp4";
+import { motion } from "framer-motion";
+import Contact from './Contact';
 import { ChevronLeft, ChevronRight } from "@mui/icons-material"; // Import icons for arrows
 import CTA from "./cta";
 
@@ -59,137 +60,128 @@ const Gallery = () => {
   };
 
   return (
-    <Box
-      sx={{
-        display: "flex",
-        flexDirection: "column",
-        minHeight: "100vh",
-        backgroundColor: "#F7E7CE",
-      }}
-    >
-      {/* Hero Video Section */}
+    <>
+      {/* Hero Section with Black Background */}
       <Box
         sx={{
-          position: "relative",
-          width: "100%",
-          height: "30vh",
-          overflow: "hidden",
-          backgroundColor: "#000",
+          background: "#000", // Black background
+          color: "#F7E7CE", // White text
+          textAlign: "center",
+          py: { xs: 10, md: 14 }, // Adjust spacing for different screen sizes
         }}
       >
-        <Box
-          sx={{
-            position: "absolute",
-            bottom: 0,
-            left: 0,
-            width: "100%",
-            height: "50%",
-            pointerEvents: "none",
-          }}
-        />
-
-        <Box
-          sx={{
-            position: "absolute",
-            top: 0,
-            left: 0,
-            width: "100%",
-            height: "100%",
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            textAlign: "center",
-            background: "rgba(0, 0, 0, 0.3)",
-            color: "white",
-          }}
-        >
-          <Typography
-            variant="h3"
-            sx={{
-              fontWeight: "bold",
-              textShadow: "2px 2px 8px rgba(0,0,0,0.6)",
-            }}
+        <Container maxWidth="lg">
+          <motion.div
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
           >
-            Our Gallery
-          </Typography>
-        </Box>
+            <Typography
+              variant="h3"
+              fontWeight="bold"
+              sx={{
+                letterSpacing: 1.5,
+                mb: 2,
+                fontFamily: '"SF Pro Display", "Inter", sans-serif',
+              }}
+            >
+              OUR GALLERY
+            </Typography>
+          </motion.div>
+        </Container>
       </Box>
 
-      {/* Gallery Content */}
+      {/* Gallery Content with White Background */}
       <Box
         sx={{
-          flex: "1",
-          maxWidth: "1200px",
-          margin: "0 auto",
-          padding: 2,
-          mt: "20px",
-          paddingTop: 20,
-          paddingBottom: 20,
+          background: "#F7E7CE", // White background
+          color: "#000", // Black text
         }}
       >
-        <Grid container spacing={2}>
-          {images.map((image, index) => (
-            <Grid item xs={12} sm={6} md={4} key={index}>
-              <Card
-                sx={{
-                  boxShadow: 3,
-                  display: "flex",
-                  flexDirection: "column",
-                  height: "100%",
-                }}
-              >
-                <CardMedia
-                  component="img"
-                  image={image}
-                  alt={`Gallery image ${index + 1}`}
-                  sx={{
-                    width: "100%",
-                    height: 250,
-                    objectFit: "cover",
-                    borderRadius: "5px",
-                    "&:hover": {
-                      transform: "scale(1.05)",
-                      cursor: "pointer",
-                      opacity: 0.4,
-                    },
-                  }}
-                  onClick={() => handleImageClick(index)} // On click, enlarge image
-                />
-              </Card>
-            </Grid>
-          ))}
-        </Grid>
-
-        {/* See More Button */}
-        <Box
-          sx={{ display: "flex", justifyContent: "center", marginTop: "20px" }}
-        >
-          <Button
-            variant="contained"
-            size="large"
+        <Container maxWidth="lg">
+          <Box
             sx={{
-              mt: 10,
-              backgroundColor: "#007bff",
-              color: "#fff",
-              borderRadius: "20px",
-              fontWeight: "bold",
-              fontSize: "1.3rem",
-              padding: "10px 30px",
-              "&:hover": {
-                backgroundColor: "#000",
-                border: "5px solid #fff",
-              },
+              flex: "1",
+              maxWidth: "1200px",
+              margin: "0 auto",
+              padding: 2,
+              paddingBottom: 10,
             }}
-            href="https://www.instagram.com/tinttekplus/" // Replace with actual Instagram link
-            target="_blank" // Opens in a new tab
-            rel="noopener noreferrer" // Security best practice
           >
-            SEE MORE PHOTOS ON INSTAGRAM
-          </Button>
-        </Box>
+            <Grid container spacing={2}>
+              {images.map((image, index) => (
+                <Grid item xs={12} sm={6} md={4} key={index}>
+                  <Card
+                    sx={{
+                      boxShadow: 3,
+                      display: "flex",
+                      flexDirection: "column",
+                      height: "100%",
+                    }}
+                  >
+                    <CardMedia
+                      component="img"
+                      image={image}
+                      alt={`Gallery image ${index + 1}`}
+                      sx={{
+                        width: "100%",
+                        height: 250,
+                        objectFit: "cover",
+                        borderRadius: "5px",
+                        "&:hover": {
+                          transform: "scale(1.05)",
+                          cursor: "pointer",
+                          opacity: 0.4,
+                        },
+                      }}
+                      onClick={() => handleImageClick(index)}
+                    />
+                  </Card>
+                </Grid>
+              ))}
+            </Grid>
+
+            {/* See More Button */}
+            <Box
+              sx={{
+                display: "flex",
+                justifyContent: "center",
+                mt: 8, // Keep existing margin spacing
+              }}
+            >
+              <motion.div
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.95 }}
+                transition={{ type: "spring", stiffness: 300 }}
+              >
+                <Button
+                  variant="contained"
+                  size="large"
+                  sx={{
+                    backgroundColor: "#F7E7CE",
+                    color: "#000",
+                    fontFamily: "Poppins, sans-serif",
+                    fontWeight: "bold",
+                    px: 4,
+                    py: 1.5,
+                    border: "5px solid #000",
+                    fontSize: "1.1rem",
+                    borderRadius: "30px",
+                  }}
+                  href="https://www.instagram.com/tinttekplus/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  SEE MORE PHOTOS ON INSTAGRAM
+                </Button>
+              </motion.div>
+            </Box>
+          </Box>
+        </Container>
       </Box>
 
       <CTA />
+      <Contact />
 
       {/* Image Modal */}
       <Dialog open={open} onClose={handleClose} maxWidth="lg" fullWidth>
@@ -200,9 +192,9 @@ const Gallery = () => {
             style={{
               width: "100%",
               height: "100%",
-              objectFit: "cover", // Ensures the image fills the container and maintains its aspect ratio
-              display: "block", // Prevents any extra spacing below the image (common with inline-block elements)
-              margin: 0, // Removes any margin that might be causing extra space
+              objectFit: "cover",
+              display: "block",
+              margin: 0,
             }}
           />
           {/* Left Arrow */}
@@ -233,7 +225,7 @@ const Gallery = () => {
           </IconButton>
         </Box>
       </Dialog>
-    </Box>
+    </>
   );
 };
 

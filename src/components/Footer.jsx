@@ -44,7 +44,7 @@ const Footer = () => {
               sx={{
                 mx: 1,
                 transition: "color 0.3s",
-                "&:hover": { color: "#007bff" }, // Blue color on hover
+                "&:hover": { color: "#F7E7CE" }, // Blue color on hover
               }}
               href="https://facebook.com"
               target="_blank"
@@ -56,7 +56,7 @@ const Footer = () => {
               sx={{
                 mx: 1,
                 transition: "color 0.3s",
-                "&:hover": { color: "#007bff" },
+                "&:hover": { color: "#F7E7CE" },
               }}
               href="https://instagram.com"
               target="_blank"
@@ -68,7 +68,7 @@ const Footer = () => {
               sx={{
                 mx: 1,
                 transition: "color 0.3s",
-                "&:hover": { color: "#007bff" },
+                "&:hover": { color: "#F7E7CE" },
               }}
               href="https://linkedin.com"
               target="_blank"
@@ -80,7 +80,7 @@ const Footer = () => {
               sx={{
                 mx: 1,
                 transition: "color 0.3s",
-                "&:hover": { color: "#007bff" },
+                "&:hover": { color: "#F7E7CE" },
               }}
               href="https://twitter.com"
               target="_blank"

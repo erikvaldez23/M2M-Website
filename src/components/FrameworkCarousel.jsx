@@ -2,15 +2,15 @@
 import React, { useState, useEffect } from 'react';
 import Marquee from 'react-marquee-slider';
 import './FrameworkCarousel.css';
-import fullThrottle from '/M2M-Website/full-throttle.png';
-import hyperIce from '/M2M-Website/hyperice.png';
-import mba from '/M2M-Website/mba.png';
-import proSkills from '/M2M-Website/pro-skills.png';
-import solidCore from '/M2M-Website/solid-core.png';
-import spb from '/M2M-Website/spb.png';
-import swinCity from '/M2M-Website/swin-city.png';
-import suddenExposure from '/M2M-Website/sudden-exposure.png';
-import northCrowley from '/M2M-Website/north-crowley.png';
+import fullThrottle from '../../public/full-throttle.png';
+import hyperIce from '../../public/hyperice.png';
+import mba from '../../public/mba.png';
+import proSkills from '../../public/pro-skills.png';
+import solidCore from '../../public/solid-core.png';
+import spb from '../../public/spb.png';
+import swinCity from '../../public/swin-city.png';
+import suddenExposure from '../../public/sudden-exposure.png';
+import northCrowley from '../../public/north-crowley.png';
 import { Typography } from '@mui/material';
 
 const frameworks = [

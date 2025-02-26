@@ -11,7 +11,7 @@ const MapSection = () => {
           fontWeight="bold" 
           textAlign="center" 
           gutterBottom 
-          color="white"
+          color="#F7E7CE"
         >
           WHERE WE ARE LOCATED
         </Typography>

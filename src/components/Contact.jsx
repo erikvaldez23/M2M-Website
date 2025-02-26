@@ -10,7 +10,7 @@ const Container = styled(Box)({
   minHeight: "60vh",
   padding: "30px 20px",
   backgroundColor: "#000",
-  color: "#fff",
+  color: "#F7E7CE",
 });
 
 const IframeContainer = styled("iframe")(({ height }) => ({

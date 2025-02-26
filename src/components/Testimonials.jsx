@@ -145,7 +145,7 @@ const Testimonials = () => {
       <Box
         sx={{
           background: "#000",  // Black background
-          color: "white",      // White text
+          color: "#F7E7CE",      // White text
           textAlign: "center",
           py: { xs: 10, md: 14 }, // Adjust spacing for different screen sizes
         }}

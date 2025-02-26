@@ -1,8 +1,8 @@
-import React from "react";
+import React, { useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { Box, Card, CardMedia, Typography, Button } from "@mui/material";
-import { maxWidth, styled } from "@mui/system";
-import { motion } from "framer-motion";
+import { styled } from "@mui/system";
+import { motion, useInView } from "framer-motion";
 
 // Sample Services Data
 const servicesData = [
@@ -21,15 +21,13 @@ const servicesData = [
   {
     id: "injury-prevention",
     title: "INJURY PREVENTION",
-    description:
-      "Stay ahead of injuries with our tailored prevention strategies.",
+    description: "Stay ahead of injuries with our tailored prevention strategies.",
     image: "/M2M-Website/recovery.jpg",
   },
-]
-
+];
 
 // Styled Components
-const GridContainer = styled(Box)({
+const GridContainer = styled(motion.div)({
   display: "grid",
   gridTemplateColumns: "repeat(auto-fit, minmax(250px, 1fr))",
   gap: "20px",
@@ -43,13 +41,13 @@ const ServiceCard = styled(motion(Card))({
   overflow: "hidden",
   background: "rgba(255, 255, 255, 0.1)",
   backdropFilter: "blur(10px)",
-  height: "700px", // ✅ Fixed height for consistency
-  transition: "all 0.4s ease", // ✅ Smooth transition for both effects
+  height: "700px",
+  transition: "all 0.4s ease",
   "&:hover": {
-    transform: "scale(1.05)", // ✅ Scale up on hover
+    transform: "scale(1.05)",
   },
   "&:hover img": {
-    filter: "brightness(1.2)", // ✅ Brighten image on hover
+    filter: "brightness(1.2)",
   },
 });
 
@@ -57,8 +55,9 @@ const CardMediaStyled = styled(CardMedia)({
   width: "100%",
   height: "100%",
   objectFit: "cover",
+  backgroundColor: "#1a1a1a", // ✅ Prevents flickering by providing a fallback color
+  transition: "opacity 0.5s ease-in-out",
 });
-
 
 const CardOverlay = styled(Box)({
   position: "absolute",
@@ -89,14 +88,32 @@ const CTAButton = styled(Button)({
   },
 });
 
-// Animation Variants
-const fadeInVariant = {
-  hidden: { opacity: 0, y: 20 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
+// Scroll Animation Variants
+const sectionVariants = {
+  hidden: { opacity: 0, y: 50 },
+  visible: { opacity: 1, y: 0, transition: { duration: 1, ease: "easeOut" } },
+};
+
+const fadeInCardVariant = {
+  hidden: { opacity: 0, y: 30 },
+  visible: (index) => ({
+    opacity: 1,
+    y: 0,
+    transition: { delay: index * 0.2 + 0.5, duration: 0.8, ease: "easeOut" },
+  }),
 };
 
 const Services = () => {
   const navigate = useNavigate();
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: "-100px" });
+
+  // Lazy Loading State
+  const [loadedImages, setLoadedImages] = useState({});
+
+  const handleImageLoad = (index) => {
+    setLoadedImages((prev) => ({ ...prev, [index]: true }));
+  };
 
   const handleServiceClick = (serviceId) => {
     navigate(`/services/${serviceId}`);
@@ -105,34 +122,49 @@ const Services = () => {
   return (
     <Box
       id="services"
-      sx={{ backgroundColor: "#F7E7CE", padding: "40px 0", color: "#000" }}
+      ref={ref}
+      sx={{ backgroundColor: "#000", padding: "40px 0", color: "#F7E7CE" }}
     >
-      <Typography
-        variant="h2"
-        sx={{ textAlign: "center", fontWeight: "bold", mb: 2 }}
+      {/* Section Heading Animation */}
+      <motion.div
+        variants={sectionVariants}
+        initial="hidden"
+        animate={isInView ? "visible" : "hidden"}
       >
-        SERVICES
-      </Typography>
-      <Typography
-        variant="h6"
-        sx={{ textAlign: "center", opacity: 0.8}}
-      >
-        Discover personalized fitness solutions tailored to your needs.
-      </Typography>
+        <Typography
+          variant="h2"
+          sx={{ textAlign: "center", fontWeight: "bold", mb: 2 }}
+        >
+          SERVICES
+        </Typography>
+        <Typography
+          variant="h6"
+          sx={{ textAlign: "center", opacity: 0.8 }}
+        >
+          Discover personalized fitness solutions tailored to your needs.
+        </Typography>
+      </motion.div>
 
+      {/* Animated Services Cards */}
       <GridContainer>
         {servicesData.map((service, index) => (
           <ServiceCard
             key={service.id}
+            variants={fadeInCardVariant}
             initial="hidden"
-            animate="visible"
-            variants={fadeInVariant}
-            transition={{ delay: index * 0.15 }}
+            animate={isInView ? "visible" : "hidden"}
+            custom={index}
           >
+            {/* Lazy Loaded Image with Smooth Fade-in */}
             <CardMediaStyled
               component="img"
               image={service.image}
               alt={service.title}
+              loading="lazy"
+              onLoad={() => handleImageLoad(index)}
+              style={{
+                opacity: loadedImages[index] ? 1 : 0,
+              }}
             />
             <CardOverlay>
               <Typography variant="h5" sx={{ fontWeight: "bold" }}>

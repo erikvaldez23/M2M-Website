@@ -68,15 +68,13 @@ function App() {
                 <Hero />
                 <CTA /> 
                 <MeetTheTeam />
-                {/* <About /> */}
-           
-            
                 <Services />
+                <About />
+                <Vision />
                 <FrameworkCarousel />
                 {/* <Testimonials /> */}
                 {/* <Instagram /> */}
                 <Map />
-                {/* <Vision /> */}
                 <Contact />
               </>
             } 
