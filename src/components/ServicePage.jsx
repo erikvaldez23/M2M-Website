@@ -14,13 +14,14 @@ import {
   Accordion,
   AccordionSummary,
   AccordionDetails,
+  Divider,
 } from "@mui/material";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import Slider from "react-slick";
 import CTA from "./cta";
+import Contact from "./Contact";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-
 
 const servicesDetails = {
   "physical-therapy": {
@@ -36,7 +37,7 @@ const servicesDetails = {
       "Mobility impairments",
       "Neurological disorders (e.g., stroke recovery)",
     ],
-    conditionsImage: "/M2M-Website/conditions-treated.png",
+    conditionsImage: "/M2M-Website/both.jpg",
     whoCanBenefit: [
       "Athletes recovering from injuries",
       "Elderly individuals with mobility issues",
@@ -56,7 +57,7 @@ const servicesDetails = {
       "Electrotherapy",
       "Postural Training",
     ],
-    image: "/M2M-Website/ortho-inj.jpg",
+    image: "/M2M-Website/both.jpg",
     testimonials: [
       {
         name: "John Doe",
@@ -205,8 +206,6 @@ const servicesDetails = {
   },
 };
 
-
-
 const ServicePage = () => {
   const { serviceId } = useParams();
   const service = servicesDetails[serviceId];
@@ -224,8 +223,8 @@ const ServicePage = () => {
       {/* Hero Section */}
       <Box
         sx={{
-          height: "40vh",
-          backgroundImage: `url(${service.image})`,
+          height: "30vh",
+          backgroundColor: "#000",
           backgroundSize: "cover",
           backgroundPosition: "center",
           display: "flex",
@@ -246,39 +245,142 @@ const ServicePage = () => {
         }}
       >
         <Container sx={{ position: "relative", zIndex: 1 }}>
-          <Typography variant="h3" fontWeight="bold">{service.title}</Typography>
+          <Typography variant="h3" fontWeight="bold">
+            {service.title}
+          </Typography>
           <Typography variant="h6">{service.shortDescription}</Typography>
         </Container>
       </Box>
+      <Box
+        sx={{
+          textAlign: "center",
+          py: 6,
+          maxWidth: "1200px",
+          mx: "auto",
+        }}
+      >
+        <Typography variant="h4" sx={{ color: "#000", fontWeight: "500" }}>
+          {service.title} is redefining recovery for athletes by combining
+          science-backed rehabilitation techniques with performance optimization
+          strategies to help athletes recover faster and perform at their best.
+        </Typography>
+      </Box>
+
+      <Divider sx={{ width: "50%", mx: "auto", marginBottom: 4, borderColor: "#000", borderBottomWidth: "5px" }} />
+
+
+      <Container>
+        <Typography
+          variant="subtitle2"
+          sx={{
+            color: "#6666FF",
+            textTransform: "uppercase",
+            fontWeight: "bold",
+          }}
+        >
+          Built for Athletes
+        </Typography>
+
+        <Typography variant="h3" sx={{ fontWeight: "bold", mt: 1, mb: 4 }}>
+          {service.title} is designed to keep you in the game
+        </Typography>
+
+        <Grid container spacing={4}>
+          {/* Total Patients Recovered */}
+          <Grid item xs={12} md={4}>
+            <Box sx={{ borderLeft: "2px solid black", pl: 2 }}>
+              <Typography variant="h4" fontWeight="bold">
+                3,500+
+              </Typography>
+              <Typography variant="subtitle1" fontWeight="bold">
+                Athletes Recovered
+              </Typography>
+              <Typography variant="body2" color="textSecondary">
+                Our specialized therapy programs have helped thousands of
+                athletes regain strength, mobility, and confidence after
+                injuries.
+              </Typography>
+              <Box sx={{ mt: 1 }}>🏥 🏃‍♂️ 💪</Box>
+            </Box>
+          </Grid>
+
+          {/* Recovery Programs */}
+          <Grid item xs={12} md={4}>
+            <Box sx={{ borderLeft: "2px solid black", pl: 2 }}>
+              <Typography variant="h4" fontWeight="bold">
+                10+
+              </Typography>
+              <Typography variant="subtitle1" fontWeight="bold">
+                Specialized Recovery Programs
+              </Typography>
+              <Typography variant="body2" color="textSecondary">
+                From post-injury rehab to peak performance training, we offer
+                personalized recovery solutions for all levels of athletes.
+              </Typography>
+              <Typography variant="body2" fontWeight="bold" color="#6666FF">
+                Explore Our Programs →
+              </Typography>
+            </Box>
+          </Grid>
+
+          {/* Professional & Elite Athletes Served */}
+          <Grid item xs={12} md={4}>
+            <Box sx={{ borderLeft: "2px solid black", pl: 2 }}>
+              <Typography variant="h4" fontWeight="bold">
+                50+
+              </Typography>
+              <Typography variant="subtitle1" fontWeight="bold">
+                Pro & Collegiate Athletes Served
+              </Typography>
+              <Typography variant="body2" color="textSecondary">
+                Trusted by elite athletes across various sports, our clinic
+                provides cutting-edge treatment and injury prevention
+                strategies.
+              </Typography>
+              <Typography variant="body2" fontWeight="bold" color="#6666FF">
+                See Success Stories →
+              </Typography>
+            </Box>
+          </Grid>
+        </Grid>
+      </Container>
 
       {/* Content Section */}
       <Container sx={{ mt: 4, pb: 4 }}>
         {/* Staggered Sections */}
         {[
-          { title: "Conditions Treated", content: service.conditionsTreated, image: service.conditionsImage },
+          {
+            title: "Conditions Treated",
+            content: service.conditionsTreated,
+            image: service.conditionsImage,
+          },
           { title: "Who Can Benefit?", content: service.whoCanBenefit },
           { title: "Benefits", content: service.benefits },
           { title: "Techniques Used", content: service.techniques },
         ].map((section, index) => (
-          <Grid container spacing={4} alignItems="center" key={index} sx={{ my: 5 }}>
+          <Grid
+            container
+            spacing={4}
+            alignItems="center"
+            key={index}
+            sx={{ my: 5 }}
+          >
             {/* Conditionally Swap Image/Text Position */}
             {index % 2 === 0 ? (
               <>
                 {/* Image on Left */}
                 <Grid item xs={12} md={6}>
-                  {section.image && (
-                    <Box
-                      component="img"
-                      src={section.image}
-                      alt={section.title}
-                      sx={{
-                        width: "100%",
-                        maxHeight: "400px",
-                        borderRadius: "8px",
-                        boxShadow: "4px 4px 10px rgba(0,0,0,0.2)",
-                      }}
-                    />
-                  )}
+                  <Box
+                    component="img"
+                    src={section.image || "/M2M-Website/both.jpg"} // Fallback image
+                    alt={section.title}
+                    sx={{
+                      width: "100%",
+                      maxHeight: "400px",
+                      borderRadius: "8px",
+                      boxShadow: "4px 4px 10px rgba(0,0,0,0.2)",
+                    }}
+                  />
                 </Grid>
                 {/* Text on Right */}
                 <Grid item xs={12} md={6}>
@@ -311,39 +413,22 @@ const ServicePage = () => {
                 </Grid>
                 {/* Image on Right */}
                 <Grid item xs={12} md={6}>
-                  {section.image && (
-                    <Box
-                      component="img"
-                      src={section.image}
-                      alt={section.title}
-                      sx={{
-                        width: "100%",
-                        maxHeight: "400px",
-                        borderRadius: "8px",
-                        boxShadow: "4px 4px 10px rgba(0,0,0,0.2)",
-                      }}
-                    />
-                  )}
+                  <Box
+                    component="img"
+                    src={section.image || "/M2M-Website/both.jpg"} // Fallback image
+                    alt={section.title}
+                    sx={{
+                      width: "100%",
+                      maxHeight: "400px",
+                      borderRadius: "8px",
+                      boxShadow: "4px 4px 10px rgba(0,0,0,0.2)",
+                    }}
+                  />
                 </Grid>
               </>
             )}
           </Grid>
         ))}
-
-        {/* Testimonials - Slider */}
-        <Typography variant="h5" mt={3} mb={1}>
-          Testimonials
-        </Typography>
-        <Slider dots infinite speed={500} slidesToShow={1} slidesToScroll={1} autoplay autoplaySpeed={5000}>
-          {service.testimonials.map((testimonial, index) => (
-            <Box key={index} sx={{ p: 2, textAlign: "center" }}>
-              <Typography variant="body1">"{testimonial.feedback}"</Typography>
-              <Typography variant="subtitle2" fontWeight="bold" sx={{ mt: 1 }}>
-                — {testimonial.name}
-              </Typography>
-            </Box>
-          ))}
-        </Slider>
 
         {/* FAQs - Accordion */}
         <Typography variant="h5" mt={3} mb={1}>
@@ -363,34 +448,8 @@ const ServicePage = () => {
         ))}
       </Container>
 
-      {/* Call to Action Section */}
-      <Box
-        sx={{
-          background: "linear-gradient(135deg, #ff9a9e, #fad0c4)",
-          textAlign: "center",
-          p: 4,
-          borderRadius: "12px",
-          boxShadow: "0px 4px 10px rgba(0,0,0,0.1)",
-          mt: 4,
-        }}
-      >
-        <Typography variant="h4" fontWeight="bold" color="white">
-          {service.cta}
-        </Typography>
-        <Button
-          variant="contained"
-          sx={{
-            mt: 2,
-            background: "white",
-            color: "#ff5e62",
-            "&:hover": { background: "#ff5e62", color: "white" },
-          }}
-        >
-          Book Now
-        </Button>
-      </Box>
-
       <CTA />
+      <Contact />
     </Box>
   );
 };

@@ -68,23 +68,23 @@ function App() {
                 <Hero />
                 <CTA /> 
                 <MeetTheTeam />
-                <About />
+                {/* <About /> */}
            
             
                 <Services />
                 <FrameworkCarousel />
-                <Testimonials />
+                {/* <Testimonials /> */}
                 {/* <Instagram /> */}
                 <Map />
-                <Vision />
+                {/* <Vision /> */}
                 <Contact />
               </>
             } 
           />
           <Route path="/gallery" element={<Gallery />} />
-          {/* <Route path="/testimonials" element={<Testimonials />} /> */}
+          <Route path="/testimonials" element={<Testimonials />} />
           <Route path="/booking" element={<Booking />} />
-          {/* <Route path="/about" element={<About />} /> */}
+          <Route path="/about" element={<About />} />
           <Route path="/privacy-policy" element={<PrivacyPolicy />} />
           <Route path="/services/:serviceId" element={<ServicePage />} />
           <Route path="*" element={<ErrorPage />} />

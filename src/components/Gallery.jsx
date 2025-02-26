@@ -12,7 +12,7 @@ import {
 import Footer from "../components/Footer";
 import Video from "../../public/cinematic.mp4";
 import { ChevronLeft, ChevronRight } from "@mui/icons-material"; // Import icons for arrows
-import CTA from "./CTA";
+import CTA from "./cta";
 
 const images = [
   "/TintTek-Website/picture1.jpeg",

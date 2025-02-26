@@ -11,55 +11,118 @@ import {
 import { motion } from "framer-motion";
 import { FaStar } from "react-icons/fa";
 
-import Hero from "./Hero";
 import CTA from "./cta";
 import Contact from "./Contact";
 
 const testimonialsData = [
   {
-    name: "Sarah L.",
+    name: "Coach Tori Tucker",
     review:
-      "M2M Physical Therapy helped me regain my mobility after a knee injury. Their personalized care made all the difference!",
+      "WE AREN’T US WITHOUT THEM!!! WE LOVE US SOME DR. DRE AND DR. NAT!!!! MY COACHING FRIENDS, PLEASE USE THEM!! YOUR ATHLETES WILL BE UNDER THE BEST CARE IN ALL OF NORTH TEXAS!!!",
     image: "/M2M-Website/sarah.jpg",
     rating: 5,
     date: "2024-02-10",
   },
   {
-    name: "James W.",
+    name: "Tony Swindle",
     review:
-      "Highly recommend M2M! Their therapists are knowledgeable, friendly, and truly care about your progress.",
+      "No opinions, straight facts - Made 2 Move is second to none in PT. Customer Service is great and their information and techniques are impeccable. The place to go is Made 2 Move.",
     image: "/M2M-Website/james.jpg",
     rating: 5,
     date: "2024-01-20",
   },
   {
-    name: "Emily R.",
+    name: "Earl Rooks",
     review:
-      "The one-on-one attention and custom treatment plan at M2M were game-changers for my recovery.",
+      "Made 2 Move is the MOVE. Their approach to sports medicine is unparalleled — the knowledge, tools, and energy to serve and assist. I couldn’t think of a better team to partner with for my events, program, and the care of my college/pro athletes.",
     image: "/M2M-Website/emily.jpg",
     rating: 5,
     date: "2023-12-05",
   },
   {
-    name: "Michael B.",
+    name: "Dr. Amy Haberman",
     review:
-      "Fantastic experience! My shoulder pain has significantly improved thanks to their hands-on approach.",
+      "I cannot recommend Made 2 Move highly enough! I had seen several doctors and had PT at another facility with no answers and no relief. They were able to properly diagnose my problem and therefore were able to treat me with a combination of physical therapy and dry needling. They truly care for each and every one of their patients. Please go see them. You will not regret it!",
     image: "/M2M-Website/michael.jpg",
     rating: 5,
     date: "2024-03-01",
   },
   {
-    name: "Olivia T.",
+    name: "Regan Garrett",
     review:
-      "The therapists at M2M are outstanding! They genuinely care about your recovery and make every session count. Highly recommend!",
+    "They worked on my lower back pain & after 3 sessions with them it’s completely gone! They also make you feel very comfortable with dry needling (as someone who fears needles)",
     image: "/M2M-Website/olivia.jpg",
     rating: 5,
     date: "2024-02-25",
   },
   {
-    name: "Daniel K.",
+    name: "Windy Hudson",
     review:
-      "After struggling with back pain for years, M2M provided the relief I needed. Their professional and personalized approach made all the difference!",
+      "if you are looking for physical therapists who will actually listen to you and adjust the regimen to make sure that you’re feeling great, Dr. Natalie and Dr. Drea are the one! I have never experienced a therapy where I knew that my therapist was so in tune with what I needed… ￼ until I met Dr. Natalie and Dr. Drea! They were all in and they’ll take the best care of you!",
+    image: "/M2M-Website/daniel.jpg",
+    rating: 4,
+    date: "2024-01-15",
+  },
+  {
+    name: "Mike Myers",
+    review:
+      "Absolutely 💯! They are a multiplier for any coach looking to enhance performance and prevent injuries!",
+    image: "/M2M-Website/daniel.jpg",
+    rating: 4,
+    date: "2024-01-15",
+  },
+  {
+    name: "Windy Hudson",
+    review:
+      "if you are looking for physical therapists who will actually listen to you and adjust the regimen to make sure that you’re feeling great, Dr. Natalie and Dr. Drea are the one! I have never experienced a therapy where I knew that my therapist was so in tune with what I needed… ￼ until I met Dr. Natalie and Dr. Drea! They were all in and they’ll take the best care of you!",
+    image: "/M2M-Website/daniel.jpg",
+    rating: 4,
+    date: "2024-01-15",
+  },
+  {
+    name: "Micheal Irvin II",
+    review:
+      "LOVED working with these 2!! Gr8 WORK!!",
+    image: "/M2M-Website/daniel.jpg",
+    rating: 4,
+    date: "2024-01-15",
+  },
+  {
+    name: "Rylan Austin",
+    review:
+      "Shout out to M2M! Great service guaranteed to give you better flexibility. Go book with them!",
+    image: "/M2M-Website/daniel.jpg",
+    rating: 4,
+    date: "2024-01-15",
+  },
+  {
+    name: "Akhil Simpson",
+    review:
+      "These two have started a business and they must have been listening to God! These two ladies have already made such a huge impact in my life and the people around me and I can’t thank them enough! Not only do I have the pleasure of working with them at tournaments and camps, I also am a client. The care and the love that exudes from them and their work, is nothing short of amazing! I am so honored to call them my trainers and my friends",
+    image: "/M2M-Website/daniel.jpg",
+    rating: 4,
+    date: "2024-01-15",
+  },
+  {
+    name: "CJ Wottliin",
+    review:
+      "M2M helped me get back on track after surgery! I’ve never felt more physically confident than I do now all because of them! THANK YOU DR. DRE & DR. NAT",
+    image: "/M2M-Website/daniel.jpg",
+    rating: 4,
+    date: "2024-01-15",
+  },
+  {
+    name: "Cole McKenzie",
+    review:
+      "Dr. Drea and Dr. Nat are incredibly knowledgeable and proficient in what they do.  I cannot recommend either of them enough, and have referred them to multiple friends and coworkers already!  I went to see them initially for shoulder pain, and the cause was quickly and accurately diagnosed and corrected through the PT plan that they designed.  On top of their expertise, they are both friendly, empathetic people who make it impossible to feel uncomfortable.  I have never felt better, and they can do the same for anyone.  I would urge anyone looking to start physical therapy to go to them over anyone else!",
+    image: "/M2M-Website/daniel.jpg",
+    rating: 4,
+    date: "2024-01-15",
+  },
+  {
+    name: "Coach Kortlin White",
+    review:
+      "I firmly believe that any team seeking to maintain their athletes' peak performance, especially during critical playoff seasons, would greatly benefit from partnering with Made 2 Move. Their expertise and personalized approach make them an invaluable asset to any athletic program.",
     image: "/M2M-Website/daniel.jpg",
     rating: 4,
     date: "2024-01-15",
@@ -78,23 +141,16 @@ const formatDate = (dateString) => {
 const Testimonials = () => {
   return (
     <>
-      {/* ✅ Hero Section */}
-      {/* <Hero
-        title="What Our Clients Say"
-        subtitle="Real stories from real people. See how M2M Physical Therapy has transformed lives."
-        backgroundImage="/M2M-Website/testimonials-hero.jpg"
-      /> */}
-
-      {/* ✅ Testimonials Section */}
-      <Box id="testimonials"
+      {/* ✅ Hero Section (Black Background with Header) */}
+      <Box
         sx={{
-          background: "#F7E7CE",
-          py: { xs: 8, md: 12 },
+          background: "#000",  // Black background
+          color: "white",      // White text
           textAlign: "center",
+          py: { xs: 10, md: 14 }, // Adjust spacing for different screen sizes
         }}
       >
         <Container maxWidth="lg">
-          {/* ✅ Title */}
           <motion.div
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -102,20 +158,35 @@ const Testimonials = () => {
           >
             <Typography
               variant="h3"
+              fontWeight="bold"
               sx={{
-                fontWeight: "bold",
                 letterSpacing: 1.5,
-                mb: 3,
-                background: "#000",
-                WebkitBackgroundClip: "text",
-                WebkitTextFillColor: "transparent",
+                mb: 2,
                 fontFamily: '"SF Pro Display", "Inter", sans-serif',
               }}
             >
               CUSTOMER TESTIMONIALS
             </Typography>
+            <Typography
+              variant="h6"
+              sx={{ maxWidth: "600px", mx: "auto", color: "#b0b0b0" }}
+            >
+              Real stories from real people. See how M2M Physical Therapy has transformed lives.
+            </Typography>
           </motion.div>
+        </Container>
+      </Box>
 
+      {/* ✅ Testimonials Section */}
+      <Box
+        id="testimonials"
+        sx={{
+          background: "#F7E7CE",
+          py: { xs: 8, md: 12 },
+          textAlign: "center",
+        }}
+      >
+        <Container maxWidth="lg">
           {/* ✅ Testimonials Grid */}
           <Grid container spacing={4} justifyContent="center">
             {testimonialsData.map((testimonial, index) => (
@@ -143,8 +214,8 @@ const Testimonials = () => {
                   >
                     <CardContent
                       sx={{
-                        overflowY: "auto", // ✅ Enables scroll when text overflows
-                        maxHeight: "350px", // ✅ Prevents excessive content shifting
+                        overflowY: "auto",
+                        maxHeight: "350px",
                         padding: "10px",
                       }}
                     >
@@ -203,6 +274,9 @@ const Testimonials = () => {
           </Grid>
         </Container>
       </Box>
+
+      <CTA />
+      <Contact />
     </>
   );
 };

@@ -45,7 +45,7 @@ const Vision = () => {
   return (
     <Box
       sx={{
-        py: 10,
+        py: 8,
         background: "#F7E7CE",
         textAlign: "center",
       }}
