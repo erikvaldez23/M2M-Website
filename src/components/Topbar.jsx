@@ -51,7 +51,7 @@ const Topbar = ({ notFound }) => {
   }, []);
 
   const scrollToSection = (sectionId) => {
-    const subPages = ["about", "gallery", "privacy-policy", "testimonials"]; // ✅ Add all subpages here
+    const subPages = ["gallery", "privacy-policy"]; // ✅ Add all subpages here
   
     if (subPages.includes(sectionId)) {
       // ✅ Navigate to subpage instead of scrolling
@@ -142,6 +142,7 @@ const Topbar = ({ notFound }) => {
                   "About",
                   "Services",
                   "Testimonials",
+                  "Gallery",
                   "Contact",
                 ].map((item) => (
                   <Button
@@ -239,6 +240,7 @@ const Topbar = ({ notFound }) => {
              "About",
              "Services",
              "Testimonials",
+             "Gallery",
              "Contact",
           ].map((item) => (
             <ListItem

@@ -1,119 +1,45 @@
 import React from "react";
-import { Box, Typography, Button, Divider } from "@mui/material";
-import { styled } from "@mui/system";
-import { FaMapMarkerAlt, FaPhone, FaClock } from "react-icons/fa";
+import { Box, Container, Typography } from "@mui/material";
 
-const BusinessInfoContainer = styled(Box)({
-  display: "flex",
-  flexDirection: "column",
-  alignItems: "center",
-  textAlign: "center",
-  background: "#fff",
-  padding: "30px",
-  borderRadius: "10px",
-  boxShadow: "0 10px 30px rgba(0, 0, 0, 0.1)",
-  maxWidth: "500px",
-});
-
-const MapContainer = styled(Box)({
-  width: "100%",
-  maxWidth: "1200px",
-  margin: "0 auto",
-  display: "grid",
-  gridTemplateColumns: "1fr 1fr",
-  gap: "30px",
-  alignItems: "center",
-  padding: "50px 20px",
-  "@media (max-width: 900px)": {
-    gridTemplateColumns: "1fr",
-  },
-});
-
-const Map = () => {
+const MapSection = () => {
   return (
-    <Box sx={{ background: "#f5f5f5", py: 6 }}>
-      <Typography
-        variant="h3"
+    <Box sx={{ backgroundColor: "black", py:2 }}>
+      <Container maxWidth="lg">
+        {/* Header Title */}
+        <Typography 
+          variant="h2" 
+          fontWeight="bold" 
+          textAlign="center" 
+          gutterBottom 
+          color="white"
+        >
+          WHERE WE ARE LOCATED
+        </Typography>
+      </Container>
+
+      {/* Map Embed Section */}
+      <Box
         sx={{
-          fontWeight: "bold",
-          textAlign: "center",
-          mb: 4,
-          color: "#222",
+          width: "100%",
+          height: "40vh", // Adjust height as needed
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
         }}
       >
-        Find Us
-      </Typography>
-
-      <MapContainer>
-        {/* Embedded Google Map */}
-        <Box sx={{ borderRadius: "10px", overflow: "hidden" }}>
-          <iframe
-            title="Business Location"
-            width="100%"
-            height="400px"
-            style={{ border: 0, borderRadius: "10px" }}
-            loading="lazy"
-            allowFullScreen
-            referrerPolicy="no-referrer-when-downgrade"
-            src={`https://www.google.com/maps/embed/v1/place?q=Your+Business+Name,+Your+City,+Your+Country&key=YOUR_GOOGLE_MAPS_API_KEY`}
-          />
-        </Box>
-
-        {/* Business Information */}
-        <BusinessInfoContainer>
-          <Typography variant="h5" sx={{ fontWeight: "bold", mb: 2 }}>
-            <FaMapMarkerAlt style={{ color: "#007AFF", marginRight: 8 }} />
-            Business Name
-          </Typography>
-          <Typography variant="body1" sx={{ color: "#555", mb: 2 }}>
-            123 Main Street, City, Country
-          </Typography>
-
-          <Divider sx={{ width: "100%", my: 2 }} />
-
-          <Typography variant="h6" sx={{ fontWeight: "bold", mb: 1 }}>
-            <FaPhone style={{ color: "#34C759", marginRight: 8 }} />
-            Call Us
-          </Typography>
-          <Typography variant="body1" sx={{ color: "#555", mb: 2 }}>
-            +1 (555) 123-4567
-          </Typography>
-
-          <Divider sx={{ width: "100%", my: 2 }} />
-
-          <Typography variant="h6" sx={{ fontWeight: "bold", mb: 1 }}>
-            <FaClock style={{ color: "#FF9500", marginRight: 8 }} />
-            Hours
-          </Typography>
-          <Typography variant="body1" sx={{ color: "#555" }}>
-            Mon-Fri: 9AM - 6PM <br /> Sat: 10AM - 4PM <br /> Sun: Closed
-          </Typography>
-
-          <Button
-            variant="contained"
-            sx={{
-              mt: 3,
-              background: "#007AFF",
-              color: "#fff",
-              borderRadius: "8px",
-              px: 4,
-              py: 1,
-              fontWeight: "bold",
-              "&:hover": { background: "#0056CC" },
-            }}
-            onClick={() =>
-              window.open(
-                "https://www.google.com/maps/search/?api=1&query=Your+Business+Name,+Your+City",
-                "_blank"
-              )
-            }
-          >
-            Open in Google Maps
-          </Button>
-        </BusinessInfoContainer>
-      </MapContainer>
+        <iframe
+          title="Google Map"
+          width="100%"
+          height="100%"
+          style={{ border: 0, borderRadius: "10px" }}
+          loading="lazy"
+          allowFullScreen
+          referrerPolicy="no-referrer-when-downgrade"
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3323.8018044740475!2d-101.87771402430353!3d33.58449487333676!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8640c413f31ec847%3A0x52db374b7b07849!2sTexas%20Tech%20University!5e0!3m2!1sen!2sus!4v1740529843821!5m2!1sen!2sus"
+        ></iframe>
+      </Box>
     </Box>
   );
 };
 
-export default Map;
+export default MapSection;

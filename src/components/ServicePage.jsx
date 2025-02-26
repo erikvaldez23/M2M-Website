@@ -5,12 +5,22 @@ import {
   Typography,
   Container,
   Button,
+  Grid,
+  Card,
+  CardContent,
+  Paper,
   List,
   ListItem,
-  ListItemText,
-  Paper,
+  Accordion,
+  AccordionSummary,
+  AccordionDetails,
 } from "@mui/material";
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import Slider from "react-slick";
 import CTA from "./cta";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+
 
 const servicesDetails = {
   "physical-therapy": {
@@ -195,6 +205,8 @@ const servicesDetails = {
   },
 };
 
+
+
 const ServicePage = () => {
   const { serviceId } = useParams();
   const service = servicesDetails[serviceId];
@@ -212,7 +224,7 @@ const ServicePage = () => {
       {/* Hero Section */}
       <Box
         sx={{
-          height: "30vh",
+          height: "40vh",
           backgroundImage: `url(${service.image})`,
           backgroundSize: "cover",
           backgroundPosition: "center",
@@ -229,128 +241,155 @@ const ServicePage = () => {
             left: 0,
             width: "100%",
             height: "100%",
-            background: "rgba(0, 0, 0, 0.5)", // Dark overlay
+            background: "rgba(0, 0, 0, 0.4)", // Dark overlay
           },
         }}
       >
         <Container sx={{ position: "relative", zIndex: 1 }}>
-          <Typography variant="h3" fontWeight="bold">
-            {service.title}
-          </Typography>
+          <Typography variant="h3" fontWeight="bold">{service.title}</Typography>
           <Typography variant="h6">{service.shortDescription}</Typography>
         </Container>
       </Box>
 
       {/* Content Section */}
       <Container sx={{ mt: 4, pb: 4 }}>
-        <Typography variant="h5" fontWeight="bold" gutterBottom>
-          About {service.title}
-        </Typography>
-        <Typography variant="body1" paragraph>
-          {service.fullDescription}
-        </Typography>
-
-        {/* Conditions Treated (If Applicable) */}
-        {service.conditionsTreated && (
-          <>
-            <Typography variant="h5" mt={3} mb={1}>
-              Conditions Treated
-            </Typography>
-
-            {/* Display Conditions Image */}
-            {service.conditionsImage && (
-              <Box
-                component="img"
-                src={service.conditionsImage}
-                alt="Conditions Treated"
-                sx={{
-                  width: "100%",
-                  maxWidth: "900px",
-                  borderRadius: "8px",
-                  display: "block",
-                  margin: "0 auto 16px",
-                }}
-              />
+        {/* Staggered Sections */}
+        {[
+          { title: "Conditions Treated", content: service.conditionsTreated, image: service.conditionsImage },
+          { title: "Who Can Benefit?", content: service.whoCanBenefit },
+          { title: "Benefits", content: service.benefits },
+          { title: "Techniques Used", content: service.techniques },
+        ].map((section, index) => (
+          <Grid container spacing={4} alignItems="center" key={index} sx={{ my: 5 }}>
+            {/* Conditionally Swap Image/Text Position */}
+            {index % 2 === 0 ? (
+              <>
+                {/* Image on Left */}
+                <Grid item xs={12} md={6}>
+                  {section.image && (
+                    <Box
+                      component="img"
+                      src={section.image}
+                      alt={section.title}
+                      sx={{
+                        width: "100%",
+                        maxHeight: "400px",
+                        borderRadius: "8px",
+                        boxShadow: "4px 4px 10px rgba(0,0,0,0.2)",
+                      }}
+                    />
+                  )}
+                </Grid>
+                {/* Text on Right */}
+                <Grid item xs={12} md={6}>
+                  <Typography variant="h5" fontWeight="bold" gutterBottom>
+                    {section.title}
+                  </Typography>
+                  <List>
+                    {section.content.map((item, i) => (
+                      <ListItem key={i}>
+                        <Typography variant="body1">{item}</Typography>
+                      </ListItem>
+                    ))}
+                  </List>
+                </Grid>
+              </>
+            ) : (
+              <>
+                {/* Text on Left */}
+                <Grid item xs={12} md={6}>
+                  <Typography variant="h5" fontWeight="bold" gutterBottom>
+                    {section.title}
+                  </Typography>
+                  <List>
+                    {section.content.map((item, i) => (
+                      <ListItem key={i}>
+                        <Typography variant="body1">{item}</Typography>
+                      </ListItem>
+                    ))}
+                  </List>
+                </Grid>
+                {/* Image on Right */}
+                <Grid item xs={12} md={6}>
+                  {section.image && (
+                    <Box
+                      component="img"
+                      src={section.image}
+                      alt={section.title}
+                      sx={{
+                        width: "100%",
+                        maxHeight: "400px",
+                        borderRadius: "8px",
+                        boxShadow: "4px 4px 10px rgba(0,0,0,0.2)",
+                      }}
+                    />
+                  )}
+                </Grid>
+              </>
             )}
+          </Grid>
+        ))}
 
-            <List>
-              {service.conditionsTreated.map((condition, index) => (
-                <ListItem key={index}>
-                  <ListItemText primary={condition} />
-                </ListItem>
-              ))}
-            </List>
-          </>
-        )}
-
-        {/* Who Can Benefit */}
-        <Typography variant="h5" mt={3} mb={1}>
-          Who Can Benefit?
-        </Typography>
-        <List>
-          {service.whoCanBenefit.map((group, index) => (
-            <ListItem key={index}>
-              <ListItemText primary={group} />
-            </ListItem>
-          ))}
-        </List>
-
-        {/* Benefits */}
-        <Typography variant="h5" mt={3} mb={1}>
-          Benefits
-        </Typography>
-        <List>
-          {service.benefits.map((benefit, index) => (
-            <ListItem key={index}>
-              <ListItemText primary={benefit} />
-            </ListItem>
-          ))}
-        </List>
-
-        {/* Techniques Used */}
-        <Typography variant="h5" mt={3} mb={1}>
-          Techniques Used
-        </Typography>
-        <List>
-          {service.techniques.map((technique, index) => (
-            <ListItem key={index}>
-              <ListItemText primary={technique} />
-            </ListItem>
-          ))}
-        </List>
-
-        {/* Testimonials */}
+        {/* Testimonials - Slider */}
         <Typography variant="h5" mt={3} mb={1}>
           Testimonials
         </Typography>
-        {service.testimonials.map((testimonial, index) => (
-          <Paper
-            key={index}
-            sx={{ mt: 2, p: 2, bgcolor: "grey.100", borderRadius: "8px" }}
-          >
-            <Typography variant="body1">"{testimonial.feedback}"</Typography>
-            <Typography variant="subtitle2" fontWeight="bold">
-              — {testimonial.name}
-            </Typography>
-          </Paper>
-        ))}
+        <Slider dots infinite speed={500} slidesToShow={1} slidesToScroll={1} autoplay autoplaySpeed={5000}>
+          {service.testimonials.map((testimonial, index) => (
+            <Box key={index} sx={{ p: 2, textAlign: "center" }}>
+              <Typography variant="body1">"{testimonial.feedback}"</Typography>
+              <Typography variant="subtitle2" fontWeight="bold" sx={{ mt: 1 }}>
+                — {testimonial.name}
+              </Typography>
+            </Box>
+          ))}
+        </Slider>
 
-        {/* FAQs */}
+        {/* FAQs - Accordion */}
         <Typography variant="h5" mt={3} mb={1}>
           Frequently Asked Questions
         </Typography>
         {service.faqs.map((faq, index) => (
-          <Box
-            key={index}
-            sx={{ mt: 2, p: 2, bgcolor: "grey.200", borderRadius: "8px" }}
-          >
-            <Typography variant="subtitle1" fontWeight="bold">
-              {faq.question}
-            </Typography>
-            <Typography variant="body2">{faq.answer}</Typography>
-          </Box>
+          <Accordion key={index} sx={{ my: 1 }}>
+            <AccordionSummary expandIcon={<ExpandMoreIcon />}>
+              <Typography variant="subtitle1" fontWeight="bold">
+                {faq.question}
+              </Typography>
+            </AccordionSummary>
+            <AccordionDetails>
+              <Typography variant="body2">{faq.answer}</Typography>
+            </AccordionDetails>
+          </Accordion>
         ))}
       </Container>
+
+      {/* Call to Action Section */}
+      <Box
+        sx={{
+          background: "linear-gradient(135deg, #ff9a9e, #fad0c4)",
+          textAlign: "center",
+          p: 4,
+          borderRadius: "12px",
+          boxShadow: "0px 4px 10px rgba(0,0,0,0.1)",
+          mt: 4,
+        }}
+      >
+        <Typography variant="h4" fontWeight="bold" color="white">
+          {service.cta}
+        </Typography>
+        <Button
+          variant="contained"
+          sx={{
+            mt: 2,
+            background: "white",
+            color: "#ff5e62",
+            "&:hover": { background: "#ff5e62", color: "white" },
+          }}
+        >
+          Book Now
+        </Button>
+      </Box>
+
       <CTA />
     </Box>
   );

@@ -105,7 +105,7 @@ const Services = () => {
   return (
     <Box
       id="services"
-      sx={{ backgroundColor: "#000", padding: "40px 0", color: "#fff" }}
+      sx={{ backgroundColor: "#F7E7CE", padding: "40px 0", color: "#000" }}
     >
       <Typography
         variant="h2"

@@ -71,7 +71,7 @@ const Vision = () => {
           >
             VISION & MISSION
           </Typography>
-          <Typography variant="h6" sx={{ color: "#6e6e73", mb: 5 }}>
+          <Typography variant="h5" sx={{ color: "#000", mb: 5 }}>
             Excellence through innovation, commitment, and personalized care.
           </Typography>
         </motion.div>

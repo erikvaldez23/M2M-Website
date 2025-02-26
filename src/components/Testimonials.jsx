@@ -11,10 +11,9 @@ import {
 import { motion } from "framer-motion";
 import { FaStar } from "react-icons/fa";
 
-import Topbar from "./Topbar";
 import Hero from "./Hero";
 import CTA from "./cta";
-import Footer from "./Footer";
+import Contact from "./Contact";
 
 const testimonialsData = [
   {
@@ -80,14 +79,14 @@ const Testimonials = () => {
   return (
     <>
       {/* ✅ Hero Section */}
-      <Hero
+      {/* <Hero
         title="What Our Clients Say"
         subtitle="Real stories from real people. See how M2M Physical Therapy has transformed lives."
         backgroundImage="/M2M-Website/testimonials-hero.jpg"
-      />
+      /> */}
 
       {/* ✅ Testimonials Section */}
-      <Box
+      <Box id="testimonials"
         sx={{
           background: "#F7E7CE",
           py: { xs: 8, md: 12 },
@@ -132,7 +131,7 @@ const Testimonials = () => {
                       background: "#F7E7CE",
                       borderRadius: "30px",
                       padding: "20px",
-                      border: "3px solid #000",
+                      border: "5px solid #000",
                       textAlign: "center",
                       transition: "transform 0.3s ease-in-out",
                       "&:hover": { transform: "scale(1.05)" },
@@ -204,9 +203,6 @@ const Testimonials = () => {
           </Grid>
         </Container>
       </Box>
-
-      {/* ✅ CTA Section */}
-      <CTA />
     </>
   );
 };

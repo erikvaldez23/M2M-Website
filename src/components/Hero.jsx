@@ -6,7 +6,7 @@ import { motion } from "framer-motion";
 import Subhero from "./Subhero"; // Import Subhero
 import video from "../../public/cinematic.mp4";
 import SubIcons from "./SubIcons";
-import wordLogo from "/M2M-Website/word-logo.png";
+import wordLogo from "../../public/word-logo.png";
 
 const Hero = () => {
   const [open, setOpen] = useState(false);

@@ -12,6 +12,7 @@ import {
 import Footer from "../components/Footer";
 import Video from "../../public/cinematic.mp4";
 import { ChevronLeft, ChevronRight } from "@mui/icons-material"; // Import icons for arrows
+import CTA from "./CTA";
 
 const images = [
   "/TintTek-Website/picture1.jpeg",
@@ -63,7 +64,7 @@ const Gallery = () => {
         display: "flex",
         flexDirection: "column",
         minHeight: "100vh",
-        backgroundColor: "#000",
+        backgroundColor: "#F7E7CE",
       }}
     >
       {/* Hero Video Section */}
@@ -73,27 +74,9 @@ const Gallery = () => {
           width: "100%",
           height: "30vh",
           overflow: "hidden",
+          backgroundColor: "#000",
         }}
       >
-        <video
-          autoPlay
-          loop
-          muted
-          playsInline
-          style={{
-            position: "absolute",
-            top: "50%",
-            left: "50%",
-            width: "100%",
-            height: "100%",
-            objectFit: "cover",
-            transform: "translate(-50%, -50%)",
-          }}
-        >
-          <source src={Video} type="video/mp4" />
-          Your browser does not support the video tag.
-        </video>
-
         <Box
           sx={{
             position: "absolute",
@@ -101,8 +84,6 @@ const Gallery = () => {
             left: 0,
             width: "100%",
             height: "50%",
-            background:
-              "linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, #000 100%)",
             pointerEvents: "none",
           }}
         />
@@ -208,8 +189,7 @@ const Gallery = () => {
         </Box>
       </Box>
 
-      {/* Footer Section */}
-      <Footer />
+      <CTA />
 
       {/* Image Modal */}
       <Dialog open={open} onClose={handleClose} maxWidth="lg" fullWidth>

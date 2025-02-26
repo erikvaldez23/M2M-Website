@@ -14,13 +14,13 @@ import ScrollToTop from './components/ScrollToTop';
 import PrivacyPolicy from './components/PrivacyPolicy';
 import FrameworkCarousel from './components/FrameworkCarousel';
 import MeetTheTeam from './components/Team';
-import CTA from './components/cta'
 import ErrorPage from "./components/ErrorPage";
 import ServicePage from './components/ServicePage';
 import About from './components/About';
 import Booking from './components/Booking';
 import Map from './components/Map';
 import Instagram from './components/Instagram';
+import CTA from './components/cta';
 
 const theme = createTheme({
     palette: {
@@ -68,19 +68,23 @@ function App() {
                 <Hero />
                 <CTA /> 
                 <MeetTheTeam />
-                <FrameworkCarousel />
+                <About />
+           
+            
                 <Services />
-                <Instagram />
-                {/* <Map /> */}
+                <FrameworkCarousel />
+                <Testimonials />
+                {/* <Instagram /> */}
+                <Map />
                 <Vision />
                 <Contact />
               </>
             } 
           />
           <Route path="/gallery" element={<Gallery />} />
-          <Route path="/testimonials" element={<Testimonials />} />
+          {/* <Route path="/testimonials" element={<Testimonials />} /> */}
           <Route path="/booking" element={<Booking />} />
-          <Route path="/about" element={<About />} />
+          {/* <Route path="/about" element={<About />} /> */}
           <Route path="/privacy-policy" element={<PrivacyPolicy />} />
           <Route path="/services/:serviceId" element={<ServicePage />} />
           <Route path="*" element={<ErrorPage />} />
