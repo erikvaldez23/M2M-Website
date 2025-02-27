@@ -133,7 +133,6 @@ const About = () => {
     <Vision />
     <CTA />
     <Contact />
-    <Map />
     </>
   );
 };

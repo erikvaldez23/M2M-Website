@@ -23,7 +23,7 @@ const images = [
   "/TintTek-Website/picture.jpeg",
   "/TintTek-Website/picture.jpeg",
   "/TintTek-Website/picture.jpeg",
-  "/TintTek-Website/picture9.jpeg",
+  "/TintTek-Website/picture.jpeg",
   "/TintTek-Website/picture.jpeg",
   "/TintTek-Website/picture.jpeg",
   "/TintTek-Website/picture.jpeg",
