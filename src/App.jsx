@@ -72,11 +72,10 @@ function App() {
                 <About />
                 <FrameworkCarousel />
                 <Vision />
-                
                 {/* <Testimonials /> */}
                 {/* <Instagram /> */}
-                <Map />
                 <Contact />
+                <Map />
               </>
             } 
           />

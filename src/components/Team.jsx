@@ -14,7 +14,7 @@ import { motion } from "framer-motion";
 
 const teamMembers = [
   {
-    name: "Dr. Natlie Valdez",
+    name: "Dr. Natalie Valdez",
     title: "Physical Therapist",
     description:
       "Dr. Natalie Valdez, a Dallas native, earned her Doctorate of Physical Therapy from Texas Women's University - Dallas. As a former athlete herself, she has always had the passion for working with the sports active population. She has experience working with athletes of all levels (professional, collegiate, high school, and youth sports) for return to sport. Natalie also has a background in strenfgth and conditioning and is a Certified and Conditioning Specialist. She has a passion for strength and wellness and is commited to helping individuals achieve their optimal health and performance. When she is not working you can catch her traveling with her husband walking thier dogs on the Katy trail, and doing pilates.",
