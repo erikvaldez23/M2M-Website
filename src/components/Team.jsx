@@ -15,7 +15,8 @@ import { motion } from "framer-motion";
 const teamMembers = [
   {
     name: "Dr. Natalie Valdez",
-    title: "Physical Therapist",
+    certs: "PT, DPT, SMTC, CSCS, Cert. DN",
+    title: "Founder Physical Therapist",
     description:
       "Dr. Natalie Valdez, a Dallas native, earned her Doctorate of Physical Therapy from Texas Women's University - Dallas. As a former athlete herself, she has always had the passion for working with the sports active population. She has experience working with athletes of all levels (professional, collegiate, high school, and youth sports) for return to sport. Natalie also has a background in strenfgth and conditioning and is a Certified and Conditioning Specialist. She has a passion for strength and wellness and is commited to helping individuals achieve their optimal health and performance. When she is not working you can catch her traveling with her husband walking thier dogs on the Katy trail, and doing pilates.",
     image: "/M2M-Website/natalie.jpg",
@@ -27,7 +28,8 @@ const teamMembers = [
   },
   {
     name: "Dr. Andrea Sigsbee",
-    title: "Physical Therapist",
+    certs: "PT, DPT, Cert. DN",
+    title: "Founder Physical Therapist",
     description:
       "Dr. Andrea Sigsbee, born and raised in Dallas, has a strong passion for combining her love for health and wellness with healing and serving others. She attained her Doctorate of Physical Therapy at Texas Women's University in Dallas and has experience working with professional, high school, and college athletes as well as the activbe population. She also has a love for personal training and nutrition as she has had to use her own personal goals and experiences. When not working, you can catch her lifting weights in the gym, doing pilates, or traveling to a new place on the map.",
     image: "/M2M-Website/drea.jpg",
@@ -125,6 +127,17 @@ const MeetTheTeam = () => {
                   >
                     {member.name}
                   </Typography>
+
+                  <Typography
+                    variant="subtitle1"
+                    sx={{
+                      fontStyle: "italic",
+                      color: "#fff",
+                    }}
+                  >
+                    {member.certs}
+                  </Typography>
+
                   <Typography
                     variant="subtitle1"
                     sx={{
@@ -136,7 +149,6 @@ const MeetTheTeam = () => {
                     {member.title}
                   </Typography>
 
-                  {/* Social Media Icons Moved Here */}
                   <Box
                     sx={{
                       display: "flex",
@@ -171,7 +183,7 @@ const MeetTheTeam = () => {
                     </IconButton>
                   </Box>
 
-                  <Button
+                  {/* <Button
                     variant="outlined"
                     onClick={() => setSelectedMember(member)}
                     sx={{
@@ -186,7 +198,7 @@ const MeetTheTeam = () => {
                     }}
                   >
                     Read More
-                  </Button>
+                  </Button> */}
                 </Box>
               </motion.div>
             </Grid>

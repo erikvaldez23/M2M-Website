@@ -9,17 +9,19 @@ import {
   CardContent,
   useMediaQuery,
 } from "@mui/material";
-import { FaMapMarkerAlt, FaPhone, FaEnvelope } from "react-icons/fa";
+import { FaMapMarkerAlt, FaPhone, FaEnvelope, FaCar } from "react-icons/fa";
+// import { FaCar } from "react-icons/fa6";
 
 const Contact = () => {
   const isMobile = useMediaQuery("(max-width: 768px)");
   // State for form fields
   const [formData, setFormData] = useState({
-    name: "",
+    firstName: "",
+    lastName: "",
     phone: "",
-    year: "",
-    make: "",
-    model: "",
+    email: "",
+    city: "",
+    services: "",
     message: "",
   });
 
@@ -117,6 +119,18 @@ const Contact = () => {
                 </Box>
 
                 <Box sx={{ display: "flex", alignItems: "center", mb: 2 }}>
+                  <FaCar
+                    size={24}
+                    style={{ marginRight: 10, color: "#000" }}
+                  />
+                  <Box>
+                    <Typography variant="h6">Location</Typography>
+                    <Typography variant="body2">Mobile Concierge Service</Typography>
+                    <Typography variant="body2">DFW</Typography>
+                  </Box>
+                </Box>
+
+                <Box sx={{ display: "flex", alignItems: "center", mb: 2 }}>
                   <FaPhone
                     size={24}
                     style={{ marginRight: 10, color: "#000" }}
@@ -174,9 +188,19 @@ const Contact = () => {
               onSubmit={handleSubmit}
             >
               <TextField
-                label="Your Name *"
+                label="First Name *"
                 name="name"
-                value={formData.name}
+                value={formData.lastName}
+                onChange={handleChange}
+                error={!!errors.name}
+                helperText={errors.name}
+                fullWidth
+              />
+
+              <TextField
+                label="Last Name *"
+                name="name"
+                value={formData.firstName}
                 onChange={handleChange}
                 error={!!errors.name}
                 helperText={errors.name}
@@ -194,25 +218,25 @@ const Contact = () => {
               />
 
               <TextField
-                label="Vehicle Year (Optional)"
-                name="year"
-                value={formData.year}
+                label="Email *"
+                name="email"
+                value={formData.email}
                 onChange={handleChange}
                 fullWidth
               />
 
               <TextField
-                label="Vehicle Make (Optional)"
+                label="City *"
                 name="make"
-                value={formData.make}
+                value={formData.city}
                 onChange={handleChange}
                 fullWidth
               />
 
               <TextField
-                label="Vehicle Model (Optional)"
-                name="model"
-                value={formData.model}
+                label="Services Needed (Optional)"
+                name="services"
+                value={formData.services}
                 onChange={handleChange}
                 fullWidth
               />
