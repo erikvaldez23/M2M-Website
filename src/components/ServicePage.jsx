@@ -97,7 +97,7 @@ const servicesDetails = {
       "Delayed Onset Muscle Soreness (DOMS)",
       "Joint stiffness",
     ],
-    conditionsImage: "/M2M-Website/conditions-treated.png",
+    conditionsImage: "/M2M-Website/both.png",
     whoCanBenefit: [
       "Professional and amateur athletes",
       "Weekend warriors",
@@ -271,7 +271,7 @@ const ServicePage = () => {
 
       <Container>
         <Typography
-          variant="subtitle2"
+          variant="h4"
           sx={{
             color: "#6666FF",
             textTransform: "uppercase",
@@ -290,7 +290,7 @@ const ServicePage = () => {
           <Grid item xs={12} md={4}>
             <Box sx={{ borderLeft: "2px solid black", pl: 2 }}>
               <Typography variant="h4" fontWeight="bold">
-                3,500+
+                1,000+
               </Typography>
               <Typography variant="subtitle1" fontWeight="bold">
                 Athletes Recovered
@@ -300,7 +300,7 @@ const ServicePage = () => {
                 athletes regain strength, mobility, and confidence after
                 injuries.
               </Typography>
-              <Box sx={{ mt: 1 }}>🏥 🏃‍♂️ 💪</Box>
+              {/* <Box sx={{ mt: 1 }}>🏥 🏃‍♂️ 💪</Box> */}
             </Box>
           </Grid>
 
@@ -317,9 +317,9 @@ const ServicePage = () => {
                 From post-injury rehab to peak performance training, we offer
                 personalized recovery solutions for all levels of athletes.
               </Typography>
-              <Typography variant="body2" fontWeight="bold" color="#6666FF">
+              {/* <Typography variant="body2" fontWeight="bold" color="#6666FF">
                 Explore Our Programs →
-              </Typography>
+              </Typography> */}
             </Box>
           </Grid>
 
@@ -337,9 +337,9 @@ const ServicePage = () => {
                 provides cutting-edge treatment and injury prevention
                 strategies.
               </Typography>
-              <Typography variant="body2" fontWeight="bold" color="#6666FF">
+              {/* <Typography variant="body2" fontWeight="bold" color="#6666FF">
                 See Success Stories →
-              </Typography>
+              </Typography> */}
             </Box>
           </Grid>
         </Grid>

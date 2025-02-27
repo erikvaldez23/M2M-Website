@@ -70,8 +70,9 @@ function App() {
                 <MeetTheTeam />
                 <Services />
                 <About />
-                <Vision />
                 <FrameworkCarousel />
+                <Vision />
+                
                 {/* <Testimonials /> */}
                 {/* <Instagram /> */}
                 <Map />

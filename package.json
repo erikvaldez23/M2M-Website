@@ -1,5 +1,6 @@
 {
-  "name": "tintek-website",
+  "name": "m2m-website",
+  "homepage": "https://erikvaldez23/M2M-Website",
   "private": true,
   "version": "0.0.0",
   "type": "module",
