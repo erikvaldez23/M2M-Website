@@ -115,30 +115,32 @@ const Topbar = ({ notFound }) => {
           <NavbarContainer>
             {/* Logo with subtle hover effect */}
             <Box
-              display="flex"
-              alignItems="center"
-              sx={{
-                cursor: "pointer",
-                transition: "transform 0.3s",
-                "&:hover": { transform: "scale(1.05)" },
-              }}
-              onClick={() => navigate("/")}
-            >
-              <img
-                src={logo}
-                alt="Logo"
-                style={{
-                  height: "55px", // Default size
-                  marginRight: "10px",
-                  borderRadius: "8px",
-                }}
-                // ✅ Responsive MUI Styles for Mobile
-                sx={{
-                  height: { xs: "40px", sm: "50px", md: "55px" }, // Smaller on mobile
-                  marginRight: { xs: "5px", md: "10px" }, // Less margin on smaller screens
-                }}
-              />
-            </Box>
+  display="flex"
+  alignItems="center"
+  sx={{
+    cursor: "pointer",
+    transition: "transform 0.3s",
+    "&:hover": { transform: "scale(1.05)" },
+    ml: 0, // No margin left
+    flexGrow: { xs: 1, md: 0 }, // Helps spacing on mobile
+  }}
+  onClick={() => navigate("/")}
+>
+  <img
+    src={logo}
+    alt="Logo"
+    style={{
+      borderRadius: "8px",
+    }}
+    sx={{
+      height: { xs: "30px", sm: "40px", md: "55px" }, // ✅ Much smaller on mobile
+      width: "auto", // Maintains aspect ratio
+      maxWidth: { xs: "50px", sm: "80px", md: "120px" }, // ✅ Prevents the logo from expanding
+      marginLeft: { xs: 0, md: "10px" }, // ✅ Ensures no spacing issue on mobile
+    }}
+  />
+</Box>
+
 
             {/* Desktop Navigation */}
             {!isMobile && (
@@ -189,16 +191,20 @@ const Topbar = ({ notFound }) => {
               </Box>
             )}
             {isMobile && (
-              <IconButton
-                edge="start"
-                color="inherit"
-                aria-label="menu"
-                onClick={() => setDrawerOpen(true)}
-                sx={{ fontSize: 30 }}
-              >
-                <FaBars />
-              </IconButton>
-            )}
+  <IconButton
+    edge="end" // ✅ Ensures it stays at the right
+    color="inherit"
+    aria-label="menu"
+    onClick={() => setDrawerOpen(true)}
+    sx={{
+      fontSize: 30,
+      ml: "auto", // ✅ Pushes it to the right
+    }}
+  >
+    <FaBars />
+  </IconButton>
+)}
+
           </NavbarContainer>
         </Toolbar>
       </AppBar>
