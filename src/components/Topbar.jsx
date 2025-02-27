@@ -51,7 +51,7 @@ const Topbar = ({ notFound }) => {
   }, []);
 
   const scrollToSection = (sectionId) => {
-    const subPages = ["testimonials", "gallery", "privacy-policy"]; // ✅ Add all subpages here
+    const subPages = ["testimonials", "about", "gallery", "privacy-policy"]; // ✅ Add all subpages here
   
     if (subPages.includes(sectionId)) {
       // ✅ Navigate to subpage instead of scrolling

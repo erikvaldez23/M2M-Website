@@ -69,9 +69,9 @@ function App() {
                 <CTA /> 
                 <MeetTheTeam />
                 <Services />
-                <About />
+                {/* <About /> */}
                 <FrameworkCarousel />
-                <Vision />
+                {/* <Vision /> */}
                 {/* <Testimonials /> */}
                 {/* <Instagram /> */}
                 <Contact />
@@ -84,7 +84,7 @@ function App() {
           <Route path="/booking" element={<Booking />} />
           <Route path="/about" element={<About />} />
           <Route path="/privacy-policy" element={<PrivacyPolicy />} />
-          <Route path="/services/:serviceId" element={<ServicePage />} />
+          {/* <Route path="/services/:serviceId" element={<ServicePage />} /> */}
           <Route path="*" element={<ErrorPage />} />
         </Routes>
         <Footer />

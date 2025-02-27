@@ -1,24 +1,49 @@
 import React from "react";
 import { Container, Grid, Typography, Box } from "@mui/material";
 import aboutImage from "../../public/vertical-both.jpg"; // Replace with your image path
+import { motion } from "framer-motion";
+import CTA from "./cta"
+import Contact from "./Contact"
+import Map from "./Map"
+import Vision from "./Vision"
+import FrameworkCarousel from "./FrameworkCarousel";
 
 const About = () => {
   return (
+    <>
+       <Box
+        sx={{
+          background: "#000", // Black background
+          color: "#F7E7CE", // White text
+          textAlign: "center",
+          py: { xs: 10, md: 14 }, // Adjust spacing for different screen sizes
+        }}
+      >
+        <Container maxWidth="lg">
+          <motion.div
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+          >
+            <Typography
+              variant="h2"
+              fontWeight="bold"
+              sx={{
+                letterSpacing: 1.5,
+                mb: 2,
+                fontFamily: '"SF Pro Display", "Inter", sans-serif',
+              }}
+            >
+              ABOUT OUR CLINIC
+            </Typography>
+          </motion.div>
+        </Container>
+      </Box>
     <Box
       sx={{ backgroundColor: "#F7E7CE", paddingTop: 5, paddingBottom: 8 }}
       id="about"
     >
       <Container maxWidth="lg">
-        {/* Header Title */}
-        <Typography
-          variant="h2"
-          fontWeight="bold"
-          textAlign="center"
-          gutterBottom
-          color="#000"
-        >
-          ABOUT OUR CLINIC
-        </Typography>
 
         {/* Two-Column Layout */}
         <Grid container spacing={4} alignItems="flex-start">
@@ -104,6 +129,12 @@ const About = () => {
         </Grid>
       </Container>
     </Box>
+    <FrameworkCarousel />
+    <Vision />
+    <CTA />
+    <Contact />
+    <Map />
+    </>
   );
 };
 

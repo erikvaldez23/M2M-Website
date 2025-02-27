@@ -13,8 +13,8 @@ const CTA = () => {
     <>
       <Box
         sx={{
-          py: 10,
-          px: 4,
+          py: { xs: 8, md: 10 },
+          px: { xs: 2, md: 4 },
           background: "#000",
           display: "flex",
           flexDirection: "column",
@@ -22,7 +22,7 @@ const CTA = () => {
           justifyContent: "center",
           textAlign: "center",
           color: "#F7E7CE",
-          height: "40vh",
+          minHeight: { xs: "60vh", md: "40vh" }, // Responsive height
         }}
       >
         <motion.div
@@ -38,7 +38,7 @@ const CTA = () => {
               textTransform: "uppercase",
               letterSpacing: 2,
               mb: 4,
-              fontSize: { xs: "2rem", md: "3.5rem" },
+              fontSize: { xs: "1.8rem", sm: "2.5rem", md: "3.5rem" }, // More responsive font sizes
             }}
           >
             Elevate Your Recovery, <br /> Maximize Your Performance
@@ -54,6 +54,7 @@ const CTA = () => {
               maxWidth: "900px",
               mx: "auto",
               lineHeight: 1.8,
+              fontSize: { xs: "1rem", sm: "1.2rem", md: "1.5rem" }, // Responsive paragraph text
             }}
           >
             Join our community of peak performers and take the first step toward
@@ -74,10 +75,10 @@ const CTA = () => {
                 color: "#F7E7CE",
                 fontFamily: "Poppins, sans-serif",
                 fontWeight: "bold",
-                px: 4,
-                py: 1.5,
+                px: { xs: 2, md: 4 }, // Responsive padding
+                py: { xs: 1, md: 1.5 }, // Responsive padding
                 border: "3px solid #F7E7CE",
-                fontSize: "1.1rem",
+                fontSize: { xs: "0.9rem", md: "1.1rem" }, // Responsive font size
                 borderRadius: "30px",
               }}
             >
@@ -91,7 +92,7 @@ const CTA = () => {
       <Dialog
         open={openModal}
         onClose={handleCloseModal}
-        maxWidth="md"
+        maxWidth="lg" // Larger modal width
         fullWidth
       >
         <DialogContent sx={{ position: "relative", padding: 0 }}>
@@ -113,8 +114,12 @@ const CTA = () => {
           <iframe
             src="https://form.jotform.com/242896129509165?fbclid=PAZXh0bgNhZW0CMTEAAaa3F0MXz517ogsk3gL8Kl5qWpuivE0c8r8xxWRzX4RRaP7LSEAf9eTAiWE_aem_HC4A5TADGf9YLd_oAlmlqg"
             width="100%"
-            height="800px"
-            style={{ border: "none" }}
+            height="100%"
+            style={{
+              border: "none",
+              minHeight: "600px",
+              height: "calc(100vh - 100px)", // Makes modal adaptive
+            }}
             title="Appointment Booking"
           ></iframe>
         </DialogContent>
