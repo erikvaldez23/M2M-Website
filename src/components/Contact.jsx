@@ -1,63 +1,254 @@
-import React, { useState, useEffect } from "react";
-import { Box, Typography } from "@mui/material";
-import { styled } from "@mui/system";
-
-const Container = styled(Box)({
-  display: "flex",
-  flexDirection: "column",
-  alignItems: "center",
-  justifyContent: "center",
-  minHeight: "60vh",
-  padding: "30px 20px",
-  backgroundColor: "#000",
-  color: "#F7E7CE",
-});
-
-const IframeContainer = styled("iframe")(({ height }) => ({
-  width: "100%",
-  maxWidth: "800px",
-  height: `${height}px`, // Dynamically set the height
-  border: "none",
-  borderRadius: "10px",
-  boxShadow: "0px 10px 30px rgba(255, 255, 255, 0.2)",
-  transition: "height 0.5s ease-in-out", // Smooth height change
-}));
+import React, { useState } from "react";
+import {
+  Grid,
+  Box,
+  TextField,
+  Button,
+  Typography,
+  Card,
+  CardContent,
+  useMediaQuery,
+} from "@mui/material";
+import { FaMapMarkerAlt, FaPhone, FaEnvelope } from "react-icons/fa";
 
 const Contact = () => {
-  const [iframeHeight, setIframeHeight] = useState(800); // Default height
+  const isMobile = useMediaQuery("(max-width: 768px)");
+  // State for form fields
+  const [formData, setFormData] = useState({
+    name: "",
+    phone: "",
+    year: "",
+    make: "",
+    model: "",
+    message: "",
+  });
 
-  useEffect(() => {
-    const handleResize = (event) => {
-      if (event.origin.includes("jotform.com")) {
-        const newHeight = event.data?.height || 800;
-        setIframeHeight(newHeight);
-      }
-    };
+  const [errors, setErrors] = useState({});
 
-    window.addEventListener("message", handleResize);
+  // Handle input change
+  const handleChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
+    });
+  };
 
-    return () => {
-      window.removeEventListener("message", handleResize);
-    };
-  }, []);
+  // Form validation function
+  const validateForm = () => {
+    let newErrors = {};
+    if (!formData.name.trim()) newErrors.name = "Name is required";
+    if (!formData.phone.trim()) newErrors.phone = "Phone number is required";
+    if (!formData.message.trim()) newErrors.message = "Message is required";
+
+    return newErrors;
+  };
+
+  // Handle form submission
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const newErrors = validateForm();
+
+    if (Object.keys(newErrors).length > 0) {
+      setErrors(newErrors);
+    } else {
+      alert("Form submitted successfully!");
+      setFormData({
+        name: "",
+        phone: "",
+        year: "",
+        make: "",
+        model: "",
+        message: "",
+      });
+      setErrors({});
+    }
+  };
 
   return (
-    <Container id="contact">
-      <Typography variant="h2" sx={{ fontWeight: "bold", mb: 2, textAlign: "center" }}>
-        CONTACT US
-      </Typography>
-      <Typography variant="h6" sx={{ mb: 4, textAlign: "center", opacity: 0.8 }}>
-        Fill out the form below and we'll get back to you as soon as possible.
-      </Typography>
+    <Box
+      sx={{
+        backgroundColor: "#F7E7CE",
+        width: "100%",
+      }}
+    >
+      <Box
+        sx={{ padding: "40px", maxWidth: "1200px", margin: "auto" }}
+        id="contact"
+      >
+        {/* Contact Header */}
+        <Typography
+          variant={isMobile ? "h4" : "h2"}
+          sx={{ mb: 2, fontWeight: "bold", color: "#000", textAlign: "center" }}
+        >
+          CONTACT US
+        </Typography>
+        <Typography
+          variant="body1"
+          sx={{ textAlign: "center", marginBottom: 4 }}
+        >
+          Let us know how we can help by sending us a message below. Looking
+          forward to chatting!
+        </Typography>
 
-      <IframeContainer
-        src="https://form.jotform.com/242896129509165"
-        height={iframeHeight}
-        title="Contact Form"
-      />
-    </Container>
+        <Grid container spacing={4} alignItems="stretch">
+          {/* Left Side - Contact Info */}
+          <Grid item xs={12} md={5} sx={{ display: "flex" }}>
+            <Card
+              sx={{ backgroundColor: "#f8f9fa", padding: "20px", flexGrow: 1 }}
+            >
+              <CardContent
+                sx={{
+                  height: "100%",
+                  display: "flex",
+                  flexDirection: "column",
+                  justifyContent: "space-between",
+                }}
+              >
+                <Box sx={{ display: "flex", alignItems: "center", mb: 2 }}>
+                  <FaMapMarkerAlt
+                    size={24}
+                    style={{ marginRight: 10, color: "#000" }}
+                  />
+                  <Box>
+                    <Typography variant="h6">Location</Typography>
+                    <Typography variant="body2">4514 Travis St UNIT 115</Typography>
+                    <Typography variant="body2">Dallas, TX</Typography>
+                  </Box>
+                </Box>
+
+                <Box sx={{ display: "flex", alignItems: "center", mb: 2 }}>
+                  <FaPhone
+                    size={24}
+                    style={{ marginRight: 10, color: "#000" }}
+                  />
+                  <Box>
+                    <Typography variant="h6">Call Us</Typography>
+                    <Typography variant="body2">+1 (972) 362-8468</Typography>
+                  </Box>
+                </Box>
+
+                <Box sx={{ display: "flex", alignItems: "center", mb: 2 }}>
+                  <FaEnvelope
+                    size={24}
+                    style={{ marginRight: 10, color: "#000" }}
+                  />
+                  <Box>
+                    <Typography variant="h6">Email Us</Typography>
+                    <Typography variant="body2">
+                      info@m2mdfw.com
+                    </Typography>
+                  </Box>
+                </Box>
+
+                {/* Google Map Embed */}
+                <Box sx={{ marginTop: 2 }}>
+                  <iframe
+                    title="Google Map"
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1338.2899300661918!2d-96.79229958215073!3d32.82257382388968!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x864e9efde6e3e3e5%3A0xf5e92ba54793f9ed!2sPark%20Cities%20Personal%20Training!5e0!3m2!1sen!2sus!4v1740681091437!5m2!1sen!2sus"
+                    width="100%"
+                    height="250"
+                    style={{ border: 0 }}
+                    allowFullScreen=""
+                    loading="lazy"
+                    referrerPolicy="no-referrer-when-downgrade"
+                  ></iframe>
+                </Box>
+              </CardContent>
+            </Card>
+          </Grid>
+
+          {/* Right Side - Contact Form */}
+          <Grid item xs={12} md={7} sx={{ display: "flex" }}>
+            <Box
+              component="form"
+              sx={{
+                display: "flex",
+                flexDirection: "column",
+                gap: 2,
+                backgroundColor: "#fff",
+                padding: "20px",
+                boxShadow: 3,
+                borderRadius: 2,
+                flexGrow: 1, // Ensures it stretches to match the height of the left side
+              }}
+              onSubmit={handleSubmit}
+            >
+              <TextField
+                label="Your Name *"
+                name="name"
+                value={formData.name}
+                onChange={handleChange}
+                error={!!errors.name}
+                helperText={errors.name}
+                fullWidth
+              />
+
+              <TextField
+                label="Phone Number *"
+                name="phone"
+                value={formData.phone}
+                onChange={handleChange}
+                error={!!errors.phone}
+                helperText={errors.phone}
+                fullWidth
+              />
+
+              <TextField
+                label="Vehicle Year (Optional)"
+                name="year"
+                value={formData.year}
+                onChange={handleChange}
+                fullWidth
+              />
+
+              <TextField
+                label="Vehicle Make (Optional)"
+                name="make"
+                value={formData.make}
+                onChange={handleChange}
+                fullWidth
+              />
+
+              <TextField
+                label="Vehicle Model (Optional)"
+                name="model"
+                value={formData.model}
+                onChange={handleChange}
+                fullWidth
+              />
+
+              <TextField
+                label="Message *"
+                name="message"
+                value={formData.message}
+                onChange={handleChange}
+                error={!!errors.message}
+                helperText={errors.message}
+                multiline
+                rows={4}
+                fullWidth
+              />
+
+              <Button
+                type="submit"
+                variant="contained"
+                sx={{
+                  backgroundColor: "#000",
+                  color: "white",
+                  "&:hover": {
+                    backgroundColor: "#F7E7CE",
+                    color: "#000",
+                  },
+                }}
+              >
+                Send Message
+              </Button>
+            </Box>
+          </Grid>
+        </Grid>
+      </Box>
+    </Box>
   );
 };
 
 export default Contact;
-

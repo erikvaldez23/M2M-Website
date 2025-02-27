@@ -13,8 +13,8 @@ const CTA = () => {
     <>
       <Box
         sx={{
-          py: { xs: 8, md: 10 },
-          px: { xs: 2, md: 4 },
+          py: { xs: 2, md: 3 },
+          px: { xs: 2, md: 3 },
           background: "#000",
           display: "flex",
           flexDirection: "column",

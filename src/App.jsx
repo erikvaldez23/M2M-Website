@@ -75,7 +75,7 @@ function App() {
                 {/* <Testimonials /> */}
                 {/* <Instagram /> */}
                 <Contact />
-                <Map />
+                {/* <Map /> */}
               </>
             } 
           />
