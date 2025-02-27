@@ -52,32 +52,32 @@ const Topbar = ({ notFound }) => {
 
   const scrollToSection = (sectionId) => {
     const subPages = ["testimonials", "about", "gallery", "privacy-policy"]; // ✅ Add all subpages here
-  
+
     if (subPages.includes(sectionId)) {
       // ✅ Navigate to subpage instead of scrolling
       navigate(`/${sectionId}`);
       setDrawerOpen(false);
       return;
     }
-  
+
     if (location.pathname !== "/") {
       // ✅ If not on the homepage, navigate to home first and scroll
       navigate("/", { state: { scrollTo: sectionId } });
       setDrawerOpen(false);
       return;
     }
-  
+
     // ✅ Scroll to section on the homepage
     const targetSection = document.getElementById(sectionId);
     if (!targetSection) return;
-  
+
     const offset = 80;
-    const targetPosition = targetSection.getBoundingClientRect().top + window.scrollY - offset;
-  
+    const targetPosition =
+      targetSection.getBoundingClientRect().top + window.scrollY - offset;
+
     window.scrollTo({ top: targetPosition, behavior: "smooth" });
     setDrawerOpen(false);
   };
-  
 
   // 🏆 Handlers for Modal
   const handleOpenQuote = () => {
@@ -128,10 +128,15 @@ const Topbar = ({ notFound }) => {
                 src={logo}
                 alt="Logo"
                 style={{
-                  height: "55px",
+                  height: "55px", // Default size
                   marginRight: "10px",
                   borderRadius: "8px",
-                }} // Slightly bigger logo with rounded edges
+                }}
+                // ✅ Responsive MUI Styles for Mobile
+                sx={{
+                  height: { xs: "40px", sm: "50px", md: "55px" }, // Smaller on mobile
+                  marginRight: { xs: "5px", md: "10px" }, // Less margin on smaller screens
+                }}
               />
             </Box>
 
@@ -217,7 +222,7 @@ const Topbar = ({ notFound }) => {
             textAlign: "center",
             padding: "5vh 0",
             paddingBottom: "calc(env(safe-area-inset-bottom, 20px) + 10px)", // Ensures content isn't hidden by Safari bar
-            overflow: "hidden"
+            overflow: "hidden",
           },
           "& .MuiBackdrop-root": {
             backgroundColor: "#000 !important",
@@ -236,39 +241,35 @@ const Topbar = ({ notFound }) => {
 
         {/* Navigation Links */}
         <List sx={{ textAlign: "center", p: 0 }}>
-          {[
-            "Services",
-             "About",
-             "Testimonials",
-             "Gallery",
-             "Contact",
-          ].map((item) => (
-            <ListItem
-              button
-              key={item}
-              onClick={() => scrollToSection(item.toLowerCase())}
-            >
-              <ListItemText
-                primary={item}
-                primaryTypographyProps={{
-                  sx: {
-                    fontWeight: "bold",
-                    color: "white",
-                    textTransform: "uppercase",
-                    textAlign: "center",
-                    fontSize: "35px", // Default font size
-                    "@media (max-width: 430px)": { fontSize: "35px" }, // iPhone 16 Pro Max (430px)
-                    "@media (max-width: 414px)": { fontSize: "30px" }, // iPhone 15/14 Plus (414px)
-                    "@media (max-width: 390px)": { fontSize: "19px" }, // iPhone 15/14 Pro (390px)
-                    "@media (max-width: 375px)": { fontSize: "18px" }, // iPhone 13 Mini (375px)
-                    "@media (max-width: 360px)": { fontSize: "16px" }, // Small Androids (Pixel 4a)
-                    "@media (max-width: 320px)": { fontSize: "14px" }, // iPhone SE (320px)
-                    "&:hover": { color: "#F7E7CE", cursor: "pointer" },
-                  },
-                }}
-              />
-            </ListItem>
-          ))}
+          {["Services", "About", "Testimonials", "Gallery", "Contact"].map(
+            (item) => (
+              <ListItem
+                button
+                key={item}
+                onClick={() => scrollToSection(item.toLowerCase())}
+              >
+                <ListItemText
+                  primary={item}
+                  primaryTypographyProps={{
+                    sx: {
+                      fontWeight: "bold",
+                      color: "white",
+                      textTransform: "uppercase",
+                      textAlign: "center",
+                      fontSize: "35px", // Default font size
+                      "@media (max-width: 430px)": { fontSize: "35px" }, // iPhone 16 Pro Max (430px)
+                      "@media (max-width: 414px)": { fontSize: "30px" }, // iPhone 15/14 Plus (414px)
+                      "@media (max-width: 390px)": { fontSize: "19px" }, // iPhone 15/14 Pro (390px)
+                      "@media (max-width: 375px)": { fontSize: "18px" }, // iPhone 13 Mini (375px)
+                      "@media (max-width: 360px)": { fontSize: "16px" }, // Small Androids (Pixel 4a)
+                      "@media (max-width: 320px)": { fontSize: "14px" }, // iPhone SE (320px)
+                      "&:hover": { color: "#F7E7CE", cursor: "pointer" },
+                    },
+                  }}
+                />
+              </ListItem>
+            )
+          )}
         </List>
 
         <Box
