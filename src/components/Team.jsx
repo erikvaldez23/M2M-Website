@@ -1,16 +1,8 @@
-import React, { useState } from "react";
-import {
-  Typography,
-  Button,
-  Grid,
-  Box,
-  Container,
-  Dialog,
-  DialogContent,
-  IconButton,
-} from "@mui/material";
-import { FaLinkedin, FaInstagram, FaTimes } from "react-icons/fa";
+import React from "react";
+import { Box, Grid, Typography, IconButton, Container } from "@mui/material";
+import { styled } from "@mui/system";
 import { motion } from "framer-motion";
+import { FaLinkedin, FaInstagram } from "react-icons/fa";
 
 const teamMembers = [
   {
@@ -41,25 +33,52 @@ const teamMembers = [
   },
 ];
 
-const containerVariants = {
-  hidden: { opacity: 0, scale: 0.95 },
-  visible: {
-    opacity: 1,
-    scale: 1,
-    transition: {
-      duration: 0.8,
-      ease: "easeOut",
-    },
+// Styled Components
+const CardContainer = styled(motion.div)({
+  width: "500px", // ✅ Fixed width to ensure consistent sizing
+  height: "700px", // ✅ Ensures uniform height
+  borderRadius: "20px",
+  overflow: "hidden",
+  position: "relative",
+  cursor: "pointer",
+  display: "flex",
+  flexDirection: "column",
+  justifyContent: "flex-end",
+});
+
+// **Background Styling with Cover Image**
+const CardBackground = styled(Box)({
+  backgroundSize: "cover",
+  backgroundPosition: "center",
+  width: "100%",
+  height: "100%",
+  display: "flex",
+  flexDirection: "column",
+  justifyContent: "flex-end",
+  position: "relative",
+  padding: "20px",
+  transition: "filter 0.5s ease",
+  "&:hover": {
+    filter: "brightness(80%)",
   },
+});
+
+// **Main Animation Variants**
+const contentVariants = {
+  initial: { opacity: 1, y: 0 },
+  hover: { opacity: 0, y: -10, transition: { duration: 0.3, ease: "easeOut" } },
+};
+
+const overlayVariants = {
+  initial: { opacity: 0, y: 20 },
+  hover: { opacity: 1, y: 0, transition: { duration: 0.4, ease: "easeOut", delay: 0.1 } },
 };
 
 const MeetTheTeam = () => {
-  const [selectedMember, setSelectedMember] = useState(null);
-
   return (
     <Box
       sx={{
-        width: "100vw",
+        width: "100%",
         backgroundColor: "#F7E7CE",
         display: "flex",
         flexDirection: "column",
@@ -69,264 +88,107 @@ const MeetTheTeam = () => {
         overflowX: "hidden",
       }}
     >
+      <Typography
+        variant="h2"
+        sx={{
+          fontWeight: "bold",
+          mb: 6,
+          textAlign: "center",
+          letterSpacing: "4px",
+          textTransform: "uppercase",
+          background: "#000",
+          WebkitBackgroundClip: "text",
+          WebkitTextFillColor: "transparent",
+        }}
+      >
+        Meet The Team
+      </Typography>
+
+      {/* ✅ Centering the Grid */}
       <Container maxWidth="lg">
-        <Typography
-          variant="h2"
-          sx={{
-            fontWeight: "bold",
-            mb: 6,
-            textAlign: "center",
-            letterSpacing: "4px",
-            textTransform: "uppercase",
-            background: "#000",
-            WebkitBackgroundClip: "text",
-            WebkitTextFillColor: "transparent",
-          }}
-        >
-          Meet The Team
-        </Typography>
-
-        <Grid container spacing={6} justifyContent="center">
+        <Grid container spacing={6} justifyContent="center" alignItems="center">
           {teamMembers.map((member, index) => (
-            <Grid item xs={12} sm={6} key={index}>
-              <motion.div
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true, amount: 0.3 }}
-                variants={containerVariants}
-                whileHover={{ scale: 1.03 }}
-                style={{
-                  borderRadius: "20px",
-                  overflow: "hidden",
-                  position: "relative",
-                }}
-              >
-                <Box
-                  sx={{
-                    backgroundImage: `url(${member.image})`,
-                    backgroundSize: "cover",
-                    backgroundPosition: "center",
-                    height: 600,
-                    position: "relative",
-                    display: "flex",
-                    flexDirection: "column",
-                    justifyContent: "flex-end",
-                    p: 3,
-                    transition: "all 0.5s ease-in-out",
-                    ":hover": {
-                      filter: "brightness(80%)",
-                    },
-                  }}
-                >
-                  <Typography
-                    variant="h4"
-                    sx={{
-                      fontWeight: "bold",
-                      textShadow: "2px 2px 5px rgba(0,0,0,0.8)",
-                    }}
-                  >
-                    {member.name}
-                  </Typography>
-
-                  <Typography
-                    variant="subtitle1"
-                    sx={{
-                      fontStyle: "italic",
-                      color: "#fff",
-                    }}
-                  >
-                    {member.certs}
-                  </Typography>
-
-                  <Typography
-                    variant="subtitle1"
-                    sx={{
-                      fontStyle: "italic",
-                      mb: 2,
-                      color: "#ccc",
-                    }}
-                  >
-                    {member.title}
-                  </Typography>
-
-                  <Box
-                    sx={{
-                      display: "flex",
-                      gap: 1,
-                    }}
-                  >
-                    <IconButton
-                      sx={{
-                        backgroundColor: "#fff",
-                        p: 1,
-                        borderRadius: "50%",
-                        boxShadow: "0 4px 10px rgba(0,0,0,0.5)",
-                      }}
-                      onClick={() =>
-                        window.open(member.socials.linkedin, "_blank")
-                      }
-                    >
-                      <FaLinkedin color="#000" size={20} />
-                    </IconButton>
-                    <IconButton
-                      sx={{
-                        backgroundColor: "#fff",
-                        p: 1,
-                        borderRadius: "50%",
-                        boxShadow: "0 4px 10px rgba(0,0,0,0.5)",
-                      }}
-                      onClick={() =>
-                        window.open(member.socials.instagram, "_blank")
-                      }
-                    >
-                      <FaInstagram color="#000" size={20} />
-                    </IconButton>
-                  </Box>
-
-                  {/* <Button
-                    variant="outlined"
-                    onClick={() => setSelectedMember(member)}
-                    sx={{
-                      color: "#fff",
-                      borderColor: "#fff",
-                      backdropFilter: "blur(5px)",
-                      "&:hover": {
-                        backgroundColor: "#fff",
-                        color: "#000",
-                      },
-                      mt: 2, // Adds spacing below social icons
-                    }}
-                  >
-                    Read More
-                  </Button> */}
-                </Box>
-              </motion.div>
-            </Grid>
-          ))}
-        </Grid>
-
-        {/* Modal for Detailed Info */}
-        <Dialog
-          open={!!selectedMember}
-          onClose={() => setSelectedMember(null)}
-          maxWidth="md"
-          fullWidth
-        >
-          <DialogContent
-            sx={{
-              position: "relative",
-              padding: 4,
-              background: "linear-gradient(135deg, #1a1a1a, #000)",
-              color: "#fff",
-            }}
-          >
-            {/* Close Button */}
-            <IconButton
-              onClick={() => setSelectedMember(null)}
-              sx={{
-                position: "absolute",
-                top: 10,
-                right: 10,
-                backgroundColor: "#fff",
-                "&:hover": { backgroundColor: "lightgray" },
-              }}
-            >
-              <FaTimes color="#000" />
-            </IconButton>
-
-            {selectedMember && (
-              <Grid container spacing={4} alignItems="center">
-                {/* Employee Image (Left Side) */}
-                <Grid item xs={12} sm={5}>
-                  <Box
-                    sx={{
+            <Grid item key={index} display="flex" justifyContent="center">
+              <CardContainer initial="initial" whileHover="hover">
+                <CardBackground sx={{ backgroundImage: `url(${member.image})` }}>
+                  
+                  {/* Default Content (Slight Fade When Hovered) */}
+                  <motion.div
+                    variants={contentVariants}
+                    style={{
+                      position: "absolute",
                       width: "100%",
-                      height: "auto",
-                      overflow: "hidden",
-                      borderRadius: "12px",
-                      boxShadow: "0 8px 20px rgba(0,0,0,0.5)",
+                      bottom: "20px",
+                      left: "20px",
                     }}
                   >
-                    <img
-                      src={selectedMember.modalImage}
-                      alt={selectedMember.name}
-                      style={{
-                        width: "100%",
-                        height: "auto",
-                        borderRadius: "12px",
-                      }}
-                    />
-                  </Box>
-                </Grid>
+                    <Typography variant="h4" sx={{ fontWeight: "bold", textShadow: "2px 2px 5px rgba(0,0,0,0.8)" }}>
+                      {member.name}
+                    </Typography>
+                    <Typography variant="subtitle1" sx={{ fontStyle: "italic", color: "#fff" }}>
+                      {member.certs}
+                    </Typography>
+                    <Typography variant="subtitle1" sx={{ fontStyle: "italic", color: "#ccc" }}>
+                      {member.title}
+                    </Typography>
+                  </motion.div>
 
-                {/* Employee Details (Right Side) */}
-                <Grid item xs={12} sm={7}>
-                  <Box>
+                  {/* New Content (Appears from Bottom When Hovered) */}
+                  <motion.div
+                    variants={overlayVariants}
+                    style={{
+                      position: "absolute",
+                      width: "100%",
+                      bottom: "10px",
+                      left: "20px",
+                    }}
+                  >
                     <Typography
-                      variant="h4"
+                      variant="body1"
                       sx={{
-                        textShadow: "2px 2px 8px rgba(0,0,0,0.7)",
                         fontWeight: "bold",
+                        color: "#fff",
+                        textShadow: "1px 1px 4px rgba(0,0,0,0.6)",
                       }}
-                      gutterBottom
                     >
-                      {selectedMember.name}
-                    </Typography>
-                    <Typography
-                      variant="subtitle1"
-                      sx={{ color: "#bbb", fontStyle: "italic", mb: 2 }}
-                    >
-                      {selectedMember.title}
-                    </Typography>
-                    <Typography variant="body1" sx={{ mb: 3 }}>
-                      {selectedMember.description}
+                      {member.description}
                     </Typography>
 
-                    {/* Social Media Links */}
-                    <Box sx={{ display: "flex", gap: 2, mt: 2 }}>
-                      {selectedMember.socials.linkedin && (
+                    {/* Social Media Icons */}
+                    <Box sx={{ display: "flex", gap: 1, mt: 2 }}>
+                      {member.socials.linkedin && (
                         <IconButton
                           sx={{
                             backgroundColor: "#fff",
-                            p: 1.2,
+                            p: 1,
                             borderRadius: "50%",
                             boxShadow: "0 4px 10px rgba(0,0,0,0.5)",
                           }}
-                          onClick={() =>
-                            window.open(
-                              selectedMember.socials.linkedin,
-                              "_blank"
-                            )
-                          }
+                          onClick={() => window.open(member.socials.linkedin, "_blank")}
                         >
-                          <FaLinkedin color="#000" size={24} />
+                          <FaLinkedin color="#000" size={20} />
                         </IconButton>
                       )}
-                      {selectedMember.socials.instagram && (
+                      {member.socials.instagram && (
                         <IconButton
                           sx={{
                             backgroundColor: "#fff",
-                            p: 1.2,
+                            p: 1,
                             borderRadius: "50%",
                             boxShadow: "0 4px 10px rgba(0,0,0,0.5)",
                           }}
-                          onClick={() =>
-                            window.open(
-                              selectedMember.socials.instagram,
-                              "_blank"
-                            )
-                          }
+                          onClick={() => window.open(member.socials.instagram, "_blank")}
                         >
-                          <FaInstagram color="#000" size={24} />
+                          <FaInstagram color="#000" size={20} />
                         </IconButton>
                       )}
                     </Box>
-                  </Box>
-                </Grid>
-              </Grid>
-            )}
-          </DialogContent>
-        </Dialog>
+                  </motion.div>
+                </CardBackground>
+              </CardContainer>
+            </Grid>
+          ))}
+        </Grid>
       </Container>
     </Box>
   );
