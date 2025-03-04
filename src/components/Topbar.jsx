@@ -12,6 +12,8 @@ import {
   Button,
   Dialog,
   DialogContent,
+  Menu,
+  MenuItem,
 } from "@mui/material";
 import {
   FaBars,
@@ -39,7 +41,9 @@ const Topbar = ({ notFound }) => {
   const [drawerOpen, setDrawerOpen] = useState(false);
   const [scrolling, setScrolling] = useState(false);
   const [quoteOpen, setQuoteOpen] = useState(false);
-  const isMobile = useMediaQuery("(max-width:900px)");
+  const [anchorEl, setAnchorEl] = useState(null);
+  const isSmallDesktop = useMediaQuery("(max-width: 1500px)");
+  const isMobile = useMediaQuery("(max-width: 600px)");
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -51,32 +55,46 @@ const Topbar = ({ notFound }) => {
   }, []);
 
   const scrollToSection = (sectionId) => {
-    const subPages = ["testimonials", "about", "gallery", "privacy-policy"]; // ✅ Add all subpages here
+    const subPages = ["about", "gallery"]; // Add more subpages here if needed
 
     if (subPages.includes(sectionId)) {
-      // ✅ Navigate to subpage instead of scrolling
+      // Navigate to the subpage instead of scrolling
       navigate(`/${sectionId}`);
       setDrawerOpen(false);
       return;
     }
 
     if (location.pathname !== "/") {
-      // ✅ If not on the homepage, navigate to home first and scroll
+      // If not on the homepage, navigate to home and scroll to the section
       navigate("/", { state: { scrollTo: sectionId } });
       setDrawerOpen(false);
       return;
     }
 
-    // ✅ Scroll to section on the homepage
+    // Scroll to section on the homepage
     const targetSection = document.getElementById(sectionId);
     if (!targetSection) return;
 
-    const offset = 80;
+    const offset = 80; // Adjust offset based on your Topbar height
     const targetPosition =
       targetSection.getBoundingClientRect().top + window.scrollY - offset;
 
     window.scrollTo({ top: targetPosition, behavior: "smooth" });
     setDrawerOpen(false);
+  };
+
+  useEffect(() => {
+    const handleScroll = () => setScrolling(window.scrollY > 50);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  const handleServicesClick = (event) => {
+    setAnchorEl(event.currentTarget); // Open dropdown
+  };
+
+  const handleClose = () => {
+    setAnchorEl(null); // Close dropdown
   };
 
   // 🏆 Handlers for Modal
@@ -94,26 +112,24 @@ const Topbar = ({ notFound }) => {
       <AppBar
         position="fixed"
         sx={{
-          background: scrolling
-            ? "rgba(0, 0, 0, 0.95)" // ✅ Black background when scrolling
-            : "transparent", // ✅ Semi-transparent when at the top
-          color: "#fff", // ✅ White text always
-          boxShadow: scrolling
-            ? "0 4px 10px rgba(0, 0, 0, 0.3)" // ✅ Slight shadow on scroll
-            : "none",
-          transition: "all 0.4s ease-in-out",
+          backgroundColor: notFound
+            ? "#000"
+            : scrolling
+            ? "#000"
+            : "transparent",
+          backdropFilter: scrolling && !notFound ? "blur(10px)" : "none",
+          color: notFound || scrolling ? "#000" : "#EEEEFF",
+          boxShadow:
+            scrolling && !notFound ? "0 2px 10px rgba(0, 0, 0, 0.1)" : "none",
+          transition: "all 0.3s ease-in-out",
           width: "100vw",
           left: 0,
           top: 0,
           zIndex: 1100,
-          borderBottom: scrolling
-            ? "1px solid rgba(255, 255, 255, 0.1)"
-            : "none",
         }}
       >
         <Toolbar sx={{ justifyContent: "center", padding: "0 20px" }}>
           <NavbarContainer>
-            {/* Logo with subtle hover effect */}
             <Box
               display="flex"
               alignItems="center"
@@ -121,41 +137,51 @@ const Topbar = ({ notFound }) => {
                 cursor: "pointer",
                 transition: "transform 0.3s",
                 "&:hover": { transform: "scale(1.05)" },
-                ml: 0, // No margin left
-                flexGrow: { xs: 1, md: 0 }, // Helps spacing on mobile
               }}
-              onClick={() => navigate("/")}
+              onClick={() => {
+                if (location.pathname === "/") {
+                  window.scrollTo({ top: 0, behavior: "smooth" }); // ✅ Scroll to top
+                } else {
+                  navigate("/"); // ✅ Navigate to homepage if on another page
+                }
+              }}
             >
               <Box
-                component="img"
-                src={logo}
-                alt="Logo"
+                display="flex"
+                alignItems="center"
                 sx={{
-                  display: { xs: "none", sm: "block" }, // ✅ Hide on mobile, show on tablets & desktop
-                  height: { sm: "55px", md: "55px" }, // ✅ Size applied only when visible
-                  width: "auto",
-                  maxWidth: { sm: "400px", md: "400px" },
-                  marginLeft: { sm: 0, md: "10px" },
+                  cursor: "pointer",
+                  transition: "transform 0.3s",
+                  "&:hover": { transform: "scale(1.05)" },
+                  ml: 0, // No margin left
+                  flexGrow: { xs: 1, md: 0 }, // Helps spacing on mobile
                 }}
-              />
+                onClick={() => navigate("/")}
+              >
+                <Box
+                  component="img"
+                  src={logo}
+                  alt="Logo"
+                  sx={{
+                    display: { xs: "none", sm: "block" }, // ✅ Hide on mobile, show on tablets & desktop
+                    height: { sm: "55px", md: "55px" }, // ✅ Size applied only when visible
+                    width: "auto",
+                    maxWidth: { sm: "300px", md: "350px" },
+                    marginLeft: { sm: 0, md: "10px" },
+                  }}
+                />
+              </Box>
             </Box>
 
             {/* Desktop Navigation */}
             {!isMobile && (
               <Box display="flex" gap={4}>
-                {[
-                  "Services",
-                  "About",
-                  "Testimonials",
-                  "Gallery",
-                  "Contact",
-                ].map((item) => (
+                {["Services", "About", "Reviews", "Gallery", "Contact"].map((item) => (
                   <Button
                     key={item}
                     color="inherit"
                     onClick={() => scrollToSection(item.toLowerCase())}
                     sx={{
-                      fontFamily: "Montserrat, sans-serif", // Sleek modern font
                       fontSize: "25px",
                       fontWeight: 600,
                       letterSpacing: "1.5px",
@@ -178,7 +204,7 @@ const Topbar = ({ notFound }) => {
                       },
                       "&:hover": {
                         color: "#F7E7CE", // Bright hover color
-                        textShadow: "0 0 8px #F7E7CE", // Glowing text
+                        textShadow: "0 0 8px rgba(0, 198, 255, 0.8)", // Glowing text
                         "&:after": { width: "100%" }, // Underline expands
                       },
                     }}
@@ -190,14 +216,11 @@ const Topbar = ({ notFound }) => {
             )}
             {isMobile && (
               <IconButton
-                edge="end" // ✅ Ensures it stays at the right
+                edge="start"
                 color="inherit"
                 aria-label="menu"
                 onClick={() => setDrawerOpen(true)}
-                sx={{
-                  fontSize: 30,
-                  ml: "auto", // ✅ Pushes it to the right
-                }}
+                sx={{ fontSize: 30 }}
               >
                 <FaBars />
               </IconButton>
@@ -217,34 +240,52 @@ const Topbar = ({ notFound }) => {
             backgroundColor: "black",
             color: "white",
             width: "100%",
-            minHeight: "100dvh", // Ensure full screen, even with Safari URL bar
+            height: "100dvh",
             display: "flex",
             flexDirection: "column",
-            justifyContent: "space-around",
+            justifyContent: "space-between",
             alignItems: "center",
             textAlign: "center",
             padding: "5vh 0",
-            paddingBottom: "calc(env(safe-area-inset-bottom, 20px) + 10px)", // Ensures content isn't hidden by Safari bar
-            overflow: "hidden",
           },
           "& .MuiBackdrop-root": {
             backgroundColor: "#000 !important",
           },
         }}
       >
-        {/* Close Button */}
-        <Box sx={{ position: "absolute", top: 20, right: 20 }}>
+        {/* 🔹 Close Button (Fixed at the Top-Right) */}
+        <Box
+          sx={{
+            position: "absolute",
+            top: "20px",
+            right: "20px",
+            zIndex: 1000,
+          }}
+        >
           <IconButton
             onClick={() => setDrawerOpen(false)}
-            sx={{ color: "white", fontSize: 30 }}
+            sx={{
+              color: "white",
+              fontSize: "30px",
+              "&:hover": { color: "#F7E7CE" },
+            }}
           >
             <FaTimes />
           </IconButton>
         </Box>
 
-        {/* Navigation Links */}
-        <List sx={{ textAlign: "center", p: 0 }}>
-          {["Services", "About", "Testimonials", "Gallery", "Contact"].map(
+        {/* 🔹 Navigation Links (Now fully expanding) */}
+        <List
+          sx={{
+            textAlign: "center",
+            flexGrow: 1, // ✅ Forces links to take up space and push buttons down
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "center", // ✅ Centers links perfectly
+            gap: "15px", // ✅ Adds consistent spacing between links
+          }}
+        >
+          {["Services", "About", "Reviews", "Gallery", "Contact"].map(
             (item) => (
               <ListItem
                 button
@@ -259,13 +300,8 @@ const Topbar = ({ notFound }) => {
                       color: "white",
                       textTransform: "uppercase",
                       textAlign: "center",
-                      fontSize: "35px", // Default font size
-                      "@media (max-width: 430px)": { fontSize: "35px" }, // iPhone 16 Pro Max (430px)
-                      "@media (max-width: 414px)": { fontSize: "30px" }, // iPhone 15/14 Plus (414px)
-                      "@media (max-width: 390px)": { fontSize: "19px" }, // iPhone 15/14 Pro (390px)
-                      "@media (max-width: 375px)": { fontSize: "18px" }, // iPhone 13 Mini (375px)
-                      "@media (max-width: 360px)": { fontSize: "16px" }, // Small Androids (Pixel 4a)
-                      "@media (max-width: 320px)": { fontSize: "14px" }, // iPhone SE (320px)
+                      fontSize: "clamp(30px, 4vw, 50px)",
+                      lineHeight: "1.2",
                       "&:hover": { color: "#F7E7CE", cursor: "pointer" },
                     },
                   }}
@@ -275,12 +311,15 @@ const Topbar = ({ notFound }) => {
           )}
         </List>
 
+        {/* Buttons & Social Icons in a Tightly Packed Layout */}
         <Box
           sx={{
             display: "flex",
             flexDirection: "column",
             alignItems: "center",
+            gap: "10px", // ✅ Prevents space between buttons and nav links
             width: "100%",
+            paddingBottom: "calc(env(safe-area-inset-bottom, 10px) + 10px)", // ✅ Ensures spacing for iPhones
           }}
         >
           {/* Get a Quote Button */}
@@ -293,8 +332,8 @@ const Topbar = ({ notFound }) => {
               fontSize: "22px",
               fontWeight: "bold",
               borderRadius: "40px",
-              minWidth: "100%", // Ensures same width
-              height: "60px", // Ensures same height
+              minWidth: "90%",
+              height: "60px",
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
@@ -313,14 +352,13 @@ const Topbar = ({ notFound }) => {
           <Button
             variant="contained"
             sx={{
-              mt: 2,
               backgroundColor: "#222",
               color: "white",
               fontSize: "22px",
               fontWeight: "bold",
               borderRadius: "40px",
-              minWidth: "100%", // Same width as the first button
-              height: "60px", // Same height as the first button
+              minWidth: "90%",
+              height: "60px",
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
@@ -334,31 +372,31 @@ const Topbar = ({ notFound }) => {
           >
             ASK A QUESTION
           </Button>
-        </Box>
 
-        {/* Social Media Icons */}
-        <Box
-          sx={{
-            display: "flex",
-            gap: 4,
-            mt: "auto", // Pushes icons to the bottom
-            mb: "calc(env(safe-area-inset-bottom, 20px) + 10px)", // Prevents overlap with bottom bar
-          }}
-        >
-          {[FaFacebook, FaInstagram].map((Icon, index) => (
-            <IconButton
-              key={index}
-              sx={{
-                color: "white",
-                fontSize: "36px",
-                "&:hover": {
-                  color: "#F7E7CE",
-                },
-              }}
-            >
-              <Icon />
-            </IconButton>
-          ))}
+          {/* Social Media Icons */}
+          <Box
+            sx={{
+              display: "flex",
+              gap: 4,
+              mt: "5px", // ✅ Ensures no large gap between buttons & icons
+              mb: "calc(env(safe-area-inset-bottom, 10px) + 5px)", // ✅ Accounts for iPhone bottom navbar
+            }}
+          >
+            {[FaFacebook, FaInstagram].map((Icon, index) => (
+              <IconButton
+                key={index}
+                sx={{
+                  color: "white",
+                  fontSize: "36px",
+                  "&:hover": {
+                    color: "#F7E7CE",
+                  },
+                }}
+              >
+                <Icon />
+              </IconButton>
+            ))}
+          </Box>
         </Box>
       </Drawer>
 
@@ -386,7 +424,7 @@ const Topbar = ({ notFound }) => {
 
           {/* Embedded Quote Form */}
           <iframe
-            src="https://app.tintwiz.com/web/cs/gwnvrcfde7mplcffmgqi7sfqo8pcyt1t"
+            src="https://form.jotform.com/242896129509165?fbclid=PAZXh0bgNhZW0CMTEAAaa3dD9pfcoP_2lWZzbv7b0O3LKKznbgtepPD1BR5ufSDO6f1EmNKcHOCnw_aem_EngYIB97_Z77Xr_q5_A-8Q"
             width="100%"
             height="800px"
             style={{ border: "none" }}
