@@ -1,5 +1,5 @@
 import React, { useState, useRef } from "react";
-import { Box, Card, CardMedia, Typography, Button, Modal, Grid, IconButton } from "@mui/material";
+import { Box, Card, CardMedia, Typography, Button, Modal, Grid, IconButton, useTheme, useMediaQuery } from "@mui/material";
 import { styled } from "@mui/system";
 import { motion, useInView } from "framer-motion";
 import CloseIcon from "@mui/icons-material/Close";
@@ -11,11 +11,18 @@ const servicesData = [
     title: "PHYSICAL THERAPY",
     description: "Rehabilitate injuries and improve mobility with our expert care.",
     image: "/M2M-Website/ortho-inj.jpg",
+    additionalImages: ["/M2M-Website/pt-session1.jpg", "/M2M-Website/pt-session2.jpg"],
+    price: "$75 per session",
+    targetAudience: "Athletes, seniors, post-surgery patients",
     details: [
       { label: "Duration", value: "45-60 mins per session" },
       { label: "Techniques", value: "Manual Therapy, Strength Training, Electrotherapy" },
       { label: "Benefits", value: "Pain relief, improved mobility, injury recovery" },
       { label: "Best For", value: "Post-surgery rehab, chronic pain, joint mobility" },
+    ],
+    testimonials: [
+      { name: "Sarah D.", review: "After just three sessions, my knee pain was completely gone! Highly recommend their team." },
+      { name: "James P.", review: "The best therapists in town! They really care about their patients." },
     ],
   },
   {
@@ -23,11 +30,18 @@ const servicesData = [
     title: "ATHLETIC RECOVERY",
     description: "Enhance your performance with our specialized recovery programs.",
     image: "/M2M-Website/post-op.jpg",
+    additionalImages: ["/M2M-Website/ath-recovery1.jpg", "/M2M-Website/ath-recovery2.jpg"],
+    price: "$60 per session",
+    targetAudience: "Athletes, gym-goers, post-competition recovery",
     details: [
       { label: "Duration", value: "30-45 mins per session" },
       { label: "Techniques", value: "Deep Tissue Massage, Cryotherapy, Stretching" },
       { label: "Benefits", value: "Faster recovery, reduced soreness, injury prevention" },
       { label: "Best For", value: "Athletes, gym-goers, post-competition recovery" },
+    ],
+    testimonials: [
+      { name: "Mike R.", review: "I felt rejuvenated after just one session! Perfect for post-game recovery." },
+      { name: "Chris W.", review: "This has been a game-changer for my muscle recovery routine!" },
     ],
   },
   {
@@ -35,14 +49,22 @@ const servicesData = [
     title: "INJURY PREVENTION",
     description: "Stay ahead of injuries with our tailored prevention strategies.",
     image: "/M2M-Website/recovery.jpg",
+    additionalImages: ["/M2M-Website/injury-prev1.jpg", "/M2M-Website/injury-prev2.jpg"],
+    price: "$70 per session",
+    targetAudience: "Runners, gym-goers, people with repetitive strain",
     details: [
       { label: "Duration", value: "30-60 mins per session" },
       { label: "Techniques", value: "Biomechanical Analysis, Strengthening Exercises" },
       { label: "Benefits", value: "Avoid injuries, enhance stability, improve movement" },
-      { label: "Best For", value: "Runners, gym-goers, people with repetitive strain" },
+      { label: "Best For", value: "Athletes, active individuals, injury prevention" },
+    ],
+    testimonials: [
+      { name: "Kelly T.", review: "I learned exercises that have prevented my old knee issues from coming back." },
+      { name: "Jordan B.", review: "A must for runners! My stability and endurance have improved drastically." },
     ],
   },
 ];
+
 
 // Styled Components
 const GridContainer = styled(motion.div)({
@@ -142,6 +164,8 @@ const CloseButton = styled(IconButton)({
 const Services = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down("sm")); // Detect mobile screens
 
   // Modal State
   const [selectedService, setSelectedService] = useState(null);
@@ -153,7 +177,7 @@ const Services = () => {
   return (
     <Box id="services" ref={ref} sx={{ backgroundColor: "#000", padding: "40px 0", color: "#F7E7CE" }}>
       <motion.div initial="hidden" animate={isInView ? "visible" : "hidden"}>
-        <Typography variant="h2" sx={{ textAlign: "center", fontWeight: "bold", mb: 2 }}>
+        <Typography variant={isMobile ? "h4" : "h2"} sx={{ textAlign: "center", fontWeight: "bold", mb: 2 }}>
           SERVICES
         </Typography>
         <Typography variant="h6" sx={{ textAlign: "center", opacity: 0.8 }}>
@@ -177,32 +201,62 @@ const Services = () => {
       </GridContainer>
 
       {/* Service Details Modal */}
-      <Modal open={Boolean(selectedService)} onClose={() => setSelectedService(null)}>
-        <ModalContainer>
-          <CloseButton onClick={() => setSelectedService(null)}>
-            <CloseIcon />
-          </CloseButton>
-          {selectedService && (
-            <>
-              <Typography variant="h4" sx={{ fontWeight: "bold", textAlign: "center", mb: 2 }}>
-                {selectedService.title}
-              </Typography>
-              {/* 🔥 Ensures Image Takes Full Modal Space */}
-              <ModalImageContainer>
-                <ModalImage component="img" image={selectedService.image} alt={selectedService.title} />
-              </ModalImageContainer>
-              <Grid container spacing={2}>
-                {selectedService.details.map((detail, index) => (
-                  <Grid item xs={6} key={index}>
-                    <Typography variant="body1" sx={{ fontWeight: "bold" }}>{detail.label}:</Typography>
-                    <Typography variant="body2">{detail.value}</Typography>
-                  </Grid>
-                ))}
-              </Grid>
-            </>
-          )}
-        </ModalContainer>
-      </Modal>
+   {/* Service Details Modal */}
+<Modal open={Boolean(selectedService)} onClose={() => setSelectedService(null)}>
+  <ModalContainer>
+    <CloseButton onClick={() => setSelectedService(null)}>
+      <CloseIcon />
+    </CloseButton>
+
+    {selectedService && (
+      <>
+        <Typography variant="h4" sx={{ fontWeight: "bold", textAlign: "center", mb: 2 }}>
+          {selectedService.title}
+        </Typography>
+
+        {/* 🔥 Image Gallery: First Main Image + Additional Images */}
+        <Box sx={{ display: "flex", gap: 2, flexWrap: "wrap", justifyContent: "center", mb: 3 }}>
+          <CardMedia component="img" image={selectedService.image} alt={selectedService.title} sx={{ width: "45%", height: 200, borderRadius: "10px" }} />
+          {selectedService.additionalImages?.map((img, index) => (
+            <CardMedia key={index} component="img" image={img} alt={`Service ${index}`} sx={{ width: "45%", height: 200, borderRadius: "10px" }} />
+          ))}
+        </Box>
+
+        {/* 🔥 Pricing & Target Audience */}
+        <Typography variant="h5" sx={{ fontWeight: "bold", mt: 2 }}>
+          Price: <span style={{ color: "#FFD700" }}>{selectedService.price}</span>
+        </Typography>
+        <Typography variant="body1" sx={{ mt: 1, mb: 3 }}>
+          <strong>Best For:</strong> {selectedService.targetAudience}
+        </Typography>
+
+        {/* 🔥 Detailed Information Grid */}
+        <Grid container spacing={2}>
+          {selectedService.details.map((detail, index) => (
+            <Grid item xs={6} key={index}>
+              <Typography variant="body1" sx={{ fontWeight: "bold" }}>{detail.label}:</Typography>
+              <Typography variant="body2">{detail.value}</Typography>
+            </Grid>
+          ))}
+        </Grid>
+
+        {/* 🔥 Testimonials Section */}
+        {selectedService.testimonials && selectedService.testimonials.length > 0 && (
+          <Box sx={{ mt: 3 }}>
+            <Typography variant="h5" sx={{ fontWeight: "bold", mb: 2 }}>Customer Reviews</Typography>
+            {selectedService.testimonials.map((testimonial, index) => (
+              <Box key={index} sx={{ background: "#222", padding: "15px", borderRadius: "10px", mb: 2 }}>
+                <Typography variant="body1" sx={{ fontStyle: "italic" }}>"{testimonial.review}"</Typography>
+                <Typography variant="body2" sx={{ color: "#FFD700", mt: 1 }}>- {testimonial.name}</Typography>
+              </Box>
+            ))}
+          </Box>
+        )}
+      </>
+    )}
+  </ModalContainer>
+</Modal>
+
     </Box>
   );
 };

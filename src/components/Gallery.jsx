@@ -77,7 +77,7 @@ const Gallery = () => {
             transition={{ duration: 0.8, ease: "easeOut" }}
           >
             <Typography
-              variant="h3"
+              variant="h2"
               fontWeight="bold"
               sx={{
                 letterSpacing: 1.5,

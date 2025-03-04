@@ -21,6 +21,7 @@ import Booking from './components/Booking';
 import Map from './components/Map';
 import Instagram from './components/Instagram';
 import CTA from './components/cta';
+import Techniques from './components/Techniques';
 
 const theme = createTheme({
     palette: {
@@ -71,6 +72,7 @@ function App() {
                 <Services />
                 {/* <About /> */}
                 <FrameworkCarousel />
+                <Techniques />
                 {/* <Vision /> */}
                 {/* <Testimonials /> */}
                 {/* <Instagram /> */}

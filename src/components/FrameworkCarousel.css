@@ -66,11 +66,11 @@
   }
 
   .framework-icon img {
-    width: 60px;
-    height: 60px;
+    width: 80px;
+    height: 80px;
   }
 
   .carousel-title {
-    font-size: 1rem;
+    font-size: 0.5rem;
   }
 }

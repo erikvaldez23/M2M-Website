@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, Grid, Typography, IconButton, Container } from "@mui/material";
+import { Box, Grid, Typography, IconButton, Container, useMediaQuery, useTheme } from "@mui/material";
 import { styled } from "@mui/system";
 import { motion } from "framer-motion";
 import { FaLinkedin, FaInstagram } from "react-icons/fa";
@@ -34,8 +34,9 @@ const teamMembers = [
 ];
 
 const CardContainer = styled(motion.div)({
-  width: "700px", // ✅ Fixed size for desktop
-  height: "600px", // ✅ Fixed height for desktop
+  maxWidth: "500px",  // Max width instead of fixed width
+  width: "100%", // Make it flexible
+  aspectRatio: "3 / 4", // Ensures consistent proportions
   borderRadius: "20px",
   overflow: "hidden",
   position: "relative",
@@ -44,19 +45,19 @@ const CardContainer = styled(motion.div)({
   flexDirection: "column",
   justifyContent: "flex-end",
 
-  // Responsive adjustments
+  // Tablet adjustments
   "@media (max-width: 900px)": {
-    width: "90%", // ✅ 90% width for tablets
-    height: "auto", // ✅ Adjust height dynamically
-    maxWidth: "350px", // ✅ Prevents excessive shrinking
+    maxWidth: "350px", 
+    aspectRatio: "4 / 5",
   },
 
+  // Mobile adjustments
   "@media (max-width: 600px)": {
-    width: "100%", // ✅ Full width for mobile
-    height: "auto",
-    minHeight: "400px", // ✅ Prevents it from shrinking too much
+    maxWidth: "100%",
+    aspectRatio: "3 / 4", 
   },
 });
+
 
 const CardBackground = styled(Box)({
   backgroundSize: "cover",
@@ -91,6 +92,9 @@ const overlayVariants = {
 };
 
 const MeetTheTeam = () => {
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down("sm")); // Detect mobile screens
+
   return (
     <Box
       sx={{
@@ -105,7 +109,7 @@ const MeetTheTeam = () => {
       }}
     >
       <Typography
-        variant="h2"
+        variant={isMobile ? "h4" : "h2"}
         sx={{
           fontWeight: "bold",
           mb: 6,
@@ -176,9 +180,9 @@ const MeetTheTeam = () => {
                     variants={overlayVariants}
                     style={{
                       position: "absolute",
-                      width: "100%",
+                      width: "95%",
                       bottom: "10px",
-                      left: "20px",
+                      left: "10px",
                     }}
                   >
                     <Typography

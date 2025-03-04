@@ -6,87 +6,120 @@ import {
   IconButton,
   Divider,
   Link,
+  useMediaQuery,
+  useTheme,
 } from "@mui/material";
 import { FaFacebook, FaInstagram, FaLinkedin, FaTwitter } from "react-icons/fa";
 import logo from "../../public/logo.png"; // Ensure correct path
+import { useNavigate, useLocation } from "react-router-dom";
 
 const Footer = () => {
-  return (
-<Box
-  component="footer"
-  sx={{
-    backgroundColor: "#000",
-    color: "white",
-    py: 4,
-  }}
->
+  const navigate = useNavigate();
+  const location = useLocation();
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
 
+  // ✅ Click Handler for Logo
+  const handleLogoClick = () => {
+    if (location.pathname === "/") {
+      window.scrollTo({ top: 0, behavior: "smooth" }); // ✅ Scroll to top if already on homepage
+    } else {
+      navigate("/"); // ✅ Navigate to homepage if on a subpage
+    }
+  };
+
+  return (
+    <Box
+      component="footer"
+      sx={{
+        backgroundColor: "#000",
+        color: "white",
+        py: isMobile ? 2 : 4,
+        textAlign: "center",
+      }}
+    >
       <Container maxWidth="lg">
         {/* Top Section: Logo + Social Media */}
         <Box
           sx={{
             display: "flex",
-            justifyContent: "space-between",
+            flexDirection: isMobile ? "column" : "row",
             alignItems: "center",
+            justifyContent: isMobile ? "center" : "space-between",
             flexWrap: "wrap",
-            mb: 2,
+            mb: isMobile ? 3 : 2,
+            gap: isMobile ? 2 : 0,
           }}
         >
-          {/* Company Logo */}
-          <Box sx={{ display: "flex", alignItems: "center", "&:hover": { cursor: "pointer", transform:"scale(1.05)" } }}>
-            <img src={logo} alt="Company Logo" style={{ height: "50px" }} />
+          {/* Company Logo (With Click Functionality) */}
+          <Box
+            sx={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              "&:hover": { cursor: "pointer", transform: "scale(1.05)" },
+            }}
+            onClick={handleLogoClick} // ✅ Click to Navigate or Scroll
+          >
+            <img src={logo} alt="Company Logo" style={{ height: isMobile ? "40px" : "50px" }} />
           </Box>
 
           {/* Social Media Icons */}
-          <Box>
+          <Box
+            sx={{
+              display: "flex",
+              justifyContent: "center",
+              gap: isMobile ? "1rem" : "1.5rem", // Adjust spacing for mobile
+            }}
+          >
             <IconButton
               color="inherit"
               sx={{
-                mx: 1,
                 transition: "color 0.3s",
-                "&:hover": { color: "#F7E7CE" }, // Blue color on hover
+                "&:hover": { color: "#2794d2" }, // Blue color on hover
               }}
               href="https://facebook.com"
               target="_blank"
             >
-              <FaFacebook size={24} />
+              <FaFacebook size={isMobile ? 22 : 24} />
             </IconButton>
+
             <IconButton
               color="inherit"
               sx={{
-                mx: 1,
                 transition: "color 0.3s",
-                "&:hover": { color: "#F7E7CE" },
+                "&:hover": { color: "#2794d2" },
               }}
               href="https://instagram.com"
               target="_blank"
             >
-              <FaInstagram size={24} />
+              <FaInstagram size={isMobile ? 22 : 24} />
             </IconButton>
-            <IconButton
+
+            {/* Uncomment when needed */}
+            {/* <IconButton
               color="inherit"
               sx={{
-                mx: 1,
                 transition: "color 0.3s",
-                "&:hover": { color: "#F7E7CE" },
+                "&:hover": { color: "#007bff" },
               }}
               href="https://linkedin.com"
               target="_blank"
             >
-              <FaLinkedin size={24} />
-            </IconButton>
-            <IconButton
+              <FaLinkedin size={isMobile ? 22 : 24} />
+            </IconButton> */}
+
+            {/* <IconButton
               color="inherit"
               sx={{
-                mx: 1,
                 transition: "color 0.3s",
-                "&:hover": { color: "#F7E7CE" },
+                "&:hover": { color: "#007bff" },
               }}
               href="https://twitter.com"
               target="_blank"
             >
-              <FaTwitter size={24} />
-            </IconButton>
+              <FaTwitter size={isMobile ? 22 : 24} />
+            </IconButton> */}
           </Box>
         </Box>
 
@@ -97,22 +130,28 @@ const Footer = () => {
         <Box
           sx={{
             display: "flex",
+            flexDirection: isMobile ? "column" : "row", // Stack links on mobile
             justifyContent: "center",
             alignItems: "center",
-            flexWrap: "wrap",
-            gap: 3,
+            gap: 2,
             textAlign: "center",
             fontSize: "14px",
           }}
         >
           <Link
-            href="https://tinttekplus.com"
+            href="https://m2mdfw.com"
             color="inherit"
             underline="hover"
+            sx={{ fontSize: isMobile ? "13px" : "14px" }}
           >
-            www.m2mdfw.com
+            m2mdfw.com
           </Link>
-          <Link href="/privacy-policy" color="inherit" underline="hover">
+          <Link
+            href="#/privacy-policy"
+            color="inherit"
+            underline="hover"
+            sx={{ fontSize: isMobile ? "13px" : "14px" }}
+          >
             Privacy Policy
           </Link>
         </Box>
@@ -120,9 +159,13 @@ const Footer = () => {
         {/* Bottom Section: All Rights Reserved */}
         <Typography
           variant="body2"
-          sx={{ textAlign: "center", mt: 2, fontSize: "12px", opacity: 0.7 }}
+          sx={{
+            mt: 2,
+            fontSize: isMobile ? "11px" : "12px",
+            opacity: 0.7,
+          }}
         >
-          © {new Date().getFullYear()} Made2Move . All rights reserved.
+          © {new Date().getFullYear()} Tint Tek + . All rights reserved.
         </Typography>
       </Container>
     </Box>

@@ -115,32 +115,30 @@ const Topbar = ({ notFound }) => {
           <NavbarContainer>
             {/* Logo with subtle hover effect */}
             <Box
-  display="flex"
-  alignItems="center"
-  sx={{
-    cursor: "pointer",
-    transition: "transform 0.3s",
-    "&:hover": { transform: "scale(1.05)" },
-    ml: 0, // No margin left
-    flexGrow: { xs: 1, md: 0 }, // Helps spacing on mobile
-  }}
-  onClick={() => navigate("/")}
->
-  <img
-    src={logo}
-    alt="Logo"
-    style={{
-      borderRadius: "8px",
-    }}
-    sx={{
-      height: { xs: "30px", sm: "40px", md: "55px" }, // ✅ Much smaller on mobile
-      width: "auto", // Maintains aspect ratio
-      maxWidth: { xs: "50px", sm: "80px", md: "120px" }, // ✅ Prevents the logo from expanding
-      marginLeft: { xs: 0, md: "10px" }, // ✅ Ensures no spacing issue on mobile
-    }}
-  />
-</Box>
-
+              display="flex"
+              alignItems="center"
+              sx={{
+                cursor: "pointer",
+                transition: "transform 0.3s",
+                "&:hover": { transform: "scale(1.05)" },
+                ml: 0, // No margin left
+                flexGrow: { xs: 1, md: 0 }, // Helps spacing on mobile
+              }}
+              onClick={() => navigate("/")}
+            >
+              <Box
+                component="img"
+                src={logo}
+                alt="Logo"
+                sx={{
+                  display: { xs: "none", sm: "block" }, // ✅ Hide on mobile, show on tablets & desktop
+                  height: { sm: "55px", md: "55px" }, // ✅ Size applied only when visible
+                  width: "auto",
+                  maxWidth: { sm: "400px", md: "400px" },
+                  marginLeft: { sm: 0, md: "10px" },
+                }}
+              />
+            </Box>
 
             {/* Desktop Navigation */}
             {!isMobile && (
@@ -158,7 +156,7 @@ const Topbar = ({ notFound }) => {
                     onClick={() => scrollToSection(item.toLowerCase())}
                     sx={{
                       fontFamily: "Montserrat, sans-serif", // Sleek modern font
-                      fontSize: "18px",
+                      fontSize: "25px",
                       fontWeight: 600,
                       letterSpacing: "1.5px",
                       textTransform: "uppercase",
@@ -191,20 +189,19 @@ const Topbar = ({ notFound }) => {
               </Box>
             )}
             {isMobile && (
-  <IconButton
-    edge="end" // ✅ Ensures it stays at the right
-    color="inherit"
-    aria-label="menu"
-    onClick={() => setDrawerOpen(true)}
-    sx={{
-      fontSize: 30,
-      ml: "auto", // ✅ Pushes it to the right
-    }}
-  >
-    <FaBars />
-  </IconButton>
-)}
-
+              <IconButton
+                edge="end" // ✅ Ensures it stays at the right
+                color="inherit"
+                aria-label="menu"
+                onClick={() => setDrawerOpen(true)}
+                sx={{
+                  fontSize: 30,
+                  ml: "auto", // ✅ Pushes it to the right
+                }}
+              >
+                <FaBars />
+              </IconButton>
+            )}
           </NavbarContainer>
         </Toolbar>
       </AppBar>

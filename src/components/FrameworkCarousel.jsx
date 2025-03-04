@@ -11,7 +11,7 @@ import spb from '../../public/spb.png';
 import swinCity from '../../public/swin-city.png';
 import suddenExposure from '../../public/sudden-exposure.png';
 import northCrowley from '../../public/north-crowley.png';
-import { Typography } from '@mui/material';
+import { Typography, useTheme, useMediaQuery } from '@mui/material';
 
 const frameworks = [
   { name: 'Full Throttle', icon: <img src={fullThrottle} alt="Full Throttle" />, url: 'https://www.fullthrottlebasketball.com' },
@@ -28,14 +28,16 @@ const frameworks = [
 const repeatFrameworks = [...frameworks, ...frameworks, ...frameworks]; // Repeat to ensure continuous loop
 
 const FrameworkCarousel = () => {
-  const [velocity, setVelocity] = useState(30); // Increased velocity for faster movement
+  const [velocity, setVelocity] = useState(20); // Increased velocity for faster movement
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down("sm")); // Detect mobile screens
 
   useEffect(() => {
     const updateVelocity = () => {
       if (window.innerWidth <= 768) {
-        setVelocity(8); // Faster speed for mobile as well
+        setVelocity(8); 
       } else {
-        setVelocity(30); // Faster speed for larger screens
+        setVelocity(20); // Faster speed for larger screens
       }
     };
 
@@ -49,7 +51,7 @@ const FrameworkCarousel = () => {
 
   return (
     <div className="framework-carousel">
-      <Typography variant="h2" sx={{ fontWeight: "bold", mb: 5 }}>
+      <Typography variant={isMobile ? "h4" : "h2"} sx={{ fontWeight: "bold", mb: 5 }}>
         CLIENTS & PARTNERS
       </Typography>
       <div className="marquee-wrapper">

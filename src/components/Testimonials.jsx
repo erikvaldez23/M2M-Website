@@ -126,12 +126,12 @@ const repeatTestimonials = [...testimonialsData, ...testimonialsData];
 
 const Testimonials = () => {
   const theme = useTheme();
-  const [velocity, setVelocity] = useState(30);
+  const [velocity, setVelocity] = useState(15);
   const [isPaused, setIsPaused] = useState(false);
 
   useEffect(() => {
     const updateVelocity = () => {
-      setVelocity(window.innerWidth <= 768 ? 10 : 30);
+      setVelocity(window.innerWidth <= 768 ? 10 : 15);
     };
 
     updateVelocity();
@@ -146,7 +146,7 @@ const Testimonials = () => {
         <Box sx={{ background: "#000", color: "#F7E7CE", textAlign: "center", py: { xs: 10, md: 14 } }}>
           <Container maxWidth="lg">
             <motion.div initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, ease: "easeOut" }}>
-              <Typography variant="h3" fontWeight="bold" sx={{ letterSpacing: 1.5, mb: 2, fontFamily: '"SF Pro Display", "Inter", sans-serif' }}>
+              <Typography variant="h2" fontWeight="bold" sx={{ letterSpacing: 1.5, mb: 2, fontFamily: '"SF Pro Display", "Inter", sans-serif' }}>
                 CUSTOMER TESTIMONIALS
               </Typography>
             </motion.div>

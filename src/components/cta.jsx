@@ -1,5 +1,12 @@
 import React, { useState } from "react";
-import { Box, Typography, Button, Dialog, DialogContent, IconButton } from "@mui/material";
+import {
+  Box,
+  Typography,
+  Button,
+  Dialog,
+  DialogContent,
+  IconButton,
+} from "@mui/material";
 import { motion } from "framer-motion";
 import { FaTimes } from "react-icons/fa"; // Close button icon
 
@@ -37,8 +44,9 @@ const CTA = () => {
               fontWeight: "bold",
               textTransform: "uppercase",
               letterSpacing: 2,
-              mb: 4,
-              fontSize: { xs: "1.8rem", sm: "2.5rem", md: "3.5rem" }, // More responsive font sizes
+              mb: 3, // Less margin on mobile
+              fontSize: { xs: "1.5rem", sm: "2rem", md: "3rem" }, // ✅ Smaller for mobile
+              textAlign: "center",
             }}
           >
             Elevate Your Recovery, <br /> Maximize Your Performance
@@ -49,12 +57,13 @@ const CTA = () => {
             sx={{
               fontFamily: "Poppins, sans-serif",
               fontWeight: 300,
-              mb: 5,
+              mb: 4, // Adjusted for mobile
               color: "#f0f0f0",
               maxWidth: "900px",
               mx: "auto",
-              lineHeight: 1.8,
-              fontSize: { xs: "1rem", sm: "1.2rem", md: "1.5rem" }, // Responsive paragraph text
+              lineHeight: 1.6,
+              fontSize: { xs: "0.9rem", sm: "1.1rem", md: "1.3rem" }, // ✅ More readable on mobile
+              textAlign: "center",
             }}
           >
             Join our community of peak performers and take the first step toward
