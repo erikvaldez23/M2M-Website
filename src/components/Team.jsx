@@ -33,10 +33,9 @@ const teamMembers = [
   },
 ];
 
-// Styled Components
 const CardContainer = styled(motion.div)({
-  width: "500px", // ✅ Fixed width to ensure consistent sizing
-  height: "700px", // ✅ Ensures uniform height
+  width: "700px", // ✅ Fixed size for desktop
+  height: "600px", // ✅ Fixed height for desktop
   borderRadius: "20px",
   overflow: "hidden",
   position: "relative",
@@ -44,9 +43,21 @@ const CardContainer = styled(motion.div)({
   display: "flex",
   flexDirection: "column",
   justifyContent: "flex-end",
+
+  // Responsive adjustments
+  "@media (max-width: 900px)": {
+    width: "90%", // ✅ 90% width for tablets
+    height: "auto", // ✅ Adjust height dynamically
+    maxWidth: "350px", // ✅ Prevents excessive shrinking
+  },
+
+  "@media (max-width: 600px)": {
+    width: "100%", // ✅ Full width for mobile
+    height: "auto",
+    minHeight: "400px", // ✅ Prevents it from shrinking too much
+  },
 });
 
-// **Background Styling with Cover Image**
 const CardBackground = styled(Box)({
   backgroundSize: "cover",
   backgroundPosition: "center",
@@ -58,6 +69,7 @@ const CardBackground = styled(Box)({
   position: "relative",
   padding: "20px",
   transition: "filter 0.5s ease",
+  overflow: "hidden",
   "&:hover": {
     filter: "brightness(80%)",
   },
@@ -71,7 +83,11 @@ const contentVariants = {
 
 const overlayVariants = {
   initial: { opacity: 0, y: 20 },
-  hover: { opacity: 1, y: 0, transition: { duration: 0.4, ease: "easeOut", delay: 0.1 } },
+  hover: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.4, ease: "easeOut", delay: 0.1 },
+  },
 };
 
 const MeetTheTeam = () => {
@@ -105,13 +121,23 @@ const MeetTheTeam = () => {
       </Typography>
 
       {/* ✅ Centering the Grid */}
-      <Container maxWidth="lg">
-        <Grid container spacing={6} justifyContent="center" alignItems="center">
+      <Container maxWidth="xl">
+        <Grid container spacing={4} justifyContent="center">
           {teamMembers.map((member, index) => (
-            <Grid item key={index} display="flex" justifyContent="center">
+            <Grid
+              item
+              key={index}
+              xs={12}
+              sm={6}
+              md={4}
+              lg={4}
+              display="flex"
+              justifyContent="center"
+            >
               <CardContainer initial="initial" whileHover="hover">
-                <CardBackground sx={{ backgroundImage: `url(${member.image})` }}>
-                  
+                <CardBackground
+                  sx={{ backgroundImage: `url(${member.image})` }}
+                >
                   {/* Default Content (Slight Fade When Hovered) */}
                   <motion.div
                     variants={contentVariants}
@@ -122,13 +148,25 @@ const MeetTheTeam = () => {
                       left: "20px",
                     }}
                   >
-                    <Typography variant="h4" sx={{ fontWeight: "bold", textShadow: "2px 2px 5px rgba(0,0,0,0.8)" }}>
+                    <Typography
+                      variant="h4"
+                      sx={{
+                        fontWeight: "bold",
+                        textShadow: "2px 2px 5px rgba(0,0,0,0.8)",
+                      }}
+                    >
                       {member.name}
                     </Typography>
-                    <Typography variant="subtitle1" sx={{ fontStyle: "italic", color: "#fff" }}>
+                    <Typography
+                      variant="subtitle1"
+                      sx={{ fontStyle: "italic", color: "#fff" }}
+                    >
                       {member.certs}
                     </Typography>
-                    <Typography variant="subtitle1" sx={{ fontStyle: "italic", color: "#ccc" }}>
+                    <Typography
+                      variant="subtitle1"
+                      sx={{ fontStyle: "italic", color: "#ccc" }}
+                    >
                       {member.title}
                     </Typography>
                   </motion.div>
@@ -164,7 +202,9 @@ const MeetTheTeam = () => {
                             borderRadius: "50%",
                             boxShadow: "0 4px 10px rgba(0,0,0,0.5)",
                           }}
-                          onClick={() => window.open(member.socials.linkedin, "_blank")}
+                          onClick={() =>
+                            window.open(member.socials.linkedin, "_blank")
+                          }
                         >
                           <FaLinkedin color="#000" size={20} />
                         </IconButton>
@@ -177,7 +217,9 @@ const MeetTheTeam = () => {
                             borderRadius: "50%",
                             boxShadow: "0 4px 10px rgba(0,0,0,0.5)",
                           }}
-                          onClick={() => window.open(member.socials.instagram, "_blank")}
+                          onClick={() =>
+                            window.open(member.socials.instagram, "_blank")
+                          }
                         >
                           <FaInstagram color="#000" size={20} />
                         </IconButton>

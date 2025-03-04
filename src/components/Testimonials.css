@@ -1,0 +1,104 @@
+:root {
+    --font-primary: "Poppins", sans-serif;
+    --font-secondary: "Montserrat", sans-serif;
+    --text-light: #cccccc;
+  }
+  
+  .testimonials-carousel {
+    background-color: #F7E7CE;
+    color: #F7E7CE;
+    text-align: center;
+    overflow: hidden;
+  }
+  
+  .carousel-title {
+    font-size: 2.2rem;
+    font-weight: bold;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: 40px;
+    color: #000;
+  }
+  
+  .marquee-wrapper {
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .testimonial-card {
+    cursor: pointer;
+    transition: transform 0.3s ease-in-out;
+    margin: 0 30px;
+    background: #111;
+    color: #fff;
+    border-radius: 20px;
+    padding: 30px;
+    text-align: center;
+    min-width: 380px; /* ✅ Adjust card width */
+    max-width: 420px;
+    height: 400px; /* ✅ Increased card height */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  
+  .testimonial-card:hover {
+    transform: scale(0.95);
+  }
+  
+  .testimonial-avatar {
+    width: 90px !important;
+    height: 90px !important;
+    margin: 0 auto;
+    border: 3px solid #F7E7CE;
+  }
+  
+  .testimonial-name {
+    font-weight: bold;
+    font-size: 1.2rem;
+  }
+  
+  .testimonial-date {
+    color: #b0b0b0;
+    font-size: 14px;
+  }
+  
+  .testimonial-stars {
+    display: flex;
+    justify-content: center;
+    gap: 5px;
+  }
+  
+  .testimonial-review-box {
+    max-height: 120px; /* ✅ Increased scroll area */
+    overflow-y: auto;
+    padding: 12px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+  }
+  
+  .testimonial-review {
+    font-size: 15px;
+    color: #b0b0b0;
+    overflow-wrap: break-word;
+  }
+  
+  @media (max-width: 768px) {
+    .testimonial-card {
+      margin: 0 15px;
+    }
+  
+    .testimonial-avatar {
+      width: 70px !important;
+      height: 70px !important;
+    }
+  
+    .testimonial-review-box {
+      max-height: 100px;
+    }
+  
+    .carousel-title {
+      font-size: 1.8rem;
+    }
+  }
+  

@@ -1,18 +1,10 @@
-import React from "react";
-import {
-  Box,
-  Container,
-  Typography,
-  Grid,
-  Card,
-  CardContent,
-  Avatar,
-} from "@mui/material";
-import { motion } from "framer-motion";
+import React, { useState, useEffect } from "react";
+import Marquee from "react-marquee-slider";
+import { Typography, Box, Avatar, useTheme, Container } from "@mui/material";
 import { FaStar } from "react-icons/fa";
-
 import CTA from "./cta";
 import Contact from "./Contact";
+import { motion } from "framer-motion";
 
 const testimonialsData = [
   {
@@ -60,7 +52,7 @@ const testimonialsData = [
     review:
       "if you are looking for physical therapists who will actually listen to you and adjust the regimen to make sure that you’re feeling great, Dr. Natalie and Dr. Drea are the one! I have never experienced a therapy where I knew that my therapist was so in tune with what I needed… ￼ until I met Dr. Natalie and Dr. Drea! They were all in and they’ll take the best care of you!",
     image: "/M2M-Website/daniel.jpg",
-    rating: 4,
+    rating: 5,
     date: "2024-01-15",
   },
   {
@@ -68,7 +60,7 @@ const testimonialsData = [
     review:
       "Absolutely 💯! They are a multiplier for any coach looking to enhance performance and prevent injuries!",
     image: "/M2M-Website/daniel.jpg",
-    rating: 4,
+    rating: 5,
     date: "2024-01-15",
   },
   {
@@ -76,7 +68,7 @@ const testimonialsData = [
     review:
       "if you are looking for physical therapists who will actually listen to you and adjust the regimen to make sure that you’re feeling great, Dr. Natalie and Dr. Drea are the one! I have never experienced a therapy where I knew that my therapist was so in tune with what I needed… ￼ until I met Dr. Natalie and Dr. Drea! They were all in and they’ll take the best care of you!",
     image: "/M2M-Website/daniel.jpg",
-    rating: 4,
+    rating: 5,
     date: "2024-01-15",
   },
   {
@@ -84,7 +76,7 @@ const testimonialsData = [
     review:
       "LOVED working with these 2!! Gr8 WORK!!",
     image: "/M2M-Website/daniel.jpg",
-    rating: 4,
+    rating: 5,
     date: "2024-01-15",
   },
   {
@@ -92,7 +84,7 @@ const testimonialsData = [
     review:
       "Shout out to M2M! Great service guaranteed to give you better flexibility. Go book with them!",
     image: "/M2M-Website/daniel.jpg",
-    rating: 4,
+    rating: 5,
     date: "2024-01-15",
   },
   {
@@ -100,7 +92,7 @@ const testimonialsData = [
     review:
       "These two have started a business and they must have been listening to God! These two ladies have already made such a huge impact in my life and the people around me and I can’t thank them enough! Not only do I have the pleasure of working with them at tournaments and camps, I also am a client. The care and the love that exudes from them and their work, is nothing short of amazing! I am so honored to call them my trainers and my friends",
     image: "/M2M-Website/daniel.jpg",
-    rating: 4,
+    rating: 5,
     date: "2024-01-15",
   },
   {
@@ -108,7 +100,7 @@ const testimonialsData = [
     review:
       "M2M helped me get back on track after surgery! I’ve never felt more physically confident than I do now all because of them! THANK YOU DR. DRE & DR. NAT",
     image: "/M2M-Website/daniel.jpg",
-    rating: 4,
+    rating: 5,
     date: "2024-01-15",
   },
   {
@@ -116,7 +108,7 @@ const testimonialsData = [
     review:
       "Dr. Drea and Dr. Nat are incredibly knowledgeable and proficient in what they do.  I cannot recommend either of them enough, and have referred them to multiple friends and coworkers already!  I went to see them initially for shoulder pain, and the cause was quickly and accurately diagnosed and corrected through the PT plan that they designed.  On top of their expertise, they are both friendly, empathetic people who make it impossible to feel uncomfortable.  I have never felt better, and they can do the same for anyone.  I would urge anyone looking to start physical therapy to go to them over anyone else!",
     image: "/M2M-Website/daniel.jpg",
-    rating: 4,
+    rating: 5,
     date: "2024-01-15",
   },
   {
@@ -124,159 +116,103 @@ const testimonialsData = [
     review:
       "I firmly believe that any team seeking to maintain their athletes' peak performance, especially during critical playoff seasons, would greatly benefit from partnering with Made 2 Move. Their expertise and personalized approach make them an invaluable asset to any athletic program.",
     image: "/M2M-Website/daniel.jpg",
-    rating: 4,
+    rating: 5,
     date: "2024-01-15",
   },
 ];
 
-// ✅ Function to format date
-const formatDate = (dateString) => {
-  return new Intl.DateTimeFormat("en-US", {
-    year: "numeric",
-    month: "long",
-    day: "numeric",
-  }).format(new Date(dateString));
-};
+// ✅ Repeat testimonials to ensure an infinite loop
+const repeatTestimonials = [...testimonialsData, ...testimonialsData];
 
 const Testimonials = () => {
+  const theme = useTheme();
+  const [velocity, setVelocity] = useState(30);
+  const [isPaused, setIsPaused] = useState(false);
+
+  useEffect(() => {
+    const updateVelocity = () => {
+      setVelocity(window.innerWidth <= 768 ? 10 : 30);
+    };
+
+    updateVelocity();
+    window.addEventListener("resize", updateVelocity);
+    return () => window.removeEventListener("resize", updateVelocity);
+  }, []);
+
   return (
     <>
-      {/* ✅ Hero Section (Black Background with Header) */}
-      <Box
-        sx={{
-          background: "#000",  // Black background
-          color: "#F7E7CE",      // White text
-          textAlign: "center",
-          py: { xs: 10, md: 14 }, // Adjust spacing for different screen sizes
-        }}
-      >
-        <Container maxWidth="lg">
-          <motion.div
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
-          >
-            <Typography
-              variant="h3"
-              fontWeight="bold"
-              sx={{
-                letterSpacing: 1.5,
-                mb: 2,
-                fontFamily: '"SF Pro Display", "Inter", sans-serif',
-              }}
-            >
-              CUSTOMER TESTIMONIALS
-            </Typography>
-            <Typography
-              variant="h6"
-              sx={{ maxWidth: "600px", mx: "auto", color: "#b0b0b0" }}
-            >
-              Real stories from real people. See how M2M Physical Therapy has transformed lives.
-            </Typography>
-          </motion.div>
-        </Container>
-      </Box>
+      <Box sx={{ backgroundColor: "#F7E7CE", color: "#000", textAlign: "center", overflow: "hidden" }}>
+        {/* Hero Section */}
+        <Box sx={{ background: "#000", color: "#F7E7CE", textAlign: "center", py: { xs: 10, md: 14 } }}>
+          <Container maxWidth="lg">
+            <motion.div initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, ease: "easeOut" }}>
+              <Typography variant="h3" fontWeight="bold" sx={{ letterSpacing: 1.5, mb: 2, fontFamily: '"SF Pro Display", "Inter", sans-serif' }}>
+                CUSTOMER TESTIMONIALS
+              </Typography>
+            </motion.div>
+          </Container>
+        </Box>
 
-      {/* ✅ Testimonials Section */}
-      <Box
-        id="testimonials"
-        sx={{
-          background: "#F7E7CE",
-          py: { xs: 8, md: 12 },
-          textAlign: "center",
-        }}
-      >
-        <Container maxWidth="lg">
-          {/* ✅ Testimonials Grid */}
-          <Grid container spacing={4} justifyContent="center">
-            {testimonialsData.map((testimonial, index) => (
-              <Grid item xs={12} sm={6} md={4} key={index}>
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: index * 0.2 }}
-                  viewport={{ once: true }}
-                >
-                  <Card
-                    sx={{
-                      background: "#F7E7CE",
-                      borderRadius: "30px",
-                      padding: "20px",
-                      border: "5px solid #000",
-                      textAlign: "center",
-                      transition: "transform 0.3s ease-in-out",
-                      "&:hover": { transform: "scale(1.05)" },
-                      height: "350px", // ✅ Fixed height for all cards
-                      display: "flex",
-                      flexDirection: "column",
-                      justifyContent: "space-between",
-                    }}
-                  >
-                    <CardContent
-                      sx={{
-                        overflowY: "auto",
-                        maxHeight: "350px",
-                        padding: "10px",
-                      }}
-                    >
-                      {/* ✅ Avatar */}
-                      <Avatar
-                        src={testimonial.image}
-                        alt={testimonial.name}
-                        sx={{ width: 80, height: 80, margin: "0 auto 10px" }}
-                      />
+        {/* ✅ Marquee Wrapper */}
+        <Box sx={{ position: "relative", overflow: "hidden", py: 5 }}>
+          <Marquee velocity={isPaused ? 0 : velocity} direction="ltr">
+            {repeatTestimonials.map((testimonial, index) => (
+              <Box
+                key={`${testimonial.name}-${index}`}
+                sx={{
+                  cursor: "pointer",
+                  transition: "transform 0.3s ease-in-out",
+                  margin: "0 30px",
+                  background: "#111",
+                  color: "#fff",
+                  borderRadius: "20px",
+                  p: 3,
+                  textAlign: "center",
+                  boxShadow: "0px 5px 20px rgba(255, 255, 255, 0.2)",
+                  minWidth: 380,
+                  maxWidth: 420,
+                  height: 400,
+                  display: "flex",
+                  flexDirection: "column",
+                  justifyContent: "space-between",
+                  "&:hover": {
+                    transform: "scale(0.95)",
+                  },
+                }}
+                onMouseEnter={() => setIsPaused(true)} // ✅ Stop on hover
+                onMouseLeave={() => setIsPaused(false)} // ✅ Resume on leave
+              >
+                {/* ✅ Avatar */}
+                <Avatar src={testimonial.image} alt={testimonial.name} sx={{ width: 90, height: 90, mx: "auto", border: "3px solid #F7E7CE" }} />
 
-                      {/* ✅ Name & Date */}
-                      <Typography
-                        variant="h6"
-                        sx={{ fontWeight: "bold", mb: 0.5 }}
-                      >
-                        {testimonial.name}
-                      </Typography>
-                      <Typography
-                        variant="body2"
-                        sx={{ color: "#6e6e73", mb: 1 }}
-                      >
-                        {formatDate(testimonial.date)}
-                      </Typography>
+                {/* ✅ Name & Date */}
+                <Typography variant="h6" sx={{ fontWeight: "bold", mt: 1 }}>{testimonial.name}</Typography>
+                <Typography variant="body2" sx={{ color: "#b0b0b0", mb: 1 }}>
+                  {new Date(testimonial.date).toLocaleDateString()}
+                </Typography>
 
-                      {/* ✅ Star Ratings */}
-                      <Box
-                        sx={{
-                          display: "flex",
-                          justifyContent: "center",
-                          gap: 0.5,
-                          mb: 1,
-                        }}
-                      >
-                        {Array(testimonial.rating)
-                          .fill()
-                          .map((_, i) => (
-                            <FaStar key={i} size={18} color="#FFD700" />
-                          ))}
-                      </Box>
+                {/* ✅ Star Ratings */}
+                <Box sx={{ display: "flex", justifyContent: "center", gap: 1, mb: 1 }}>
+                  {Array(testimonial.rating).fill().map((_, i) => (
+                    <FaStar key={i} size={18} color="#FFD700" />
+                  ))}
+                </Box>
 
-                      {/* ✅ Review with Scroll */}
-                      <Typography
-                        sx={{
-                          color: "#6e6e73",
-                          fontSize: "16px",
-                          overflowWrap: "break-word",
-                        }}
-                      >
-                        "{testimonial.review}"
-                      </Typography>
-                    </CardContent>
-                  </Card>
-                </motion.div>
-              </Grid>
+                {/* ✅ Scrollable Review Box */}
+                <Box sx={{ maxHeight: 120, overflowY: "auto", p: 2, background: "rgba(255, 255, 255, 0.1)", borderRadius: "10px" }}>
+                  <Typography variant="body1" sx={{ fontSize: 15, color: "#b0b0b0", overflowWrap: "break-word" }}>
+                    "{testimonial.review}"
+                  </Typography>
+                </Box>
+              </Box>
             ))}
-          </Grid>
-        </Container>
+          </Marquee>
+        </Box>
       </Box>
 
-      <CTA />
-      <Contact />
+      {/* ✅ CTA and Contact Sections */}
+      <Box><CTA /></Box>
+      <Box><Contact /></Box>
     </>
   );
 };
