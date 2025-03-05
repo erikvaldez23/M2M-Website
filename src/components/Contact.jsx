@@ -79,7 +79,7 @@ const Contact = () => {
       >
         {/* Contact Header */}
         <Typography
-          variant={isMobile ? "h4" : "h2"}
+          variant={isMobile ? "h3" : "h2"}
           sx={{ mb: 2, fontWeight: "bold", color: "#000", textAlign: "center" }}
         >
           CONTACT US

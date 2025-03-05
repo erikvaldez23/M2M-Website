@@ -22,6 +22,7 @@ import Map from './components/Map';
 import Instagram from './components/Instagram';
 import CTA from './components/cta';
 import Techniques from './components/Techniques';
+import InstagramEmbed from './components/Instagram';
 
 const theme = createTheme({
     palette: {
@@ -52,6 +53,13 @@ const ScrollHandler = () => {
   return null;
 };
 
+// const postUrls = [
+//   "https://www.instagram.com/p/DGdfsYPpKat/",
+//   "https://www.instagram.com/p/DD7TalmpU9Q/",
+//   "https://www.instagram.com/p/DENWgknJBBW/",
+//   "https://www.instagram.com/p/DGVv3X_JCmA/",
+// ];
+
 
 function App() {
   return (
@@ -72,10 +80,10 @@ function App() {
                 <Services />
                 {/* <About /> */}
                 <FrameworkCarousel />
-                <Techniques />
+                {/* <Techniques /> */}
                 {/* <Vision /> */}
                 {/* <Testimonials /> */}
-                {/* <Instagram /> */}
+                {/* <InstagramEmbed postUrls={postUrls} /> */}
                 <Contact />
                 {/* <Map /> */}
               </>

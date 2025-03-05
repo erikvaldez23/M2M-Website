@@ -55,7 +55,7 @@ const Topbar = ({ notFound }) => {
   }, []);
 
   const scrollToSection = (sectionId) => {
-    const subPages = ["about", "gallery"]; // Add more subpages here if needed
+    const subPages = ["about", "testimonials", "gallery"]; // Add more subpages here if needed
 
     if (subPages.includes(sectionId)) {
       // Navigate to the subpage instead of scrolling
@@ -118,7 +118,7 @@ const Topbar = ({ notFound }) => {
             ? "#000"
             : "transparent",
           backdropFilter: scrolling && !notFound ? "blur(10px)" : "none",
-          color: notFound || scrolling ? "#000" : "#EEEEFF",
+          color: notFound || scrolling ? "#fff" : "#fff",
           boxShadow:
             scrolling && !notFound ? "0 2px 10px rgba(0, 0, 0, 0.1)" : "none",
           transition: "all 0.3s ease-in-out",
@@ -176,7 +176,7 @@ const Topbar = ({ notFound }) => {
             {/* Desktop Navigation */}
             {!isMobile && (
               <Box display="flex" gap={4}>
-                {["Services", "About", "Reviews", "Gallery", "Contact"].map((item) => (
+                {["Services", "About", "Testimonials", "Gallery", "Contact"].map((item) => (
                   <Button
                     key={item}
                     color="inherit"
@@ -345,7 +345,7 @@ const Topbar = ({ notFound }) => {
               },
             }}
           >
-            GET A QUOTE
+            BOOK AN APPOINTMENT
           </Button>
 
           {/* Ask a Question Button */}

@@ -109,7 +109,7 @@ const MeetTheTeam = () => {
       }}
     >
       <Typography
-        variant={isMobile ? "h4" : "h2"}
+        variant={isMobile ? "h3" : "h2"}
         sx={{
           fontWeight: "bold",
           mb: 6,
