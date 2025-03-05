@@ -1,5 +1,16 @@
 import React, { useState, useRef } from "react";
-import { Box, Card, CardMedia, Typography, Button, Modal, Grid, IconButton, useTheme, useMediaQuery } from "@mui/material";
+import {
+  Box,
+  Card,
+  CardMedia,
+  Typography,
+  Button,
+  Modal,
+  Grid,
+  IconButton,
+  useTheme,
+  useMediaQuery,
+} from "@mui/material";
 import { styled } from "@mui/system";
 import { motion, useInView } from "framer-motion";
 import CloseIcon from "@mui/icons-material/Close";
@@ -10,36 +21,43 @@ const servicesData = [
   {
     id: "physical-therapy",
     title: "PHYSICAL THERAPY",
-    description: "Rehabilitate injuries and improve mobility with our expert care.",
+    description:
+      "Rehabilitate injuries and improve mobility with our expert care.",
     image: "/M2M-Website/ortho-inj.jpg",
   },
   {
     id: "athletic-recovery",
     title: "ATHLETIC RECOVERY",
-    description: "Enhance your performance with our specialized recovery programs.",
+    description:
+      "Enhance your performance with our specialized recovery programs.",
     image: "/M2M-Website/post-op.jpg",
   },
   {
     id: "injury-prevention",
     title: "INJURY PREVENTION",
-    description: "Stay ahead of injuries with our tailored prevention strategies.",
+    description:
+      "Stay ahead of injuries with our tailored prevention strategies.",
     image: "/M2M-Website/recovery.jpg",
   },
 ];
 
-// Styled Components
 const ServiceCard = styled(motion(Card))(({ isMobile }) => ({
   position: "relative",
   borderRadius: 20,
   overflow: "hidden",
   background: "rgba(255, 255, 255, 0.1)",
   backdropFilter: "blur(10px)",
-  height: isMobile ? "450px" : "700px", // 🔥 Reduce height on mobile
+  height: isMobile ? "450px" : "700px", // 🔥 Shorter cards on mobile
   transition: "all 0.4s ease",
-  "&:hover": {
-    transform: "scale(1.05)",
-  },
+  ...(isMobile
+    ? {} // No hover effect on mobile
+    : {
+        "&:hover": {
+          transform: "scale(1.05)",
+        },
+      }),
 }));
+
 
 const CardMediaStyled = styled(CardMedia)({
   width: "100%",
@@ -98,9 +116,16 @@ const Services = () => {
   };
 
   return (
-    <Box id="services" ref={ref} sx={{ backgroundColor: "#000", padding: "40px 0", color: "#F7E7CE" }}>
+    <Box
+      id="services"
+      ref={ref}
+      sx={{ backgroundColor: "#000", padding: "40px 0", color: "#F7E7CE" }}
+    >
       <motion.div initial="hidden" animate={isInView ? "visible" : "hidden"}>
-        <Typography variant={isMobile ? "h3" : "h2"} sx={{ textAlign: "center", fontWeight: "bold", mb: 2 }}>
+        <Typography
+          variant={isMobile ? "h3" : "h2"}
+          sx={{ textAlign: "center", fontWeight: "bold", mb: 2 }}
+        >
           SERVICES
         </Typography>
         <Typography variant="h6" sx={{ textAlign: "center", opacity: 0.8 }}>
@@ -114,25 +139,48 @@ const Services = () => {
           {servicesData.map((service, index) => (
             <Box key={service.id} sx={{ padding: "0 10px" }}>
               <ServiceCard isMobile={isMobile}>
-                <CardMediaStyled component="img" image={service.image} alt={service.title} />
+                <CardMediaStyled
+                  component="img"
+                  image={service.image}
+                  alt={service.title}
+                />
                 <CardOverlay>
-                  <Typography variant="h5" sx={{ fontWeight: "bold" }}>{service.title}</Typography>
+                  <Typography variant="h5" sx={{ fontWeight: "bold" }}>
+                    {service.title}
+                  </Typography>
                   <Typography variant="body2">{service.description}</Typography>
-                  <CTAButton onClick={() => handleServiceClick(service)}>See Details</CTAButton>
+                  <CTAButton onClick={() => handleServiceClick(service)}>
+                    See Details
+                  </CTAButton>
                 </CardOverlay>
               </ServiceCard>
             </Box>
           ))}
         </Slider>
       ) : (
-        <Box sx={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "20px", padding: "50px 10%" }}>
+        <Box
+          sx={{
+            display: "grid",
+            gridTemplateColumns: "repeat(3, 1fr)",
+            gap: "20px",
+            padding: "50px 10%",
+          }}
+        >
           {servicesData.map((service) => (
             <ServiceCard key={service.id}>
-              <CardMediaStyled component="img" image={service.image} alt={service.title} />
+              <CardMediaStyled
+                component="img"
+                image={service.image}
+                alt={service.title}
+              />
               <CardOverlay>
-                <Typography variant="h5" sx={{ fontWeight: "bold" }}>{service.title}</Typography>
+                <Typography variant="h5" sx={{ fontWeight: "bold" }}>
+                  {service.title}
+                </Typography>
                 <Typography variant="body2">{service.description}</Typography>
-                <CTAButton onClick={() => handleServiceClick(service)}>See Details</CTAButton>
+                <CTAButton onClick={() => handleServiceClick(service)}>
+                  See Details
+                </CTAButton>
               </CardOverlay>
             </ServiceCard>
           ))}
@@ -140,18 +188,46 @@ const Services = () => {
       )}
 
       {/* 🔥 Service Details Modal */}
-      <Modal open={Boolean(selectedService)} onClose={() => setSelectedService(null)}>
-        <Box sx={{ position: "absolute", top: "50%", left: "50%", transform: "translate(-50%, -50%)", width: "90%", maxWidth: "700px", bgcolor: "#1a1a1a", borderRadius: "15px", boxShadow: 24, p: 3, color: "#fff" }}>
-          <IconButton sx={{ position: "absolute", top: 15, right: 15, color: "#fff" }} onClick={() => setSelectedService(null)}>
+      <Modal
+        open={Boolean(selectedService)}
+        onClose={() => setSelectedService(null)}
+      >
+        <Box
+          sx={{
+            position: "absolute",
+            top: "50%",
+            left: "50%",
+            transform: "translate(-50%, -50%)",
+            width: "90%",
+            maxWidth: "700px",
+            bgcolor: "#1a1a1a",
+            borderRadius: "15px",
+            boxShadow: 24,
+            p: 3,
+            color: "#fff",
+          }}
+        >
+          <IconButton
+            sx={{ position: "absolute", top: 15, right: 15, color: "#fff" }}
+            onClick={() => setSelectedService(null)}
+          >
             <CloseIcon />
           </IconButton>
 
           {selectedService && (
             <>
-              <Typography variant="h4" sx={{ fontWeight: "bold", textAlign: "center", mb: 2 }}>
+              <Typography
+                variant="h4"
+                sx={{ fontWeight: "bold", textAlign: "center", mb: 2 }}
+              >
                 {selectedService.title}
               </Typography>
-              <CardMedia component="img" image={selectedService.image} alt={selectedService.title} sx={{ width: "100%", height: 200, borderRadius: "10px", mb: 3 }} />
+              <CardMedia
+                component="img"
+                image={selectedService.image}
+                alt={selectedService.title}
+                sx={{ width: "100%", height: 200, borderRadius: "10px", mb: 3 }}
+              />
               <Typography variant="h5" sx={{ fontWeight: "bold", mt: 2 }}>
                 Price: <span style={{ color: "#FFD700" }}>$ per session</span>
               </Typography>

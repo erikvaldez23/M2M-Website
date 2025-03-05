@@ -165,7 +165,7 @@ const Footer = () => {
             opacity: 0.7,
           }}
         >
-          © {new Date().getFullYear()} Tint Tek + . All rights reserved.
+          © {new Date().getFullYear()} Made2Move . All rights reserved.
         </Typography>
       </Container>
     </Box>
