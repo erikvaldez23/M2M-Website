@@ -71,7 +71,7 @@ const CardOverlay = styled(Box)({
   left: 0,
   width: "100%",
   height: "100%",
-  background: "linear-gradient(to bottom, rgba(0,0,0,0.2), rgba(0,0,0,0.7))",
+  background: "linear-gradient(to bottom, rgba(0,0,0,0.1), rgba(0,0,0,0.6))",
   display: "flex",
   flexDirection: "column",
   justifyContent: "flex-end",

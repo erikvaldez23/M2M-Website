@@ -72,7 +72,7 @@ const CardBackground = styled(Box)({
   transition: "filter 0.5s ease",
   overflow: "hidden",
   "&:hover": {
-    filter: "brightness(80%)",
+    filter: "brightness(90%)",
   },
 });
 
@@ -103,7 +103,7 @@ const MeetTheTeam = () => {
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
-        paddingY: 6,
+        paddingY: 4,
         color: "#fff",
         overflowX: "hidden",
       }}
@@ -112,9 +112,8 @@ const MeetTheTeam = () => {
         variant={isMobile ? "h3" : "h2"}
         sx={{
           fontWeight: "bold",
-          mb: 6,
+          mb: 4,
           textAlign: "center",
-          letterSpacing: "4px",
           textTransform: "uppercase",
           background: "#000",
           WebkitBackgroundClip: "text",
