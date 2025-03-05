@@ -74,7 +74,7 @@ const Contact = () => {
       }}
     >
       <Box
-        sx={{ padding: "40px", maxWidth: "1200px", margin: "auto" }}
+        sx={{ py: "20px", px: "10px", maxWidth: "1200px", margin: "auto" }}
         id="contact"
       >
         {/* Contact Header */}
