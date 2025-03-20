@@ -110,6 +110,11 @@ const CTA = () => {
                 border: "3px solid #fff",
                 fontSize: { xs: "0.9rem", md: "1.1rem" }, // Responsive font size
                 borderRadius: "30px",
+                "&:hover": {
+                  backgroundColor: "#F94B3D",
+                  borderColor: "#F94B3D",
+                  color: "#fff",
+                },
               }}
             >
               Book Now

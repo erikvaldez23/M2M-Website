@@ -93,6 +93,9 @@ const CTA = () => {
                 py: { xs: 1, md: 1.5 }, // Responsive padding
                 fontSize: { xs: "0.9rem", md: "1.1rem" }, // Responsive font size
                 borderRadius: "30px",
+                "&:hover": {
+                  backgroundColor: "#fff",
+                  color: "#000",}
               }}
             >
               Book Now

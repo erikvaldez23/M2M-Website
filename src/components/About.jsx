@@ -103,20 +103,7 @@ const About = () => {
       <Box sx={{ backgroundColor: "#000", paddingTop: 5, paddingBottom: 8 }}>
         <Container maxWidth="lg">
           <Grid container spacing={4} alignItems="flex-start">
-            <Grid item xs={12} md={6}>
-              <Box
-                component="img"
-                src={aboutImage}
-                alt="Photo of Dr. Natalie and Dr. Andrea together"
-                sx={{
-                  width: "100%",
-                  height: "auto",
-                  borderRadius: "10px",
-                  boxShadow: 3,
-                }}
-              />
-            </Grid>
-            <Grid item xs={12} md={6} sx={{ display: "flex", flexDirection: "column", justifyContent: "flex-start" }}>
+          <Grid item xs={12} md={6} sx={{ display: "flex", flexDirection: "column", justifyContent: "flex-start" }}>
               <Typography variant="h4" fontWeight="bold" color="#F94B3D" gutterBottom>
                 MEET DR. NAT & DR. DRE
               </Typography>
@@ -132,6 +119,19 @@ const About = () => {
                 approach. At M2M, we believe in empowering athletes and active individuals to achieve optimal health and
                 full recovery through expert, personalized one-on-one care.
               </Typography>
+            </Grid>
+            <Grid item xs={12} md={6}>
+              <Box
+                component="img"
+                src={aboutImage}
+                alt="Photo of Dr. Natalie and Dr. Andrea together"
+                sx={{
+                  width: "100%",
+                  height: "auto",
+                  borderRadius: "10px",
+                  boxShadow: 3,
+                }}
+              />
             </Grid>
           </Grid>
         </Container>
