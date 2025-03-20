@@ -46,7 +46,7 @@ const Vision = () => {
   return (
     <Box
       sx={{
-        py: 1,
+        py: 5,
         background: "#000",
         textAlign: "center",
       }}
@@ -63,7 +63,7 @@ const Vision = () => {
             sx={{
               fontWeight: "bold",
               letterSpacing: 1.5,
-              mb: 6,
+              mb: 3,
               background: "#fff",
               WebkitBackgroundClip: "text",
               WebkitTextFillColor: "transparent",
@@ -78,7 +78,7 @@ const Vision = () => {
         </motion.div>
 
         {/* Vision & Mission Section */}
-        <Grid container spacing={6} justifyContent="center" sx={{ mb: 6 }}>
+        <Grid container spacing={6} justifyContent="center">
 
         <Grid item xs={12} md={6}>
             <motion.div
@@ -90,10 +90,10 @@ const Vision = () => {
                 sx={{
                   background: "#fff",
                   backdropFilter: "blur(20px)",
-                  padding: 4,
                   borderRadius: "20px",
                   boxShadow: "0 10px 30px rgba(0, 0, 0, 0.1)",
                   textAlign: "left",
+                  padding: 4,
                   height: "350px", // ✅ Fixed height for uniformity
                   display: "flex",
                   flexDirection: "column",
@@ -170,7 +170,7 @@ const Vision = () => {
                   sx={{
                     width: "280px",
                     height: "320px", // ✅ Fixed height for consistency
-                    background: "rgba(255, 255, 255, 0.3)",
+                    background: "rgba(15, 6, 6, 0.3)",
                     backdropFilter: "blur(20px)",
                     borderRadius: "20px",
                     boxShadow: "0 10px 20px rgba(0, 0, 0, 0.1)",

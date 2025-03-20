@@ -54,7 +54,7 @@ const Topbar = ({ notFound }) => {
   }, []);
 
   const scrollToSection = (sectionId) => {
-    const subPages = ["about", "gallery", "faq"]; // Add more subpages here if needed
+    const subPages = ["about", "gallery", "faq", "services"]; // Add more subpages here if needed
 
     if (subPages.includes(sectionId)) {
       // Navigate to the subpage instead of scrolling
@@ -301,7 +301,7 @@ const Topbar = ({ notFound }) => {
                       textAlign: "center",
                       fontSize: "clamp(30px, 4vw, 50px)",
                       lineHeight: "1.2",
-                      "&:hover": { color: "#F7E7CE", cursor: "pointer" },
+                      "&:hover": { color: "#F94B3D", cursor: "pointer" },
                     },
                   }}
                 />
@@ -326,7 +326,7 @@ const Topbar = ({ notFound }) => {
             variant="contained"
             onClick={handleOpenQuote}
             sx={{
-              backgroundColor: "#F7E7CE",
+              backgroundColor: "#F94B3D",
               color: "black",
               fontSize: "22px",
               fontWeight: "bold",
@@ -388,7 +388,7 @@ const Topbar = ({ notFound }) => {
                   color: "white",
                   fontSize: "36px",
                   "&:hover": {
-                    color: "#F7E7CE",
+                    color: "#F94B3D",
                   },
                 }}
               >

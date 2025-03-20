@@ -1,251 +1,148 @@
 import React from "react";
-import { Container, Grid, Typography, Box, Divider } from "@mui/material";
-import aboutImage from "../../public/both.jpg"; // Replace with your image path
-import natalie from "../../public/natalie.jpg";
-import drea from "../../public/drea.jpg";
+import { Container, Grid, Typography, Box, Button } from "@mui/material";
 import { motion } from "framer-motion";
-import CTA from "./cta";
-import Contact from "./Contact";
-import Map from "./Map";
-import Vision from "./Vision";
-import FrameworkCarousel from "./FrameworkCarousel";
+import { useNavigate } from "react-router-dom";
+import CTA2 from "./cta2";
 
-const About = () => {
+// Service Data
+const services = [
+  {
+    id: "physical-therapy",
+    title: "PHYSICAL THERAPY",
+    image: "/M2M-Website/pt.jpg",
+    description: [
+      "Manual Therapy",
+      "Soft Tissue Release",
+      "Joint Mobilization",
+      "Therapeutic Exercise",
+      "Post Surgical Rehab",
+    ],
+  },
+  {
+    id: "recovery",
+    title: "RECOVERY",
+    image: "/M2M-Website/recovery.jpg", 
+    description: [
+      "Strength & Conditioning",
+      "Sport-Specific Training",
+      "Personalized Training Programs",
+      "Endurance Training",
+    ],
+  },
+  {
+    id: "injury-prevention",
+    title: "INJURY PREVENTION",
+    image: "/M2M-Website/injury-prevention.jpg",
+    description: [
+      "Movement Assessments",
+      "Prehabilitation Exercises",
+      "Balance & Stability Training",
+      "Core Strength Training",
+    ],
+  },
+];
+
+const ServiceDetails = () => {
+  const navigate = useNavigate();
+
   return (
     <>
-      <Box
-        sx={{
-          background: "#000", // Black background
-          color: "#fff", // White text
-          textAlign: "center",
-          py: { xs: 10, md: 5 }, // Adjust spacing for different screen sizes
-        }}
-      >
-        <Container maxWidth="lg">
-          <motion.div
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
+    <Box sx={{ backgroundColor: "#000", py: 6 }}>
+      <Container maxWidth="lg">
+        <Typography
+          variant="h2"
+          sx={{
+            py: 6,
+            textAlign: "center",
+            fontWeight: "bold",
+            color: "#fff",
+            textTransform: "uppercase",
+          }}
+        >
+          Services
+        </Typography>
+
+        {services.map((service, index) => (
+          <Grid
+            container
+            spacing={4}
+            key={service.id}
+            alignItems="center"
+            // direction={index % 2 === 0 ? "row" : "row-reverse"} // Alternate layout
+            sx={{ mb: 6 }}
           >
-            <Typography
-              variant="h2"
-              fontWeight="bold"
-              sx={{
-                letterSpacing: 1.5,
-                mb: 2,
-                fontFamily: '"SF Pro Display", "Inter", sans-serif',
-                marginTop: "80px",
-              }}
-            >
-              ABOUT US
-            </Typography>
-            {/* <Box
-            sx={{
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-            }}>
-              <Divider color="#fff" width="300px" />
-            </Box> */}
-          </motion.div>
-        </Container>
-      </Box>
-      <Box
-        sx={{ backgroundColor: "#000", paddingTop: 5, paddingBottom: 8 }}
-        id="about"
-      >
-        <Container maxWidth="lg">
-          {/* Two-Column Layout */}
-          <Grid container spacing={4} alignItems="flex-start">
-            {/* Left Column - Description */}
-            <Grid
-              item
-              xs={12}
-              md={6}
-              sx={{
-                display: "flex",
-                flexDirection: "column",
-                justifyContent: "flex-start",
-              }}
-            >
-              <Typography
-                variant="h4"
-                fontWeight="bold"
-                color="#F94B3D"
-                gutterBottom
-              >
-                MEET DR. NAT & DR. DRE
-              </Typography>
-              <Typography variant="body1" color="#fff">
-                PT School big and little turned best friends and now business
-                partners. Together, we bring a wealth of knowledge and passion
-                for helping you achieve your movement goals and improve your
-                overall health. We truly believe movement is the best medicine
-                and our elite care will help you reach your peak performance.
-              </Typography>
-              <Typography variant="body1" color="#fff" sx={{ mt: 2 }}>
-                After several years of experience in the sports medicine and
-                orthopedic field, we found that clinics sacrificed quality
-                patient care for increased income, and we decided we wanted to
-                take a different approach. At M2M, we believe in empowering
-                athletes and active individuals to achieve optimal health and
-                full recovery through expert, personalized one-on-one care.
-              </Typography>
-            </Grid>
-
-            {/* Right Column - Image */}
+            {/* Service Image */}
             <Grid item xs={12} md={6}>
-              <Box
-                component="img"
-                src={aboutImage}
-                alt="Clinic Interior"
-                sx={{
-                  width: "100%",
-                  height: "auto",
-                  borderRadius: "10px",
-                  boxShadow: 3,
-                }}
-              />
+              <motion.div
+                initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.6, ease: "easeOut" }}
+              >
+                <Box
+                  component="img"
+                  src={service.image}
+                  alt={service.title}
+                  sx={{
+                    width: "80%",
+                    height: "auto",
+                    borderRadius: "10px",
+                    boxShadow: 3,
+                  }}
+                />
+              </motion.div>
+            </Grid>
+
+            {/* Service Description */}
+            <Grid item xs={12} md={6}>
+              <motion.div
+                initial={{ opacity: 0, x: index % 2 === 0 ? 50 : -50 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.6, ease: "easeOut" }}
+              >
+                <Typography
+                  variant="h4"
+                  sx={{
+                    color: "#F94B3D",
+                    fontWeight: "bold",
+                    textDecoration: "underline",
+                    mb: 2,
+                  }}
+                >
+                  {service.title}
+                </Typography>
+
+                <ul style={{ color: "#fff", fontSize: "1.1rem", paddingLeft: "20px" }}>
+                  {service.description.map((item, i) => (
+                    <li key={i}>{item}</li>
+                  ))}
+                </ul>
+
+                <Button
+                  variant="contained"
+                  sx={{
+                    mt: 3,
+                    backgroundColor: "#fff",
+                    color: "#F94B3D",
+                    fontWeight: "bold",
+                    "&:hover": {
+                      backgroundColor: "#F94B3D",
+                      color: "#fff",
+                    },
+                  }}
+                  onClick={() => navigate("/contact")}
+                >
+                  BOOK NOW
+                </Button>
+              </motion.div>
             </Grid>
           </Grid>
-        </Container>
-      </Box>
+        ))}
+      </Container>    
+    </Box>
 
-      <Box
-        sx={{ backgroundColor: "#000", paddingTop: 10, paddingBottom: 8 }}
-        id="about"
-      >
-        <Container maxWidth="lg">
-          <Grid container spacing={4} alignItems="flex-start">
-            {/* Left Column - Description */}
-            <Grid
-              item
-              xs={12}
-              md={8}
-              sx={{
-                display: "flex",
-                flexDirection: "column",
-                justifyContent: "flex-start",
-              }}
-            >
-              <Typography
-                variant="h4"
-                fontWeight="bold"
-                color="#F94B3D"
-                gutterBottom
-              >
-                DR. NATALIE VALDEZ
-              </Typography>
-              <Typography
-                variant="h6"
-                fontWeight="bold"
-                color="#fff"
-                gutterBottom
-              >
-                PT, DPT, SMTC, CSCS, Cert. Dry Needling
-              </Typography>
-
-              <Typography variant="body1" color="#fff">
-                Dr. Nat, a Dallas native, earned her undergraduate degree in
-                Kinesiology from Texas Woman’s University - Denton. She then
-                went on to earn her Doctorate of Physical Therapy from Texas
-                Woman’s University – Dallas. She is trusted by athletes of all
-                levels (Professional, Collegiate, High School, and youth sports)
-                to perform at the top of their game. As a Certified Strength &
-                Conditioning Specialist, she blends rehab and strength training
-                to create sport-specific programs to help athletes reach their
-                peak performance and return to sport. She also believes that
-                there is an athlete inside everyone and will help you reach your
-                full potential.
-              </Typography>
-            </Grid>
-
-            {/* Right Column - Image */}
-            <Grid item xs={12} md={4}>
-              <Box
-                component="img"
-                src={natalie}
-                alt="Clinic Interior"
-                sx={{
-                  width: "70%",
-                  height: "auto",
-                  borderRadius: "10px",
-                  boxShadow: 3,
-                }}
-              />
-            </Grid>
-          </Grid>
-        </Container>
-      </Box>
-
-      <Box sx={{ backgroundColor: "#000", paddingTop: 2, paddingBottom: 8 }}>
-        <Container maxWidth="lg">
-          <Grid container spacing={4} alignItems="flex-start">
-            <Grid item xs={12} md={4}>
-              <Box
-                component="img"
-                src={drea}
-                alt="Clinic Interior"
-                sx={{
-                  width: "70%",
-                  // marginLeft: "200px",
-                  height: "auto",
-                  borderRadius: "10px",
-                  boxShadow: 3,
-                }}
-              />
-            </Grid>
-            {/* Left Column - Description */}
-            <Grid
-              item
-              xs={12}
-              md={8}
-              sx={{
-                display: "flex",
-                flexDirection: "column",
-                justifyContent: "flex-start",
-              }}
-            >
-              <Typography
-                variant="h4"
-                fontWeight="bold"
-                color="#F94B3D"
-                gutterBottom
-              >
-                DR. ANDREA SIGSBEE
-              </Typography>
-              <Typography
-                variant="h5"
-                fontWeight="bold"
-                color="#fff"
-                gutterBottom
-              >
-                PT, DPT, Cert. Dry Needling
-              </Typography>
-              <Typography variant="body1" color="#fff">
-                Dr. Dre, born and raised in Dallas, has a strong passion for
-                combining her low for health and wellness with healing and
-                serving others. She attained her undergraduate degree in
-                Kinesiology from Texas A&M - Commerce. She then attained her
-                Doctorate of Physical Therapy at Texas Woman’s University –
-                Dallas and has experience working with professional, high
-                school, and college athletes as well as the active population.
-                She also has a love for personal training and nutrition, as she
-                has had to use them a lot for her own personal goals and
-                experiences.
-              </Typography>
-            </Grid>
-          </Grid>
-        </Container>
-      </Box>
-
-
-
-      <Vision />
-      {/* <CTA /> */}
-      {/* <Contact /> */}
-    </>
+<CTA2 />
+</>
   );
 };
 
-export default About;
+export default ServiceDetails;

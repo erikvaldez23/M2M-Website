@@ -15,7 +15,6 @@ import PrivacyPolicy from './components/PrivacyPolicy';
 import FrameworkCarousel from './components/FrameworkCarousel';
 import MeetTheTeam from './components/Team';
 import ErrorPage from "./components/ErrorPage";
-import ServicePage from './components/ServicePage';
 import About from './components/About';
 import Booking from './components/Booking';
 import Map from './components/Map';
@@ -25,6 +24,7 @@ import Techniques from './components/Techniques';
 import InstagramEmbed from './components/Instagram';
 import CTA2 from './components/cta2';
 import FAQ from './components/FAQ';
+import ServiceDetails from './components/ServiceDetails';
 
 const theme = createTheme({
     palette: {
@@ -93,6 +93,7 @@ function App() {
           <Route path="/faq" element={<FAQ />} />
           <Route path="/testimonials" element={<Testimonials />} />
           <Route path="/booking" element={<Booking />} />
+          <Route path="/services" element={<ServiceDetails />} />
           <Route path="/about" element={<About />} />
           <Route path="/privacy-policy" element={<PrivacyPolicy />} />
           {/* <Route path="/services/:serviceId" element={<ServicePage />} /> */}

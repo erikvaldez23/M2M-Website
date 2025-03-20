@@ -97,7 +97,6 @@ const Contact = () => {
                   justifyContent: "space-between",
                 }}
               >
-        
                 {/* <Box sx={{ display: "flex", alignItems: "center", mb: 2 }}>
                   <FaMapMarkerAlt
                     size={24}
@@ -134,11 +133,13 @@ const Contact = () => {
                   </Box>
                 </Box>
 
-                <Box sx={{ alignItems: "center", mb: 2 }}>
-                  <FaCar size={24} style={{ marginRight: 10, color: "#000" }} />
-                  <Box>
-                    <Typography variant="h5">Location</Typography>
-                    <Typography variant="body1">
+                <Box sx={{ display: "flex", alignItems: "flex-start", mb: 2 }}>
+                  <Box sx={{ mt: "4px", mr: 1 }}>
+                    <FaCar size={24} style={{ color: "#000" }} />
+                  </Box>
+                  <Box sx={{ width: "100%" }}>
+                    <Typography variant="h6">Location</Typography>
+                    <Typography variant="body2">
                       M2M is a Sports medicine and Physical Therapy company that
                       offers services in the Dallas-Fort Worth metroplex. We
                       offer concierge services, but we also have a location in
@@ -256,7 +257,7 @@ const Contact = () => {
                   backgroundColor: "#000",
                   color: "white",
                   "&:hover": {
-                    backgroundColor: "#F7E7CE",
+                    backgroundColor: "#F94B3D",
                     color: "#000",
                   },
                 }}

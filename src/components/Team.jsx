@@ -1,31 +1,41 @@
 import React from "react";
-import { Box, Grid, Typography, IconButton, Container, useMediaQuery, useTheme } from "@mui/material";
+import {
+  Box,
+  Grid,
+  Typography,
+  IconButton,
+  Container,
+  useMediaQuery,
+  useTheme,
+} from "@mui/material";
 import { styled } from "@mui/system";
 import { motion } from "framer-motion";
 import { FaLinkedin, FaInstagram } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
 
+// Team Member Data
 const teamMembers = [
   {
+    id: "natalie", // used for routing
     name: "Dr. Nat",
     certs: "PT, DPT, SMTC, CSCS, Cert. DN",
     title: "Founder/Physical Therapist",
     description:
-      "Trusted by athletes of all levels (Professional, Collegiate, High school, and Youth sports) to perform at the top of their game. She also has a background in strength and conditioning and is committed to helping individuals reach their peak performance. ",
+      "Trusted by athletes of all levels (Professional, Collegiate, High school, and Youth sports) to perform at the top of their game. She also has a background in strength and conditioning and is committed to helping individuals reach their peak performance.",
     image: "/M2M-Website/natalie.jpg",
-    modalImage: "/M2M-Website/natalie.jpg",
     socials: {
       linkedin: "https://linkedin.com/in/alex-johnson",
       instagram: "https://instagram.com/dr.alexjohnson",
     },
   },
   {
+    id: "andrea",
     name: "Dr. Dre",
     certs: "PT, DPT, Cert. DN",
     title: "Founder Physical Therapist",
     description:
       "Has experience working with Professional, High school, and College athletes as well as the Active population. She also has a love for personal training and nutrition, as she has had to use them a lot for her own personal goals and experiences.",
     image: "/M2M-Website/drea.jpg",
-    modalImage: "/M2M-Website/drea.jpg",
     socials: {
       linkedin: "https://linkedin.com/in/taylor-smith",
       instagram: "https://instagram.com/dr.taylorsmith",
@@ -33,10 +43,11 @@ const teamMembers = [
   },
 ];
 
+// Styled Card Container
 const CardContainer = styled(motion.div)({
-  maxWidth: "500px",  // Max width instead of fixed width
-  width: "100%", // Make it flexible
-  aspectRatio: "3 / 4", // Ensures consistent proportions
+  maxWidth: "500px",
+  width: "100%",
+  aspectRatio: "3 / 4",
   borderRadius: "20px",
   overflow: "hidden",
   position: "relative",
@@ -44,21 +55,17 @@ const CardContainer = styled(motion.div)({
   display: "flex",
   flexDirection: "column",
   justifyContent: "flex-end",
-
-  // Tablet adjustments
   "@media (max-width: 900px)": {
-    maxWidth: "350px", 
+    maxWidth: "350px",
     aspectRatio: "4 / 5",
   },
-
-  // Mobile adjustments
   "@media (max-width: 600px)": {
     maxWidth: "100%",
-    aspectRatio: "3 / 4", 
+    aspectRatio: "3 / 4",
   },
 });
 
-
+// Background Box
 const CardBackground = styled(Box)({
   backgroundSize: "cover",
   backgroundPosition: "center",
@@ -76,7 +83,7 @@ const CardBackground = styled(Box)({
   },
 });
 
-// **Main Animation Variants**
+// Framer Motion Variants
 const contentVariants = {
   initial: { opacity: 1, y: 0 },
   hover: { opacity: 0, y: -10, transition: { duration: 0.3, ease: "easeOut" } },
@@ -93,7 +100,8 @@ const overlayVariants = {
 
 const MeetTheTeam = () => {
   const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down("sm")); // Detect mobile screens
+  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
+  const navigate = useNavigate();
 
   return (
     <Box
@@ -123,7 +131,6 @@ const MeetTheTeam = () => {
         Meet The Team
       </Typography>
 
-      {/* ✅ Centering the Grid */}
       <Container maxWidth="xl">
         <Grid container spacing={4} justifyContent="center">
           {teamMembers.map((member, index) => (
@@ -137,11 +144,15 @@ const MeetTheTeam = () => {
               display="flex"
               justifyContent="center"
             >
-              <CardContainer initial="initial" whileHover="hover">
+              <CardContainer
+                initial="initial"
+                whileHover="hover"
+                onClick={() => navigate(`/about#${member.id}`)}
+              >
                 <CardBackground
                   sx={{ backgroundImage: `url(${member.image})` }}
                 >
-                  {/* Default Content (Slight Fade When Hovered) */}
+                  {/* Default Text Content */}
                   <motion.div
                     variants={contentVariants}
                     style={{
@@ -174,7 +185,7 @@ const MeetTheTeam = () => {
                     </Typography>
                   </motion.div>
 
-                  {/* New Content (Appears from Bottom When Hovered) */}
+                  {/* Hover Overlay Content */}
                   <motion.div
                     variants={overlayVariants}
                     style={{
@@ -184,17 +195,11 @@ const MeetTheTeam = () => {
                       left: "10px",
                     }}
                   >
-                    <Typography
-                      variant="body1"
-                      sx={{
-                        fontWeight: "bold",
-                        color: "#fff",
-                      }}
-                    >
+                    <Typography variant="body1" sx={{ fontWeight: "bold" }}>
                       {member.description}
                     </Typography>
 
-                    {/* Social Media Icons */}
+                    {/* Social Icons */}
                     <Box sx={{ display: "flex", gap: 1, mt: 2 }}>
                       {member.socials.linkedin && (
                         <IconButton
@@ -204,9 +209,10 @@ const MeetTheTeam = () => {
                             borderRadius: "50%",
                             boxShadow: "0 4px 10px rgba(0,0,0,0.5)",
                           }}
-                          onClick={() =>
-                            window.open(member.socials.linkedin, "_blank")
-                          }
+                          onClick={(e) => {
+                            e.stopPropagation(); // prevent card click event
+                            window.open(member.socials.linkedin, "_blank");
+                          }}
                         >
                           <FaLinkedin color="#000" size={20} />
                         </IconButton>
@@ -219,9 +225,10 @@ const MeetTheTeam = () => {
                             borderRadius: "50%",
                             boxShadow: "0 4px 10px rgba(0,0,0,0.5)",
                           }}
-                          onClick={() =>
-                            window.open(member.socials.instagram, "_blank")
-                          }
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            window.open(member.socials.instagram, "_blank");
+                          }}
                         >
                           <FaInstagram color="#000" size={20} />
                         </IconButton>
