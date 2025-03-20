@@ -54,7 +54,7 @@ const Topbar = ({ notFound }) => {
   }, []);
 
   const scrollToSection = (sectionId) => {
-    const subPages = ["about", "gallery"]; // Add more subpages here if needed
+    const subPages = ["about", "gallery", "faq"]; // Add more subpages here if needed
 
     if (subPages.includes(sectionId)) {
       // Navigate to the subpage instead of scrolling
@@ -175,7 +175,7 @@ const Topbar = ({ notFound }) => {
             {/* Desktop Navigation */}
             {!isMobile && (
               <Box display="flex" gap={4}>
-                {["About", "Services", "Testimonials", "Contact"].map((item) => (
+                {["About", "Services", "Reviews", "FAQ", "Contact"].map((item) => (
                   <Button
                     key={item}
                     color="inherit"
@@ -284,7 +284,7 @@ const Topbar = ({ notFound }) => {
             gap: "15px", // ✅ Adds consistent spacing between links
           }}
         >
-          {["Services", "About", "Reviews", "Contact"].map(
+          {["Services", "About", "Reviews", "FAQ", "Contact"].map(
             (item) => (
               <ListItem
                 button

@@ -141,13 +141,13 @@ const Testimonials = () => {
 
   return (
     <>
-      <Box id="testimonials" sx={{ backgroundColor: "#1f1f1f", color: "#000", textAlign: "center", overflow: "hidden" }}>
+      <Box id="reviews" sx={{ backgroundColor: "#1f1f1f", color: "#000", textAlign: "center", overflow: "hidden" }}>
         {/* Hero Section */}
         <Box sx={{ background: "#1f1f1f", color: "#fff", textAlign: "center", py: { xs: 10, md: 5 } }}>
           <Container maxWidth="lg">
             <motion.div initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, ease: "easeOut" }}>
               <Typography variant="h2" fontWeight="bold" sx={{ letterSpacing: 1.5, fontFamily: '"SF Pro Display", "Inter", sans-serif' }}>
-                CUSTOMER TESTIMONIALS
+                REVIEWS
               </Typography>
             </motion.div>
           </Container>
