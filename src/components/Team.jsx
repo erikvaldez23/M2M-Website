@@ -189,7 +189,6 @@ const MeetTheTeam = () => {
                       sx={{
                         fontWeight: "bold",
                         color: "#fff",
-                        textShadow: "1px 1px 4px rgba(0,0,0,0.6)",
                       }}
                     >
                       {member.description}

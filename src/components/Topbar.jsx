@@ -54,7 +54,7 @@ const Topbar = ({ notFound }) => {
   }, []);
 
   const scrollToSection = (sectionId) => {
-    const subPages = ["about", "testimonials", "gallery"]; // Add more subpages here if needed
+    const subPages = ["about", "gallery"]; // Add more subpages here if needed
 
     if (subPages.includes(sectionId)) {
       // Navigate to the subpage instead of scrolling
@@ -175,7 +175,7 @@ const Topbar = ({ notFound }) => {
             {/* Desktop Navigation */}
             {!isMobile && (
               <Box display="flex" gap={4}>
-                {["Services", "About", "Testimonials", "Contact"].map((item) => (
+                {["About", "Services", "Testimonials", "Contact"].map((item) => (
                   <Button
                     key={item}
                     color="inherit"
@@ -197,12 +197,12 @@ const Topbar = ({ notFound }) => {
                         bottom: "0",
                         left: "50%",
                         transform: "translateX(-50%)",
-                        background: "#F7E7CE", // Gradient underline
+                        background: "#F94B3D", // Gradient underline
                         transition: "width 0.4s ease-in-out",
                         borderRadius: "2px",
                       },
                       "&:hover": {
-                        color: "#F7E7CE", // Bright hover color
+                        color: "#F94B3D", // Bright hover color
                         textShadow: "0 0 8px rgba(0, 198, 255, 0.8)", // Glowing text
                         "&:after": { width: "100%" }, // Underline expands
                       },
@@ -266,7 +266,7 @@ const Topbar = ({ notFound }) => {
             sx={{
               color: "white",
               fontSize: "30px",
-              "&:hover": { color: "#F7E7CE" },
+              "&:hover": { color: "#F94B3D" },
             }}
           >
             <FaTimes />

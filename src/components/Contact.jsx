@@ -97,17 +97,8 @@ const Contact = () => {
                   justifyContent: "space-between",
                 }}
               >
-                <Box sx={{ display: "flex", alignItems: "center", mb: 2 }}>
-                  <FaCar size={24} style={{ marginRight: 10, color: "#000" }} />
-                  <Box>
-                    <Typography variant="h6">Location</Typography>
-                    <Typography variant="body2">
-                      Mobile Concierge Service
-                    </Typography>
-                    <Typography variant="body2">DFW</Typography>
-                  </Box>
-                </Box>
-                <Box sx={{ display: "flex", alignItems: "center", mb: 2 }}>
+        
+                {/* <Box sx={{ display: "flex", alignItems: "center", mb: 2 }}>
                   <FaMapMarkerAlt
                     size={24}
                     style={{ marginRight: 10, color: "#000" }}
@@ -119,7 +110,7 @@ const Contact = () => {
                     </Typography>
                     <Typography variant="body2">Dallas, TX</Typography>
                   </Box>
-                </Box>
+                </Box> */}
 
                 <Box sx={{ display: "flex", alignItems: "center", mb: 2 }}>
                   <FaPhone
@@ -140,6 +131,22 @@ const Contact = () => {
                   <Box>
                     <Typography variant="h6">Email Us</Typography>
                     <Typography variant="body2">info@m2mdfw.com</Typography>
+                  </Box>
+                </Box>
+
+                <Box sx={{ alignItems: "center", mb: 2 }}>
+                  <FaCar size={24} style={{ marginRight: 10, color: "#000" }} />
+                  <Box>
+                    <Typography variant="h5">Location</Typography>
+                    <Typography variant="body1">
+                      M2M is a Sports medicine and Physical Therapy company that
+                      offers services in the Dallas-Fort Worth metroplex. We
+                      offer concierge services, but we also have a location in
+                      the Dallas area. For concierge services, we will come to
+                      your home or facility. For our Dallas location, we operate
+                      out of Park Cities Personal Training (PCPT) in the
+                      Knox/Highland Park area.
+                    </Typography>
                   </Box>
                 </Box>
 

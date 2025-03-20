@@ -141,7 +141,7 @@ const Testimonials = () => {
 
   return (
     <>
-      <Box sx={{ backgroundColor: "#1f1f1f", color: "#000", textAlign: "center", overflow: "hidden" }}>
+      <Box id="testimonials" sx={{ backgroundColor: "#1f1f1f", color: "#000", textAlign: "center", overflow: "hidden" }}>
         {/* Hero Section */}
         <Box sx={{ background: "#1f1f1f", color: "#fff", textAlign: "center", py: { xs: 10, md: 5 } }}>
           <Container maxWidth="lg">
@@ -155,7 +155,7 @@ const Testimonials = () => {
 
         {/* ✅ Marquee Wrapper */}
         <Box sx={{ position: "relative", overflow: "hidden", paddingTop: 1, paddingBottom: 5 }}>
-          <Marquee velocity={isPaused ? 0 : velocity} direction="ltr">
+          <Marquee velocity={isPaused ? 0 : velocity} direction="rtl">
             {repeatTestimonials.map((testimonial, index) => (
               <Box
                 key={`${testimonial.name}-${index}`}

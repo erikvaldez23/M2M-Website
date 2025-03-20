@@ -40,7 +40,7 @@ const CTA = () => {
         >
           {/* <Divider color="#F94B3D" /> */}
           <Typography
-            variant="h2"
+            variant="h4"
             sx={{
               paddingTop: 3,
               fontFamily: "Poppins, sans-serif",
@@ -48,7 +48,7 @@ const CTA = () => {
               textTransform: "uppercase",
               letterSpacing: 2,
               mb: 3, // Less margin on mobile
-              fontSize: { xs: "1.5rem", sm: "2rem", md: "4rem" }, // ✅ Smaller for mobile
+              fontSize: { xs: "1.5rem", sm: "2rem", md: "3.2rem" }, // ✅ Smaller for mobile
               textAlign: "center",
             }}
           >
@@ -59,7 +59,7 @@ const CTA = () => {
             variant="h6"
             sx={{
               fontFamily: "Poppins, sans-serif",
-              fontWeight: 300,
+              fontWeight: "bold",
               mb: 4, // Adjusted for mobile
               color: "fff",
               maxWidth: "900px",
@@ -69,8 +69,7 @@ const CTA = () => {
               textAlign: "center",
             }}
           >
-            Where movement is the best medicine and our elite care helps you
-            reach your peak performance
+            Combining the power of movement with elite care to help you reach your peak performance
           </Typography>
 
           {/* <Typography

@@ -86,7 +86,7 @@ const CTA = () => {
               onClick={handleOpenModal}
               sx={{
                 backgroundColor: "#000",
-                color: "#F7E7CE",
+                color: "#fff",
                 fontFamily: "Poppins, sans-serif",
                 fontWeight: "bold",
                 px: { xs: 2, md: 4 }, // Responsive padding
