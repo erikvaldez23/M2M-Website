@@ -175,7 +175,7 @@ const Topbar = ({ notFound }) => {
             {/* Desktop Navigation */}
             {!isMobile && (
               <Box display="flex" gap={4}>
-                {["Services", "About", "Testimonials", "Gallery", "Contact"].map((item) => (
+                {["Services", "About", "Testimonials", "Contact"].map((item) => (
                   <Button
                     key={item}
                     color="inherit"
@@ -284,7 +284,7 @@ const Topbar = ({ notFound }) => {
             gap: "15px", // ✅ Adds consistent spacing between links
           }}
         >
-          {["Services", "About", "Reviews", "Gallery", "Contact"].map(
+          {["Services", "About", "Reviews", "Contact"].map(
             (item) => (
               <ListItem
                 button

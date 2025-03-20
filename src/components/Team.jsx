@@ -6,11 +6,11 @@ import { FaLinkedin, FaInstagram } from "react-icons/fa";
 
 const teamMembers = [
   {
-    name: "Dr. Natalie Valdez",
+    name: "Dr. Nat",
     certs: "PT, DPT, SMTC, CSCS, Cert. DN",
-    title: "Founder Physical Therapist",
+    title: "Founder/Physical Therapist",
     description:
-      "Dr. Natalie Valdez, a Dallas native, earned her Doctorate of Physical Therapy from Texas Women's University - Dallas. As a former athlete herself, she has always had the passion for working with the sports active population. She has experience working with athletes of all levels (professional, collegiate, high school, and youth sports) for return to sport. Natalie also has a background in strenfgth and conditioning and is a Certified and Conditioning Specialist. She has a passion for strength and wellness and is commited to helping individuals achieve their optimal health and performance. When she is not working you can catch her traveling with her husband walking thier dogs on the Katy trail, and doing pilates.",
+      "Trusted by athletes of all levels (Professional, Collegiate, High school, and Youth sports) to perform at the top of their game. She also has a background in strength and conditioning and is committed to helping individuals reach their peak performance. ",
     image: "/M2M-Website/natalie.jpg",
     modalImage: "/M2M-Website/natalie.jpg",
     socials: {
@@ -19,11 +19,11 @@ const teamMembers = [
     },
   },
   {
-    name: "Dr. Andrea Sigsbee",
+    name: "Dr. Dre",
     certs: "PT, DPT, Cert. DN",
     title: "Founder Physical Therapist",
     description:
-      "Dr. Andrea Sigsbee, born and raised in Dallas, has a strong passion for combining her love for health and wellness with healing and serving others. She attained her Doctorate of Physical Therapy at Texas Women's University in Dallas and has experience working with professional, high school, and college athletes as well as the activbe population. She also has a love for personal training and nutrition as she has had to use her own personal goals and experiences. When not working, you can catch her lifting weights in the gym, doing pilates, or traveling to a new place on the map.",
+      "Has experience working with Professional, High school, and College athletes as well as the Active population. She also has a love for personal training and nutrition, as she has had to use them a lot for her own personal goals and experiences.",
     image: "/M2M-Website/drea.jpg",
     modalImage: "/M2M-Website/drea.jpg",
     socials: {
@@ -99,7 +99,7 @@ const MeetTheTeam = () => {
     <Box
       sx={{
         width: "100%",
-        backgroundColor: "#F7E7CE",
+        backgroundColor: "#1f1f1f",
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
@@ -115,7 +115,7 @@ const MeetTheTeam = () => {
           mb: 4,
           textAlign: "center",
           textTransform: "uppercase",
-          background: "#000",
+          background: "#fff",
           WebkitBackgroundClip: "text",
           WebkitTextFillColor: "transparent",
         }}

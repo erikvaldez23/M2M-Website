@@ -23,14 +23,14 @@ const CTA = () => {
         sx={{
           py: { xs: 2, md: 3 },
           px: { xs: 2, md: 3 },
-          background: "#000",
+          background: "#F94B3D",
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
           justifyContent: "center",
           textAlign: "center",
-          color: "#fff",
-          minHeight: { xs: "60vh", md: "40vh" }, // Responsive height
+          color: "#F94B3D",
+          minHeight: { xs: "60vh", md: "30vh" }, // Responsive height
         }}
       >
         <motion.div
@@ -39,45 +39,12 @@ const CTA = () => {
           transition={{ duration: 0.8, ease: "easeOut" }}
         >
           {/* <Divider color="#F94B3D" /> */}
-          <Typography
-            variant="h2"
-            sx={{
-              paddingTop: 3,
-              fontFamily: "Poppins, sans-serif",
-              fontWeight: "bold",
-              textTransform: "uppercase",
-              letterSpacing: 2,
-              mb: 3, // Less margin on mobile
-              fontSize: { xs: "1.5rem", sm: "2rem", md: "4rem" }, // ✅ Smaller for mobile
-              textAlign: "center",
-            }}
-          >
-            Recover and Return Stronger
-          </Typography>
+  
 
           <Typography
-            variant="h6"
-            sx={{
-              fontFamily: "Poppins, sans-serif",
-              fontWeight: 300,
-              mb: 4, // Adjusted for mobile
-              color: "fff",
-              maxWidth: "900px",
-              mx: "auto",
-              lineHeight: 1.6,
-              fontSize: { xs: "0.9rem", sm: "1.1rem", md: "1.6rem" }, // ✅ More readable on mobile
-              textAlign: "center",
-            }}
-          >
-            Where movement is the best medicine and our elite care helps you
-            reach your peak performance
-          </Typography>
-
-          {/* <Typography
             variant="h2"
             sx={{
               color: "#fff",
-              paddingTop: 3,
               fontFamily: "Poppins, sans-serif",
               fontWeight: "bold",
               textTransform: "uppercase",
@@ -88,9 +55,25 @@ const CTA = () => {
             }}
           >
             Want to join our community of <br/> peak performers?
+          </Typography>
+{/* 
+          <Typography
+            variant="h6"
+            sx={{
+              fontFamily: "Poppins, sans-serif",
+              fontWeight: 300,
+              mb: 4, // Adjusted for mobile
+              color: "#F94B3D",
+              maxWidth: "900px",
+              mx: "auto",
+              lineHeight: 1.6,
+              fontSize: { xs: "0.9rem", sm: "1.1rem", md: "1.3rem" }, // ✅ More readable on mobile
+              textAlign: "center",
+            }}
+          >
+            Where movement is the best medicine and our elite care helps you
+            reach your peak performance
           </Typography> */}
-
-     
 
           {/* Open Modal Button */}
           <motion.div
@@ -103,12 +86,11 @@ const CTA = () => {
               onClick={handleOpenModal}
               sx={{
                 backgroundColor: "#000",
-                color: "#fff",
+                color: "#F7E7CE",
                 fontFamily: "Poppins, sans-serif",
                 fontWeight: "bold",
                 px: { xs: 2, md: 4 }, // Responsive padding
                 py: { xs: 1, md: 1.5 }, // Responsive padding
-                border: "3px solid #fff",
                 fontSize: { xs: "0.9rem", md: "1.1rem" }, // Responsive font size
                 borderRadius: "30px",
               }}

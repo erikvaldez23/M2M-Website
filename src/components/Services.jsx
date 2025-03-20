@@ -23,21 +23,21 @@ const servicesData = [
     title: "PHYSICAL THERAPY",
     description:
       "Rehabilitate injuries and improve mobility with our expert care.",
-    image: "/M2M-Website/ortho-inj.jpg",
+    image: "/M2M-Website/pt.jpg",
   },
   {
     id: "athletic-recovery",
-    title: "ATHLETIC RECOVERY",
+    title: "RECOVERY",
     description:
       "Enhance your performance with our specialized recovery programs.",
-    image: "/M2M-Website/post-op.jpg",
+    image: "/M2M-Website/recovery.jpg",
   },
   {
     id: "injury-prevention",
     title: "INJURY PREVENTION",
     description:
       "Stay ahead of injuries with our tailored prevention strategies.",
-    image: "/M2M-Website/recovery.jpg",
+    image: "/M2M-Website/injury-prevention.jpg",
   },
 ];
 
@@ -119,17 +119,14 @@ const Services = () => {
     <Box
       id="services"
       ref={ref}
-      sx={{ backgroundColor: "#000", padding: "40px 0", color: "#F7E7CE" }}
+      sx={{ backgroundColor: "#000", paddingTop: 7, color: "#fff" }}
     >
       <motion.div initial="hidden" animate={isInView ? "visible" : "hidden"}>
         <Typography
           variant={isMobile ? "h3" : "h2"}
-          sx={{ textAlign: "center", fontWeight: "bold", mb: 2 }}
+          sx={{ textAlign: "center", fontWeight: "bold"}}
         >
           SERVICES
-        </Typography>
-        <Typography variant="h6" sx={{ textAlign: "center", opacity: 0.8 }}>
-          Discover personalized fitness solutions tailored to your needs.
         </Typography>
       </motion.div>
 
@@ -174,10 +171,10 @@ const Services = () => {
                 alt={service.title}
               />
               <CardOverlay>
-                <Typography variant="h5" sx={{ fontWeight: "bold" }}>
+                <Typography variant="h5" sx={{ fontWeight: "bold", textAlign: "center" }}>
                   {service.title}
                 </Typography>
-                <Typography variant="body2">{service.description}</Typography>
+                {/* <Typography variant="body2">{service.description}</Typography> */}
                 <CTAButton onClick={() => handleServiceClick(service)}>
                   See Details
                 </CTAButton>

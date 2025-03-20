@@ -69,35 +69,26 @@ const Contact = () => {
   return (
     <Box
       sx={{
-        backgroundColor: "#F7E7CE",
+        backgroundColor: "#000",
         width: "100%",
+        padding: 2,
       }}
     >
       <Box
-        sx={{ py: "20px", px: "10px", maxWidth: "1200px", margin: "auto" }}
+        sx={{ py: 4, px: "10px", maxWidth: "1200px", margin: "auto" }}
         id="contact"
       >
         {/* Contact Header */}
         <Typography
           variant={isMobile ? "h3" : "h2"}
-          sx={{ mb: 2, fontWeight: "bold", color: "#000", textAlign: "center" }}
+          sx={{ mb: 2, fontWeight: "bold", color: "#fff", textAlign: "center" }}
         >
           CONTACT US
         </Typography>
-        <Typography
-          variant="body1"
-          sx={{ textAlign: "center", marginBottom: 4 }}
-        >
-          Let us know how we can help by sending us a message below. Looking
-          forward to chatting!
-        </Typography>
-
         <Grid container spacing={4} alignItems="stretch">
           {/* Left Side - Contact Info */}
           <Grid item xs={12} md={5} sx={{ display: "flex" }}>
-            <Card
-              sx={{ backgroundColor: "#f8f9fa", padding: "20px", flexGrow: 1 }}
-            >
+            <Card sx={{ backgroundColor: "#f8f9fa", flexGrow: 1 }}>
               <CardContent
                 sx={{
                   height: "100%",
@@ -107,26 +98,26 @@ const Contact = () => {
                 }}
               >
                 <Box sx={{ display: "flex", alignItems: "center", mb: 2 }}>
+                  <FaCar size={24} style={{ marginRight: 10, color: "#000" }} />
+                  <Box>
+                    <Typography variant="h6">Location</Typography>
+                    <Typography variant="body2">
+                      Mobile Concierge Service
+                    </Typography>
+                    <Typography variant="body2">DFW</Typography>
+                  </Box>
+                </Box>
+                <Box sx={{ display: "flex", alignItems: "center", mb: 2 }}>
                   <FaMapMarkerAlt
                     size={24}
                     style={{ marginRight: 10, color: "#000" }}
                   />
                   <Box>
                     <Typography variant="h6">Location</Typography>
-                    <Typography variant="body2">4514 Travis St UNIT 115</Typography>
+                    <Typography variant="body2">
+                      4514 Travis St UNIT 115
+                    </Typography>
                     <Typography variant="body2">Dallas, TX</Typography>
-                  </Box>
-                </Box>
-
-                <Box sx={{ display: "flex", alignItems: "center", mb: 2 }}>
-                  <FaCar
-                    size={24}
-                    style={{ marginRight: 10, color: "#000" }}
-                  />
-                  <Box>
-                    <Typography variant="h6">Location</Typography>
-                    <Typography variant="body2">Mobile Concierge Service</Typography>
-                    <Typography variant="body2">DFW</Typography>
                   </Box>
                 </Box>
 
@@ -148,9 +139,7 @@ const Contact = () => {
                   />
                   <Box>
                     <Typography variant="h6">Email Us</Typography>
-                    <Typography variant="body2">
-                      info@m2mdfw.com
-                    </Typography>
+                    <Typography variant="body2">info@m2mdfw.com</Typography>
                   </Box>
                 </Box>
 

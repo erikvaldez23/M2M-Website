@@ -88,7 +88,7 @@ const testimonialsData = [
     date: "2024-01-15",
   },
   {
-    name: "Akhil Simpson",
+    name: "Akil Simpson",
     review:
       "These two have started a business and they must have been listening to God! These two ladies have already made such a huge impact in my life and the people around me and I can’t thank them enough! Not only do I have the pleasure of working with them at tournaments and camps, I also am a client. The care and the love that exudes from them and their work, is nothing short of amazing! I am so honored to call them my trainers and my friends",
     image: "/M2M-Website/daniel.jpg",
@@ -96,7 +96,7 @@ const testimonialsData = [
     date: "2024-01-15",
   },
   {
-    name: "CJ Wottliin",
+    name: "CJ Wottlin",
     review:
       "M2M helped me get back on track after surgery! I’ve never felt more physically confident than I do now all because of them! THANK YOU DR. DRE & DR. NAT",
     image: "/M2M-Website/daniel.jpg",
@@ -141,12 +141,12 @@ const Testimonials = () => {
 
   return (
     <>
-      <Box sx={{ backgroundColor: "#F7E7CE", color: "#000", textAlign: "center", overflow: "hidden" }}>
+      <Box sx={{ backgroundColor: "#1f1f1f", color: "#000", textAlign: "center", overflow: "hidden" }}>
         {/* Hero Section */}
-        <Box sx={{ background: "#000", color: "#F7E7CE", textAlign: "center", py: { xs: 10, md: 14 } }}>
+        <Box sx={{ background: "#1f1f1f", color: "#fff", textAlign: "center", py: { xs: 10, md: 5 } }}>
           <Container maxWidth="lg">
             <motion.div initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, ease: "easeOut" }}>
-              <Typography variant="h2" fontWeight="bold" sx={{ letterSpacing: 1.5, mb: 2, fontFamily: '"SF Pro Display", "Inter", sans-serif' }}>
+              <Typography variant="h2" fontWeight="bold" sx={{ letterSpacing: 1.5, fontFamily: '"SF Pro Display", "Inter", sans-serif' }}>
                 CUSTOMER TESTIMONIALS
               </Typography>
             </motion.div>
@@ -154,7 +154,7 @@ const Testimonials = () => {
         </Box>
 
         {/* ✅ Marquee Wrapper */}
-        <Box sx={{ position: "relative", overflow: "hidden", py: 5 }}>
+        <Box sx={{ position: "relative", overflow: "hidden", paddingTop: 1, paddingBottom: 5 }}>
           <Marquee velocity={isPaused ? 0 : velocity} direction="ltr">
             {repeatTestimonials.map((testimonial, index) => (
               <Box
@@ -162,13 +162,11 @@ const Testimonials = () => {
                 sx={{
                   cursor: "pointer",
                   transition: "transform 0.3s ease-in-out",
-                  margin: "0 30px",
+                  margin: "0 20px",
                   background: "#111",
                   color: "#fff",
                   borderRadius: "20px",
-                  p: 3,
                   textAlign: "center",
-                  boxShadow: "0px 5px 20px rgba(255, 255, 255, 0.2)",
                   minWidth: 380,
                   maxWidth: 420,
                   height: 400,
@@ -183,13 +181,13 @@ const Testimonials = () => {
                 onMouseLeave={() => setIsPaused(false)} // ✅ Resume on leave
               >
                 {/* ✅ Avatar */}
-                <Avatar src={testimonial.image} alt={testimonial.name} sx={{ width: 90, height: 90, mx: "auto", border: "3px solid #F7E7CE" }} />
+                {/* <Avatar src={testimonial.image} alt={testimonial.name} sx={{ width: 90, height: 90, mx: "auto", border: "3px solid #F7E7CE" }} /> */}
 
                 {/* ✅ Name & Date */}
-                <Typography variant="h6" sx={{ fontWeight: "bold", mt: 1 }}>{testimonial.name}</Typography>
-                <Typography variant="body2" sx={{ color: "#b0b0b0", mb: 1 }}>
+                <Typography variant="h6" sx={{ fontWeight: "bold", mt: 5, fontSize: 25 }}>{testimonial.name}</Typography>
+                {/* <Typography variant="body2" sx={{ color: "#b0b0b0", mb: 1 }}>
                   {new Date(testimonial.date).toLocaleDateString()}
-                </Typography>
+                </Typography> */}
 
                 {/* ✅ Star Ratings */}
                 <Box sx={{ display: "flex", justifyContent: "center", gap: 1, mb: 1 }}>
@@ -199,8 +197,8 @@ const Testimonials = () => {
                 </Box>
 
                 {/* ✅ Scrollable Review Box */}
-                <Box sx={{ maxHeight: 120, overflowY: "auto", p: 2, background: "rgba(255, 255, 255, 0.1)", borderRadius: "10px" }}>
-                  <Typography variant="body1" sx={{ fontSize: 15, color: "#b0b0b0", overflowWrap: "break-word" }}>
+                <Box sx={{ height: 250, overflowY: "auto", p: 2, borderRadius: "10px" }}>
+                  <Typography variant="body1" sx={{ fontSize: 17, color: "#fff", overflowWrap: "break-word" }}>
                     "{testimonial.review}"
                   </Typography>
                 </Box>
@@ -211,8 +209,6 @@ const Testimonials = () => {
       </Box>
 
       {/* ✅ CTA and Contact Sections */}
-      <Box><CTA /></Box>
-      <Box><Contact /></Box>
     </>
   );
 };

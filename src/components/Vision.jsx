@@ -6,6 +6,7 @@ import {
   Grid,
   Card,
   CardContent,
+  Divider
 } from "@mui/material";
 import { FaTools, FaShieldAlt, FaCar, FaHandHoldingUsd } from "react-icons/fa";
 import { motion } from "framer-motion";
@@ -45,8 +46,8 @@ const Vision = () => {
   return (
     <Box
       sx={{
-        py: 8,
-        background: "#F7E7CE",
+        py: 1,
+        background: "#000",
         textAlign: "center",
       }}
     >
@@ -62,14 +63,14 @@ const Vision = () => {
             sx={{
               fontWeight: "bold",
               letterSpacing: 1.5,
-              mb: 3,
-              background: "#000",
+              mb: 6,
+              background: "#fff",
               WebkitBackgroundClip: "text",
               WebkitTextFillColor: "transparent",
               fontFamily: '"SF Pro Display", "Inter", sans-serif',
             }}
           >
-            VISION & MISSION
+            MISSION & VISION
           </Typography>
           {/* <Typography variant="h5" sx={{ color: "#000", mb: 5 }}>
             Excellence through innovation, commitment, and personalized care.
@@ -78,6 +79,43 @@ const Vision = () => {
 
         {/* Vision & Mission Section */}
         <Grid container spacing={6} justifyContent="center" sx={{ mb: 6 }}>
+
+        <Grid item xs={12} md={6}>
+            <motion.div
+              initial={{ opacity: 0, x: 50 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8 }}
+            >
+              <Box
+                sx={{
+                  background: "#fff",
+                  backdropFilter: "blur(20px)",
+                  padding: 4,
+                  borderRadius: "20px",
+                  boxShadow: "0 10px 30px rgba(0, 0, 0, 0.1)",
+                  textAlign: "left",
+                  height: "350px", // ✅ Fixed height for uniformity
+                  display: "flex",
+                  flexDirection: "column",
+                  justifyContent: "flex-start", // ✅ Keeps text vertically centered
+                  color: "#000"
+                }}
+              >
+                <Typography variant="h4" sx={{ fontWeight: "bold", mb: 2, textAlign: "center" }}>
+                  Mission
+                </Typography>
+                <Typography
+                  variant="h6"
+                  sx={{ color: "#000", lineHeight: 1.8, textAlign: "center" }}
+                >
+                  Empowering Athletes and active individuals to achieve optimal
+                  health and full recovery through expert, personalized
+                  one-on-one physical therapy and care.
+                </Typography>
+              </Box>
+            </motion.div>
+          </Grid>
+
           <Grid item xs={12} md={6}>
             <motion.div
               initial={{ opacity: 0, x: -50 }}
@@ -86,73 +124,39 @@ const Vision = () => {
             >
               <Box
                 sx={{
-                  background: "rgba(255, 255, 255, 0.3)",
+                  background: "#fff",
                   backdropFilter: "blur(20px)",
                   padding: 4,
                   borderRadius: "20px",
                   boxShadow: "0 10px 30px rgba(0, 0, 0, 0.1)",
                   textAlign: "left",
-                  height: "320px", // ✅ Fixed height for uniformity
+                  height: "350px", // ✅ Fixed height for uniformity
                   display: "flex",
                   flexDirection: "column",
                   justifyContent: "flex-start", // ✅ Keeps text vertically centered
                 }}
               >
-                <Typography variant="h4" sx={{ fontWeight: "bold", mb: 2 }}>
-                  Our Vision
+                <Typography variant="h4" sx={{ color: "#000", fontWeight: "bold", mb: 2, textAlign: "center" }}>
+                  Vision
                 </Typography>
                 <Typography
                   variant="h6"
-                  sx={{ color: "#1d1d1f", lineHeight: 1.8 }}
+                  sx={{ color: "#000", lineHeight: 1.8 , textAlign: "center"}}
                 >
-                  To be the premier destination for athletes & active
+                  To be the premiere destination for athletes and active
                   individuals seeking exceptional care, where our passion for
-                  healing and love for the human body drives us to exceed
-                  expectations & foster a thriving, resilient community of peak
-                  performers.
+                  healing and our love for the human body drives us to exceed
+                  expectations and foster a thriving, resilient community of
+                  peak performers. performers.
                 </Typography>
               </Box>
             </motion.div>
           </Grid>
 
-          <Grid item xs={12} md={6}>
-            <motion.div
-              initial={{ opacity: 0, x: 50 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8 }}
-            >
-              <Box
-                sx={{
-                  background: "rgba(255, 255, 255, 0.3)",
-                  backdropFilter: "blur(20px)",
-                  padding: 4,
-                  borderRadius: "20px",
-                  boxShadow: "0 10px 30px rgba(0, 0, 0, 0.1)",
-                  textAlign: "left",
-                  height: "320px", // ✅ Fixed height for uniformity
-                  display: "flex",
-                  flexDirection: "column",
-                  justifyContent: "flex-start", // ✅ Keeps text vertically centered
-                }}
-              >
-                <Typography variant="h4" sx={{ fontWeight: "bold", mb: 2 }}>
-                  Our Mission
-                </Typography>
-                <Typography
-                  variant="h6"
-                  sx={{ color: "#1d1d1f", lineHeight: 1.8 }}
-                >
-                  To empower individuals through personalized physical therapy,
-                  fostering recovery, enhancing performance, and promoting
-                  lifelong wellness with a compassionate, evidence-based
-                  approach.
-                </Typography>
-              </Box>
-            </motion.div>
-          </Grid>
+          
         </Grid>
 
-        {/* Icons & Vision Points */}
+        {/* Icons & Vision Points
         <Grid container spacing={4} justifyContent="center">
           {visionPoints.map((point, index) => (
             <Grid item xs={12} sm={6} md={3} key={point.id}>
@@ -199,7 +203,7 @@ const Vision = () => {
               </motion.div>
             </Grid>
           ))}
-        </Grid>
+        </Grid> */}
       </Container>
     </Box>
   );

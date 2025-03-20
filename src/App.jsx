@@ -23,6 +23,7 @@ import Instagram from './components/Instagram';
 import CTA from './components/cta';
 import Techniques from './components/Techniques';
 import InstagramEmbed from './components/Instagram';
+import CTA2 from './components/cta2';
 
 const theme = createTheme({
     palette: {
@@ -79,11 +80,13 @@ function App() {
                 <MeetTheTeam />
                 <Services />
                 {/* <About /> */}
+                <CTA2 />
                 <FrameworkCarousel />
                 {/* <Techniques /> */}
                 {/* <Vision /> */}
                 {/* <Testimonials /> */}
                 {/* <InstagramEmbed postUrls={postUrls} /> */}
+                <Testimonials />
                 <Contact />
                 {/* <Map /> */}
               </>
