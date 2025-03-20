@@ -63,6 +63,7 @@ const ServiceDetails = () => {
         </Typography>
 
         {services.map((service, index) => (
+          <Box id={service.id} key={service.id}>
           <Grid
             container
             spacing={4}
@@ -136,6 +137,7 @@ const ServiceDetails = () => {
               </motion.div>
             </Grid>
           </Grid>
+          </Box>
         ))}
       </Container>    
     </Box>

@@ -76,7 +76,7 @@ const Footer = () => {
               color="inherit"
               sx={{
                 transition: "color 0.3s",
-                "&:hover": { color: "#2794d2" }, // Blue color on hover
+                "&:hover": { color: "#F94B3D" }, // Blue color on hover
               }}
               href="https://facebook.com"
               target="_blank"
@@ -88,7 +88,7 @@ const Footer = () => {
               color="inherit"
               sx={{
                 transition: "color 0.3s",
-                "&:hover": { color: "#2794d2" },
+                "&:hover": { color: "#F94B3D" },
               }}
               href="https://instagram.com"
               target="_blank"
