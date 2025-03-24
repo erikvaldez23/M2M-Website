@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import { useMediaQuery, useTheme } from "@mui/material";
 import { Container, Grid, Typography, Box, Button } from "@mui/material";
 import { useLocation } from "react-router-dom";
 import { motion } from "framer-motion";
@@ -9,39 +10,89 @@ import Vision from "./Vision";
 import CTA2 from "./cta2";
 
 // ✅ Inline reusable profile component
-const DoctorProfile = ({ id, name, title, description, image, reverse = false }) => {
+const DoctorProfile = ({
+  id,
+  name,
+  title,
+  description,
+  image,
+  reverse = false,
+}) => {
   return (
-    <Box id={id} sx={{ backgroundColor: "#000", paddingTop: 10, paddingBottom: 8 }}>
+    <Box
+      id={id}
+      sx={{ backgroundColor: "#000", paddingTop: 10, paddingBottom: 8 }}
+    >
       <Container maxWidth="lg">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
         >
-          <Grid container spacing={4} alignItems="flex-start" direction={reverse ? "row-reverse" : "row"}>
-            <Grid item xs={12} md={4}>
+          <Grid
+            container
+            spacing={4}
+            alignItems="flex-start"
+            direction={{
+              xs: "column",
+              md: reverse ? "row-reverse" : "row",
+            }}
+          >
+            <Grid
+              item
+              xs={12}
+              md={4}
+              sx={{
+                display: "flex",
+                justifyContent: { xs: "center", md: "flex-start" }, // ✅ Center image on mobile
+                alignItems: "center",
+              }}
+            >
               <Box
                 component="img"
                 src={image}
                 alt={`Professional portrait of ${name}`}
                 sx={{
-                  width: { xs: "100%", md: "70%" },
+                  width: { xs: "80%", md: "70%" },
                   maxWidth: "400px",
                   height: "auto",
                   borderRadius: "10px",
                   boxShadow: 3,
-                  margin: "0 auto",
                 }}
               />
             </Grid>
-            <Grid item xs={12} md={8} sx={{ display: "flex", flexDirection: "column", justifyContent: "flex-start" }}>
-              <Typography variant="h4" fontWeight="bold" color="#F94B3D" gutterBottom>
+
+            <Grid
+              item
+              xs={12}
+              md={8}
+              sx={{
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "flex-start",
+                textAlign: { xs: "center", md: "left" },
+                alignItems: { xs: "center", md: "flex-start" },
+              }}
+            >
+              <Typography
+                variant="h4"
+                fontWeight="bold"
+                color="#F94B3D"
+                gutterBottom
+              >
                 {name}
               </Typography>
-              <Typography variant="h6" fontWeight="bold" color="#fff" gutterBottom>
+              <Typography
+                variant="h6"
+                fontWeight="bold"
+                color="#fff"
+                gutterBottom
+              >
                 {title}
               </Typography>
-              <Typography variant="body1" color="#fff">{description}</Typography>
+              <Typography variant="body1" color="#fff">
+                {description}
+              </Typography>
             </Grid>
           </Grid>
         </motion.div>
@@ -52,6 +103,8 @@ const DoctorProfile = ({ id, name, title, description, image, reverse = false })
 
 const About = () => {
   const location = useLocation();
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down("md")); // true for mobile/tablet
 
   // ✅ Scroll to anchor if #id is in URL
   useEffect(() => {
@@ -61,7 +114,7 @@ const About = () => {
       if (element) {
         setTimeout(() => {
           element.scrollIntoView({ behavior: "smooth", block: "start" });
-        }, 100); // wait for DOM to finish rendering
+        }, 100);
       }
     }
   }, [location]);
@@ -74,7 +127,7 @@ const About = () => {
           background: "#000",
           color: "#fff",
           textAlign: "center",
-          py: { xs: 10, md: 5 },
+          py: { xs: 1, md: 5 },
         }}
       >
         <Container maxWidth="lg">
@@ -84,13 +137,12 @@ const About = () => {
             transition={{ duration: 0.8, ease: "easeOut" }}
           >
             <Typography
-              variant="h2"
+              variant={isMobile ? "h3" : "h2"}
               fontWeight="bold"
               sx={{
                 letterSpacing: 1.5,
-                mb: 2,
                 fontFamily: '"SF Pro Display", "Inter", sans-serif',
-                marginTop: "80px",
+                marginTop: { xs: "40px", md: "80px" },
               }}
             >
               ABOUT US
@@ -102,31 +154,64 @@ const About = () => {
       {/* Intro Section */}
       <Box sx={{ backgroundColor: "#000", paddingTop: 5, paddingBottom: 8 }}>
         <Container maxWidth="lg">
-          <Grid container spacing={4} alignItems="flex-start">
-          <Grid item xs={12} md={6} sx={{ display: "flex", flexDirection: "column", justifyContent: "flex-start" }}>
-              <Typography variant="h4" fontWeight="bold" color="#F94B3D" gutterBottom>
+          <Grid
+            container
+            spacing={4}
+            alignItems="flex-start"
+            direction={{ xs: "column-reverse", md: "row" }}
+          >
+            <Grid
+              item
+              xs={12}
+              md={6}
+              sx={{
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "flex-start",
+                textAlign: { xs: "center", md: "left" },
+                alignItems: { xs: "center", md: "flex-start" },
+              }}
+            >
+              <Typography
+                variant="h4"
+                fontWeight="bold"
+                color="#F94B3D"
+                gutterBottom
+              >
                 MEET DR. NAT & DR. DRE
               </Typography>
               <Typography variant="body1" color="#fff">
-                PT School big and little turned best friends and now business partners. Together, we bring a wealth of
-                knowledge and passion for helping you achieve your movement goals and improve your overall health. We
-                truly believe movement is the best medicine and our elite care will help you reach your peak
-                performance.
+                PT School big and little turned best friends and now business
+                partners. Together, we bring a wealth of knowledge and passion
+                for helping you achieve your movement goals and improve your
+                overall health. We truly believe movement is the best medicine
+                and our elite care will help you reach your peak performance.
               </Typography>
               <Typography variant="body1" color="#fff" sx={{ mt: 2 }}>
-                After several years of experience in the sports medicine and orthopedic field, we found that clinics
-                sacrificed quality patient care for increased income, and we decided we wanted to take a different
-                approach. At M2M, we believe in empowering athletes and active individuals to achieve optimal health and
+                After several years of experience in the sports medicine and
+                orthopedic field, we found that clinics sacrificed quality
+                patient care for increased income, and we decided we wanted to
+                take a different approach. At M2M, we believe in empowering
+                athletes and active individuals to achieve optimal health and
                 full recovery through expert, personalized one-on-one care.
               </Typography>
             </Grid>
-            <Grid item xs={12} md={6}>
+            <Grid
+              item
+              xs={12}
+              md={6}
+              sx={{
+                display: "flex",
+                justifyContent: { xs: "center", md: "flex-end" }, // ✅ Center on mobile, right-align on desktop
+                alignItems: "center",
+              }}
+            >
               <Box
                 component="img"
                 src={aboutImage}
                 alt="Photo of Dr. Natalie and Dr. Andrea together"
                 sx={{
-                  width: "100%",
+                  width: { xs: "90%", md: "100%" },
                   height: "auto",
                   borderRadius: "10px",
                   boxShadow: 3,
