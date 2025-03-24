@@ -157,20 +157,21 @@ const Topbar = ({ notFound }) => {
                 }}
                 onClick={() => navigate("/")}
               >
-            <Box
-  component="img"
-  src={logo}
-  alt="Logo"
-  sx={{
-    display: { xs: scrolling ? "block" : "none", sm: "block" },
-    height: scrolling ? "40px" : { sm: "55px", md: "55px" },
-    transition: "all 0.3s ease-in-out",
-    width: "auto",
-    maxWidth: scrolling ? "280px" : { sm: "300px", md: "350px" },
-    marginLeft: { sm: 0, md: "10px" },
-  }}
-/>
-
+                <Box
+                  component="img"
+                  src={logo}
+                  alt="Logo"
+                  sx={{
+                    display: { xs: scrolling ? "block" : "none", sm: "block" },
+                    height: scrolling ? "55px" : { sm: "55px", md: "55px" },
+                    transition: "all 0.3s ease-in-out",
+                    width: "auto",
+                    maxWidth: scrolling
+                      ? "320px"
+                      : { sm: "300px", md: "350px" },
+                    marginLeft: { sm: 0, md: "10px" },
+                  }}
+                />
               </Box>
             </Box>
 

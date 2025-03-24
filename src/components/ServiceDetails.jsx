@@ -8,6 +8,8 @@ import {
   Dialog,
   DialogContent,
   IconButton,
+  useTheme,
+  useMediaQuery
 } from "@mui/material";
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
@@ -54,16 +56,17 @@ const services = [
 const ServiceDetails = () => {
   const navigate = useNavigate();
   const [openModal, setOpenModal] = useState(false);
-
   const handleOpenModal = () => setOpenModal(true);
   const handleCloseModal = () => setOpenModal(false);
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down("sm")); // Detect mobile screens
 
   return (
     <>
-      <Box sx={{ backgroundColor: "#000", py: 6 }}>
+      <Box sx={{ backgroundColor: "#000", py: { xs: 1, md: 6 } }}>
         <Container maxWidth="lg" sx={{ px: { xs: 2, md: 3 } }}>
           <Typography
-            variant="h2"
+            variant={isMobile ? "h2" : "h1"}
             sx={{
               py: 6,
               textAlign: "center",
