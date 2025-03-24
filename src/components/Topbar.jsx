@@ -145,72 +145,76 @@ const Topbar = ({ notFound }) => {
                 }
               }}
             >
-         <Box
-  display="flex"
-  alignItems="center"
+              <Box
+                display="flex"
+                alignItems="center"
+                sx={{
+                  cursor: "pointer",
+                  transition: "transform 0.3s",
+                  "&:hover": { transform: "scale(1.05)" },
+                  ml: 0, // No margin left
+                  flexGrow: { xs: 1, md: 0 }, // Helps spacing on mobile
+                }}
+                onClick={() => navigate("/")}
+              >
+            <Box
+  component="img"
+  src={logo}
+  alt="Logo"
   sx={{
-    cursor: "pointer",
-    transition: "transform 0.3s",
-    "&:hover": { transform: "scale(1.05)" },
-    ml: 0,
-    flexGrow: { xs: 1, md: 0 },
+    display: { xs: scrolling ? "block" : "none", sm: "block" },
+    height: scrolling ? "40px" : { sm: "55px", md: "55px" },
+    transition: "all 0.3s ease-in-out",
+    width: "auto",
+    maxWidth: scrolling ? "280px" : { sm: "300px", md: "350px" },
+    marginLeft: { sm: 0, md: "10px" },
   }}
-  onClick={() => navigate("/")}>
-  <Box
-    component="img"
-    src={logo}
-    alt="Logo"
-    sx={{
-      display: { xs: "block", sm: "block" }, // Display on all devices
-      height: { xs: "50px", sm: "55px", md: "55px" }, // Smaller on mobile
-      width: "auto",
-      maxWidth: { xs: "300px", sm: "300px", md: "350px" },
-      marginLeft: { xs: 0, md: "10px" },
-    }}
-  />
-</Box>
+/>
 
+              </Box>
             </Box>
 
             {/* Desktop Navigation */}
             {!isMobile && (
               <Box display="flex" gap={4}>
-                {["About", "Services", "Reviews", "FAQ", "Contact"].map((item) => (
-                  <Button
-                    key={item}
-                    color="inherit"
-                    onClick={() => scrollToSection(item.toLowerCase())}
-                    sx={{
-                      fontSize: "25px",
-                      fontWeight: 600,
-                      letterSpacing: "1.5px",
-                      textTransform: "uppercase",
-                      position: "relative",
-                      padding: "10px 20px",
-                      color: scrolling ? "#fff" : "#fff", // Dynamic text color
-                      transition: "all 0.3s ease-in-out",
-                      "&:after": {
-                        content: '""',
-                        position: "absolute",
-                        width: "0%",
-                        height: "3px",
-                        bottom: "0",
-                        left: "50%",
-                        transform: "translateX(-50%)",
-                        background: "#F94B3D", // Gradient underline
-                        transition: "width 0.4s ease-in-out",
-                        borderRadius: "2px",
-                      },
-                      "&:hover": {
-                        color: "#F94B3D", // Bright hover color
-                        textShadow: "0 0 8px rgba(0, 198, 255, 0.8)", // Glowing text
-                        "&:after": { width: "100%" }, // Underline expands
-                      },
-                    }}
-                  >
-                    {item}
-                  </Button>
-                ))}
+                {["About", "Services", "Reviews", "FAQ", "Contact"].map(
+                  (item) => (
+                    <Button
+                      key={item}
+                      color="inherit"
+                      onClick={() => scrollToSection(item.toLowerCase())}
+                      sx={{
+                        fontSize: "25px",
+                        fontWeight: 600,
+                        letterSpacing: "1.5px",
+                        textTransform: "uppercase",
+                        position: "relative",
+                        padding: "10px 20px",
+                        color: scrolling ? "#fff" : "#fff", // Dynamic text color
+                        transition: "all 0.3s ease-in-out",
+                        "&:after": {
+                          content: '""',
+                          position: "absolute",
+                          width: "0%",
+                          height: "3px",
+                          bottom: "0",
+                          left: "50%",
+                          transform: "translateX(-50%)",
+                          background: "#F94B3D", // Gradient underline
+                          transition: "width 0.4s ease-in-out",
+                          borderRadius: "2px",
+                        },
+                        "&:hover": {
+                          color: "#F94B3D", // Bright hover color
+                          textShadow: "0 0 8px rgba(0, 198, 255, 0.8)", // Glowing text
+                          "&:after": { width: "100%" }, // Underline expands
+                        },
+                      }}
+                    >
+                      {item}
+                    </Button>
+                  )
+                )}
               </Box>
             )}
             {isMobile && (
@@ -284,30 +288,28 @@ const Topbar = ({ notFound }) => {
             gap: "15px", // ✅ Adds consistent spacing between links
           }}
         >
-          {["Services", "About", "Reviews", "FAQ", "Contact"].map(
-            (item) => (
-              <ListItem
-                button
-                key={item}
-                onClick={() => scrollToSection(item.toLowerCase())}
-              >
-                <ListItemText
-                  primary={item}
-                  primaryTypographyProps={{
-                    sx: {
-                      fontWeight: "bold",
-                      color: "white",
-                      textTransform: "uppercase",
-                      textAlign: "center",
-                      fontSize: "clamp(30px, 4vw, 50px)",
-                      lineHeight: "1.2",
-                      "&:hover": { color: "#F94B3D", cursor: "pointer" },
-                    },
-                  }}
-                />
-              </ListItem>
-            )
-          )}
+          {["Services", "About", "Reviews", "FAQ", "Contact"].map((item) => (
+            <ListItem
+              button
+              key={item}
+              onClick={() => scrollToSection(item.toLowerCase())}
+            >
+              <ListItemText
+                primary={item}
+                primaryTypographyProps={{
+                  sx: {
+                    fontWeight: "bold",
+                    color: "white",
+                    textTransform: "uppercase",
+                    textAlign: "center",
+                    fontSize: "clamp(30px, 4vw, 50px)",
+                    lineHeight: "1.2",
+                    "&:hover": { color: "#F94B3D", cursor: "pointer" },
+                  },
+                }}
+              />
+            </ListItem>
+          ))}
         </List>
 
         {/* Buttons & Social Icons in a Tightly Packed Layout */}
