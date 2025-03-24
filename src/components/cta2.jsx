@@ -21,7 +21,7 @@ const CTA = () => {
     <>
       <Box
         sx={{
-          py: { xs: 2, md: 3 },
+          py: { xs: 5, md: 8 },
           px: { xs: 2, md: 3 },
           background: "#F94B3D",
           display: "flex",
@@ -30,7 +30,6 @@ const CTA = () => {
           justifyContent: "center",
           textAlign: "center",
           color: "#F94B3D",
-          minHeight: { xs: "40vh", md: "30vh" }, // Responsive height
         }}
       >
         <motion.div
@@ -50,7 +49,7 @@ const CTA = () => {
               textTransform: "uppercase",
               letterSpacing: 2,
               mb: 3, // Less margin on mobile
-              fontSize: { xs: "1.5rem", sm: "2rem", md: "3rem" }, // ✅ Smaller for mobile
+              fontSize: { xs: "2rem", sm: "2rem", md: "3rem" }, // ✅ Smaller for mobile
               textAlign: "center",
             }}
           >
