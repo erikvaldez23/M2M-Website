@@ -52,7 +52,7 @@ const FrameworkCarousel = () => {
   return (
     <div className="framework-carousel">
       <Typography variant={isMobile ? "h3" : "h2"} sx={{ fontWeight: "bold", mb: 5 }}>
-        CLIENTS & PARTNERS
+        PARTNERS
       </Typography>
       <div className="marquee-wrapper">
         <Marquee velocity={velocity} direction="ltr">

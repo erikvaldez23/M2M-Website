@@ -1,10 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Marquee from "react-marquee-slider";
-import { Typography, Box, Avatar, useTheme, Container } from "@mui/material";
+import { Typography, Box, Container } from "@mui/material";
 import { FaStar } from "react-icons/fa";
-import CTA from "./cta";
-import Contact from "./Contact";
 import { motion } from "framer-motion";
+import Slider from "react-slick";
+import PauseIcon from "@mui/icons-material/Pause";
+import PlayArrowIcon from "@mui/icons-material/PlayArrow";
 
 const testimonialsData = [
   {
@@ -42,7 +43,7 @@ const testimonialsData = [
   {
     name: "Regan Garrett",
     review:
-    "They worked on my lower back pain & after 3 sessions with them it’s completely gone! They also make you feel very comfortable with dry needling (as someone who fears needles)",
+      "They worked on my lower back pain & after 3 sessions with them it’s completely gone! They also make you feel very comfortable with dry needling (as someone who fears needles)",
     image: "/M2M-Website/olivia.jpg",
     rating: 5,
     date: "2024-02-25",
@@ -73,8 +74,7 @@ const testimonialsData = [
   },
   {
     name: "Micheal Irvin II",
-    review:
-      "LOVED working with these 2!! Gr8 WORK!!",
+    review: "LOVED working with these 2!! Gr8 WORK!!",
     image: "/M2M-Website/daniel.jpg",
     rating: 5,
     date: "2024-01-15",
@@ -121,94 +121,273 @@ const testimonialsData = [
   },
 ];
 
-// ✅ Repeat testimonials to ensure an infinite loop
 const repeatTestimonials = [...testimonialsData, ...testimonialsData];
 
 const Testimonials = () => {
-  const theme = useTheme();
   const [velocity, setVelocity] = useState(15);
   const [isPaused, setIsPaused] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+  const sliderRef = useRef(null);
 
   useEffect(() => {
-    const updateVelocity = () => {
-      setVelocity(window.innerWidth <= 768 ? 10 : 15);
+    const handleResize = () => {
+      const mobile = window.innerWidth <= 768;
+      setIsMobile(mobile);
+      setVelocity(mobile ? 10 : 15);
     };
 
-    updateVelocity();
-    window.addEventListener("resize", updateVelocity);
-    return () => window.removeEventListener("resize", updateVelocity);
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
   }, []);
+
+  const togglePause = () => {
+    if (isPaused) {
+      sliderRef.current?.slickPlay();
+    } else {
+      sliderRef.current?.slickPause();
+    }
+    setIsPaused((prev) => !prev);
+  };
+
+  const sliderSettings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 3500,
+    pauseOnHover: false,
+    appendDots: (dots) => (
+      <Box
+        component="ul"
+        sx={{
+          display: "flex",
+          justifyContent: "center",
+          gap: 1,
+          bottom: "-60px"
+        }}
+      >
+        {dots}
+      </Box>
+    ),
+    customPaging: () => (
+      <div
+        style={{
+          width: "12px",
+          height: "12px",
+          borderRadius: "50%",
+          backgroundColor: "#fff",
+          opacity: 0.5,
+          transition: "all 0.3s ease",
+        }}
+      />
+    ),
+  };
 
   return (
     <>
-      <Box id="reviews" sx={{ backgroundColor: "#1f1f1f", color: "#000", textAlign: "center", overflow: "hidden" }}>
-        {/* Hero Section */}
-        <Box sx={{ background: "#1f1f1f", color: "#fff", textAlign: "center", py: { xs: 10, md: 5 } }}>
+      <Box
+        id="reviews"
+        sx={{
+          backgroundColor: "#1f1f1f",
+          color: "#000",
+          textAlign: "center",
+          overflow: "hidden",
+        }}
+      >
+        {/* Header */}
+        <Box
+          sx={{
+            background: "#1f1f1f",
+            color: "#fff",
+            textAlign: "center",
+            py: { xs: 3, md: 5 },
+          }}
+        >
           <Container maxWidth="lg">
-            <motion.div initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, ease: "easeOut" }}>
-              <Typography variant="h2" fontWeight="bold" sx={{ letterSpacing: 1.5, fontFamily: '"SF Pro Display", "Inter", sans-serif' }}>
+            <motion.div
+              initial={{ opacity: 0, y: -20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, ease: "easeOut" }}
+            >
+              <Typography
+                variant={isMobile ? "h3" : "h2"}
+                fontWeight="bold"
+                sx={{ letterSpacing: 1.5 }}
+              >
                 REVIEWS
               </Typography>
             </motion.div>
           </Container>
         </Box>
 
-        {/* ✅ Marquee Wrapper */}
-        <Box sx={{ position: "relative", overflow: "hidden", paddingTop: 1, paddingBottom: 5 }}>
-          <Marquee velocity={isPaused ? 0 : velocity} direction="rtl">
-            {repeatTestimonials.map((testimonial, index) => (
+        {/* Carousel or Marquee */}
+        <Box sx={{ px: 2, pt: 2, pb: 4}}>
+          <Box
+            sx={{
+              position: "relative",
+              overflow: "hidden",
+              paddingTop: 1,
+              paddingBottom: 5,
+            }}
+          >
+            {isMobile ? (
               <Box
-                key={`${testimonial.name}-${index}`}
-                sx={{
-                  cursor: "pointer",
-                  transition: "transform 0.3s ease-in-out",
-                  margin: "0 20px",
-                  background: "#111",
-                  color: "#fff",
-                  borderRadius: "20px",
-                  textAlign: "center",
-                  minWidth: 380,
-                  maxWidth: 420,
-                  height: 400,
-                  display: "flex",
-                  flexDirection: "column",
-                  justifyContent: "space-between",
-                  "&:hover": {
-                    transform: "scale(0.95)",
-                  },
-                }}
-                onMouseEnter={() => setIsPaused(true)} // ✅ Stop on hover
-                onMouseLeave={() => setIsPaused(false)} // ✅ Resume on leave
+                onClick={togglePause}
+                sx={{ cursor: "pointer", touchAction: "manipulation" }}
               >
-                {/* ✅ Avatar */}
-                {/* <Avatar src={testimonial.image} alt={testimonial.name} sx={{ width: 90, height: 90, mx: "auto", border: "3px solid #F7E7CE" }} /> */}
+                <Box sx={{ paddingBottom: "30px" }}> {/* ✅ space below cards */}
+                  <Slider ref={sliderRef} {...sliderSettings}>
+                    {testimonialsData.map((testimonial, index) => (
+                      <Box
+                        key={`${testimonial.name}-${index}`}
+                        sx={{
+                          background: "#111",
+                          color: "#fff",
+                          borderRadius: "20px",
+                          textAlign: "center",
+                          padding: 3,
+                          minHeight: 400,
+                          maxWidth: 380,
+                          mx: "auto",
+                          position: "relative",
+                          display: "flex",
+                          flexDirection: "column",
+                          justifyContent: "space-between",
+                        }}
+                      >
+                        <Typography
+                          variant="h6"
+                          sx={{ fontWeight: "bold", mt: 2, fontSize: 22 }}
+                        >
+                          {testimonial.name}
+                        </Typography>
 
-                {/* ✅ Name & Date */}
-                <Typography variant="h6" sx={{ fontWeight: "bold", mt: 5, fontSize: 25 }}>{testimonial.name}</Typography>
-                {/* <Typography variant="body2" sx={{ color: "#b0b0b0", mb: 1 }}>
-                  {new Date(testimonial.date).toLocaleDateString()}
-                </Typography> */}
+                        <Box
+                          sx={{
+                            display: "flex",
+                            justifyContent: "center",
+                            gap: 1,
+                            mb: 1,
+                          }}
+                        >
+                          {Array(testimonial.rating)
+                            .fill()
+                            .map((_, i) => (
+                              <FaStar key={i} size={18} color="#FFD700" />
+                            ))}
+                        </Box>
 
-                {/* ✅ Star Ratings */}
-                <Box sx={{ display: "flex", justifyContent: "center", gap: 1, mb: 1 }}>
-                  {Array(testimonial.rating).fill().map((_, i) => (
-                    <FaStar key={i} size={18} color="#FFD700" />
-                  ))}
-                </Box>
+                        <Box sx={{ maxHeight: 250, overflowY: "auto", p: 1 }}>
+                          <Typography
+                            variant="body1"
+                            sx={{ fontSize: 17, color: "#fff" }}
+                          >
+                            "{testimonial.review}"
+                          </Typography>
+                        </Box>
 
-                {/* ✅ Scrollable Review Box */}
-                <Box sx={{ height: 250, overflowY: "auto", p: 2, borderRadius: "10px" }}>
-                  <Typography variant="body1" sx={{ fontSize: 17, color: "#fff", overflowWrap: "break-word" }}>
-                    "{testimonial.review}"
-                  </Typography>
+                        {/* Play/Pause icon */}
+                        <motion.div
+                          initial={{ opacity: 0 }}
+                          animate={{ opacity: 1 }}
+                          transition={{ duration: 0.3 }}
+                          style={{
+                            position: "absolute",
+                            bottom: 12,
+                            right: 12,
+                            backgroundColor: "#fff",
+                            borderRadius: "50%",
+                            padding: 6,
+                            boxShadow: "0px 2px 6px rgba(0,0,0,0.4)",
+                            display: "flex",
+                            alignItems: "center",
+                            justifyContent: "center",
+                          }}
+                        >
+                          {isPaused ? (
+                            <PlayArrowIcon fontSize="small" sx={{ color: "#111" }} />
+                          ) : (
+                            <PauseIcon fontSize="small" sx={{ color: "#111" }} />
+                          )}
+                        </motion.div>
+                      </Box>
+                    ))}
+                  </Slider>
                 </Box>
               </Box>
-            ))}
-          </Marquee>
+            ) : (
+              <Marquee velocity={isPaused ? 0 : velocity} direction="rtl">
+                {repeatTestimonials.map((testimonial, index) => (
+                  <Box
+                    key={`${testimonial.name}-${index}`}
+                    sx={{
+                      cursor: "pointer",
+                      transition: "transform 0.3s ease-in-out",
+                      margin: "0 20px",
+                      background: "#111",
+                      color: "#fff",
+                      borderRadius: "20px",
+                      textAlign: "center",
+                      minWidth: 380,
+                      maxWidth: 420,
+                      height: 400,
+                      display: "flex",
+                      flexDirection: "column",
+                      justifyContent: "space-between",
+                      "&:hover": {
+                        transform: "scale(0.95)",
+                      },
+                    }}
+                    onMouseEnter={() => setIsPaused(true)}
+                    onMouseLeave={() => setIsPaused(false)}
+                  >
+                    <Typography
+                      variant="h6"
+                      sx={{ fontWeight: "bold", mt: 5, fontSize: 25 }}
+                    >
+                      {testimonial.name}
+                    </Typography>
+
+                    <Box
+                      sx={{
+                        display: "flex",
+                        justifyContent: "center",
+                        gap: 1,
+                        mb: 1,
+                      }}
+                    >
+                      {Array(testimonial.rating)
+                        .fill()
+                        .map((_, i) => (
+                          <FaStar key={i} size={18} color="#FFD700" />
+                        ))}
+                    </Box>
+
+                    <Box
+                      sx={{
+                        height: 250,
+                        overflowY: "auto",
+                        p: 2,
+                        borderRadius: "10px",
+                      }}
+                    >
+                      <Typography
+                        variant="body1"
+                        sx={{ fontSize: 17, color: "#fff" }}
+                      >
+                        "{testimonial.review}"
+                      </Typography>
+                    </Box>
+                  </Box>
+                ))}
+              </Marquee>
+            )}
+          </Box>
         </Box>
       </Box>
-
-      {/* ✅ CTA and Contact Sections */}
     </>
   );
 };
