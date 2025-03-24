@@ -47,6 +47,7 @@ const CTA = () => {
               fontWeight: "bold",
               textTransform: "uppercase",
               letterSpacing: 2,
+              color: "#fff",
               mb: 3, // Less margin on mobile
               fontSize: { xs: "1.5rem", sm: "2rem", md: "3.2rem" }, // ✅ Smaller for mobile
               textAlign: "center",

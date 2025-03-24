@@ -145,31 +145,31 @@ const Topbar = ({ notFound }) => {
                 }
               }}
             >
-              <Box
-                display="flex"
-                alignItems="center"
-                sx={{
-                  cursor: "pointer",
-                  transition: "transform 0.3s",
-                  "&:hover": { transform: "scale(1.05)" },
-                  ml: 0, // No margin left
-                  flexGrow: { xs: 1, md: 0 }, // Helps spacing on mobile
-                }}
-                onClick={() => navigate("/")}
-              >
-                <Box
-                  component="img"
-                  src={logo}
-                  alt="Logo"
-                  sx={{
-                    display: { xs: "none", sm: "block" }, // ✅ Hide on mobile, show on tablets & desktop
-                    height: { sm: "55px", md: "55px" }, // ✅ Size applied only when visible
-                    width: "auto",
-                    maxWidth: { sm: "300px", md: "350px" },
-                    marginLeft: { sm: 0, md: "10px" },
-                  }}
-                />
-              </Box>
+         <Box
+  display="flex"
+  alignItems="center"
+  sx={{
+    cursor: "pointer",
+    transition: "transform 0.3s",
+    "&:hover": { transform: "scale(1.05)" },
+    ml: 0,
+    flexGrow: { xs: 1, md: 0 },
+  }}
+  onClick={() => navigate("/")}>
+  <Box
+    component="img"
+    src={logo}
+    alt="Logo"
+    sx={{
+      display: { xs: "block", sm: "block" }, // Display on all devices
+      height: { xs: "50px", sm: "55px", md: "55px" }, // Smaller on mobile
+      width: "auto",
+      maxWidth: { xs: "300px", sm: "300px", md: "350px" },
+      marginLeft: { xs: 0, md: "10px" },
+    }}
+  />
+</Box>
+
             </Box>
 
             {/* Desktop Navigation */}
