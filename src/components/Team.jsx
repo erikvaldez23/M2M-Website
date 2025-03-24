@@ -65,7 +65,6 @@ const CardContainer = styled(motion.div)({
   },
 });
 
-// Background Box
 const CardBackground = styled(Box)({
   backgroundSize: "cover",
   backgroundPosition: "center",
@@ -76,12 +75,23 @@ const CardBackground = styled(Box)({
   justifyContent: "flex-end",
   position: "relative",
   padding: "20px",
-  transition: "filter 0.5s ease",
   overflow: "hidden",
-  "&:hover": {
-    filter: "brightness(90%)",
+  "&::before": {
+    content: '""',
+    position: "absolute",
+    top: 0,
+    left: 0,
+    width: "100%",
+    height: "100%",
+    backgroundColor: "rgba(0, 0, 0, 0)", // initial transparent
+    transition: "background-color 0.4s ease",
+    zIndex: 0,
+  },
+  "&:hover::before": {
+    backgroundColor: "rgba(0, 0, 0, 0.5)", // dark overlay on hover
   },
 });
+
 
 // Framer Motion Variants
 const contentVariants = {
@@ -195,7 +205,7 @@ const MeetTheTeam = () => {
                       left: "10px",
                     }}
                   >
-                    <Typography variant="body1" sx={{ fontWeight: "bold" }}>
+                    <Typography variant="body1" sx={{ fontWeight: "bold", fontSize:"1.7rem" }}>
                       {member.description}
                     </Typography>
 
