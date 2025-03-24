@@ -147,7 +147,7 @@ const Services = () => {
                  loading="lazy"
                />
                <CardOverlay>
-                 <Typography variant="h5" sx={{ fontWeight: "bold" }}>
+                 <Typography variant="h5" sx={{ fontWeight: "bold", textAlign: "center" }}>
                    {service.title}
                  </Typography>
                  <Typography variant="body2">

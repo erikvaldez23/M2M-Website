@@ -30,7 +30,7 @@ const CTA = () => {
           justifyContent: "center",
           textAlign: "center",
           color: "#fff",
-          minHeight: { xs: "60vh", md: "40vh" }, // Responsive height
+          minHeight: { xs: "40vh", md: "40vh" }, // Responsive height
         }}
       >
         <motion.div
@@ -49,7 +49,7 @@ const CTA = () => {
               letterSpacing: 2,
               color: "#fff",
               mb: 3, // Less margin on mobile
-              fontSize: { xs: "1.5rem", sm: "2rem", md: "3.2rem" }, // ✅ Smaller for mobile
+              fontSize: { xs: "1.8rem", sm: "2rem", md: "3.5rem" }, // ✅ Smaller for mobile
               textAlign: "center",
             }}
           >
@@ -66,7 +66,7 @@ const CTA = () => {
               maxWidth: "900px",
               mx: "auto",
               lineHeight: 1.6,
-              fontSize: { xs: "0.9rem", sm: "1.1rem", md: "1.6rem" }, // ✅ More readable on mobile
+              fontSize: { xs: "1rem", sm: "1.1rem", md: "2rem" }, // ✅ More readable on mobile
               textAlign: "center",
             }}
           >
@@ -109,7 +109,7 @@ const CTA = () => {
                 px: { xs: 2, md: 4 }, // Responsive padding
                 py: { xs: 1, md: 1.5 }, // Responsive padding
                 border: "3px solid #fff",
-                fontSize: { xs: "0.9rem", md: "1.1rem" }, // Responsive font size
+                fontSize: { xs: "1rem", md: "1.5rem" }, // Responsive font size
                 borderRadius: "30px",
                 "&:hover": {
                   backgroundColor: "#F94B3D",
