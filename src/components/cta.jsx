@@ -30,7 +30,7 @@ const CTA = () => {
           justifyContent: "center",
           textAlign: "center",
           color: "#fff",
-          minHeight: { xs: "40dvh", md: "40dvh" }, // Responsive height
+          height: { xs: "40vh", md: "40vh" }, // Responsive height
         }}
       >
         <motion.div

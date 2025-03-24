@@ -1,7 +1,7 @@
 .hero {
   position: relative;
   width: 100%;
-  height: 60dvh;
+  height: 60vh;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -107,7 +107,7 @@
 
 @media (max-width: 768px) {
   .hero {
-      height: 60dvh;
+      height: 50vh;
   }
 
   .hero-content h1 {
