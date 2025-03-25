@@ -14,6 +14,7 @@ import {
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 import CTA2 from "./cta2";
+import Contact from "./Contact"
 import { FaTimes, FaCheckCircle } from "react-icons/fa"; // ✅ added icon
 
 const services = [
@@ -234,6 +235,7 @@ const ServiceDetails = () => {
       </Box>
 
       <CTA2 />
+      <Contact />
     </>
   );
 };
