@@ -169,7 +169,7 @@ const Topbar = ({ notFound }) => {
                     maxWidth: scrolling
                       ? "350px"
                       : { sm: "300px", md: "350px" },
-                    marginLeft: { sm: "-10px", md: "-10px" },
+                    marginLeft: { xs: "-20px", sm: "-10px", md: "-10px" },
                   }}
                 />
               </Box>
