@@ -10,6 +10,8 @@ import {
   IconButton,
   useTheme,
   useMediaQuery,
+  Slide,
+  Paper,
 } from "@mui/material";
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
@@ -83,24 +85,47 @@ const ServiceDetails = () => {
 
   return (
     <>
-      <Box sx={{ backgroundColor: "#000", py: { xs: 1, md: 6 } }}>
+      <Box
+        sx={{
+          background: "linear-gradient(180deg, #000000 0%, #111111 100%)",
+          py: { xs: 1, md: 6 },
+        }}
+      >
         <Container maxWidth="lg" sx={{ px: { xs: 2, md: 3 } }}>
-          <Typography
-            variant={isMobile ? "h2" : "h1"}
-            sx={{
-              py: 6,
-              textAlign: "center",
-              fontWeight: "bold",
-              color: "#fff",
-              textTransform: "uppercase",
-            }}
+          <motion.div
+            initial={{ opacity: 0, y: -30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
           >
-            Services
-          </Typography>
+            <Typography
+              variant={isMobile ? "h2" : "h1"}
+              sx={{
+                py: 6,
+                textAlign: "center",
+                fontWeight: "bold",
+                color: "#fff",
+                textTransform: "uppercase",
+              }}
+            >
+              Services
+            </Typography>
+          </motion.div>
 
           {services.map((service, index) => (
-            <Box id={service.id} key={service.id}>
-              <Grid container spacing={4} alignItems="center" sx={{ mb: 6 }}>
+            <Paper
+              id={service.id}
+              key={service.id}
+              elevation={6}
+              sx={{
+                p: 4,
+                mb: 6,
+                borderRadius: "24px",
+                backgroundColor: "rgba(255, 255, 255, 0.03)",
+                backdropFilter: "blur(8px)",
+                border: "1px solid rgba(255, 255, 255, 0.1)",
+              }}
+            >
+              <Grid container spacing={4} alignItems="center">
                 <Grid item xs={12} md={6}>
                   <motion.div
                     initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
@@ -112,12 +137,14 @@ const ServiceDetails = () => {
                       src={service.image}
                       alt={service.title}
                       sx={{
-                        width: "80%",
+                        width: "100%",
                         height: "auto",
-                        borderRadius: "10px",
-                        boxShadow: 3,
-                        display: "block",
-                        mx: { xs: "auto", md: 0 },
+                        borderRadius: "16px",
+                        boxShadow: "0px 10px 30px rgba(0,0,0,0.5)",
+                        transition: "transform 0.3s ease-in-out",
+                        "&:hover": {
+                          transform: "scale(1.03)",
+                        },
                       }}
                     />
                   </motion.div>
@@ -127,12 +154,7 @@ const ServiceDetails = () => {
                   item
                   xs={12}
                   md={6}
-                  sx={{
-                    textAlign: { xs: "center", md: "left" },
-                    display: "flex",
-                    flexDirection: "column",
-                    alignItems: { xs: "center", md: "flex-start" },
-                  }}
+                  sx={{ textAlign: { xs: "center", md: "left" } }}
                 >
                   <motion.div
                     initial={{ opacity: 0, x: index % 2 === 0 ? 50 : -50 }}
@@ -144,7 +166,8 @@ const ServiceDetails = () => {
                       sx={{
                         color: "#F94B3D",
                         fontWeight: "bold",
-                        textDecoration: "underline",
+                        textTransform: "uppercase",
+                        letterSpacing: "1.5px",
                         mb: 2,
                       }}
                     >
@@ -153,8 +176,15 @@ const ServiceDetails = () => {
 
                     {service.intro && (
                       <Typography
-                        variant="body1"
-                        sx={{ color: "#ccc", mb: 2, fontSize: "1.05rem" }}
+                        variant="h6"
+                        sx={{
+                          color: "#ccc",
+                          fontWeight: 500,
+                          fontStyle: "italic",
+                          mb: 2,
+                          fontSize: "1.1rem",
+                          lineHeight: 1.7,
+                        }}
                       >
                         {service.intro}
                       </Typography>
@@ -169,20 +199,21 @@ const ServiceDetails = () => {
                             alignItems: "center",
                             color: "#fff",
                             fontSize: "1.1rem",
-                            marginBottom: "0.5rem",
-                            transition: "transform 0.2s",
+                            marginBottom: "0.7rem",
+                            transition: "transform 0.2s ease-in-out",
+                            cursor: "default",
                           }}
                           onMouseEnter={(e) =>
-                            (e.currentTarget.style.transform = "translateX(5px)")
+                            (e.currentTarget.style.transform = "translateX(8px)")
                           }
                           onMouseLeave={(e) =>
-                            (e.currentTarget.style.transform = "none")
+                            (e.currentTarget.style.transform = "translateX(0)")
                           }
                         >
                           <FaCheckCircle
                             style={{
                               color: "#F94B3D",
-                              marginRight: "10px",
+                              marginRight: "12px",
                               minWidth: "20px",
                             }}
                           />
@@ -193,8 +224,15 @@ const ServiceDetails = () => {
 
                     {service.outro && (
                       <Typography
-                        variant="body1"
-                        sx={{ color: "#ccc", mt: 2, fontSize: "1.05rem" }}
+                        variant="h6"
+                        sx={{
+                          color: "#ccc",
+                          mt: 2,
+                          fontWeight: 500,
+                          fontStyle: "italic",
+                          fontSize: "1.1rem",
+                          lineHeight: 1.7,
+                        }}
                       >
                         {service.outro}
                       </Typography>
@@ -210,17 +248,17 @@ const ServiceDetails = () => {
                         onClick={handleOpenModal}
                         sx={{
                           mt: 3,
-                          backgroundColor: "#F94B3D",
-                          color: "#000",
-                          fontFamily: "Poppins, sans-serif",
+                          background: "#F94B3D",
+                          color: "#fff",
                           fontWeight: "bold",
-                          px: { xs: 2, md: 4 },
+                          px: { xs: 3, md: 5 },
                           py: { xs: 1, md: 1.5 },
                           fontSize: { xs: "0.9rem", md: "1.1rem" },
                           borderRadius: "30px",
+                          boxShadow: "0 4px 15px rgba(249, 75, 61, 0.4)",
                           "&:hover": {
-                            backgroundColor: "#fff",
-                            color: "#000",
+                            background: "#fff",
+                            color: "#F94B3D",
                           },
                         }}
                       >
@@ -230,11 +268,18 @@ const ServiceDetails = () => {
                   </motion.div>
                 </Grid>
               </Grid>
-            </Box>
+            </Paper>
           ))}
         </Container>
 
-        <Dialog open={openModal} onClose={handleCloseModal} maxWidth="lg" fullWidth>
+        <Dialog
+          open={openModal}
+          onClose={handleCloseModal}
+          maxWidth="lg"
+          fullWidth
+          TransitionComponent={Slide}
+          TransitionProps={{ direction: "up" }}
+        >
           <DialogContent sx={{ position: "relative", padding: 0 }}>
             <IconButton
               onClick={handleCloseModal}
