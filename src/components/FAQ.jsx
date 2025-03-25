@@ -10,6 +10,7 @@ import {
 } from "@mui/material";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import CTA from "./cta2";
+import Contact from "./Contact"
 
 const faqSections = [
   {
@@ -56,12 +57,12 @@ export default function FAQ() {
   };
 
   return (
-    <Box sx={{ backgroundColor: "#000", color: "#fff", minHeight: "100vh" }}>
+    <Box sx={{ backgroundColor: "#000", color: "#fff" }}>
       {/* Hero Section */}
       <Box
         sx={{
           backgroundColor: "#000",
-          py: { xs: 8, md: 10 },
+          py: { xs: 4, md: 10 },
           textAlign: "center",
         }}
       >
@@ -98,8 +99,6 @@ export default function FAQ() {
               {title}
             </Typography> */}
 
-            <Divider sx={{ mb: 4, backgroundColor: "#000" }} />
-
             {questions.map(({ id: questionId, question, answer }, idx) => (
               <Accordion
                 key={questionId}
@@ -112,7 +111,7 @@ export default function FAQ() {
                   background:
                     expanded === questionId
                       ? "#000"
-                      : "#0e0e0e",
+                      : "#000",
                   border: "1px solid #2a2a2a",
                   borderRadius: "12px",
                   transition: "all 0.3s ease-in-out",
@@ -143,6 +142,7 @@ export default function FAQ() {
       </Container>
 
       <CTA />
+      <Contact />
     </Box>
   );
 }

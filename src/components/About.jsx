@@ -137,7 +137,7 @@ const About = () => {
             transition={{ duration: 0.8, ease: "easeOut" }}
           >
             <Typography
-              variant={isMobile ? "h3" : "h2"}
+              variant={isMobile ? "h3" : "h1"}
               fontWeight="bold"
               sx={{
                 letterSpacing: 1.5,

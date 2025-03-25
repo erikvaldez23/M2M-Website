@@ -7,12 +7,7 @@ import {
   Card,
   CardContent,
 } from "@mui/material";
-import {
-  FaTools,
-  FaShieldAlt,
-  FaCar,
-  FaHandHoldingUsd,
-} from "react-icons/fa";
+import { FaTools, FaShieldAlt, FaCar, FaHandHoldingUsd } from "react-icons/fa";
 import { motion } from "framer-motion";
 
 const visionPoints = [
@@ -100,7 +95,7 @@ const Vision = () => {
                   borderRadius: "20px",
                   boxShadow: "0 10px 30px rgba(0, 0, 0, 0.1)",
                   padding: { xs: 3, md: 4 },
-                  height: "100%",
+                  minHeight: { xs: "100%", md: 300 }, // or height: 420 if exact
                   display: "flex",
                   flexDirection: "column",
                   justifyContent: "flex-start",
@@ -126,8 +121,8 @@ const Vision = () => {
                   }}
                 >
                   Empowering athletes and active individuals to achieve optimal
-                  health and full recovery through expert, personalized one-on-one
-                  physical therapy and care.
+                  health and full recovery through expert, personalized
+                  one-on-one physical therapy and care.
                 </Typography>
               </Box>
             </motion.div>
@@ -146,7 +141,7 @@ const Vision = () => {
                   borderRadius: "20px",
                   boxShadow: "0 10px 30px rgba(0, 0, 0, 0.1)",
                   padding: { xs: 3, md: 4 },
-                  height: "100%",
+                  minHeight: { xs: "100%", md: 300 }, // or height: 420 if exact
                   display: "flex",
                   flexDirection: "column",
                   justifyContent: "flex-start",
@@ -174,70 +169,13 @@ const Vision = () => {
                   To be the premiere destination for athletes and active
                   individuals seeking exceptional care, where our passion for
                   healing and our love for the human body drives us to exceed
-                  expectations and foster a thriving, resilient community of peak
-                  performers.
+                  expectations and foster a thriving, resilient community of
+                  peak performers.
                 </Typography>
               </Box>
             </motion.div>
           </Grid>
         </Grid>
-
-        {/* Icon Cards */}
-        {/* <Grid
-          container
-          spacing={4}
-          justifyContent="center"
-          sx={{ mt: 6 }}
-        >
-          {visionPoints.map((point, index) => (
-            <Grid item xs={12} sm={6} md={3} key={point.id}>
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: index * 0.2 }}
-                viewport={{ once: true }}
-              >
-                <Card
-                  sx={{
-                    width: "100%",
-                    background: "rgba(255,255,255,0.05)",
-                    borderRadius: "20px",
-                    boxShadow: "0 10px 20px rgba(0, 0, 0, 0.1)",
-                    padding: "20px",
-                    textAlign: "center",
-                    display: "flex",
-                    flexDirection: "column",
-                    justifyContent: "center",
-                    alignItems: "center",
-                    height: "100%",
-                    minHeight: "280px",
-                    transition: "transform 0.3s ease-in-out",
-                    "&:hover": { transform: "scale(1.05)" },
-                  }}
-                >
-                  <CardContent>
-                    <Box sx={{ mb: 2 }}>{point.icon}</Box>
-                    <Typography
-                      variant="h6"
-                      sx={{ fontWeight: "bold", mb: 1, color: "#fff" }}
-                    >
-                      {point.title}
-                    </Typography>
-                    <Typography
-                      sx={{
-                        color: "#d0d0d0",
-                        fontSize: "14px",
-                        textAlign: "center",
-                      }}
-                    >
-                      {point.description}
-                    </Typography>
-                  </CardContent>
-                </Card>
-              </motion.div>
-            </Grid>
-          ))}
-        </Grid> */}
       </Container>
     </Box>
   );
