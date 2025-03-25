@@ -351,7 +351,7 @@ const Topbar = ({ notFound }) => {
           </Button>
 
           {/* Ask a Question Button */}
-          <Button
+          {/* <Button
             variant="contained"
             sx={{
               backgroundColor: "#222",
@@ -373,7 +373,7 @@ const Topbar = ({ notFound }) => {
             }}
           >
             ASK A QUESTION
-          </Button>
+          </Button> */}
 
           {/* Social Media Icons */}
           <Box
