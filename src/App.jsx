@@ -1,6 +1,6 @@
-import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
+import { HashRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import { CssBaseline, ThemeProvider, createTheme } from "@mui/material";
-import { useEffect } from "react";  // ✅ Import useEffect
+import { useEffect } from "react";
 import './App.css';
 import Topbar from './components/Topbar';
 import Hero from './components/Hero';
@@ -27,14 +27,13 @@ import FAQ from './components/FAQ';
 import ServiceDetails from './components/ServiceDetails';
 
 const theme = createTheme({
-    palette: {
-        primary: {
-            main: "#007bff",
-        },
+  palette: {
+    primary: {
+      main: "#007bff",
     },
+  },
 });
 
-// ✅ Helper function to handle scrolling after navigation
 const ScrollHandler = () => {
   const location = useLocation();
 
@@ -44,50 +43,41 @@ const ScrollHandler = () => {
       setTimeout(() => {
         const targetSection = document.getElementById(sectionId);
         if (targetSection) {
-          const offset = 100; // Adjust this value as needed
-          const targetPosition = targetSection.getBoundingClientRect().top + window.scrollY - offset;
+          const offset = 100;
+          const targetPosition =
+            targetSection.getBoundingClientRect().top + window.scrollY - offset;
           window.scrollTo({ top: targetPosition, behavior: "smooth" });
         }
-      }, 100); // Small delay to ensure the page loads before scrolling
+      }, 100);
     }
   }, [location]);
 
   return null;
 };
 
-// const postUrls = [
-//   "https://www.instagram.com/p/DGdfsYPpKat/",
-//   "https://www.instagram.com/p/DD7TalmpU9Q/",
-//   "https://www.instagram.com/p/DENWgknJBBW/",
-//   "https://www.instagram.com/p/DGVv3X_JCmA/",
-// ];
-
-
 function App() {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <Router basename="/M2M-Website/"> 
+      <Router baseName="/M2M-Website/"> {/* ✅ Using HashRouter now */}
         <ScrollToTop />
-        <ScrollHandler />  {/* ✅ New component to handle scrolling */}
-        <Topbar /> {/* ✅ Keep Topbar on all pages for navigation */}
-        <Routes className="App">
-          <Route 
-            path="/" 
+        <ScrollHandler />
+        <Topbar />
+        <Routes>
+          <Route
+            path="/"
             element={
               <>
                 <Hero />
-                <CTA /> 
+                <CTA />
                 <MeetTheTeam />
                 <Services />
                 <CTA2 />
                 <FrameworkCarousel />
-                {/* <InstagramEmbed postUrls={postUrls} /> */}
                 <Testimonials />
                 <Contact />
-                {/* <Map /> */}
               </>
-            } 
+            }
           />
           <Route path="/gallery" element={<Gallery />} />
           <Route path="/faq" element={<FAQ />} />
@@ -96,7 +86,6 @@ function App() {
           <Route path="/services" element={<ServiceDetails />} />
           <Route path="/about" element={<About />} />
           <Route path="/privacy-policy" element={<PrivacyPolicy />} />
-          {/* <Route path="/services/:serviceId" element={<ServicePage />} /> */}
           <Route path="*" element={<ErrorPage />} />
         </Routes>
         <Footer />

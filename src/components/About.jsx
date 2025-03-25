@@ -8,6 +8,7 @@ import natalie from "../../public/natalie.jpg";
 import drea from "../../public/drea.jpg";
 import Vision from "./Vision";
 import CTA2 from "./cta2";
+import Contact from "./Contact"
 
 // ✅ Inline reusable profile component
 const DoctorProfile = ({
@@ -243,6 +244,7 @@ const About = () => {
 
       <CTA2 />
       <Vision />
+      <Contact />
     </>
   );
 };

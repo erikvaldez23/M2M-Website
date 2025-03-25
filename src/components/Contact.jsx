@@ -10,10 +10,14 @@ import {
   useMediaQuery,
 } from "@mui/material";
 import { FaMapMarkerAlt, FaPhone, FaEnvelope, FaCar } from "react-icons/fa";
+import { useLocation } from "react-router-dom"; // ← Add this
 // import { FaCar } from "react-icons/fa6";
 
 const Contact = () => {
   const isMobile = useMediaQuery("(max-width: 768px)");
+  const location = useLocation(); // ← Get current location
+  const isAboutPage = location.pathname.includes("about"); // ← Check for "about"
+
   // State for form fields
   const [formData, setFormData] = useState({
     firstName: "",
@@ -69,7 +73,7 @@ const Contact = () => {
   return (
     <Box
       sx={{
-        backgroundColor: "#000",
+        backgroundColor: isAboutPage ? "#1f1f1f" : "#000", // ← conditional background
         width: "100%",
         padding: 2,
       }}

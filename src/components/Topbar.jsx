@@ -167,9 +167,9 @@ const Topbar = ({ notFound }) => {
                     transition: "all 0.3s ease-in-out",
                     width: "auto",
                     maxWidth: scrolling
-                      ? "320px"
+                      ? "350px"
                       : { sm: "300px", md: "350px" },
-                    marginLeft: { sm: 0, md: "10px" },
+                    marginLeft: { sm: "-10px", md: "-10px" },
                   }}
                 />
               </Box>

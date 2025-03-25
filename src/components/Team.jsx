@@ -160,7 +160,7 @@ const MeetTheTeam = () => {
                 onClick={() => navigate(`/about#${member.id}`)}
               >
                 <CardBackground
-                  sx={{ backgroundImage: `url(${member.image})` }}
+                  sx={{backgroundImage: `url(${member.image})` }}
                 >
                   {/* Default Text Content */}
                   <motion.div
