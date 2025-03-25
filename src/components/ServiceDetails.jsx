@@ -9,48 +9,67 @@ import {
   DialogContent,
   IconButton,
   useTheme,
-  useMediaQuery
+  useMediaQuery,
 } from "@mui/material";
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 import CTA2 from "./cta2";
-import Contact from "./Contact"
-import { FaTimes, FaCheckCircle } from "react-icons/fa"; // ✅ added icon
+import Contact from "./Contact";
+import { FaTimes, FaCheckCircle } from "react-icons/fa";
 
 const services = [
   {
     id: "physical-therapy",
     title: "PHYSICAL THERAPY",
     image: "/M2M-Website/pt.jpg",
+    intro:
+      "Evaluation and treatment for orthopedic injuries and post-operative rehabilitation",
     description: [
       "Manual Therapy",
       "Soft Tissue Release",
-      "Joint Mobilization",
+      "Fascial Mobilization",
+      "Active Release Techniques",
+      "Joint Mobilization/Manipulations",
       "Therapeutic Exercise",
-      "Post Surgical Rehab",
+      "Neuromuscular Re-education",
+      "Blood Flow Restriction",
+      "Modalities (Dry Needling, Cupping Therapy)",
+      "Injury Management/Risk Reduction",
     ],
+    outro:
+      "An initial evaluation will be performed to address your injury, pain, limitations, and other movement deficits. Based on your goals and sport, an individualized treatment plan will be created for you.",
   },
   {
     id: "athletic-recovery",
     title: "RECOVERY",
     image: "/M2M-Website/recovery.jpg",
+    intro:
+      "Improve your performance and recover faster between games/practices & events",
     description: [
-      "Strength & Conditioning",
-      "Sport-Specific Training",
-      "Personalized Training Programs",
-      "Endurance Training",
+      "Dry Needling",
+      "Cupping Therapy",
+      "Graston/IASTM",
+      "Mobility Tune-up",
+      "Manual Therapy",
+      "Electro Therapy",
+      "Stretch Therapy",
+      "Normatec Compression & other elite Hyperice products",
     ],
+    outro: "",
   },
   {
     id: "injury-prevention",
-    title: "INJURY PREVENTION",
+    title: "INJURY PREVENTION & SPORTS PERFORMANCE ASSESSMENT",
     image: "/M2M-Website/injury-prevention.jpg",
+    intro:
+      "Improve your overall performance in your sport and extend your career longevity by addressing muscular imbalances and movement deficits",
     description: [
-      "Movement Assessments",
-      "Prehabilitation Exercises",
-      "Balance & Stability Training",
-      "Core Strength Training",
+      "Movement Analysis",
+      "Mobility Screen",
+      "Sport Performance Assessment",
+      "Running Analysis",
     ],
+    outro: "",
   },
 ];
 
@@ -60,7 +79,7 @@ const ServiceDetails = () => {
   const handleOpenModal = () => setOpenModal(true);
   const handleCloseModal = () => setOpenModal(false);
   const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down("sm")); // Detect mobile screens
+  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
 
   return (
     <>
@@ -82,7 +101,6 @@ const ServiceDetails = () => {
           {services.map((service, index) => (
             <Box id={service.id} key={service.id}>
               <Grid container spacing={4} alignItems="center" sx={{ mb: 6 }}>
-                {/* Image */}
                 <Grid item xs={12} md={6}>
                   <motion.div
                     initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
@@ -105,7 +123,6 @@ const ServiceDetails = () => {
                   </motion.div>
                 </Grid>
 
-                {/* Text + Button */}
                 <Grid
                   item
                   xs={12}
@@ -134,68 +151,82 @@ const ServiceDetails = () => {
                       {service.title}
                     </Typography>
 
-                    {/* ✅ Updated list with custom icons */}
-                    <Box sx={{ width: "100%", textAlign: { xs: "center", md: "left" } }}>
-                      <ul style={{ listStyle: "none", padding: 0, margin: 0 }}>
-                        {service.description.map((item, i) => (
-                          <li
-                            key={i}
-                            style={{
-                              display: "flex",
-                              alignItems: "center",
-                              color: "#fff",
-                              fontSize: "1.1rem",
-                              marginBottom: "0.5rem",
-                              transition: "transform 0.2s",
-                            }}
-                            onMouseEnter={(e) =>
-                              (e.currentTarget.style.transform = "translateX(5px)")
-                            }
-                            onMouseLeave={(e) =>
-                              (e.currentTarget.style.transform = "none")
-                            }
-                          >
-                            <FaCheckCircle
-                              style={{
-                                color: "#F94B3D",
-                                marginRight: "10px",
-                                minWidth: "20px",
-                              }}
-                            />
-                            {item}
-                          </li>
-                        ))}
-                      </ul>
-
-                      {/* Button */}
-                      <motion.div
-                        whileHover={{ scale: 1.1 }}
-                        whileTap={{ scale: 0.95 }}
-                        transition={{ type: "spring", stiffness: 300 }}
+                    {service.intro && (
+                      <Typography
+                        variant="body1"
+                        sx={{ color: "#ccc", mb: 2, fontSize: "1.05rem" }}
                       >
-                        <Button
-                          variant="contained"
-                          onClick={handleOpenModal}
-                          sx={{
-                            mt: 2,
-                            backgroundColor: "#F94B3D",
-                            color: "#000",
-                            fontFamily: "Poppins, sans-serif",
-                            fontWeight: "bold",
-                            px: { xs: 2, md: 4 },
-                            py: { xs: 1, md: 1.5 },
-                            fontSize: { xs: "0.9rem", md: "1.1rem" },
-                            borderRadius: "30px",
-                            "&:hover": {
-                              backgroundColor: "#fff",
-                              color: "#000",
-                            },
+                        {service.intro}
+                      </Typography>
+                    )}
+
+                    <ul style={{ listStyle: "none", padding: 0, margin: 0 }}>
+                      {service.description.map((item, i) => (
+                        <li
+                          key={i}
+                          style={{
+                            display: "flex",
+                            alignItems: "center",
+                            color: "#fff",
+                            fontSize: "1.1rem",
+                            marginBottom: "0.5rem",
+                            transition: "transform 0.2s",
                           }}
+                          onMouseEnter={(e) =>
+                            (e.currentTarget.style.transform = "translateX(5px)")
+                          }
+                          onMouseLeave={(e) =>
+                            (e.currentTarget.style.transform = "none")
+                          }
                         >
-                          Book Now
-                        </Button>
-                      </motion.div>
-                    </Box>
+                          <FaCheckCircle
+                            style={{
+                              color: "#F94B3D",
+                              marginRight: "10px",
+                              minWidth: "20px",
+                            }}
+                          />
+                          {item}
+                        </li>
+                      ))}
+                    </ul>
+
+                    {service.outro && (
+                      <Typography
+                        variant="body1"
+                        sx={{ color: "#ccc", mt: 2, fontSize: "1.05rem" }}
+                      >
+                        {service.outro}
+                      </Typography>
+                    )}
+
+                    <motion.div
+                      whileHover={{ scale: 1.1 }}
+                      whileTap={{ scale: 0.95 }}
+                      transition={{ type: "spring", stiffness: 300 }}
+                    >
+                      <Button
+                        variant="contained"
+                        onClick={handleOpenModal}
+                        sx={{
+                          mt: 3,
+                          backgroundColor: "#F94B3D",
+                          color: "#000",
+                          fontFamily: "Poppins, sans-serif",
+                          fontWeight: "bold",
+                          px: { xs: 2, md: 4 },
+                          py: { xs: 1, md: 1.5 },
+                          fontSize: { xs: "0.9rem", md: "1.1rem" },
+                          borderRadius: "30px",
+                          "&:hover": {
+                            backgroundColor: "#fff",
+                            color: "#000",
+                          },
+                        }}
+                      >
+                        Book Now
+                      </Button>
+                    </motion.div>
                   </motion.div>
                 </Grid>
               </Grid>
@@ -203,7 +234,6 @@ const ServiceDetails = () => {
           ))}
         </Container>
 
-        {/* Modal with iFrame */}
         <Dialog open={openModal} onClose={handleCloseModal} maxWidth="lg" fullWidth>
           <DialogContent sx={{ position: "relative", padding: 0 }}>
             <IconButton
@@ -220,7 +250,7 @@ const ServiceDetails = () => {
             </IconButton>
 
             <iframe
-              src="https://form.jotform.com/242896129509165?fbclid=PAZXh0bgNhZW0CMTEAAaa3F0MXz517ogsk3gL8Kl5qWpuivE0c8r8xxWRzX4RRaP7LSEAf9eTAiWE_aem_HC4A5TADGf9YLd_oAlmlqg"
+              src="https://form.jotform.com/242896129509165"
               width="100%"
               height="100%"
               style={{

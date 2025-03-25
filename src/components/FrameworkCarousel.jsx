@@ -11,10 +11,12 @@ import spb from '../../public/spb.png';
 import swinCity from '../../public/swin-city.png';
 import suddenExposure from '../../public/sudden-exposure.png';
 import northCrowley from '../../public/north-crowley.png';
+import michiganPanthers from '../../public/Michigan-Panthers.png'
 import { Typography, useTheme, useMediaQuery } from '@mui/material';
 
 const frameworks = [
   { name: 'Full Throttle', icon: <img src={fullThrottle} alt="Full Throttle" />, url: 'https://www.fullthrottlebasketball.com' },
+  { name: 'Michigan Panthers', icon: <img src={michiganPanthers} alt="Michigan Panthers" />, url: 'https://www.theufl.com/teams/michigan' },
   { name: 'HyperIce', icon: <img src={hyperIce} alt="HyperIce" />, url: 'https://hyperice.com/?nbt=nb%3Aadwords%3Ag%3A13234263297%3A121993101330%3A544456856771&nb_adtype=&nb_kwd=hyperice&nb_ti=kwd-299181057308&nb_mi=&nb_pc=&nb_pi=&nb_ppi=&nb_placement=&nb_li_ms=&nb_lp_ms=&nb_fii=&nb_ap=&nb_mt=b&gad_source=1&gbraid=0AAAAADuMRhiV7hjFhV0g-k2N6f2S-f3I5&gclid=Cj0KCQiA_NC9BhCkARIsABSnSTbnEXgvz62ZNJEvqXUsWCCHfHgPFxZPV0MxtymDZZmk0yHqo7W9MhAaAvsfEALw_wcB' },
   { name: 'MBA', icon: <img src={mba} alt="MBA" />, url: 'https://www.mymbaglobal.com' },
   { name: 'Pro Skills', icon: <img src={proSkills} alt="Pro Skills" />, url: 'http://nikeproskills.com' },
