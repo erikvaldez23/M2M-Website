@@ -49,7 +49,7 @@ const CTA = () => {
               letterSpacing: 2,
               color: "#fff",
               mb: 3, // Less margin on mobile
-              fontSize: { xs: "1.8rem", sm: "2rem", md: "3.5rem" }, // ✅ Smaller for mobile
+              fontSize: { xs: "1.8rem", sm: "2rem", md: "3.5rem", lg: "4rem" },
               textAlign: "center",
             }}
           >
@@ -66,7 +66,7 @@ const CTA = () => {
               maxWidth: "900px",
               mx: "auto",
               lineHeight: 1.6,
-              fontSize: { xs: "1rem", sm: "1.1rem", md: "2rem" }, // ✅ More readable on mobile
+              fontSize: { xs: "1rem", sm: "1.1rem", md: "1.6rem", lg: "1.8rem" }, 
               textAlign: "center",
             }}
           >
