@@ -80,7 +80,7 @@ const CTAButton = styled(Button)({
   border: "3px solid #fff",
   mt: 1,
   transition: "background 0.3s ease",
-  "&:hover": { backgroundColor: "#fff", color: "#000" },
+  "&:hover": { backgroundColor: "#F94B3D", color: "#fff", border: "3px solid #F94B3D" },
 });
 
 const Services = () => {

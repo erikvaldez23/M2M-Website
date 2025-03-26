@@ -24,8 +24,8 @@ const teamMembers = [
       "Trusted by athletes of all levels (Professional, Collegiate, High school, and Youth sports) to perform at the top of their game. She also has a background in strength and conditioning and is committed to helping individuals reach their peak performance.",
     image: "/M2M-Website/natalie.jpg",
     socials: {
-      linkedin: "https://linkedin.com/in/alex-johnson",
-      instagram: "https://instagram.com/dr.alexjohnson",
+      linkedin: "https://www.linkedin.com/in/natalie-valdez-pt-dpt-smtc-cscs-cert-dn-a66095231/?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app",
+      instagram: "https://www.instagram.com/drnat.dpt/",
     },
   },
   {
@@ -37,8 +37,8 @@ const teamMembers = [
       "Has experience working with Professional, High school, and College athletes as well as the Active population. She also has a love for personal training and nutrition, as she has had to use them a lot for her own personal goals and experiences.",
     image: "/M2M-Website/drea.jpg",
     socials: {
-      linkedin: "https://linkedin.com/in/taylor-smith",
-      instagram: "https://instagram.com/dr.taylorsmith",
+      linkedin: "https://www.linkedin.com/in/drea-sigsbee-558275352/?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app",
+      instagram: "https://www.instagram.com/dre.dpt/",
     },
   },
 ];
@@ -212,36 +212,52 @@ const MeetTheTeam = () => {
                     {/* Social Icons */}
                     <Box sx={{ display: "flex", gap: 1, mt: 2 }}>
                       {member.socials.linkedin && (
-                        <IconButton
-                          sx={{
-                            backgroundColor: "#fff",
-                            p: 1,
-                            borderRadius: "50%",
-                            boxShadow: "0 4px 10px rgba(0,0,0,0.5)",
-                          }}
-                          onClick={(e) => {
-                            e.stopPropagation(); // prevent card click event
-                            window.open(member.socials.linkedin, "_blank");
-                          }}
-                        >
-                          <FaLinkedin color="#000" size={20} />
-                        </IconButton>
+                    <IconButton
+                    sx={{
+                      backgroundColor: "#fff",
+                      p: 1,
+                      borderRadius: "50%",
+                      boxShadow: "0 4px 10px rgba(0,0,0,0.5)",
+                      transition: "background-color 0.3s ease",
+                      "&:hover": {
+                        backgroundColor: "#F94B3D", 
+                        "& svg": {
+                          color: "#000", 
+                        },
+                      },
+                    }}
+                    onClick={(e) => {
+                      e.stopPropagation(); // prevent card click event
+                      window.open(member.socials.linkedin, "_blank");
+                    }}
+                  >
+                    <FaLinkedin color="#000" size={20} />
+                  </IconButton>
+                  
                       )}
                       {member.socials.instagram && (
-                        <IconButton
-                          sx={{
-                            backgroundColor: "#fff",
-                            p: 1,
-                            borderRadius: "50%",
-                            boxShadow: "0 4px 10px rgba(0,0,0,0.5)",
-                          }}
-                          onClick={(e) => {
-                            e.stopPropagation();
-                            window.open(member.socials.instagram, "_blank");
-                          }}
-                        >
-                          <FaInstagram color="#000" size={20} />
-                        </IconButton>
+                   <IconButton
+                   sx={{
+                     backgroundColor: "#fff",
+                     p: 1,
+                     borderRadius: "50%",
+                     boxShadow: "0 4px 10px rgba(0,0,0,0.5)",
+                     transition: "background-color 0.3s ease",
+                     "&:hover": {
+                       backgroundColor: "#F94B3D", 
+                       "& svg": {
+                         color: "#000", 
+                       },
+                     },
+                   }}
+                   onClick={(e) => {
+                     e.stopPropagation(); // prevent card click event
+                     window.open(member.socials.instagram, "_blank");
+                   }}
+                 >
+                   <FaInstagram color="#000" size={20} />
+                 </IconButton>
+                 
                       )}
                     </Box>
                   </motion.div>
