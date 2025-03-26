@@ -79,7 +79,6 @@ const DoctorProfile = ({
                 variant="h4"
                 fontWeight="bold"
                 color="#F94B3D"
-                gutterBottom
               >
                 {name}
               </Typography>
@@ -87,7 +86,7 @@ const DoctorProfile = ({
                 variant="h6"
                 fontWeight="bold"
                 color="#fff"
-                gutterBottom
+                mb="6px"
               >
                 {title}
               </Typography>
