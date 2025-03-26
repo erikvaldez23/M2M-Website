@@ -144,9 +144,9 @@ const Contact = () => {
                   <Box sx={{ width: "100%" }}>
                     <Typography variant="h6">Location</Typography>
                     <Typography variant="body2">
-                      M2M is a Sports medicine and Physical Therapy company that
-                      offers services in the Dallas-Fort Worth metroplex. We
-                      offer concierge services, but we also have a location in
+                      M2M is a Sports Medicine and Physical Therapy company that
+                      offers services in the Dallas-Fort Worth Metroplex. We
+                      offer mobile concierge services, but we also have a location in
                       the Dallas area. For concierge services, we will come to
                       your home or facility. For our Dallas location, we operate
                       out of Park Cities Personal Training (PCPT) in the

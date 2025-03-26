@@ -65,14 +65,6 @@ const testimonialsData = [
     date: "2024-01-15",
   },
   {
-    name: "Windy Hudson",
-    review:
-      "if you are looking for physical therapists who will actually listen to you and adjust the regimen to make sure that you’re feeling great, Dr. Natalie and Dr. Drea are the one! I have never experienced a therapy where I knew that my therapist was so in tune with what I needed… ￼ until I met Dr. Natalie and Dr. Drea! They were all in and they’ll take the best care of you!",
-    image: "/M2M-Website/daniel.jpg",
-    rating: 5,
-    date: "2024-01-15",
-  },
-  {
     name: "Micheal Irvin II",
     review: "LOVED working with these 2!! Gr8 WORK!!",
     image: "/M2M-Website/daniel.jpg",
@@ -115,6 +107,46 @@ const testimonialsData = [
     name: "Coach Kortlin White",
     review:
       "I firmly believe that any team seeking to maintain their athletes' peak performance, especially during critical playoff seasons, would greatly benefit from partnering with Made 2 Move. Their expertise and personalized approach make them an invaluable asset to any athletic program.",
+    image: "/M2M-Website/daniel.jpg",
+    rating: 5,
+    date: "2024-01-15",
+  },
+  {
+    name: "Phariz Watkins",
+    review:
+    "Extremely grateful for the amazing care & time spent with Made 2 Move. The expertise of Dr. Dre & Dr. Nat has made an immediate difference in how my body feels & functions daily. I appreciate the time spent with M2M & most definitely will be using them moving forward!",
+    image: "/M2M-Website/daniel.jpg",
+    rating: 5,
+    date: "2024-01-15",
+  },
+  {
+    name: "Nikki Greene",
+    review:
+    "The best in DFW, check them out!",
+    image: "/M2M-Website/daniel.jpg",
+    rating: 5,
+    date: "2024-01-15",
+  },
+  {
+    name: "Daleth Estrada",
+    review:
+    "My knee is recovering amazingly thanks to M2M and their professional PT diagnosis and decision making on the program I needed. Thank you!",
+    image: "/M2M-Website/daniel.jpg",
+    rating: 5,
+    date: "2024-01-15",
+  },
+  {
+    name: "Michael Haberman",
+    review:
+    "Back in competition for the first time since my shoulder injury, and it feels great! Huge thanks to the team at Made 2 Move for getting my shoulder rehabbed and competition ready. If you ever need physical therapy, they are the absolute best",
+    image: "/M2M-Website/daniel.jpg",
+    rating: 5,
+    date: "2024-01-15",
+  },
+  {
+    name: "Mika Tafua",
+    review:
+    "Mahaloz M2M for getting me right",
     image: "/M2M-Website/daniel.jpg",
     rating: 5,
     date: "2024-01-15",
