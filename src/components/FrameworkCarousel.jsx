@@ -12,6 +12,7 @@ import swinCity from '../../public/swin-city.png';
 import suddenExposure from '../../public/sudden-exposure.png';
 import northCrowley from '../../public/north-crowley.png';
 import michiganPanthers from '../../public/Michigan-Panthers.png'
+import pcpt from "../../public/pcpt.png"
 import { Typography, useTheme, useMediaQuery } from '@mui/material';
 
 const frameworks = [
@@ -25,6 +26,7 @@ const frameworks = [
   { name: 'Swin City', icon: <img src={swinCity} alt="Swin City" />, url: 'https://swincityleague.com' },
   { name: 'Sudden Exposure', icon: <img src={suddenExposure} alt="Sudden Exposure" />, url: 'https://suddenexposure.net' },
   { name: 'North Crowley', icon: <img src={northCrowley} alt="North Crowley" />, url: 'https://www.crowleyisdtx.org/nchs' },
+  { name: 'Park Cities Personal Training', icon: <img src={pcpt} alt="PCPT Gym" />, url: 'https://www.pcptgym.com' },
 ];
 
 const repeatFrameworks = [...frameworks, ...frameworks, ...frameworks]; // Repeat to ensure continuous loop
