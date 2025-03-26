@@ -66,7 +66,7 @@ const CTA = () => {
               maxWidth: "900px",
               mx: "auto",
               lineHeight: 1.6,
-              fontSize: { xs: "1rem", sm: "1.1rem", md: "1.6rem", lg: "1.8rem" }, 
+              fontSize: { xs: "1rem", sm: "1.1rem", md: "1.4rem", lg: "1.6rem" }, 
               textAlign: "center",
             }}
           >
