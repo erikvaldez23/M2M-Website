@@ -19,7 +19,7 @@ const teamMembers = [
     id: "natalie", // used for routing
     name: "Dr. Nat",
     certs: "PT, DPT, SMTC, CSCS, Cert. DN",
-    title: "Founder/Physical Therapist",
+    title: "PHYSICAL THERAPIST/CO-FOUNDER",
     description:
       "Trusted by athletes of all levels (Professional, Collegiate, High school, and Youth sports) to perform at the top of their game. She also has a background in strength and conditioning and is committed to helping individuals reach their peak performance.",
     image: "/M2M-Website/natalie.jpg",
@@ -32,7 +32,7 @@ const teamMembers = [
     id: "andrea",
     name: "Dr. Dre",
     certs: "PT, DPT, Cert. DN",
-    title: "Founder Physical Therapist",
+    title: "PHYSICAL THERAPIST/CO-FOUNDER",
     description:
       "Has experience working with Professional, High school, and College athletes as well as the Active population. She also has a love for personal training and nutrition, as she has had to use them a lot for her own personal goals and experiences.",
     image: "/M2M-Website/drea.jpg",
@@ -205,7 +205,7 @@ const MeetTheTeam = () => {
                       left: "10px",
                     }}
                   >
-                    <Typography variant="body1" sx={{ fontWeight: "bold", fontSize:"1.7rem" }}>
+                    <Typography variant="body1" sx={{ fontWeight: "bold", fontSize:"1.5rem" }}>
                       {member.description}
                     </Typography>
 
