@@ -7,6 +7,8 @@ import {
   Box,
   Container,
   Divider,
+  useTheme,
+  useMediaQuery
 } from "@mui/material";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import CTA from "./cta2";
@@ -21,7 +23,7 @@ const faqSections = [
         id: "q1",
         question: "Where are you located?",
         answer:
-          "M2M is a Sports medicine and Physical Therapy company that offers services in the Dallas-Fort Worth metroplex. We offer concierge services, but we also have a location in the Dallas area. For concierge services, we will come to your home or facility. For our Dallas location, we operate out of Park Cities Personal Training (PCPT) in the Knox/Highland Park area.",
+          "M2M is a Sports Medicine and Physical Therapy company that offers services in the Dallas-Fort Worth Metroplex. We offer mobile concierge services, but we also have a location in the Dallas area. For concierge services, we will come to your home or facility. For our Dallas location, we operate out of Park Cities Personal Training (PCPT) in the Knox/Highland Park area.",
       },
       {
         id: "q2",
@@ -31,9 +33,9 @@ const faqSections = [
       },
       {
         id: "q3",
-        question: "Why should I choose a Cash pay company?",
+        question: "Why should I choose a cash pay company?",
         answer:
-          "We prioritize quality patient care and take the control out of the insurance companies’ hands. This allows us to treat you one-on-one and prioritize your unique health goals. When you invest in yourself, you gain the freedom to receive the care you deserve without the restrictions of limited visits.",
+          "We prioritize quality patient care and take the control out of the insurance companies’ hands. This allows us to treat you one-on-one and prioritize your unique health goals. When you invest in yourself, you gain the freedom to receive the care you deserve without the restrictions of limited visits. Our transparent pricing ensures you know the cost upfront, so there are no surprise bills. In most cases, you’ll achieve your goals more quickly, which means fewer visits and a lower overall cost. ",
       },
       {
         id: "q4",
@@ -48,6 +50,8 @@ const faqSections = [
 export default function FAQ() {
   const [expanded, setExpanded] = useState(false);
   const sectionRefs = useRef({});
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down("md")); // true for mobile/tablet
 
   const handleScroll = (id) => {
     sectionRefs.current[id]?.scrollIntoView({
@@ -67,10 +71,9 @@ export default function FAQ() {
         }}
       >
         <Typography
-          variant="h2"
+          variant={isMobile ? "h3" : "h2"}
           sx={{
             fontWeight: "bold",
-            fontSize: { xs: "2.5rem", md: "3.5rem" },
             color: "#fff",
             letterSpacing: 1,
           }}

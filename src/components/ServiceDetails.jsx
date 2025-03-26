@@ -31,7 +31,7 @@ const services = [
       "Soft Tissue Release",
       "Fascial Mobilization",
       "Active Release Techniques",
-      "Joint Mobilization/Manipulations",
+      "Joint Mobilization/Manipulation",
       "Therapeutic Exercise",
       "Neuromuscular Re-education",
       "Blood Flow Restriction",
@@ -40,6 +40,7 @@ const services = [
     ],
     outro:
       "An initial evaluation will be performed to address your injury, pain, limitations, and other movement deficits. Based on your goals and sport, an individualized treatment plan will be created for you.",
+    outro2: "",
   },
   {
     id: "athletic-recovery",
@@ -55,13 +56,15 @@ const services = [
       "Manual Therapy",
       "Electro Therapy",
       "Stretch Therapy",
-      "Normatec Compression & other elite Hyperice products",
+      "Normatec Compression & Hyperice products",
     ],
-    outro: "",
+    outro:
+      "Recovery services require an initial evaluation in order for us to individualize the treatment to YOU and allow you to perform at your peak potential ",
+      outro2: "Team recovery available upon request",
   },
   {
     id: "injury-prevention",
-    title: "INJURY PREVENTION & SPORTS PERFORMANCE ASSESSMENT",
+    title: "INJURY PREVENTION",
     image: "/M2M-Website/injury-prevention.jpg",
     intro:
       "Improve your overall performance in your sport and extend your career longevity by addressing muscular imbalances and movement deficits",
@@ -71,7 +74,9 @@ const services = [
       "Sport Performance Assessment",
       "Running Analysis",
     ],
-    outro: "",
+    outro:
+      "Injury prevention services require an initial evaluation in order for us to individualize the treatment to YOU and allow you to perform at your peak potential ",
+      outro2: "Team injury prevention available upon request",
   },
 ];
 
@@ -204,7 +209,8 @@ const ServiceDetails = () => {
                             cursor: "default",
                           }}
                           onMouseEnter={(e) =>
-                            (e.currentTarget.style.transform = "translateX(8px)")
+                            (e.currentTarget.style.transform =
+                              "translateX(8px)")
                           }
                           onMouseLeave={(e) =>
                             (e.currentTarget.style.transform = "translateX(0)")
@@ -235,6 +241,22 @@ const ServiceDetails = () => {
                         }}
                       >
                         {service.outro}
+                      </Typography>
+                    )}
+
+                    {service.outro2 && (
+                      <Typography
+                        variant="h6"
+                        sx={{
+                          color: "#ccc",
+                          mt: 2,
+                          fontWeight: 500,
+                          fontStyle: "italic",
+                          fontSize: "1.1rem",
+                          lineHeight: 1.7,
+                        }}
+                      >
+                        {service.outro2}
                       </Typography>
                     )}
 
