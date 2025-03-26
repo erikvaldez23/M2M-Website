@@ -289,7 +289,7 @@ const Topbar = ({ notFound }) => {
             gap: "15px", // ✅ Adds consistent spacing between links
           }}
         >
-          {["Services", "About", "Reviews", "FAQ", "Contact"].map((item) => (
+          {["About", "Services", "Reviews", "FAQ", "Contact"].map((item) => (
             <ListItem
               button
               key={item}
