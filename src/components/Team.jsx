@@ -22,7 +22,7 @@ const teamMembers = [
     title: "PHYSICAL THERAPIST/CO-FOUNDER",
     description:
       "Trusted by athletes of all levels (Professional, Collegiate, High school, and Youth sports) to perform at the top of their game. She also has a background in strength and conditioning and is committed to helping individuals reach their peak performance.",
-    image: "/M2M-Website/natalie.jpg",
+    image: "/natalie.jpg",
     socials: {
       linkedin: "https://www.linkedin.com/in/natalie-valdez-pt-dpt-smtc-cscs-cert-dn-a66095231/?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app",
       instagram: "https://www.instagram.com/drnat.dpt/",
@@ -35,7 +35,7 @@ const teamMembers = [
     title: "PHYSICAL THERAPIST/CO-FOUNDER",
     description:
       "Has experience working with Professional, High school, and College athletes as well as the Active population. She also has a love for personal training and nutrition, as she has had to use them a lot for her own personal goals and experiences.",
-    image: "/M2M-Website/drea.jpg",
+    image: "/drea.jpg",
     socials: {
       linkedin: "https://www.linkedin.com/in/drea-sigsbee-558275352/?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app",
       instagram: "https://www.instagram.com/dre.dpt/",

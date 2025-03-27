@@ -3,5 +3,15 @@ import react from '@vitejs/plugin-react';
 
 export default defineConfig({
   plugins: [react()],
-  base: "/M2M-Website/", 
+  build: {
+    rollupOptions: {
+      output: {
+        manualChunks: undefined
+      }
+    }
+  },
+  base: '/', // your base URL
+  server: {
+    historyApiFallback: true,  // This will catch refresh errors and redirect to index.html
+  },
 });

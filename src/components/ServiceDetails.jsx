@@ -72,9 +72,12 @@ const services = [
     id: "physical-therapy",
     title: "PHYSICAL THERAPY",
     images: [
-      "/M2M-Website/pt1.jpg",
-      "/M2M-Website/pt2.jpg",
-      "/M2M-Website/pt3.jpg",
+      "/pt.jpg",
+      "/pt1.jpg",
+      "/pt2.jpg",
+      "/pt3.jpg",
+      "/pt4.JPEG",
+      "/pt5.jpg",
     ],
     intro:
       "Evaluation and treatment for orthopedic injuries and post-operative rehabilitation.",
@@ -98,8 +101,13 @@ const services = [
     id: "athletic-recovery",
     title: "RECOVERY",
     images: [
-      "/M2M-Website/recovery1.jpg",
-      "/M2M-Website/recovery2.jpg",
+      "/recovery.jpg",
+      "/recovery1.jpg",
+      "/recovery2.jpg",
+      "/recovery3.JPG",
+      "/recovery4.heic",
+      "/recovery5.JPG",
+      "/recovery6.jpg",
     ],
     intro:
       "Improve your performance and recover faster between games/practices & events.",
@@ -121,10 +129,12 @@ const services = [
     id: "injury-prevention",
     title: "INJURY PREVENTION",
     images: [
-      "/M2M-Website/performance1.jpg",
-      "/M2M-Website/performance2.JPG",
-      // "/M2M-Website/performance3.jpg",
-      "/M2M-Website/performance4.JPEG",
+      "/injury-prevention.jpg",
+      "/performance1.jpg",
+      "/performance2.JPG",
+      // "/performance3.jpg",
+      "/performance4.JPEG",
+      "/performance5.png",
     ],
     intro:
       "Improve your overall performance in your sport and extend your career longevity by addressing muscular imbalances and movement deficits.",

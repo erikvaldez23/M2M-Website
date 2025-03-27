@@ -21,17 +21,17 @@ const servicesData = [
   {
     id: "physical-therapy",
     title: "PHYSICAL THERAPY",
-    image: "/M2M-Website/pt.jpg",
+    image: "/pt.jpg",
   },
   {
     id: "athletic-recovery",
     title: "RECOVERY",
-    image: "/M2M-Website/recovery.jpg",
+    image: "/recovery.jpg",
   },
   {
     id: "injury-prevention",
     title: "INJURY PREVENTION",
-    image: "/M2M-Website/injury-prevention.jpg",
+    image: "/injury-prevention.jpg",
   },
 ];
 

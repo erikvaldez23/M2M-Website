@@ -18,10 +18,7 @@ import ErrorPage from "./components/ErrorPage";
 import About from './components/About';
 import Booking from './components/Booking';
 import Map from './components/Map';
-import Instagram from './components/Instagram';
 import CTA from './components/cta';
-import Techniques from './components/Techniques';
-import InstagramEmbed from './components/Instagram';
 import CTA2 from './components/cta2';
 import FAQ from './components/FAQ';
 import ServiceDetails from './components/ServiceDetails';
@@ -59,7 +56,7 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <Router baseName="/M2M-Website/"> {/* ✅ Using HashRouter now */}
+      <Router>
         <ScrollToTop />
         <ScrollHandler />
         <Topbar />
