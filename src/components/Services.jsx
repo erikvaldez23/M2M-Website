@@ -43,7 +43,7 @@ const ServiceCard = styled(motion(Card))(({ theme, isMobile }) => ({
   backdropFilter: "blur(10px)",
   height: "400px", // Default mobile height
   [theme.breakpoints.up("sm")]: { height: "500px" },
-  [theme.breakpoints.up("md")]: { height: "700px" },
+  [theme.breakpoints.up("md")]: { height: "500px" },
   transition: "all 0.4s ease",
   ...( !isMobile && { // Only add hover effect if not mobile
     "&:hover": { transform: "scale(1.05)" },
