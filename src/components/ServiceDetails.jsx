@@ -17,15 +17,67 @@ import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 import CTA2 from "./cta2";
 import Contact from "./Contact";
-import { FaTimes, FaCheckCircle } from "react-icons/fa";
+import { FaTimes, FaCheckCircle, FaChevronLeft, FaChevronRight } from "react-icons/fa";
+import Slider from "react-slick";
+
+// Custom Arrow Components
+const CustomPrevArrow = ({ onClick }) => (
+  <Box
+    onClick={onClick}
+    sx={{
+      position: "absolute",
+      top: "50%",
+      left: "-30px",
+      transform: "translateY(-50%)",
+      zIndex: 2,
+      cursor: "pointer",
+      backgroundColor: "rgba(0,0,0,0.6)",
+      color: "#fff",
+      borderRadius: "50%",
+      p: 1.2,
+      "&:hover": {
+        backgroundColor: "#F94B3D",
+      },
+    }}
+  >
+    <FaChevronLeft />
+  </Box>
+);
+
+const CustomNextArrow = ({ onClick }) => (
+  <Box
+    onClick={onClick}
+    sx={{
+      position: "absolute",
+      top: "50%",
+      right: "-30px",
+      transform: "translateY(-50%)",
+      zIndex: 2,
+      cursor: "pointer",
+      backgroundColor: "rgba(0,0,0,0.6)",
+      color: "#fff",
+      borderRadius: "50%",
+      p: 1.2,
+      "&:hover": {
+        backgroundColor: "#F94B3D",
+      },
+    }}
+  >
+    <FaChevronRight />
+  </Box>
+);
 
 const services = [
   {
     id: "physical-therapy",
     title: "PHYSICAL THERAPY",
-    image: "/M2M-Website/pt.jpg",
+    images: [
+      "/M2M-Website/pt1.jpg",
+      "/M2M-Website/pt2.jpg",
+      "/M2M-Website/pt3.jpg",
+    ],
     intro:
-      "Evaluation and treatment for orthopedic injuries and post-operative rehabilitation",
+      "Evaluation and treatment for orthopedic injuries and post-operative rehabilitation.",
     description: [
       "Manual Therapy",
       "Soft Tissue Release",
@@ -45,9 +97,12 @@ const services = [
   {
     id: "athletic-recovery",
     title: "RECOVERY",
-    image: "/M2M-Website/recovery.jpg",
+    images: [
+      "/M2M-Website/recovery1.jpg",
+      "/M2M-Website/recovery2.jpg",
+    ],
     intro:
-      "Improve your performance and recover faster between games/practices & events",
+      "Improve your performance and recover faster between games/practices & events.",
     description: [
       "Dry Needling",
       "Cupping Therapy",
@@ -59,15 +114,20 @@ const services = [
       "Normatec Compression & Hyperice products",
     ],
     outro:
-      "Recovery services require an initial evaluation in order for us to individualize the treatment to YOU and allow you to perform at your peak potential ",
-      outro2: "Team recovery available upon request",
+      "Recovery services require an initial evaluation in order for us to individualize the treatment to YOU and allow you to perform at your peak potential.",
+    outro2: "Team recovery available upon request.",
   },
   {
     id: "injury-prevention",
     title: "INJURY PREVENTION",
-    image: "/M2M-Website/injury-prevention.jpg",
+    images: [
+      "/M2M-Website/performance1.jpg",
+      "/M2M-Website/performance2.JPG",
+      // "/M2M-Website/performance3.jpg",
+      "/M2M-Website/performance4.JPEG",
+    ],
     intro:
-      "Improve your overall performance in your sport and extend your career longevity by addressing muscular imbalances and movement deficits",
+      "Improve your overall performance in your sport and extend your career longevity by addressing muscular imbalances and movement deficits.",
     description: [
       "Movement Analysis",
       "Mobility Screen",
@@ -75,8 +135,8 @@ const services = [
       "Running Analysis",
     ],
     outro:
-      "Injury prevention services require an initial evaluation in order for us to individualize the treatment to YOU and allow you to perform at your peak potential ",
-      outro2: "Team injury prevention available upon request",
+      "Injury prevention services require an initial evaluation in order for us to individualize the treatment to YOU and allow you to perform at your peak potential.",
+    outro2: "Team injury prevention available upon request.",
   },
 ];
 
@@ -87,6 +147,39 @@ const ServiceDetails = () => {
   const handleCloseModal = () => setOpenModal(false);
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
+
+  const sliderSettings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 4000,
+    arrows: true,
+    prevArrow: <CustomPrevArrow />,
+    nextArrow: <CustomNextArrow />,
+    appendDots: dots => (
+      <Box component="ul" sx={{ mt: 2, display: "flex", justifyContent: "center" }}>
+        {dots}
+      </Box>
+    ),
+    customPaging: () => (
+      <Box
+        sx={{
+          width: "10px",
+          height: "10px",
+          borderRadius: "50%",
+          backgroundColor: "#fff",
+          opacity: 0.5,
+          "&.slick-active": {
+            backgroundColor: "#F94B3D",
+            opacity: 1,
+          },
+        }}
+      />
+    )
+  };
 
   return (
     <>
@@ -137,21 +230,30 @@ const ServiceDetails = () => {
                     whileInView={{ opacity: 1, x: 0 }}
                     transition={{ duration: 0.6, ease: "easeOut" }}
                   >
-                    <Box
-                      component="img"
-                      src={service.image}
-                      alt={service.title}
-                      sx={{
-                        width: "100%",
-                        height: "auto",
-                        borderRadius: "16px",
-                        boxShadow: "0px 10px 30px rgba(0,0,0,0.5)",
-                        transition: "transform 0.3s ease-in-out",
-                        "&:hover": {
-                          transform: "scale(1.03)",
-                        },
-                      }}
-                    />
+                    <Box sx={{ position: "relative" }}>
+                      <Slider {...sliderSettings}>
+                        {service.images.map((img, i) => (
+                          <Box
+                          key={i}
+                          component="img"
+                          src={img}
+                          alt={`${service.title} ${i + 1}`}
+                          sx={{
+                            width: "100%",
+                            height: { xs: "350px", sm: "450px", md: "600px" },
+                            objectFit: "cover", 
+                            borderRadius: "16px",
+                            boxShadow: "0px 10px 30px rgba(0,0,0,0.5)",
+                            transition: "transform 0.3s ease-in-out",
+                            "&:hover": {
+                              transform: "scale(1.03)",
+                            },
+                          }}
+                        />
+                        
+                        ))}
+                      </Slider>
+                    </Box>
                   </motion.div>
                 </Grid>
 
@@ -195,7 +297,7 @@ const ServiceDetails = () => {
                       </Typography>
                     )}
 
-                    <ul style={{ listStyle: "none", padding: 0, margin: 0 }}>
+                    <ul style={{ listStyle: "none", padding: 0, margin: 0, textAlign: "left" }}>
                       {service.description.map((item, i) => (
                         <li
                           key={i}
@@ -209,8 +311,7 @@ const ServiceDetails = () => {
                             cursor: "default",
                           }}
                           onMouseEnter={(e) =>
-                            (e.currentTarget.style.transform =
-                              "translateX(8px)")
+                            (e.currentTarget.style.transform = "translateX(8px)")
                           }
                           onMouseLeave={(e) =>
                             (e.currentTarget.style.transform = "translateX(0)")
