@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   Grid,
   Box,
@@ -10,8 +10,8 @@ import {
   useMediaQuery,
 } from "@mui/material";
 import { FaMapMarkerAlt, FaPhone, FaEnvelope, FaCar } from "react-icons/fa";
-import { useLocation } from "react-router-dom"; // ← Add this
-// import { FaCar } from "react-icons/fa6";
+import { useLocation } from "react-router-dom";
+import emailjs from 'emailjs-com';
 
 const Contact = () => {
   const isMobile = useMediaQuery("(max-width: 768px)");
@@ -39,36 +39,75 @@ const Contact = () => {
     });
   };
 
-  // Form validation function
   const validateForm = () => {
     let newErrors = {};
-    if (!formData.name.trim()) newErrors.name = "Name is required";
+    if (!formData.firstName.trim()) newErrors.firstName = "First name is required";
+    if (!formData.lastName.trim()) newErrors.lastName = "Last name is required";
     if (!formData.phone.trim()) newErrors.phone = "Phone number is required";
     if (!formData.message.trim()) newErrors.message = "Message is required";
-
     return newErrors;
   };
+  
 
-  // Handle form submission
   const handleSubmit = (e) => {
     e.preventDefault();
-    const newErrors = validateForm();
 
-    if (Object.keys(newErrors).length > 0) {
-      setErrors(newErrors);
-    } else {
-      alert("Form submitted successfully!");
-      setFormData({
-        name: "",
-        phone: "",
-        year: "",
-        make: "",
-        model: "",
-        message: "",
-      });
-      setErrors({});
-    }
+    const templateParams = {
+      name: `${formData.firstName} ${formData.lastName}`,
+      from_email: formData.email,
+      message: formData.message,
+      phone: formData.phone,
+      city: formData.city,
+      services: formData.services,
+    };
+    
+    emailjs
+      .send(
+        'service_pl9hftf', // EmailJS Service ID
+        'template_yierqza', // EmailJS Template ID
+        templateParams,
+        'IJjDD9FPCyRdlPMm0' // EmailJS User ID
+      )
+      .then(
+        (response) => {
+          console.log('Email sent successfully:', response.status, response.text);
+          alert('Message sent successfully!');
+          setFormData({
+            firstName: "",
+            lastName: "",
+            phone: "",
+            email: "",
+            city: "",
+            services: "",
+            message: "",
+          });          
+        },
+        (error) => {
+          console.error('Failed to send email:', error);
+          alert('Failed to send message. Please try again.');
+        }
+      );
   };
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            document.querySelectorAll('.animate-on-scroll').forEach((el) => {
+              el.classList.add('animate'); // Trigger animation
+            });
+          }
+        });
+      },
+      { threshold: 0.2 } 
+    );
+
+    const target = document.querySelector('.contact-section');
+    if (target) observer.observe(target);
+
+    return () => observer.disconnect();
+  }, []);
 
   return (
     <Box
@@ -189,24 +228,22 @@ const Contact = () => {
               onSubmit={handleSubmit}
             >
               <TextField
-                label="First Name *"
-                name="name"
-                value={formData.lastName}
-                onChange={handleChange}
-                error={!!errors.name}
-                helperText={errors.name}
-                fullWidth
-              />
+  label="First Name *"
+  name="firstName"
+  value={formData.firstName}
+  onChange={handleChange}
+  error={!!errors.firstName}
+  helperText={errors.firstName}
+/>
 
-              <TextField
-                label="Last Name *"
-                name="name"
-                value={formData.firstName}
-                onChange={handleChange}
-                error={!!errors.name}
-                helperText={errors.name}
-                fullWidth
-              />
+<TextField
+  label="Last Name *"
+  name="lastName"
+  value={formData.lastName}
+  onChange={handleChange}
+  error={!!errors.lastName}
+  helperText={errors.lastName}
+/>
 
               <TextField
                 label="Phone Number *"
@@ -228,7 +265,7 @@ const Contact = () => {
 
               <TextField
                 label="City *"
-                name="make"
+                name="city"
                 value={formData.city}
                 onChange={handleChange}
                 fullWidth
