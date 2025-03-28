@@ -82,99 +82,110 @@ const Vision = () => {
           justifyContent="center"
           sx={{ mt: 2 }}
         >
-          {/* Mission */}
-          <Grid item xs={12} md={6}>
-            <motion.div
-              initial={{ opacity: 0, x: 50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8 }}
-            >
-              <Box
-                sx={{
-                  background: "#fff",
-                  borderRadius: "20px",
-                  boxShadow: "0 10px 30px rgba(0, 0, 0, 0.1)",
-                  padding: { xs: 3, md: 4 },
-                  minHeight: { xs: "100%", md: 300 }, // or height: 420 if exact
-                  display: "flex",
-                  flexDirection: "column",
-                  justifyContent: "flex-start",
-                  textAlign: "center",
-                }}
+          <Box
+            sx={{
+              mt: 4,
+              display: "flex",
+              flexDirection: { xs: "column", md: "row" },
+              gap: 4,
+            }}
+          >
+            {/* Mission */}
+            <Box sx={{ flex: 1, display: "flex" }}>
+              <motion.div
+                initial={{ opacity: 0, x: 50 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.8 }}
+                style={{ flex: 1, display: "flex" }}
               >
-                <Typography
-                  variant="h4"
+                <Box
                   sx={{
-                    fontWeight: "bold",
-                    mb: 2,
-                    fontSize: { xs: "24px", md: "32px" },
+                    flex: 1,
+                    background: "#fff",
+                    borderRadius: "20px",
+                    boxShadow: "0 10px 30px rgba(0, 0, 0, 0.1)",
+                    padding: { xs: 3, md: 4 },
+                    display: "flex",
+                    flexDirection: "column",
+                    justifyContent: "flex-start",
+                    textAlign: "center",
                   }}
                 >
-                  Mission
-                </Typography>
-                <Typography
-                  variant="h6"
-                  sx={{
-                    fontSize: { xs: "16px", md: "20px" },
-                    color: "#000",
-                    lineHeight: 1.8,
-                  }}
-                >
-                  Empowering athletes and active individuals to achieve optimal
-                  health and full recovery through expert, personalized
-                  one-on-one physical therapy and care.
-                </Typography>
-              </Box>
-            </motion.div>
-          </Grid>
+                  <Typography
+                    variant="h4"
+                    sx={{
+                      fontWeight: "bold",
+                      mb: 2,
+                      fontSize: { xs: "24px", md: "32px" },
+                    }}
+                  >
+                    Mission
+                  </Typography>
+                  <Typography
+                    variant="h6"
+                    sx={{
+                      fontSize: { xs: "16px", md: "20px" },
+                      color: "#000",
+                      lineHeight: 1.8,
+                    }}
+                  >
+                    Empowering athletes and active individuals to achieve
+                    optimal health and full recovery through expert,
+                    personalized one-on-one physical therapy and care.
+                  </Typography>
+                </Box>
+              </motion.div>
+            </Box>
 
-          {/* Vision */}
-          <Grid item xs={12} md={6}>
-            <motion.div
-              initial={{ opacity: 0, x: -50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8 }}
-            >
-              <Box
-                sx={{
-                  background: "#fff",
-                  borderRadius: "20px",
-                  boxShadow: "0 10px 30px rgba(0, 0, 0, 0.1)",
-                  padding: { xs: 3, md: 4 },
-                  minHeight: { xs: "100%", md: 300 }, // or height: 420 if exact
-                  display: "flex",
-                  flexDirection: "column",
-                  justifyContent: "flex-start",
-                  textAlign: "center",
-                }}
+            {/* Vision */}
+            <Box sx={{ flex: 1, display: "flex" }}>
+              <motion.div
+                initial={{ opacity: 0, x: -50 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.8 }}
+                style={{ flex: 1, display: "flex" }}
               >
-                <Typography
-                  variant="h4"
+                <Box
                   sx={{
-                    fontWeight: "bold",
-                    mb: 2,
-                    fontSize: { xs: "24px", md: "32px" },
+                    flex: 1,
+                    background: "#fff",
+                    borderRadius: "20px",
+                    boxShadow: "0 10px 30px rgba(0, 0, 0, 0.1)",
+                    padding: { xs: 3, md: 4 },
+                    display: "flex",
+                    flexDirection: "column",
+                    justifyContent: "flex-start",
+                    textAlign: "center",
                   }}
                 >
-                  Vision
-                </Typography>
-                <Typography
-                  variant="h6"
-                  sx={{
-                    fontSize: { xs: "16px", md: "20px" },
-                    color: "#000",
-                    lineHeight: 1.8,
-                  }}
-                >
-                  To be the premiere destination for athletes and active
-                  individuals seeking exceptional care, where our passion for
-                  healing and our love for the human body drives us to exceed
-                  expectations and foster a thriving, resilient community of
-                  peak performers.
-                </Typography>
-              </Box>
-            </motion.div>
-          </Grid>
+                  <Typography
+                    variant="h4"
+                    sx={{
+                      fontWeight: "bold",
+                      mb: 2,
+                      fontSize: { xs: "24px", md: "32px" },
+                    }}
+                  >
+                    Vision
+                  </Typography>
+                  <Typography
+                    variant="h6"
+                    sx={{
+                      fontSize: { xs: "16px", md: "20px" },
+                      color: "#000",
+                      lineHeight: 1.8,
+                    }}
+                  >
+                    To be the premiere destination for athletes and active
+                    individuals seeking exceptional care, where our passion for
+                    healing and our love for the human body drives us to exceed
+                    expectations and foster a thriving, resilient community of
+                    peak performers.
+                  </Typography>
+                </Box>
+              </motion.div>
+            </Box>
+          </Box>
         </Grid>
       </Container>
     </Box>
