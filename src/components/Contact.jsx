@@ -11,7 +11,7 @@ import {
 } from "@mui/material";
 import { FaMapMarkerAlt, FaPhone, FaEnvelope, FaCar } from "react-icons/fa";
 import { useLocation } from "react-router-dom";
-import emailjs from 'emailjs-com';
+import emailjs from "emailjs-com";
 
 const Contact = () => {
   const isMobile = useMediaQuery("(max-width: 768px)");
@@ -41,13 +41,13 @@ const Contact = () => {
 
   const validateForm = () => {
     let newErrors = {};
-    if (!formData.firstName.trim()) newErrors.firstName = "First name is required";
+    if (!formData.firstName.trim())
+      newErrors.firstName = "First name is required";
     if (!formData.lastName.trim()) newErrors.lastName = "Last name is required";
     if (!formData.phone.trim()) newErrors.phone = "Phone number is required";
     if (!formData.message.trim()) newErrors.message = "Message is required";
     return newErrors;
   };
-  
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -60,18 +60,22 @@ const Contact = () => {
       city: formData.city,
       services: formData.services,
     };
-    
+
     emailjs
       .send(
-        'service_pl9hftf', // EmailJS Service ID
-        'template_yierqza', // EmailJS Template ID
+        "service_pl9hftf", // EmailJS Service ID
+        "template_yierqza", // EmailJS Template ID
         templateParams,
-        'IJjDD9FPCyRdlPMm0' // EmailJS User ID
+        "IJjDD9FPCyRdlPMm0" // EmailJS User ID
       )
       .then(
         (response) => {
-          console.log('Email sent successfully:', response.status, response.text);
-          alert('Message sent successfully!');
+          console.log(
+            "Email sent successfully:",
+            response.status,
+            response.text
+          );
+          alert("Message sent successfully!");
           setFormData({
             firstName: "",
             lastName: "",
@@ -80,11 +84,11 @@ const Contact = () => {
             city: "",
             services: "",
             message: "",
-          });          
+          });
         },
         (error) => {
-          console.error('Failed to send email:', error);
-          alert('Failed to send message. Please try again.');
+          console.error("Failed to send email:", error);
+          alert("Failed to send message. Please try again.");
         }
       );
   };
@@ -94,16 +98,16 @@ const Contact = () => {
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            document.querySelectorAll('.animate-on-scroll').forEach((el) => {
-              el.classList.add('animate'); // Trigger animation
+            document.querySelectorAll(".animate-on-scroll").forEach((el) => {
+              el.classList.add("animate"); // Trigger animation
             });
           }
         });
       },
-      { threshold: 0.2 } 
+      { threshold: 0.2 }
     );
 
-    const target = document.querySelector('.contact-section');
+    const target = document.querySelector(".contact-section");
     if (target) observer.observe(target);
 
     return () => observer.disconnect();
@@ -134,10 +138,11 @@ const Contact = () => {
             <Card sx={{ backgroundColor: "#f8f9fa", flexGrow: 1 }}>
               <CardContent
                 sx={{
-                  height: "100%",
+                  flex: 1,
                   display: "flex",
                   flexDirection: "column",
-                  justifyContent: "space-between",
+                  justifyContent: "space-evenly", // <-- Use even spacing or center
+                  height: "100%",
                 }}
               >
                 {/* <Box sx={{ display: "flex", alignItems: "center", mb: 2 }}>
@@ -154,7 +159,7 @@ const Contact = () => {
                   </Box>
                 </Box> */}
 
-                <Box sx={{ display: "flex", alignItems: "center", mb: 2 }}>
+                {/* <Box sx={{ display: "flex", alignItems: "center", mb: 2 }}>
                   <FaPhone
                     size={24}
                     style={{ marginRight: 10, color: "#000" }}
@@ -163,7 +168,7 @@ const Contact = () => {
                     <Typography variant="h6">Call Us</Typography>
                     <Typography variant="body2">+1 (972) 362-8468</Typography>
                   </Box>
-                </Box>
+                </Box> */}
 
                 <Box sx={{ display: "flex", alignItems: "center", mb: 2 }}>
                   <FaEnvelope
@@ -185,11 +190,11 @@ const Contact = () => {
                     <Typography variant="body2">
                       M2M is a Sports Medicine and Physical Therapy company that
                       offers services in the Dallas-Fort Worth Metroplex. We
-                      offer mobile concierge services, but we also have a location in
-                      the Dallas area. For concierge services, we will come to
-                      your home or facility. For our Dallas location, we operate
-                      out of Park Cities Personal Training (PCPT) in the
-                      Knox/Highland Park area.
+                      offer mobile concierge services, but we also have a
+                      location in the Dallas area. For concierge services, we
+                      will come to your home or facility. For our Dallas
+                      location, we operate out of Park Cities Personal Training
+                      (PCPT) in the Knox/Highland Park area.
                     </Typography>
                   </Box>
                 </Box>
@@ -228,22 +233,22 @@ const Contact = () => {
               onSubmit={handleSubmit}
             >
               <TextField
-  label="First Name *"
-  name="firstName"
-  value={formData.firstName}
-  onChange={handleChange}
-  error={!!errors.firstName}
-  helperText={errors.firstName}
-/>
+                label="First Name *"
+                name="firstName"
+                value={formData.firstName}
+                onChange={handleChange}
+                error={!!errors.firstName}
+                helperText={errors.firstName}
+              />
 
-<TextField
-  label="Last Name *"
-  name="lastName"
-  value={formData.lastName}
-  onChange={handleChange}
-  error={!!errors.lastName}
-  helperText={errors.lastName}
-/>
+              <TextField
+                label="Last Name *"
+                name="lastName"
+                value={formData.lastName}
+                onChange={handleChange}
+                error={!!errors.lastName}
+                helperText={errors.lastName}
+              />
 
               <TextField
                 label="Phone Number *"
