@@ -21,7 +21,8 @@ const CTA = () => {
     <>
       <Box
         sx={{
-          py: { xs: 2, md: 3, lg: 4 },
+          pt: { xs: 2, md: 3, lg: 4 }, // Padding top
+          pb: { xs: 2, md: 4, lg: 6 }, // More bottom padding
           px: { xs: 2, md: 3 },
           background: "#000",
           display: "flex",
@@ -30,7 +31,7 @@ const CTA = () => {
           justifyContent: "center",
           textAlign: "center",
           color: "#fff",
-          height: { xs: "40vh", md: "40vh" }, // Responsive height
+          height: { xs: "50vh", md: "40vh" }, // Responsive height
         }}
       >
         <motion.div
