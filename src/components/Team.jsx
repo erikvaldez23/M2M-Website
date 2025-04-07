@@ -37,7 +37,7 @@ const teamMembers = [
       "Has experience working with Professional, High school, and College athletes as well as the Active population. She also has a love for personal training and nutrition, as she has had to use them a lot for her own personal goals and experiences.",
     image: "/drea.jpg",
     socials: {
-      linkedin: "https://www.linkedin.com/in/drea-sigsbee-558275352/?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app",
+      linkedin: "https://www.linkedin.com/in/drea-sigsbee-pt-dpt-cert-dn-558275352/",
       instagram: "https://www.instagram.com/dre.dpt/",
     },
   },
