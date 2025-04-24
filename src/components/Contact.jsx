@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import DOMPurify from "dompurify";
 import {
   Grid,
   Box,
@@ -15,10 +16,9 @@ import emailjs from "emailjs-com";
 
 const Contact = () => {
   const isMobile = useMediaQuery("(max-width: 768px)");
-  const location = useLocation(); // ← Get current location
-  const isAboutPage = location.pathname.includes("about"); // ← Check for "about"
+  const location = useLocation();
+  const isAboutPage = location.pathname.includes("about");
 
-  // State for form fields
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
@@ -30,8 +30,8 @@ const Contact = () => {
   });
 
   const [errors, setErrors] = useState({});
+  const [cooldown, setCooldown] = useState(false);
 
-  // Handle input change
   const handleChange = (e) => {
     setFormData({
       ...formData,
@@ -51,46 +51,59 @@ const Contact = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    if (cooldown) return;
+
+    const newErrors = validateForm();
+    setErrors(newErrors);
+    if (Object.keys(newErrors).length > 0) return;
+
+    setCooldown(true);
+    setTimeout(() => setCooldown(false), 15000); // 15s cooldown
+
+    // 🧼 Sanitize input with DOMPurify
+    const cleanData = {
+      firstName: DOMPurify.sanitize(formData.firstName),
+      lastName: DOMPurify.sanitize(formData.lastName),
+      phone: DOMPurify.sanitize(formData.phone),
+      email: DOMPurify.sanitize(formData.email),
+      city: DOMPurify.sanitize(formData.city),
+      services: DOMPurify.sanitize(formData.services),
+      message: DOMPurify.sanitize(formData.message),
+    };
 
     const templateParams = {
-      name: `${formData.firstName} ${formData.lastName}`,
-      from_email: formData.email,
-      message: formData.message,
-      phone: formData.phone,
-      city: formData.city,
-      services: formData.services,
+      name: `${cleanData.firstName} ${cleanData.lastName}`,
+      from_email: cleanData.email,
+      message: cleanData.message,
+      phone: cleanData.phone,
+      city: cleanData.city,
+      services: cleanData.services,
     };
 
     emailjs
       .send(
-        "service_pl9hftf", // EmailJS Service ID
-        "template_yierqza", // EmailJS Template ID
+        "service_pl9hftf",
+        "template_yierqza",
         templateParams,
-        "IJjDD9FPCyRdlPMm0" // EmailJS User ID
+        "IJjDD9FPCyRdlPMm0"
       )
-      .then(
-        (response) => {
-          console.log(
-            "Email sent successfully:",
-            response.status,
-            response.text
-          );
-          alert("Message sent successfully!");
-          setFormData({
-            firstName: "",
-            lastName: "",
-            phone: "",
-            email: "",
-            city: "",
-            services: "",
-            message: "",
-          });
-        },
-        (error) => {
-          console.error("Failed to send email:", error);
-          alert("Failed to send message. Please try again.");
-        }
-      );
+      .then((response) => {
+        alert("Message sent successfully!");
+        console.log("Email sent:", response.status, response.text);
+        setFormData({
+          firstName: "",
+          lastName: "",
+          phone: "",
+          email: "",
+          city: "",
+          services: "",
+          message: "",
+        });
+      })
+      .catch((error) => {
+        alert("Failed to send message.");
+        console.error("Email error:", error);
+      });
   };
 
   useEffect(() => {
@@ -98,9 +111,9 @@ const Contact = () => {
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            document.querySelectorAll(".animate-on-scroll").forEach((el) => {
-              el.classList.add("animate"); // Trigger animation
-            });
+            document
+              .querySelectorAll(".animate-on-scroll")
+              .forEach((el) => el.classList.add("animate"));
           }
         });
       },
@@ -109,14 +122,13 @@ const Contact = () => {
 
     const target = document.querySelector(".contact-section");
     if (target) observer.observe(target);
-
     return () => observer.disconnect();
   }, []);
 
   return (
     <Box
       sx={{
-        backgroundColor: isAboutPage ? "#1f1f1f" : "#000", // ← conditional background
+        backgroundColor: isAboutPage ? "#1f1f1f" : "#000",
         width: "100%",
         padding: 2,
       }}
@@ -125,7 +137,6 @@ const Contact = () => {
         sx={{ py: 4, px: "10px", maxWidth: "1200px", margin: "auto" }}
         id="contact"
       >
-        {/* Contact Header */}
         <Typography
           variant={isMobile ? "h3" : "h2"}
           sx={{ mb: 2, fontWeight: "bold", color: "#fff", textAlign: "center" }}
@@ -133,7 +144,7 @@ const Contact = () => {
           CONTACT US
         </Typography>
         <Grid container spacing={4} alignItems="stretch">
-          {/* Left Side - Contact Info */}
+          {/* Left Side */}
           <Grid item xs={12} md={5} sx={{ display: "flex" }}>
             <Card sx={{ backgroundColor: "#f8f9fa", flexGrow: 1 }}>
               <CardContent
@@ -141,35 +152,10 @@ const Contact = () => {
                   flex: 1,
                   display: "flex",
                   flexDirection: "column",
-                  justifyContent: "space-evenly", // <-- Use even spacing or center
+                  justifyContent: "space-evenly",
                   height: "100%",
                 }}
               >
-                {/* <Box sx={{ display: "flex", alignItems: "center", mb: 2 }}>
-                  <FaMapMarkerAlt
-                    size={24}
-                    style={{ marginRight: 10, color: "#000" }}
-                  />
-                  <Box>
-                    <Typography variant="h6">Location</Typography>
-                    <Typography variant="body2">
-                      4514 Travis St UNIT 115
-                    </Typography>
-                    <Typography variant="body2">Dallas, TX</Typography>
-                  </Box>
-                </Box> */}
-
-                {/* <Box sx={{ display: "flex", alignItems: "center", mb: 2 }}>
-                  <FaPhone
-                    size={24}
-                    style={{ marginRight: 10, color: "#000" }}
-                  />
-                  <Box>
-                    <Typography variant="h6">Call Us</Typography>
-                    <Typography variant="body2">+1 (972) 362-8468</Typography>
-                  </Box>
-                </Box> */}
-
                 <Box sx={{ display: "flex", alignItems: "center", mb: 2 }}>
                   <FaEnvelope
                     size={24}
@@ -199,7 +185,6 @@ const Contact = () => {
                   </Box>
                 </Box>
 
-                {/* Google Map Embed */}
                 <Box sx={{ marginTop: 2 }}>
                   <iframe
                     title="Google Map"
@@ -216,10 +201,11 @@ const Contact = () => {
             </Card>
           </Grid>
 
-          {/* Right Side - Contact Form */}
+          {/* Right Side - Form */}
           <Grid item xs={12} md={7} sx={{ display: "flex" }}>
             <Box
               component="form"
+              onSubmit={handleSubmit}
               sx={{
                 display: "flex",
                 flexDirection: "column",
@@ -228,9 +214,8 @@ const Contact = () => {
                 padding: "20px",
                 boxShadow: 3,
                 borderRadius: 2,
-                flexGrow: 1, // Ensures it stretches to match the height of the left side
+                flexGrow: 1,
               }}
-              onSubmit={handleSubmit}
             >
               <TextField
                 label="First Name *"
@@ -240,7 +225,6 @@ const Contact = () => {
                 error={!!errors.firstName}
                 helperText={errors.firstName}
               />
-
               <TextField
                 label="Last Name *"
                 name="lastName"
@@ -249,7 +233,6 @@ const Contact = () => {
                 error={!!errors.lastName}
                 helperText={errors.lastName}
               />
-
               <TextField
                 label="Phone Number *"
                 name="phone"
@@ -259,7 +242,6 @@ const Contact = () => {
                 helperText={errors.phone}
                 fullWidth
               />
-
               <TextField
                 label="Email *"
                 name="email"
@@ -267,7 +249,6 @@ const Contact = () => {
                 onChange={handleChange}
                 fullWidth
               />
-
               <TextField
                 label="City *"
                 name="city"
@@ -275,7 +256,6 @@ const Contact = () => {
                 onChange={handleChange}
                 fullWidth
               />
-
               <TextField
                 label="Services Needed (Optional)"
                 name="services"
@@ -283,7 +263,6 @@ const Contact = () => {
                 onChange={handleChange}
                 fullWidth
               />
-
               <TextField
                 label="Message *"
                 name="message"
@@ -295,20 +274,17 @@ const Contact = () => {
                 rows={4}
                 fullWidth
               />
-
               <Button
                 type="submit"
                 variant="contained"
                 sx={{
                   backgroundColor: "#000",
                   color: "white",
-                  "&:hover": {
-                    backgroundColor: "#F94B3D",
-                    color: "#000",
-                  },
+                  "&:hover": { backgroundColor: "#F94B3D", color: "#000" },
                 }}
+                disabled={cooldown}
               >
-                Send Message
+                {cooldown ? "Please wait..." : "Send Message"}
               </Button>
             </Box>
           </Grid>
