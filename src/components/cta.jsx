@@ -71,7 +71,7 @@ const CTA = () => {
               textAlign: "center",
             }}
           >
-            Combining the power of movement with elite care to help you reach your peak performance
+            Combining the power of movement with 1-on-1 elite care to help you reach your peak performance
           </Typography>
 
           {/* <Typography

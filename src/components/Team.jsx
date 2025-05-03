@@ -31,7 +31,7 @@ const teamMembers = [
   {
     id: "andrea",
     name: "Dr. Dre",
-    certs: "PT, DPT, Cert. DN",
+    certs: "PT, DPT, SMTC, Cert. DN",
     title: "PHYSICAL THERAPIST/CO-FOUNDER",
     description:
       "Has experience working with Professional, High school, and College athletes as well as the Active population. She also has a love for personal training and nutrition, as she has had to use them a lot for her own personal goals and experiences.",
