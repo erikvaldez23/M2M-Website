@@ -58,21 +58,23 @@ const CTA = () => {
           </Typography>
 
           <Typography
-            variant="h6"
-            sx={{
-              fontFamily: "Poppins, sans-serif",
-              fontWeight: "bold",
-              mb: 4, // Adjusted for mobile
-              color: "fff",
-              maxWidth: "900px",
-              mx: "auto",
-              lineHeight: 1.6,
-              fontSize: { xs: "1rem", sm: "1.1rem", md: "1.3rem", lg: "1.6rem" }, 
-              textAlign: "center",
-            }}
-          >
-            Combining the power of movement with 1-on-1 elite care to help you reach your peak performance
-          </Typography>
+  variant="h6"
+  sx={{
+    fontFamily: "Poppins, sans-serif",
+    fontWeight: "bold",
+    mb: 4,
+    color: "#fff", 
+    maxWidth: "900px",
+    mx: "auto",
+    lineHeight: 1.6,
+    fontSize: { xs: "1rem", sm: "1.1rem", md: "1.3rem", lg: "1.6rem" },
+    textAlign: "center",
+  }}
+>
+  Combining the power of movement with{" "}
+  <Box component="span" sx={{ whiteSpace: "nowrap" }}>1-on-1</Box> elite care to help you reach your peak performance
+</Typography>
+
 
           {/* <Typography
             variant="h2"
