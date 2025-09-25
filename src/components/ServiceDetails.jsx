@@ -17,7 +17,12 @@ import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 import CTA2 from "./cta2";
 import Contact from "./Contact";
-import { FaTimes, FaCheckCircle, FaChevronLeft, FaChevronRight } from "react-icons/fa";
+import {
+  FaTimes,
+  FaCheckCircle,
+  FaChevronLeft,
+  FaChevronRight,
+} from "react-icons/fa";
 import Slider from "react-slick";
 
 // Custom Arrow Components
@@ -72,12 +77,12 @@ const services = [
     id: "physical-therapy",
     title: "PHYSICAL THERAPY",
     images: [
-      "/pt.jpg",
-      "/pt1.jpg",
-      "/pt2.jpg",
-      "/pt3.jpg",
-      "/pt4.JPEG",
-      "/pt5.jpg",
+      "/physical-therapy/pt1.jpeg",
+      "/physical-therapy/pt2.jpeg",
+      "/physical-therapy/pt3.jpeg",
+      "/physical-therapy/pt4.jpeg",
+      "/physical-therapy/pt5.jpeg",
+      "/physical-therapy/pt6.jpeg",
     ],
     intro:
       "Evaluation and treatment for orthopedic injuries and post-operative rehabilitation.",
@@ -101,13 +106,12 @@ const services = [
     id: "athletic-recovery",
     title: "RECOVERY",
     images: [
-      "/recovery.jpg",
-      "/recovery1.jpg",
-      "/recovery2.jpg",
-      "/recovery3.JPG",
-      "/recovery4.heic",
-      "/recovery5.JPG",
-      "/recovery6.jpg",
+      "/recovery/recovery2.jpeg",
+      "/recovery/recovery1.jpeg",
+      "/recovery/recovery3.jpeg",
+      "/recovery/recovery4.jpeg",
+      "/recovery/recovery5.jpeg",
+      "/recovery/recovery6.jpeg",
     ],
     intro:
       "Improve your performance and recover faster between games/practices & events.",
@@ -129,12 +133,12 @@ const services = [
     id: "injury-prevention",
     title: "INJURY PREVENTION",
     images: [
-      "/injury-prevention.jpg",
-      "/performance1.jpg",
-      "/performance2.JPG",
-      // "/performance3.jpg",
-      "/performance4.JPEG",
-      "/performance5.png",
+      "/injury-prevention/ip1.jpeg",
+      "/injury-prevention/ip2.jpeg",
+      "/injury-prevention/ip3.jpeg",
+      "/injury-prevention/ip4.jpeg",
+      "/injury-prevention/ip5.jpeg",
+      "/injury-prevention/ip6.jpeg",
     ],
     intro:
       "Improve your overall performance in your sport and extend your career longevity by addressing muscular imbalances and movement deficits.",
@@ -169,8 +173,11 @@ const ServiceDetails = () => {
     arrows: true,
     prevArrow: <CustomPrevArrow />,
     nextArrow: <CustomNextArrow />,
-    appendDots: dots => (
-      <Box component="ul" sx={{ mt: 2, display: "flex", justifyContent: "center" }}>
+    appendDots: (dots) => (
+      <Box
+        component="ul"
+        sx={{ mt: 2, display: "flex", justifyContent: "center" }}
+      >
         {dots}
       </Box>
     ),
@@ -188,14 +195,19 @@ const ServiceDetails = () => {
           },
         }}
       />
-    )
+    ),
   };
 
   return (
     <>
       <Box
         sx={{
-          background: "linear-gradient(180deg, #000000 0%, #111111 100%)",
+//           background: `    radial-gradient(1200px 800px at 20% 10%, rgba(255, 60, 60, 0.07), transparent 60%),
+//     radial-gradient(900px 700px at 85% 35%, rgba(200, 0, 0, 0.08), transparent 65%),
+//     radial-gradient(700px 600px at 30% 80%, rgba(255, 120, 120, 0.05), transparent 60%),
+//     linear-gradient(180deg, #0b0b0c 0%, #0a0a0b 35%, #111014 100%);
+// `,
+          background: "#000",
           py: { xs: 1, md: 6 },
         }}
       >
@@ -244,23 +256,22 @@ const ServiceDetails = () => {
                       <Slider {...sliderSettings}>
                         {service.images.map((img, i) => (
                           <Box
-                          key={i}
-                          component="img"
-                          src={img}
-                          alt={`${service.title} ${i + 1}`}
-                          sx={{
-                            width: "100%",
-                            height: { xs: "350px", sm: "450px", md: "600px" },
-                            objectFit: "cover", 
-                            borderRadius: "16px",
-                            boxShadow: "0px 10px 30px rgba(0,0,0,0.5)",
-                            transition: "transform 0.3s ease-in-out",
-                            "&:hover": {
-                              transform: "scale(1.03)",
-                            },
-                          }}
-                        />
-                        
+                            key={i}
+                            component="img"
+                            src={img}
+                            alt={`${service.title} ${i + 1}`}
+                            sx={{
+                              width: "100%",
+                              height: { xs: "350px", sm: "450px", md: "600px" },
+                              objectFit: "cover",
+                              borderRadius: "16px",
+                              boxShadow: "0px 10px 30px rgba(0,0,0,0.5)",
+                              transition: "transform 0.3s ease-in-out",
+                              "&:hover": {
+                                transform: "scale(1.03)",
+                              },
+                            }}
+                          />
                         ))}
                       </Slider>
                     </Box>
@@ -307,7 +318,14 @@ const ServiceDetails = () => {
                       </Typography>
                     )}
 
-                    <ul style={{ listStyle: "none", padding: 0, margin: 0, textAlign: "left" }}>
+                    <ul
+                      style={{
+                        listStyle: "none",
+                        padding: 0,
+                        margin: 0,
+                        textAlign: "left",
+                      }}
+                    >
                       {service.description.map((item, i) => (
                         <li
                           key={i}
@@ -321,7 +339,8 @@ const ServiceDetails = () => {
                             cursor: "default",
                           }}
                           onMouseEnter={(e) =>
-                            (e.currentTarget.style.transform = "translateX(8px)")
+                            (e.currentTarget.style.transform =
+                              "translateX(8px)")
                           }
                           onMouseLeave={(e) =>
                             (e.currentTarget.style.transform = "translateX(0)")
