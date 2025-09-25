@@ -4,7 +4,7 @@ import { Dialog, DialogContent, IconButton, Button } from "@mui/material";
 import { FaTimes } from "react-icons/fa";
 import { motion } from "framer-motion";
 import Subhero from "./Subhero"; // Import Subhero
-import video from "../../public/hero-video2.mov";
+import video from "../../public/home-video.mov";
 import SubIcons from "./SubIcons";
 import wordLogo from "../../public/word-logo.png";
 
