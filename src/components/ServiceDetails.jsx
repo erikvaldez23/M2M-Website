@@ -1,3 +1,4 @@
+// src/components/ServiceDetails.jsx
 import React, { useState } from "react";
 import {
   Container,
@@ -25,66 +26,75 @@ import {
 } from "react-icons/fa";
 import Slider from "react-slick";
 
-// Custom Arrow Components
+/* ---------- Arrows ---------- */
 const CustomPrevArrow = ({ onClick }) => (
-  <Box
-    onClick={onClick}
-    sx={{
-      position: "absolute",
-      top: "50%",
-      left: "-30px",
-      transform: "translateY(-50%)",
-      zIndex: 2,
-      cursor: "pointer",
-      backgroundColor: "rgba(0,0,0,0.6)",
-      color: "#fff",
-      borderRadius: "50%",
-      p: 1.2,
-      "&:hover": {
-        backgroundColor: "#F94B3D",
-      },
-    }}
-  >
+  <Box onClick={onClick} sx={{
+    position: "absolute", top: "50%", left: -30, transform: "translateY(-50%)",
+    zIndex: 2, cursor: "pointer",
+    color: "#fff", borderRadius: "50%", p: 1.2, "&:hover": { color: "#F94B3D" }
+  }}>
     <FaChevronLeft />
   </Box>
 );
 
 const CustomNextArrow = ({ onClick }) => (
-  <Box
-    onClick={onClick}
-    sx={{
-      position: "absolute",
-      top: "50%",
-      right: "-30px",
-      transform: "translateY(-50%)",
-      zIndex: 2,
-      cursor: "pointer",
-      backgroundColor: "rgba(0,0,0,0.6)",
-      color: "#fff",
-      borderRadius: "50%",
-      p: 1.2,
-      "&:hover": {
-        backgroundColor: "#F94B3D",
-      },
-    }}
-  >
+  <Box onClick={onClick} sx={{
+    position: "absolute", top: "50%", right: -30, transform: "translateY(-50%)",
+    zIndex: 2, cursor: "pointer",
+    color: "#fff", borderRadius: "50%", p: 1.2, "&:hover": { color: "#F94B3D" }
+  }}>
     <FaChevronRight />
   </Box>
 );
 
+/* ---------- Uniform slide frame (enforces size) ---------- */
+function UniformSlide({ src, alt }) {
+  return (
+    <Box
+      sx={{
+        position: "relative",
+        width: "100%",
+        // Uniform, responsive aspect ratio
+        aspectRatio: { xs: "3 / 4", sm: "3 / 4", md: "3 / 4" },
+        borderRadius: 2,
+        overflow: "hidden",
+        background:
+          "radial-gradient(circle at 30% 30%, rgba(255,255,255,0.06), transparent 60%)",
+        boxShadow: "0px 10px 30px rgba(0,0,0,0.5)",
+      }}
+    >
+      <img
+        src={src}
+        alt={alt}
+        loading="lazy"
+        decoding="async"
+        style={{
+          position: "absolute",
+          inset: 0,
+          width: "100%",
+          height: "100%",
+          objectFit: "cover",      // center-crop to fill frame
+          objectPosition: "center" // tweak if a subject is off-center
+        }}
+      />
+    </Box>
+  );
+}
+
+/* ---------- Data ---------- */
 const services = [
   {
     id: "physical-therapy",
     title: "PHYSICAL THERAPY",
     images: [
-      "/physical-therapy/pt6.jpeg",
-      "/physical-therapy/pt2.jpeg",
-      "/physical-therapy/pt3.jpeg",
-      "/physical-therapy/pt4.jpeg",
-      "/physical-therapy/pt5.jpeg",
-      "/physical-therapy/pt1.jpeg",
-      "/physical-therapy/pt7.jpeg",
-      "/physical-therapy/pt8.jpeg",
+      "/physical-therapy/pt6.JPG",
+      "/physical-therapy/pt2.JPG",
+      "/physical-therapy/pt3.JPG",
+      "/physical-therapy/pt4.JPG",
+      "/physical-therapy/pt5.JPG",
+      "/physical-therapy/pt6.JPG",
+      "/physical-therapy/pt7.JPG",
+      "/physical-therapy/pt8.JPG",
     ],
     intro:
       "Evaluation and treatment for orthopedic injuries and post-operative rehabilitation.",
@@ -108,12 +118,12 @@ const services = [
     id: "athletic-recovery",
     title: "RECOVERY",
     images: [
-      "/recovery/recovery6.jpeg",
-      "/recovery/recovery1.jpeg",
-      "/recovery/recovery3.jpeg",
-      "/recovery/recovery4.jpeg",
-      "/recovery/recovery5.jpeg",
-      "/recovery/recovery2.jpeg",
+      "/recovery/recovery1.JPG",
+      "/recovery/recovery2.JPG",
+      "/recovery/recovery3.JPG",
+      "/recovery/recovery4.JPG",
+      "/recovery/recovery5.JPG",
+      "/recovery/recovery6.JPG",
     ],
     intro:
       "Improve your performance and recover faster between games/practices & events.",
@@ -135,12 +145,12 @@ const services = [
     id: "injury-prevention",
     title: "INJURY PREVENTION",
     images: [
-      "/injury-prevention/ip4.jpeg",
-      "/injury-prevention/ip2.jpeg",
-      "/injury-prevention/ip3.jpeg",
-      "/injury-prevention/ip1.jpeg",
-      "/injury-prevention/ip5.jpeg",
-      "/injury-prevention/ip6.jpeg",
+      "/injury-prevention/ip1.JPG",
+      "/injury-prevention/ip2.JPG",
+      "/injury-prevention/ip3.JPG",
+      "/injury-prevention/ip4.JPG",
+      "/injury-prevention/ip5.JPG",
+      "/injury-prevention/ip6.JPG",
     ],
     intro:
       "Improve your overall performance in your sport and extend your career longevity by addressing muscular imbalances and movement deficits.",
@@ -175,26 +185,21 @@ const ServiceDetails = () => {
     arrows: true,
     prevArrow: <CustomPrevArrow />,
     nextArrow: <CustomNextArrow />,
+    adaptiveHeight: false, // 👈 keep a uniform height for all slides
     appendDots: (dots) => (
-      <Box
-        component="ul"
-        sx={{ mt: 2, display: "flex", justifyContent: "center" }}
-      >
+      <Box component="ul" sx={{ mt: 2, display: "flex", justifyContent: "center" }}>
         {dots}
       </Box>
     ),
     customPaging: () => (
       <Box
         sx={{
-          width: "10px",
-          height: "10px",
+          width: 10,
+          height: 10,
           borderRadius: "50%",
           backgroundColor: "#fff",
           opacity: 0.5,
-          "&.slick-active": {
-            backgroundColor: "#F94B3D",
-            opacity: 1,
-          },
+          "&.slick-active": { backgroundColor: "#F94B3D", opacity: 1 },
         }}
       />
     ),
@@ -202,17 +207,7 @@ const ServiceDetails = () => {
 
   return (
     <>
-      <Box
-        sx={{
-//           background: `    radial-gradient(1200px 800px at 20% 10%, rgba(255, 60, 60, 0.07), transparent 60%),
-//     radial-gradient(900px 700px at 85% 35%, rgba(200, 0, 0, 0.08), transparent 65%),
-//     radial-gradient(700px 600px at 30% 80%, rgba(255, 120, 120, 0.05), transparent 60%),
-//     linear-gradient(180deg, #0b0b0c 0%, #0a0a0b 35%, #111014 100%);
-// `,
-          background: "#000",
-          py: { xs: 1, md: 6 },
-        }}
-      >
+      <Box sx={{ background: "#000", py: { xs: 1, md: 6 } }}>
         <Container maxWidth="lg" sx={{ px: { xs: 2, md: 3 } }}>
           <motion.div
             initial={{ opacity: 0, y: -30 }}
@@ -248,6 +243,7 @@ const ServiceDetails = () => {
               }}
             >
               <Grid container spacing={4} alignItems="center">
+                {/* Images (uniform) */}
                 <Grid item xs={12} md={6}>
                   <motion.div
                     initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
@@ -257,35 +253,15 @@ const ServiceDetails = () => {
                     <Box sx={{ position: "relative" }}>
                       <Slider {...sliderSettings}>
                         {service.images.map((img, i) => (
-                          <Box
-                            key={i}
-                            component="img"
-                            src={img}
-                            alt={`${service.title} ${i + 1}`}
-                            sx={{
-                              width: "100%",
-                              height: { xs: "350px", sm: "450px", md: "600px" },
-                              objectFit: "cover",
-                              borderRadius: "16px",
-                              boxShadow: "0px 10px 30px rgba(0,0,0,0.5)",
-                              transition: "transform 0.3s ease-in-out",
-                              "&:hover": {
-                                transform: "scale(1.03)",
-                              },
-                            }}
-                          />
+                          <UniformSlide key={i} src={img} alt={`${service.title} ${i + 1}`} />
                         ))}
                       </Slider>
                     </Box>
                   </motion.div>
                 </Grid>
 
-                <Grid
-                  item
-                  xs={12}
-                  md={6}
-                  sx={{ textAlign: { xs: "center", md: "left" } }}
-                >
+                {/* Text */}
+                <Grid item xs={12} md={6} sx={{ textAlign: { xs: "center", md: "left" } }}>
                   <motion.div
                     initial={{ opacity: 0, x: index % 2 === 0 ? 50 : -50 }}
                     whileInView={{ opacity: 1, x: 0 }}
@@ -320,14 +296,7 @@ const ServiceDetails = () => {
                       </Typography>
                     )}
 
-                    <ul
-                      style={{
-                        listStyle: "none",
-                        padding: 0,
-                        margin: 0,
-                        textAlign: "left",
-                      }}
-                    >
+                    <ul style={{ listStyle: "none", padding: 0, margin: 0, textAlign: "left" }}>
                       {service.description.map((item, i) => (
                         <li
                           key={i}
@@ -340,63 +309,28 @@ const ServiceDetails = () => {
                             transition: "transform 0.2s ease-in-out",
                             cursor: "default",
                           }}
-                          onMouseEnter={(e) =>
-                            (e.currentTarget.style.transform =
-                              "translateX(8px)")
-                          }
-                          onMouseLeave={(e) =>
-                            (e.currentTarget.style.transform = "translateX(0)")
-                          }
+                          onMouseEnter={(e) => (e.currentTarget.style.transform = "translateX(8px)")}
+                          onMouseLeave={(e) => (e.currentTarget.style.transform = "translateX(0)")}
                         >
-                          <FaCheckCircle
-                            style={{
-                              color: "#F94B3D",
-                              marginRight: "12px",
-                              minWidth: "20px",
-                            }}
-                          />
+                          <FaCheckCircle style={{ color: "#F94B3D", marginRight: 12, minWidth: 20 }} />
                           {item}
                         </li>
                       ))}
                     </ul>
 
                     {service.outro && (
-                      <Typography
-                        variant="h6"
-                        sx={{
-                          color: "#ccc",
-                          mt: 2,
-                          fontWeight: 500,
-                          fontStyle: "italic",
-                          fontSize: "1.1rem",
-                          lineHeight: 1.7,
-                        }}
-                      >
+                      <Typography variant="h6" sx={{ color: "#ccc", mt: 2, fontWeight: 500, fontStyle: "italic", fontSize: "1.1rem", lineHeight: 1.7 }}>
                         {service.outro}
                       </Typography>
                     )}
 
                     {service.outro2 && (
-                      <Typography
-                        variant="h6"
-                        sx={{
-                          color: "#ccc",
-                          mt: 2,
-                          fontWeight: 500,
-                          fontStyle: "italic",
-                          fontSize: "1.1rem",
-                          lineHeight: 1.7,
-                        }}
-                      >
+                      <Typography variant="h6" sx={{ color: "#ccc", mt: 2, fontWeight: 500, fontStyle: "italic", fontSize: "1.1rem", lineHeight: 1.7 }}>
                         {service.outro2}
                       </Typography>
                     )}
 
-                    <motion.div
-                      whileHover={{ scale: 1.1 }}
-                      whileTap={{ scale: 0.95 }}
-                      transition={{ type: "spring", stiffness: 300 }}
-                    >
+                    <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.95 }} transition={{ type: "spring", stiffness: 300 }}>
                       <Button
                         variant="contained"
                         onClick={handleOpenModal}
@@ -410,10 +344,7 @@ const ServiceDetails = () => {
                           fontSize: { xs: "0.9rem", md: "1.1rem" },
                           borderRadius: "30px",
                           boxShadow: "0 4px 15px rgba(249, 75, 61, 0.4)",
-                          "&:hover": {
-                            background: "#fff",
-                            color: "#F94B3D",
-                          },
+                          "&:hover": { background: "#fff", color: "#F94B3D" },
                         }}
                       >
                         Book Now
@@ -426,6 +357,7 @@ const ServiceDetails = () => {
           ))}
         </Container>
 
+        {/* Modal */}
         <Dialog
           open={openModal}
           onClose={handleCloseModal}
@@ -447,18 +379,13 @@ const ServiceDetails = () => {
             >
               <FaTimes color="#000" />
             </IconButton>
-
             <iframe
               src="https://form.jotform.com/242896129509165"
               width="100%"
               height="100%"
-              style={{
-                border: "none",
-                minHeight: "600px",
-                height: "calc(100vh - 100px)",
-              }}
+              style={{ border: "none", minHeight: 600, height: "calc(100vh - 100px)" }}
               title="Appointment Booking"
-            ></iframe>
+            />
           </DialogContent>
         </Dialog>
       </Box>
