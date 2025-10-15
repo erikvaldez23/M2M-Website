@@ -92,7 +92,7 @@ const services = [
       "/physical-therapy/pt3.JPG",
       "/physical-therapy/pt4.JPG",
       "/physical-therapy/pt5.JPG",
-      "/physical-therapy/pt6.JPG",
+      "/physical-therapy/pt1.JPG",
       "/physical-therapy/pt7.JPG",
       "/physical-therapy/pt8.JPG",
     ],
@@ -137,8 +137,8 @@ const services = [
       "Stretch Therapy",
       "Normatec Compression & Hyperice products",
     ],
-    outro:
-      "Recovery services require an initial evaluation in order for us to individualize the treatment to YOU and allow you to perform at your peak potential.",
+    // outro:
+    //   "Recovery services require an initial evaluation in order for us to individualize the treatment to YOU and allow you to perform at your peak potential.",
     outro2: "Team recovery available upon request.",
   },
   {
@@ -160,8 +160,8 @@ const services = [
       "Sport Performance Assessment",
       "Running Analysis",
     ],
-    outro:
-      "Injury prevention services require an initial evaluation in order for us to individualize the treatment to YOU and allow you to perform at your peak potential.",
+    // outro:
+    //   "Injury prevention services require an initial evaluation in order for us to individualize the treatment to YOU and allow you to perform at your peak potential.",
     outro2: "Team injury prevention available upon request.",
   },
 ];

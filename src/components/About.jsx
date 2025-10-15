@@ -178,7 +178,7 @@ const About = () => {
                 color="#F94B3D"
                 gutterBottom
               >
-                MEET DR. NAT & DR. DRE
+                MEET DR. NAT & DR. DREA
               </Typography>
               <Typography variant="body1" color="#fff">
                 PT School big and little turned best friends and now business
@@ -238,7 +238,7 @@ const About = () => {
         title="PT, DPT, Cert. Dry Needling"
         image={drea}
         reverse
-        description={`Dr. Dre, born and raised in Dallas, has a strong passion for combining her love for health and wellness with healing and serving others. She attained her undergraduate degree in Kinesiology from Texas A&M - Commerce. She then attained her Doctorate of Physical Therapy at Texas Woman’s University – Dallas and has experience working with professional, high school, and college athletes as well as the active population. She also has a love for personal training and nutrition, as she has had to use them a lot for her own personal goals and experiences.`}
+        description={`Dr. Drea, born and raised in Dallas, has a strong passion for combining her love for health and wellness with healing and serving others. She attained her undergraduate degree in Kinesiology from Texas A&M - Commerce. She then attained her Doctorate of Physical Therapy at Texas Woman’s University – Dallas and has experience working with professional, high school, and college athletes as well as the active population. She also has a love for personal training and nutrition, as she has had to use them a lot for her own personal goals and experiences.`}
       />
 
       <CTA2 />

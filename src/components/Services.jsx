@@ -21,17 +21,17 @@ const servicesData = [
   {
     id: "physical-therapy",
     title: "PHYSICAL THERAPY",
-    image: "/pt.jpg",
+    image: "/physical-therapy/pt6.JPG",
   },
   {
     id: "athletic-recovery",
     title: "RECOVERY",
-    image: "/recovery.jpg",
+    image: "/recovery/recovery1.JPG",
   },
   {
     id: "injury-prevention",
     title: "INJURY PREVENTION",
-    image: "/injury-prevention.jpg",
+    image: "/injury-prevention/ip1.JPG",
   },
 ];
 
@@ -43,7 +43,7 @@ const ServiceCard = styled(motion(Card))(({ theme, isMobile }) => ({
   backdropFilter: "blur(10px)",
   height: "400px", // Default mobile height
   [theme.breakpoints.up("sm")]: { height: "500px" },
-  [theme.breakpoints.up("md")]: { height: "500px" },
+  [theme.breakpoints.up("md")]: { height: "600px" },
   transition: "all 0.4s ease",
   ...( !isMobile && { // Only add hover effect if not mobile
     "&:hover": { transform: "scale(1.05)" },

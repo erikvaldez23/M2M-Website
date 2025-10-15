@@ -30,7 +30,7 @@ const teamMembers = [
   },
   {
     id: "andrea",
-    name: "Dr. Dre",
+    name: "Dr. Drea",
     certs: "PT, DPT, SMTC, Cert. DN",
     title: "PHYSICAL THERAPIST/CO-FOUNDER",
     description:
