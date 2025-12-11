@@ -3,12 +3,12 @@ import { useMediaQuery, useTheme } from "@mui/material";
 import { Container, Grid, Typography, Box, Button } from "@mui/material";
 import { useLocation } from "react-router-dom";
 import { motion } from "framer-motion";
-import aboutImage from "../../public/both.jpg";
+import aboutImage from "../../public/word-logo.png";
 import natalie from "../../public/natalie.jpg";
 import drea from "../../public/drea.jpg";
 import Vision from "./Vision";
 import CTA2 from "./cta2";
-import Contact from "./Contact"
+import Contact from "./Contact";
 
 // ✅ Inline reusable profile component
 const DoctorProfile = ({
@@ -75,19 +75,10 @@ const DoctorProfile = ({
                 alignItems: { xs: "center", md: "flex-start" },
               }}
             >
-              <Typography
-                variant="h4"
-                fontWeight="bold"
-                color="#F94B3D"
-              >
+              <Typography variant="h4" fontWeight="bold" color="#F94B3D">
                 {name}
               </Typography>
-              <Typography
-                variant="h6"
-                fontWeight="bold"
-                color="#fff"
-                mb="6px"
-              >
+              <Typography variant="h6" fontWeight="bold" color="#fff" mb="6px">
                 {title}
               </Typography>
               <Typography variant="body1" color="#fff">
@@ -145,7 +136,7 @@ const About = () => {
                 marginTop: { xs: "40px", md: "80px" },
               }}
             >
-              ABOUT US
+              ABOUT DR.NAT
             </Typography>
           </motion.div>
         </Container>
@@ -178,22 +169,23 @@ const About = () => {
                 color="#F94B3D"
                 gutterBottom
               >
-                MEET DR. NAT & DR. DREA
+                WHY MADE 2 MOVE?
               </Typography>
               <Typography variant="body1" color="#fff">
-                PT School big and little turned best friends and now business
-                partners. Together, we bring a wealth of knowledge and passion
-                for helping you achieve your movement goals and improve your
-                overall health. We truly believe movement is the best medicine
-                and our elite care will help you reach your peak performance.
-              </Typography>
-              <Typography variant="body1" color="#fff" sx={{ mt: 2 }}>
-                After several years of experience in the sports medicine and
-                orthopedic field, we found that clinics sacrificed quality
-                patient care for increased income, and we decided we wanted to
-                take a different approach. At M2M, we believe in empowering
-                athletes and active individuals to achieve optimal health and
-                full recovery through expert, personalized one-on-one care.
+                I always knew sports physical therapy was where I belonged
+                my athletic background drew me to this field, but the level of
+                mental stimulation and problem solving it requires is what truly
+                solidified my passion for it. After several years of experience
+                in the sports medicine and orthopedic field, I realized that the
+                traditional clinic model wasn't built for true healing. Too many
+                clinics prioritized patient volume over value, pushing providers
+                to sacrifice the quality of care people genuinely deserved. I
+                knew I had to create something better - an environment where
+                every patient gets intentional, individualized treatment and
+                performance-driven results. Made 2 Move was then created in
+                September of 2024. My clinical focus is elite athlete care -
+                bridging rehab, performance, and return-to-sport at the highest
+                level.
               </Typography>
             </Grid>
             <Grid
@@ -202,8 +194,10 @@ const About = () => {
               md={6}
               sx={{
                 display: "flex",
-                justifyContent: { xs: "center", md: "flex-end" }, // ✅ Center on mobile, right-align on desktop
-                alignItems: "center",
+                justifyContent: "center", // Centers horizontally
+                alignItems: "center", // Centers vertically
+                height: "100%", // Ensures the container takes up full height
+                minHeight: "300px", // Optional: Set a minimum height for the container
               }}
             >
               <Box
@@ -215,6 +209,7 @@ const About = () => {
                   height: "auto",
                   borderRadius: "10px",
                   boxShadow: 3,
+                  pt: 2,
                 }}
               />
             </Grid>
@@ -232,14 +227,14 @@ const About = () => {
       />
 
       {/* Dr. Andrea Section */}
-      <DoctorProfile
+      {/* <DoctorProfile
         id="andrea"
         name="DR. ANDREA SIGSBEE"
         title="PT, DPT, Cert. Dry Needling"
         image={drea}
         reverse
         description={`Dr. Drea, born and raised in Dallas, has a strong passion for combining her love for health and wellness with healing and serving others. She attained her undergraduate degree in Kinesiology from Texas A&M - Commerce. She then attained her Doctorate of Physical Therapy at Texas Woman’s University – Dallas and has experience working with professional, high school, and college athletes as well as the active population. She also has a love for personal training and nutrition, as she has had to use them a lot for her own personal goals and experiences.`}
-      />
+      /> */}
 
       <CTA2 />
       <Vision />

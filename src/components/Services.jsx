@@ -21,17 +21,17 @@ const servicesData = [
   {
     id: "physical-therapy",
     title: "PHYSICAL THERAPY",
-    image: "/physical-therapy/pt6.JPG",
+    image: "/physical-therapy/pt3.png",
   },
   {
     id: "athletic-recovery",
     title: "RECOVERY",
-    image: "/recovery/recovery1.JPG",
+    image: "/recovery/recovery-main.JPG",
   },
   {
     id: "injury-prevention",
     title: "INJURY PREVENTION",
-    image: "/injury-prevention/ip1.JPG",
+    image: "/injury-prevention/ip-main.JPG",
   },
 ];
 
