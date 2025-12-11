@@ -3,7 +3,7 @@ import { useMediaQuery, useTheme } from "@mui/material";
 import { Container, Grid, Typography, Box, Button } from "@mui/material";
 import { useLocation } from "react-router-dom";
 import { motion } from "framer-motion";
-import aboutImage from "../../public/word-logo.png";
+import aboutImage from "../../public/logo.png";
 import natalie from "../../public/natalie.jpg";
 import drea from "../../public/drea.jpg";
 import Vision from "./Vision";
@@ -142,6 +142,15 @@ const About = () => {
         </Container>
       </Box>
 
+        {/* Dr. Natalie Section */}
+      <DoctorProfile
+        id="natalie"
+        name="DR. NATALIE VALDEZ"
+        title="PT, DPT, SMTC, CSCS, Cert. Dry Needling"
+        image={natalie}
+        description={`Dr. Nat, a Dallas native, earned her undergraduate degree in Kinesiology from Texas Woman’s University - Denton. She then went on to earn her Doctorate of Physical Therapy from Texas Woman’s University – Dallas. She is trusted by athletes of all levels (Professional, Collegiate, High School, and youth sports) to perform at the top of their game. As a Certified Strength & Conditioning Specialist, she blends rehab and strength training to create sport-specific programs to help athletes reach their peak performance and return to sport. She also believes that there is an athlete inside everyone and will help you reach your full potential.`}
+      />
+
       {/* Intro Section */}
       <Box sx={{ backgroundColor: "#000", paddingTop: 5, paddingBottom: 8 }}>
         <Container maxWidth="lg">
@@ -172,7 +181,7 @@ const About = () => {
                 WHY MADE 2 MOVE?
               </Typography>
               <Typography variant="body1" color="#fff">
-                I always knew sports physical therapy was where I belonged
+                I always knew sports physical therapy was where I belonged - 
                 my athletic background drew me to this field, but the level of
                 mental stimulation and problem solving it requires is what truly
                 solidified my passion for it. After several years of experience
@@ -217,14 +226,7 @@ const About = () => {
         </Container>
       </Box>
 
-      {/* Dr. Natalie Section */}
-      <DoctorProfile
-        id="natalie"
-        name="DR. NATALIE VALDEZ"
-        title="PT, DPT, SMTC, CSCS, Cert. Dry Needling"
-        image={natalie}
-        description={`Dr. Nat, a Dallas native, earned her undergraduate degree in Kinesiology from Texas Woman’s University - Denton. She then went on to earn her Doctorate of Physical Therapy from Texas Woman’s University – Dallas. She is trusted by athletes of all levels (Professional, Collegiate, High School, and youth sports) to perform at the top of their game. As a Certified Strength & Conditioning Specialist, she blends rehab and strength training to create sport-specific programs to help athletes reach their peak performance and return to sport. She also believes that there is an athlete inside everyone and will help you reach your full potential.`}
-      />
+    
 
       {/* Dr. Andrea Section */}
       {/* <DoctorProfile
