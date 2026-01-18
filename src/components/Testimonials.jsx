@@ -10,14 +10,16 @@ import PlayArrowIcon from "@mui/icons-material/PlayArrow";
 const testimonialsData = [
   {
     name: "Coach Tori Tucker",
+    role: "Coach",
     review:
-      "WE AREN’T US WITHOUT THEM!!! WE LOVE US SOME DR. DRE AND DR. NAT!!!! MY COACHING FRIENDS, PLEASE USE THEM!! YOUR ATHLETES WILL BE UNDER THE BEST CARE IN ALL OF NORTH TEXAS!!!",
+      "WE AREN’T US WITHOUT THEM!!! WE LOVE US SOME DR. NAT!!!! MY COACHING FRIENDS, PLEASE USE THEM!! YOUR ATHLETES WILL BE UNDER THE BEST CARE IN ALL OF NORTH TEXAS!!!",
     image: "/M2M-Website/sarah.jpg",
     rating: 5,
     date: "2024-02-10",
   },
   {
     name: "Tony Swindle",
+    role: "Swin City",
     review:
       "No opinions, straight facts - Made 2 Move is second to none in PT. Customer Service is great and their information and techniques are impeccable. The place to go is Made 2 Move.",
     image: "/M2M-Website/james.jpg",
@@ -26,6 +28,7 @@ const testimonialsData = [
   },
   {
     name: "Earl Rooks",
+    role: "ProSkills",
     review:
       "Made 2 Move is the MOVE. Their approach to sports medicine is unparalleled — the knowledge, tools, and energy to serve and assist. I couldn’t think of a better team to partner with for my events, program, and the care of my college/pro athletes.",
     image: "/M2M-Website/emily.jpg",
@@ -33,31 +36,26 @@ const testimonialsData = [
     date: "2023-12-05",
   },
   {
-    name: "Dr. Amy Haberman",
-    review:
-      "I cannot recommend Made 2 Move highly enough! I had seen several doctors and had PT at another facility with no answers and no relief. They were able to properly diagnose my problem and therefore were able to treat me with a combination of physical therapy and dry needling. They truly care for each and every one of their patients. Please go see them. You will not regret it!",
-    image: "/M2M-Website/michael.jpg",
-    rating: 5,
-    date: "2024-03-01",
-  },
-  {
     name: "Regan Garrett",
+    role: "Client",
     review:
-      "They worked on my lower back pain & after 3 sessions with them it’s completely gone! They also make you feel very comfortable with dry needling (as someone who fears needles)",
+      "Dr. Nat worked on my lower back pain & after 3 sessions with her it’s completely gone! She also made me feel very comfortable with dry needling (as someone who fears needles)",
     image: "/M2M-Website/olivia.jpg",
     rating: 5,
     date: "2024-02-25",
   },
   {
     name: "Windy Hudson",
+    role: "Client",
     review:
-      "if you are looking for physical therapists who will actually listen to you and adjust the regimen to make sure that you’re feeling great, Dr. Natalie and Dr. Drea are the one! I have never experienced a therapy where I knew that my therapist was so in tune with what I needed… ￼ until I met Dr. Natalie and Dr. Drea! They were all in and they’ll take the best care of you!",
+      "If you are looking for a physical therapist who will actually listen to you and adjust the regimen to make sure that you’re feeling great, Dr. Natalie is the one! I have never experienced a therapy where I knew that my therapist was so in tune with what I needed… until I met Dr. Natalie! She is all in and will take the best care of you”",
     image: "/M2M-Website/daniel.jpg",
     rating: 5,
     date: "2024-01-15",
   },
   {
     name: "Mike Myers",
+    role: "MBA",
     review:
       "Absolutely 💯! They are a multiplier for any coach looking to enhance performance and prevent injuries!",
     image: "/M2M-Website/daniel.jpg",
@@ -65,14 +63,8 @@ const testimonialsData = [
     date: "2024-01-15",
   },
   {
-    name: "Micheal Irvin II",
-    review: "LOVED working with these 2!! Gr8 WORK!!",
-    image: "/M2M-Website/daniel.jpg",
-    rating: 5,
-    date: "2024-01-15",
-  },
-  {
     name: "Rylan Austin",
+    role: "Client",
     review:
       "Shout out to M2M! Great service guaranteed to give you better flexibility. Go book with them!",
     image: "/M2M-Website/daniel.jpg",
@@ -81,30 +73,16 @@ const testimonialsData = [
   },
   {
     name: "Akil Simpson",
+    role: "Client",
     review:
-      "These two have started a business and they must have been listening to God! These two ladies have already made such a huge impact in my life and the people around me and I can’t thank them enough! Not only do I have the pleasure of working with them at tournaments and camps, I also am a client. The care and the love that exudes from them and their work, is nothing short of amazing! I am so honored to call them my trainers and my friends",
-    image: "/M2M-Website/daniel.jpg",
-    rating: 5,
-    date: "2024-01-15",
-  },
-  {
-    name: "CJ Wottlin",
-    review:
-      "M2M helped me get back on track after surgery! I’ve never felt more physically confident than I do now all because of them! THANK YOU DR. DRE & DR. NAT",
-    image: "/M2M-Website/daniel.jpg",
-    rating: 5,
-    date: "2024-01-15",
-  },
-  {
-    name: "Cole McKenzie",
-    review:
-      "Dr. Drea and Dr. Nat are incredibly knowledgeable and proficient in what they do.  I cannot recommend either of them enough, and have referred them to multiple friends and coworkers already!  I went to see them initially for shoulder pain, and the cause was quickly and accurately diagnosed and corrected through the PT plan that they designed.  On top of their expertise, they are both friendly, empathetic people who make it impossible to feel uncomfortable.  I have never felt better, and they can do the same for anyone.  I would urge anyone looking to start physical therapy to go to them over anyone else!",
+      "M2M has already made such a huge impact in my life and the people around me and I can’t thank them enough! Not only do I have the pleasure of working with them at tournaments and camps, I am also a client. The care and the love that exudes from Dr. Nat and her work, is nothing short of  amazing!",
     image: "/M2M-Website/daniel.jpg",
     rating: 5,
     date: "2024-01-15",
   },
   {
     name: "Coach Kortlin White",
+    role: "Coach",
     review:
       "I firmly believe that any team seeking to maintain their athletes' peak performance, especially during critical playoff seasons, would greatly benefit from partnering with Made 2 Move. Their expertise and personalized approach make them an invaluable asset to any athletic program.",
     image: "/M2M-Website/daniel.jpg",
@@ -112,41 +90,74 @@ const testimonialsData = [
     date: "2024-01-15",
   },
   {
-    name: "Phariz Watkins",
-    review:
-    "Extremely grateful for the amazing care & time spent with Made 2 Move. The expertise of Dr. Dre & Dr. Nat has made an immediate difference in how my body feels & functions daily. I appreciate the time spent with M2M & most definitely will be using them moving forward!",
-    image: "/M2M-Website/daniel.jpg",
-    rating: 5,
-    date: "2024-01-15",
-  },
-  {
-    name: "Nikki Greene",
-    review:
-    "The best in DFW, check them out!",
-    image: "/M2M-Website/daniel.jpg",
-    rating: 5,
-    date: "2024-01-15",
-  },
-  {
-    name: "Daleth Estrada",
-    review:
-    "My knee is recovering amazingly thanks to M2M and their professional PT diagnosis and decision making on the program I needed. Thank you!",
-    image: "/M2M-Website/daniel.jpg",
-    rating: 5,
-    date: "2024-01-15",
-  },
-  {
-    name: "Michael Haberman",
-    review:
-    "Back in competition for the first time since my shoulder injury, and it feels great! Huge thanks to the team at Made 2 Move for getting my shoulder rehabbed and competition ready. If you ever need physical therapy, they are the absolute best",
-    image: "/M2M-Website/daniel.jpg",
-    rating: 5,
-    date: "2024-01-15",
-  },
-  {
     name: "Mika Tafua",
+    role: "Professional Athlete",
     review:
-    "Mahaloz M2M for getting me right",
+      "Mahaloz M2M for getting me right",
+    image: "/M2M-Website/daniel.jpg",
+    rating: 5,
+    date: "2024-01-15",
+  },
+  {
+    name: "Tyrese Robinson",
+    role: "NFL OL",
+    review: "My time with Dr. Nat has been incredible. I have been progressing weekly so that I can get back onto the field without pain or limitations. She is amazing at what she does",
+    image: "/M2M-Website/daniel.jpg",
+    rating: 5,
+    date: "2024-01-15",
+  },
+  {
+    name: "Deshawn Warner",
+    role: "SMU DE",
+    review: "I have been working with Dr. Nat for about 2-3 months and she is amazing. She is very caring and pays attention to what the root problem is and what is truly causing all these issues with my body. She will fix you for the long run and not just for the right now",
+    image: "/M2M-Website/daniel.jpg",
+    rating: 5,
+    date: "2024-01-15",
+  },
+  {
+    name: "KB Ingram",
+    role: "NCHS RB",
+    review: "I love working with Dr. Nat. I have been working for her for about a year now and ever since I have been working with her I have been feeling more flexible and ready to take the field. She is truly one of the best in the world.",
+    image: "/M2M-Website/daniel.jpg",
+    rating: 5,
+    date: "2024-01-15",
+  },
+  {
+    name: "Ketron Jackson",
+    role: "NFL WR",
+    review: "It is a really great environment with Dr. Nat! She always will give you great work and is the most genuine!",
+    image: "/M2M-Website/daniel.jpg",
+    rating: 5,
+    date: "2024-01-15",
+  },
+  {
+    name: "Brock Lacy",
+    role: "NCHS LB",
+    review: "Go to Dr. Nat if you want to take your game to the next level! Since I have been going to her, I have felt more explosive and able to take more hits on the field",
+    image: "/M2M-Website/daniel.jpg",
+    rating: 5,
+    date: "2024-01-15",
+  },
+  {
+    name: "Kori Singleton",
+    role: "Athlete",
+    review: "Dr. Nat is the best physical therapist! She really cares about you and has taken my game to the next level by getting me stronger.",
+    image: "/M2M-Website/daniel.jpg",
+    rating: 5,
+    date: "2024-01-15",
+  },
+  {
+    name: "Harper Gibbs",
+    role: "Athlete",
+    review: "Absolutely love them!! I have had three ACL tears and have worked with Natalie on two of mine, she is so good that I decided to move with her when she started her own PT business. You get great quality of care and attention to detail once you go to them you will come back better and stronger!",
+    image: "/M2M-Website/daniel.jpg",
+    rating: 5,
+    date: "2024-01-15",
+  },
+  {
+    name: "Kalyn Thomas",
+    role: "Client",
+    review: "Dr. Natalie is the best! I had a lot of Achilles pain from the college basketball days and she dry needled, scraped, and worked the pain out. Also gave me great exercises to strengthen my calves that I still use to this day. I went from an 8/10 in pain to 0/10 most days. Recommend to anyone with old injuries looking to get back to 100% health.",
     image: "/M2M-Website/daniel.jpg",
     rating: 5,
     date: "2024-01-15",
@@ -256,7 +267,7 @@ const Testimonials = () => {
         </Box>
 
         {/* Carousel or Marquee */}
-        <Box sx={{ px: 2, pt: 2, pb: 4}}>
+        <Box sx={{ px: 2, pt: 2, pb: 4 }}>
           <Box
             sx={{
               position: "relative",
@@ -295,6 +306,12 @@ const Testimonials = () => {
                           sx={{ fontWeight: "bold", mt: 2, fontSize: 22 }}
                         >
                           {testimonial.name}
+                        </Typography>
+                        <Typography
+                          variant="caption"
+                          sx={{ color: "#aaa", fontSize: 14, display: "block", mb: 1 }}
+                        >
+                          {testimonial.role}
                         </Typography>
 
                         <Box
@@ -381,6 +398,12 @@ const Testimonials = () => {
                       sx={{ fontWeight: "bold", mt: 5, fontSize: 25 }}
                     >
                       {testimonial.name}
+                    </Typography>
+                    <Typography
+                      variant="caption"
+                      sx={{ color: "#aaa", fontSize: 14, display: "block", mb: 1 }}
+                    >
+                      {testimonial.role}
                     </Typography>
 
                     <Box
