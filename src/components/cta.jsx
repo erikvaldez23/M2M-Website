@@ -39,7 +39,7 @@ const CTA = () => {
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
         >
-          {/* <Divider color="#F94B3D" /> */}
+          {/* <Divider color="#C8102E" /> */}
           <Typography
             variant="h4"
             sx={{
@@ -58,22 +58,22 @@ const CTA = () => {
           </Typography>
 
           <Typography
-  variant="h6"
-  sx={{
-    fontFamily: "Poppins, sans-serif",
-    fontWeight: "bold",
-    mb: 4,
-    color: "#fff", 
-    maxWidth: "900px",
-    mx: "auto",
-    lineHeight: 1.6,
-    fontSize: { xs: "1rem", sm: "1.1rem", md: "1.3rem", lg: "1.6rem" },
-    textAlign: "center",
-  }}
->
-  Combining the power of movement with{" "}
-  <Box component="span" sx={{ whiteSpace: "nowrap" }}>1-on-1</Box> elite care to help you reach your peak performance
-</Typography>
+            variant="h6"
+            sx={{
+              fontFamily: "Poppins, sans-serif",
+              fontWeight: "bold",
+              mb: 4,
+              color: "#fff",
+              maxWidth: "900px",
+              mx: "auto",
+              lineHeight: 1.6,
+              fontSize: { xs: "1rem", sm: "1.1rem", md: "1.3rem", lg: "1.6rem" },
+              textAlign: "center",
+            }}
+          >
+            Combining the power of movement with{" "}
+            <Box component="span" sx={{ whiteSpace: "nowrap" }}>1-on-1</Box> elite care to help you reach your peak performance
+          </Typography>
 
 
           {/* <Typography
@@ -93,7 +93,7 @@ const CTA = () => {
             Want to join our community of <br/> peak performers?
           </Typography> */}
 
-     
+
 
           {/* Open Modal Button */}
           <motion.div
@@ -115,8 +115,8 @@ const CTA = () => {
                 fontSize: { xs: "1rem", md: "1.5rem" }, // Responsive font size
                 borderRadius: "30px",
                 "&:hover": {
-                  backgroundColor: "#F94B3D",
-                  borderColor: "#F94B3D",
+                  backgroundColor: "#C8102E",
+                  borderColor: "#C8102E",
                   color: "#fff",
                 },
               }}

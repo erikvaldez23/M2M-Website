@@ -72,11 +72,11 @@ const Footer = () => {
               gap: isMobile ? "1rem" : "1.5rem", // Adjust spacing for mobile
             }}
           >
-                <IconButton
+            <IconButton
               color="inherit"
               sx={{
                 transition: "color 0.3s",
-                "&:hover": { color: "#F94B3D" },
+                "&:hover": { color: "#C8102E" },
               }}
               href="https://www.instagram.com/m2mdfw/"
               target="_blank"
@@ -87,7 +87,7 @@ const Footer = () => {
               color="inherit"
               sx={{
                 transition: "color 0.3s",
-                "&:hover": { color: "#F94B3D" }, // Blue color on hover
+                "&:hover": { color: "#C8102E" }, // Blue color on hover
               }}
               href="https://www.facebook.com/people/Made-2-Move/61573160043411/?mibextid=wwXIfr&rdid=Re8U3lVIjzTpcxEi&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F16HxT7935J%2F%3Fmibextid%3DwwXIfr"
               target="_blank"
@@ -95,12 +95,12 @@ const Footer = () => {
               <FaFacebook size={isMobile ? 22 : 24} />
             </IconButton>
 
-        
+
             <IconButton
               color="inherit"
               sx={{
                 transition: "color 0.3s",
-                "&:hover": { color: "#F94B3D" },
+                "&:hover": { color: "#C8102E" },
               }}
               href="https://www.tiktok.com/@m2mdfw?_t=ZP-8uzhAgxZkru&_r=1"
               target="_blank"
@@ -112,7 +112,7 @@ const Footer = () => {
               color="inherit"
               sx={{
                 transition: "color 0.3s",
-                "&:hover": { color: "#F94B3D" },
+                "&:hover": { color: "#C8102E" },
               }}
               href="https://www.linkedin.com/company/made-2-move-sports-medicine-physical-therapy/"
               target="_blank"

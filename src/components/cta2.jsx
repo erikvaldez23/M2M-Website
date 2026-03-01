@@ -23,13 +23,13 @@ const CTA = () => {
         sx={{
           py: { xs: 5, md: 8 },
           px: { xs: 2, md: 3 },
-          background: "#F94B3D",
+          background: "#C8102E",
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
           justifyContent: "center",
           textAlign: "center",
-          color: "#F94B3D",
+          color: "#C8102E",
         }}
       >
         <motion.div
@@ -37,8 +37,8 @@ const CTA = () => {
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
         >
-          {/* <Divider color="#F94B3D" /> */}
-  
+          {/* <Divider color="#C8102E" /> */}
+
 
           <Typography
             variant="h2"
@@ -53,16 +53,16 @@ const CTA = () => {
               textAlign: "center",
             }}
           >
-            Want to join our community of <br/> peak performers?
+            High-Performance Care for<br /> High-Level Athletes
           </Typography>
-{/* 
+          {/* 
           <Typography
             variant="h6"
             sx={{
               fontFamily: "Poppins, sans-serif",
               fontWeight: 300,
               mb: 4, // Adjusted for mobile
-              color: "#F94B3D",
+              color: "#C8102E",
               maxWidth: "900px",
               mx: "auto",
               lineHeight: 1.6,
@@ -94,7 +94,8 @@ const CTA = () => {
                 borderRadius: "30px",
                 "&:hover": {
                   backgroundColor: "#fff",
-                  color: "#000",}
+                  color: "#000",
+                }
               }}
             >
               Book Now

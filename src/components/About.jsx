@@ -75,7 +75,7 @@ const DoctorProfile = ({
                 alignItems: { xs: "center", md: "flex-start" },
               }}
             >
-              <Typography variant="h4" fontWeight="bold" color="#F94B3D">
+              <Typography variant="h4" fontWeight="bold" color="#C8102E">
                 {name}
               </Typography>
               <Typography variant="h6" fontWeight="bold" color="#fff" mb="6px">
@@ -142,7 +142,7 @@ const About = () => {
         </Container>
       </Box>
 
-        {/* Dr. Natalie Section */}
+      {/* Dr. Natalie Section */}
       <DoctorProfile
         id="natalie"
         name="DR. NATALIE VALDEZ"
@@ -175,13 +175,13 @@ const About = () => {
               <Typography
                 variant="h4"
                 fontWeight="bold"
-                color="#F94B3D"
+                color="#C8102E"
                 gutterBottom
               >
                 WHY MADE 2 MOVE?
               </Typography>
               <Typography variant="body1" color="#fff">
-                I always knew sports physical therapy was where I belonged - 
+                I always knew sports physical therapy was where I belonged -
                 my athletic background drew me to this field, but the level of
                 mental stimulation and problem solving it requires is what truly
                 solidified my passion for it. After several years of experience
@@ -226,7 +226,7 @@ const About = () => {
         </Container>
       </Box>
 
-    
+
 
       {/* Dr. Andrea Section */}
       {/* <DoctorProfile

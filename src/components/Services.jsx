@@ -45,7 +45,7 @@ const ServiceCard = styled(motion(Card))(({ theme, isMobile }) => ({
   [theme.breakpoints.up("sm")]: { height: "500px" },
   [theme.breakpoints.up("md")]: { height: "600px" },
   transition: "all 0.4s ease",
-  ...( !isMobile && { // Only add hover effect if not mobile
+  ...(!isMobile && { // Only add hover effect if not mobile
     "&:hover": { transform: "scale(1.05)" },
   }),
 }));
@@ -80,7 +80,7 @@ const CTAButton = styled(Button)({
   border: "3px solid #fff",
   mt: 1,
   transition: "background 0.3s ease",
-  "&:hover": { backgroundColor: "#F94B3D", color: "#fff", border: "3px solid #F94B3D" },
+  "&:hover": { backgroundColor: "#C8102E", color: "#fff", border: "3px solid #C8102E" },
 });
 
 const Services = () => {
@@ -125,44 +125,44 @@ const Services = () => {
       </motion.div>
 
       {isMobile ? (
-       <Box
-       sx={{
-         position: "relative",
-         overflow: "hidden",
-         py: 4,
-         "& .slick-dots li button:before": {
-           color: "#fff", // Set dots to white
-           fontSize: "12px",
-         },
-       }}
-     >
-       <Slider {...sliderSettings}>
-         {servicesData.map((service) => (
-           <Box key={service.id} sx={{ px: 1 }}>
-             <ServiceCard isMobile={isMobile}>
-               <CardMediaStyled
-                 component="img"
-                 image={service.image}
-                 alt={service.title}
-                 loading="lazy"
-               />
-               <CardOverlay>
-                 <Typography variant="h5" sx={{ fontWeight: "bold", textAlign: "center" }}>
-                   {service.title}
-                 </Typography>
-                 <Typography variant="body2">
-                   {service.description}
-                 </Typography>
-                 <CTAButton onClick={() => handleServiceClick(service)}>
-                   See Details
-                 </CTAButton>
-               </CardOverlay>
-             </ServiceCard>
-           </Box>
-         ))}
-       </Slider>
-     </Box>
-     
+        <Box
+          sx={{
+            position: "relative",
+            overflow: "hidden",
+            py: 4,
+            "& .slick-dots li button:before": {
+              color: "#fff", // Set dots to white
+              fontSize: "12px",
+            },
+          }}
+        >
+          <Slider {...sliderSettings}>
+            {servicesData.map((service) => (
+              <Box key={service.id} sx={{ px: 1 }}>
+                <ServiceCard isMobile={isMobile}>
+                  <CardMediaStyled
+                    component="img"
+                    image={service.image}
+                    alt={service.title}
+                    loading="lazy"
+                  />
+                  <CardOverlay>
+                    <Typography variant="h5" sx={{ fontWeight: "bold", textAlign: "center" }}>
+                      {service.title}
+                    </Typography>
+                    <Typography variant="body2">
+                      {service.description}
+                    </Typography>
+                    <CTAButton onClick={() => handleServiceClick(service)}>
+                      See Details
+                    </CTAButton>
+                  </CardOverlay>
+                </ServiceCard>
+              </Box>
+            ))}
+          </Slider>
+        </Box>
+
       ) : (
         <Box
           sx={{

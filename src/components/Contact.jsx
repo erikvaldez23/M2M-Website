@@ -280,7 +280,7 @@ const Contact = () => {
                 sx={{
                   backgroundColor: "#000",
                   color: "white",
-                  "&:hover": { backgroundColor: "#F94B3D", color: "#000" },
+                  "&:hover": { backgroundColor: "#C8102E", color: "#000" },
                 }}
                 disabled={cooldown}
               >

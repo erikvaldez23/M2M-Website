@@ -132,7 +132,7 @@ const PrivacyPolicy = () => {
       >
         <Typography
           variant="h2"
-          sx={{ fontWeight: "bold", color: "#F94B3D", textShadow: "2px 2px 8px rgba(0,0,0,0.5)" }}
+          sx={{ fontWeight: "bold", color: "#C8102E", textShadow: "2px 2px 8px rgba(0,0,0,0.5)" }}
         >
           Privacy Policy
         </Typography>

@@ -114,8 +114,8 @@ const Topbar = ({ notFound }) => {
           backgroundColor: notFound
             ? "#000"
             : scrolling
-            ? "#000"
-            : "transparent",
+              ? "#000"
+              : "transparent",
           backdropFilter: scrolling && !notFound ? "blur(10px)" : "none",
           color: notFound || scrolling ? "#fff" : "#fff",
           boxShadow:
@@ -201,12 +201,12 @@ const Topbar = ({ notFound }) => {
                           bottom: "0",
                           left: "50%",
                           transform: "translateX(-50%)",
-                          background: "#F94B3D", // Gradient underline
+                          background: "#C8102E", // Gradient underline
                           transition: "width 0.4s ease-in-out",
                           borderRadius: "2px",
                         },
                         "&:hover": {
-                          color: "#F94B3D", // Bright hover color
+                          color: "#C8102E", // Bright hover color
                           textShadow: "0 0 8px rgba(0, 198, 255, 0.8)", // Glowing text
                           "&:after": { width: "100%" }, // Underline expands
                         },
@@ -271,7 +271,7 @@ const Topbar = ({ notFound }) => {
             sx={{
               color: "white",
               fontSize: "30px",
-              "&:hover": { color: "#F94B3D" },
+              "&:hover": { color: "#C8102E" },
             }}
           >
             <FaTimes />
@@ -305,7 +305,7 @@ const Topbar = ({ notFound }) => {
                     textAlign: "center",
                     fontSize: "clamp(30px, 4vw, 50px)",
                     lineHeight: "1.2",
-                    "&:hover": { color: "#F94B3D", cursor: "pointer" },
+                    "&:hover": { color: "#C8102E", cursor: "pointer" },
                   },
                 }}
               />
@@ -329,7 +329,7 @@ const Topbar = ({ notFound }) => {
             variant="contained"
             onClick={handleOpenQuote}
             sx={{
-              backgroundColor: "#F94B3D",
+              backgroundColor: "#C8102E",
               color: "black",
               fontSize: "22px",
               fontWeight: "bold",
@@ -391,7 +391,7 @@ const Topbar = ({ notFound }) => {
                   color: "white",
                   fontSize: "36px",
                   "&:hover": {
-                    color: "#F94B3D",
+                    color: "#C8102E",
                   },
                 }}
               >

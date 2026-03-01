@@ -159,7 +159,7 @@ const MeetTheTeam = () => {
                           transition:
                             "background-color 0.3s ease, transform 0.2s ease",
                           "&:hover": {
-                            backgroundColor: "#F94B3D",
+                            backgroundColor: "#C8102E",
                             transform: "translateY(-1px)",
                             "& svg": {
                               color: "#000",
@@ -185,7 +185,7 @@ const MeetTheTeam = () => {
                           transition:
                             "background-color 0.3s ease, transform 0.2s ease",
                           "&:hover": {
-                            backgroundColor: "#F94B3D",
+                            backgroundColor: "#C8102E",
                             transform: "translateY(-1px)",
                             "& svg": {
                               color: "#000",

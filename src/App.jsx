@@ -67,7 +67,7 @@ function App() {
             element={
               <>
                 <SEO
-                  title="M2M Sports Medicine | Elite Physical Therapy & Performance in Dallas"
+                  title="M2M Sports Medicine | Elite Physical Therapy & Performance"
                   description="Premier sports performance and physical therapy in Dallas-Fort Worth. Mobile concierge services and clinic location. Specializing in athlete recovery and injury prevention."
                   keywords="Sports Physical Therapy Dallas, Mobile PT DFW, Athlete Recovery, Injury Prevention, Performance Training"
                   url="https://m2mdfw.com/"

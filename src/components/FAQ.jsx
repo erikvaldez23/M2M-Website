@@ -94,7 +94,7 @@ export default function FAQ() {
               variant="h4"
               sx={{
                 fontWeight: "bold",
-                color: "#F94B3D",
+                color: "#C8102E",
                 mb: 2,
                 textAlign: "center",
               }}
@@ -124,7 +124,7 @@ export default function FAQ() {
                 }}
               >
                 <AccordionSummary
-                  expandIcon={<ExpandMoreIcon sx={{ color: "#F94B3D" }} />}
+                  expandIcon={<ExpandMoreIcon sx={{ color: "#C8102E" }} />}
                 >
                   <Typography
                     variant="h6"

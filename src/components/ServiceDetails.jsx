@@ -31,7 +31,7 @@ const CustomPrevArrow = ({ onClick }) => (
   <Box onClick={onClick} sx={{
     position: "absolute", top: "50%", left: -30, transform: "translateY(-50%)",
     zIndex: 2, cursor: "pointer",
-    color: "#fff", borderRadius: "50%", p: 1.2, "&:hover": { color: "#F94B3D" }
+    color: "#fff", borderRadius: "50%", p: 1.2, "&:hover": { color: "#C8102E" }
   }}>
     <FaChevronLeft />
   </Box>
@@ -41,7 +41,7 @@ const CustomNextArrow = ({ onClick }) => (
   <Box onClick={onClick} sx={{
     position: "absolute", top: "50%", right: -30, transform: "translateY(-50%)",
     zIndex: 2, cursor: "pointer",
-    color: "#fff", borderRadius: "50%", p: 1.2, "&:hover": { color: "#F94B3D" }
+    color: "#fff", borderRadius: "50%", p: 1.2, "&:hover": { color: "#C8102E" }
   }}>
     <FaChevronRight />
   </Box>
@@ -193,7 +193,7 @@ const ServiceDetails = () => {
           borderRadius: "50%",
           backgroundColor: "#fff",
           opacity: 0.5,
-          "&.slick-active": { backgroundColor: "#F94B3D", opacity: 1 },
+          "&.slick-active": { backgroundColor: "#C8102E", opacity: 1 },
         }}
       />
     ),
@@ -264,7 +264,7 @@ const ServiceDetails = () => {
                     <Typography
                       variant="h4"
                       sx={{
-                        color: "#F94B3D",
+                        color: "#C8102E",
                         fontWeight: "bold",
                         textTransform: "uppercase",
                         letterSpacing: "1.5px",
@@ -306,7 +306,7 @@ const ServiceDetails = () => {
                           onMouseEnter={(e) => (e.currentTarget.style.transform = "translateX(8px)")}
                           onMouseLeave={(e) => (e.currentTarget.style.transform = "translateX(0)")}
                         >
-                          <FaCheckCircle style={{ color: "#F94B3D", marginRight: 12, minWidth: 20 }} />
+                          <FaCheckCircle style={{ color: "#C8102E", marginRight: 12, minWidth: 20 }} />
                           {item}
                         </li>
                       ))}
@@ -330,7 +330,7 @@ const ServiceDetails = () => {
                         onClick={handleOpenModal}
                         sx={{
                           mt: 3,
-                          background: "#F94B3D",
+                          background: "#C8102E",
                           color: "#fff",
                           fontWeight: "bold",
                           px: { xs: 3, md: 5 },
@@ -338,7 +338,7 @@ const ServiceDetails = () => {
                           fontSize: { xs: "0.9rem", md: "1.1rem" },
                           borderRadius: "30px",
                           boxShadow: "0 4px 15px rgba(249, 75, 61, 0.4)",
-                          "&:hover": { background: "#fff", color: "#F94B3D" },
+                          "&:hover": { background: "#fff", color: "#C8102E" },
                         }}
                       >
                         Book Now

@@ -9,7 +9,7 @@ import PlayArrowIcon from "@mui/icons-material/PlayArrow";
 
 const testimonialsData = [
   {
-    name: "Coach Tori Tucker",
+    name: "Tori Tucker",
     role: "Coach",
     review:
       "WE AREN’T US WITHOUT THEM!!! WE LOVE US SOME DR. NAT!!!! MY COACHING FRIENDS, PLEASE USE THEM!! YOUR ATHLETES WILL BE UNDER THE BEST CARE IN ALL OF NORTH TEXAS!!!",
@@ -19,7 +19,7 @@ const testimonialsData = [
   },
   {
     name: "Tony Swindle",
-    role: "Swin City",
+    role: "Director of Swin City League",
     review:
       "No opinions, straight facts - Made 2 Move is second to none in PT. Customer Service is great and their information and techniques are impeccable. The place to go is Made 2 Move.",
     image: "/M2M-Website/james.jpg",
@@ -28,7 +28,7 @@ const testimonialsData = [
   },
   {
     name: "Earl Rooks",
-    role: "ProSkills",
+    role: "Director of ProSkills Basketball",
     review:
       "Made 2 Move is the MOVE. Their approach to sports medicine is unparalleled — the knowledge, tools, and energy to serve and assist. I couldn’t think of a better team to partner with for my events, program, and the care of my college/pro athletes.",
     image: "/M2M-Website/emily.jpg",
@@ -55,7 +55,7 @@ const testimonialsData = [
   },
   {
     name: "Mike Myers",
-    role: "MBA",
+    role: "MBA Commissioner",
     review:
       "Absolutely 💯! They are a multiplier for any coach looking to enhance performance and prevent injuries!",
     image: "/M2M-Website/daniel.jpg",
@@ -64,7 +64,7 @@ const testimonialsData = [
   },
   {
     name: "Rylan Austin",
-    role: "Client",
+    role: "Athlete",
     review:
       "Shout out to M2M! Great service guaranteed to give you better flexibility. Go book with them!",
     image: "/M2M-Website/daniel.jpg",
@@ -81,7 +81,7 @@ const testimonialsData = [
     date: "2024-01-15",
   },
   {
-    name: "Coach Kortlin White",
+    name: "Kortlin White",
     role: "Coach",
     review:
       "I firmly believe that any team seeking to maintain their athletes' peak performance, especially during critical playoff seasons, would greatly benefit from partnering with Made 2 Move. Their expertise and personalized approach make them an invaluable asset to any athletic program.",
@@ -91,7 +91,7 @@ const testimonialsData = [
   },
   {
     name: "Mika Tafua",
-    role: "Professional Athlete",
+    role: "Pro Athlete",
     review:
       "Mahaloz M2M for getting me right",
     image: "/M2M-Website/daniel.jpg",
@@ -100,7 +100,7 @@ const testimonialsData = [
   },
   {
     name: "Tyrese Robinson",
-    role: "NFL OL",
+    role: "Pro Athlete",
     review: "My time with Dr. Nat has been incredible. I have been progressing weekly so that I can get back onto the field without pain or limitations. She is amazing at what she does",
     image: "/M2M-Website/daniel.jpg",
     rating: 5,
@@ -108,7 +108,7 @@ const testimonialsData = [
   },
   {
     name: "Deshawn Warner",
-    role: "SMU DE",
+    role: "Athlete",
     review: "I have been working with Dr. Nat for about 2-3 months and she is amazing. She is very caring and pays attention to what the root problem is and what is truly causing all these issues with my body. She will fix you for the long run and not just for the right now",
     image: "/M2M-Website/daniel.jpg",
     rating: 5,
@@ -116,7 +116,7 @@ const testimonialsData = [
   },
   {
     name: "KB Ingram",
-    role: "NCHS RB",
+    role: "Athlete",
     review: "I love working with Dr. Nat. I have been working for her for about a year now and ever since I have been working with her I have been feeling more flexible and ready to take the field. She is truly one of the best in the world.",
     image: "/M2M-Website/daniel.jpg",
     rating: 5,
@@ -124,7 +124,7 @@ const testimonialsData = [
   },
   {
     name: "Ketron Jackson",
-    role: "NFL WR",
+    role: "Pro Athlete",
     review: "It is a really great environment with Dr. Nat! She always will give you great work and is the most genuine!",
     image: "/M2M-Website/daniel.jpg",
     rating: 5,
@@ -132,7 +132,7 @@ const testimonialsData = [
   },
   {
     name: "Brock Lacy",
-    role: "NCHS LB",
+    role: "Athlete",
     review: "Go to Dr. Nat if you want to take your game to the next level! Since I have been going to her, I have felt more explosive and able to take more hits on the field",
     image: "/M2M-Website/daniel.jpg",
     rating: 5,
