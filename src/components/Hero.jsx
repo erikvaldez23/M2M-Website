@@ -23,11 +23,18 @@ const Hero = () => {
 
   return (
     <>
-      <section className="hero">
+      <section className="hero" aria-label="Made 2 Move Sports Medicine hero">
         {/* Video Background */}
-        <video className="hero-video" autoPlay loop muted playsInline>
+        <video
+          className="hero-video"
+          autoPlay
+          loop
+          muted
+          playsInline
+          aria-hidden="true"
+          preload="metadata"
+        >
           <source src={video} type="video/mp4" />
-          Your browser does not support the video tag.
         </video>
 
         {/* Dark Overlay */}
@@ -37,7 +44,7 @@ const Hero = () => {
         <div className="hero-content">
           <motion.img
             src={wordLogo}
-            alt="Elite Care Logo"
+            alt="Made 2 Move Sports Medicine & Physical Therapy"
             className="word-logo"
             initial={{ opacity: 0, scale: 0.8, y: -50 }} // Initial state: hidden, slightly smaller, moves up
             animate={{ opacity: 1, scale: 1, y: 0 }} // Final state: fully visible, normal size

@@ -9,9 +9,9 @@ import {
   useMediaQuery,
   useTheme,
 } from "@mui/material";
-import { FaFacebook, FaInstagram, FaLinkedin, FaTwitter, FaTiktok } from "react-icons/fa";
-import logo from "../../public/logo.png"; // Ensure correct path
-import { useNavigate, useLocation } from "react-router-dom";
+import { FaFacebook, FaInstagram, FaLinkedin, FaTiktok } from "react-icons/fa";
+import { Link as RouterLink, useNavigate, useLocation } from "react-router-dom";
+import logo from "../../public/logo.png";
 
 const Footer = () => {
   const navigate = useNavigate();
@@ -19,12 +19,11 @@ const Footer = () => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
 
-  // ✅ Click Handler for Logo
   const handleLogoClick = () => {
     if (location.pathname === "/") {
-      window.scrollTo({ top: 0, behavior: "smooth" }); // ✅ Scroll to top if already on homepage
+      window.scrollTo({ top: 0, behavior: "smooth" });
     } else {
-      navigate("/"); // ✅ Navigate to homepage if on a subpage
+      navigate("/");
     }
   };
 
@@ -39,7 +38,7 @@ const Footer = () => {
       }}
     >
       <Container maxWidth="lg">
-        {/* Top Section: Logo + Social Media */}
+        {/* Logo + Social Media */}
         <Box
           sx={{
             display: "flex",
@@ -51,145 +50,146 @@ const Footer = () => {
             gap: isMobile ? 2 : 0,
           }}
         >
-          {/* Company Logo (With Click Functionality) */}
           <Box
             sx={{
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
-              "&:hover": { cursor: "pointer", transform: "scale(1.05)" },
+              cursor: "pointer",
+              "&:hover": { transform: "scale(1.05)" },
             }}
-            onClick={handleLogoClick} // ✅ Click to Navigate or Scroll
+            onClick={handleLogoClick}
+            role="button"
+            aria-label="Go to homepage"
           >
-            <img src={logo} alt="Company Logo" style={{ height: isMobile ? "40px" : "50px" }} />
+            <img
+              src={logo}
+              alt="Made 2 Move Sports Medicine & Physical Therapy"
+              style={{ height: isMobile ? "40px" : "50px" }}
+              loading="lazy"
+            />
           </Box>
 
-          {/* Social Media Icons */}
+          {/* Social Icons */}
           <Box
+            component="nav"
+            aria-label="Social media links"
             sx={{
               display: "flex",
               justifyContent: "center",
-              gap: isMobile ? "1rem" : "1.5rem", // Adjust spacing for mobile
+              gap: isMobile ? "1rem" : "1.5rem",
             }}
           >
             <IconButton
-              color="inherit"
-              sx={{
-                transition: "color 0.3s",
-                "&:hover": { color: "#C8102E" },
-              }}
+              component="a"
               href="https://www.instagram.com/m2mdfw/"
               target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Follow Made 2 Move on Instagram"
+              color="inherit"
+              sx={{ transition: "color 0.3s", "&:hover": { color: "#C8102E" } }}
             >
               <FaInstagram size={isMobile ? 22 : 24} />
             </IconButton>
             <IconButton
-              color="inherit"
-              sx={{
-                transition: "color 0.3s",
-                "&:hover": { color: "#C8102E" }, // Blue color on hover
-              }}
-              href="https://www.facebook.com/people/Made-2-Move/61573160043411/?mibextid=wwXIfr&rdid=Re8U3lVIjzTpcxEi&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F16HxT7935J%2F%3Fmibextid%3DwwXIfr"
+              component="a"
+              href="https://www.facebook.com/people/Made-2-Move/61573160043411/"
               target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Follow Made 2 Move on Facebook"
+              color="inherit"
+              sx={{ transition: "color 0.3s", "&:hover": { color: "#C8102E" } }}
             >
               <FaFacebook size={isMobile ? 22 : 24} />
             </IconButton>
-
-
             <IconButton
-              color="inherit"
-              sx={{
-                transition: "color 0.3s",
-                "&:hover": { color: "#C8102E" },
-              }}
-              href="https://www.tiktok.com/@m2mdfw?_t=ZP-8uzhAgxZkru&_r=1"
+              component="a"
+              href="https://www.tiktok.com/@m2mdfw"
               target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Follow Made 2 Move on TikTok"
+              color="inherit"
+              sx={{ transition: "color 0.3s", "&:hover": { color: "#C8102E" } }}
             >
               <FaTiktok size={isMobile ? 22 : 24} />
             </IconButton>
-
             <IconButton
-              color="inherit"
-              sx={{
-                transition: "color 0.3s",
-                "&:hover": { color: "#C8102E" },
-              }}
+              component="a"
               href="https://www.linkedin.com/company/made-2-move-sports-medicine-physical-therapy/"
               target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Connect with Made 2 Move on LinkedIn"
+              color="inherit"
+              sx={{ transition: "color 0.3s", "&:hover": { color: "#C8102E" } }}
             >
               <FaLinkedin size={isMobile ? 22 : 24} />
             </IconButton>
-
-            {/* Uncomment when needed */}
-            {/* <IconButton
-              color="inherit"
-              sx={{
-                transition: "color 0.3s",
-                "&:hover": { color: "#007bff" },
-              }}
-              href="https://linkedin.com"
-              target="_blank"
-            >
-              <FaLinkedin size={isMobile ? 22 : 24} />
-            </IconButton> */}
-
-            {/* <IconButton
-              color="inherit"
-              sx={{
-                transition: "color 0.3s",
-                "&:hover": { color: "#007bff" },
-              }}
-              href="https://twitter.com"
-              target="_blank"
-            >
-              <FaTwitter size={isMobile ? 22 : 24} />
-            </IconButton> */}
           </Box>
         </Box>
 
-        {/* Divider for Separation */}
         <Divider sx={{ bgcolor: "gray", opacity: 0.2, my: 2 }} />
 
-        {/* Middle Section: Website URL + Privacy Policy */}
+        {/* Internal Navigation */}
         <Box
+          component="nav"
+          aria-label="Footer navigation"
           sx={{
             display: "flex",
-            flexDirection: isMobile ? "column" : "row", // Stack links on mobile
+            flexDirection: isMobile ? "column" : "row",
             justifyContent: "center",
             alignItems: "center",
-            gap: 2,
-            textAlign: "center",
-            fontSize: "14px",
+            gap: isMobile ? 1 : 3,
+            flexWrap: "wrap",
+            mb: 1,
           }}
         >
-          <Link
-            href="https://m2mdfw.com"
-            color="inherit"
-            underline="hover"
-            sx={{ fontSize: isMobile ? "13px" : "14px" }}
-          >
-            m2mdfw.com
-          </Link>
-          <Link
-            href="#/privacy-policy"
-            color="inherit"
-            underline="hover"
-            sx={{ fontSize: isMobile ? "13px" : "14px" }}
-          >
-            Privacy Policy
-          </Link>
+          {[
+            { label: "Home", to: "/" },
+            { label: "About", to: "/about" },
+            { label: "Services", to: "/services" },
+            { label: "FAQ", to: "/faq" },
+            { label: "Privacy Policy", to: "/privacy-policy" },
+          ].map(({ label, to }) => (
+            <RouterLink
+              key={to}
+              to={to}
+              style={{
+                color: "inherit",
+                textDecoration: "none",
+                fontSize: isMobile ? "13px" : "14px",
+              }}
+              onMouseEnter={(e) => (e.currentTarget.style.color = "#C8102E")}
+              onMouseLeave={(e) => (e.currentTarget.style.color = "inherit")}
+            >
+              {label}
+            </RouterLink>
+          ))}
         </Box>
 
-        {/* Bottom Section: All Rights Reserved */}
+        <Divider sx={{ bgcolor: "gray", opacity: 0.2, my: 2 }} />
+
+        {/* Contact Info */}
         <Typography
           variant="body2"
-          sx={{
-            mt: 2,
-            fontSize: isMobile ? "11px" : "12px",
-            opacity: 0.7,
-          }}
+          sx={{ fontSize: isMobile ? "12px" : "13px", color: "#aaa", mb: 1 }}
         >
-          © {new Date().getFullYear()} Made2Move . All rights reserved.
+          <Link
+            href="mailto:info@m2mdfw.com"
+            color="inherit"
+            underline="hover"
+            sx={{ color: "#aaa" }}
+          >
+            info@m2mdfw.com
+          </Link>
+          {" · "}
+          Dallas-Fort Worth Metroplex, TX
+        </Typography>
+
+        <Typography
+          variant="body2"
+          sx={{ mt: 1, fontSize: isMobile ? "11px" : "12px", opacity: 0.6 }}
+        >
+          © {new Date().getFullYear()} Made 2 Move Sports Medicine &amp; Physical Therapy. All rights reserved.
         </Typography>
       </Container>
     </Box>

@@ -90,7 +90,8 @@ const MeetTheTeam = () => {
                   <Box
                     component="img"
                     src={member.image}
-                    alt={member.name}
+                    alt={`${member.name} – ${member.title}`}
+                    loading="lazy"
                     sx={{
                       width: { xs: "80%", sm: "70%", md: "100%" },
                       maxWidth: 320,

@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { useMediaQuery, useTheme } from "@mui/material";
 import { Container, Grid, Typography, Box, Button } from "@mui/material";
+import { Helmet } from "react-helmet-async";
 import { useLocation } from "react-router-dom";
 import { motion } from "framer-motion";
 import aboutImage from "../../public/logo.png";
@@ -9,6 +10,47 @@ import drea from "../../public/drea.jpg";
 import Vision from "./Vision";
 import CTA2 from "./cta2";
 import Contact from "./Contact";
+
+const personSchema = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "@id": "https://m2mdfw.com/about#natalie",
+  "name": "Dr. Natalie Valdez",
+  "givenName": "Natalie",
+  "familyName": "Valdez",
+  "honorificPrefix": "Dr.",
+  "jobTitle": "Physical Therapist & Founder",
+  "description": "Dr. Natalie Valdez, PT, DPT, SMTC, CSCS, is a Dallas native and founder of Made 2 Move Sports Medicine & Physical Therapy. Trusted by professional, collegiate, and high school athletes for bridging rehab and peak performance.",
+  "image": "https://m2mdfw.com/natalie.jpg",
+  "url": "https://m2mdfw.com/about",
+  "worksFor": { "@id": "https://m2mdfw.com/#business" },
+  "alumniOf": [
+    {
+      "@type": "EducationalOrganization",
+      "name": "Texas Woman's University",
+      "description": "Undergraduate degree in Kinesiology (Denton campus); Doctorate of Physical Therapy (Dallas campus)"
+    }
+  ],
+  "hasCredential": [
+    "Doctor of Physical Therapy (DPT)",
+    "Sports Manual Therapy Certified (SMTC)",
+    "Certified Strength and Conditioning Specialist (CSCS)",
+    "Certified Dry Needling"
+  ],
+  "sameAs": [
+    "https://www.linkedin.com/in/natalie-valdez-pt-dpt-smtc-cscs-cert-dn-a66095231/",
+    "https://www.instagram.com/drnat.dpt/"
+  ]
+};
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://m2mdfw.com/" },
+    { "@type": "ListItem", "position": 2, "name": "About", "item": "https://m2mdfw.com/about" }
+  ]
+};
 
 // ✅ Inline reusable profile component
 const DoctorProfile = ({
@@ -75,10 +117,10 @@ const DoctorProfile = ({
                 alignItems: { xs: "center", md: "flex-start" },
               }}
             >
-              <Typography variant="h4" fontWeight="bold" color="#C8102E">
+              <Typography component="h2" variant="h4" fontWeight="bold" color="#C8102E">
                 {name}
               </Typography>
-              <Typography variant="h6" fontWeight="bold" color="#fff" mb="6px">
+              <Typography component="p" variant="h6" fontWeight="bold" color="#fff" mb="6px">
                 {title}
               </Typography>
               <Typography variant="body1" color="#fff">
@@ -112,8 +154,14 @@ const About = () => {
 
   return (
     <>
+      <Helmet>
+        <script type="application/ld+json">{JSON.stringify(personSchema)}</script>
+        <script type="application/ld+json">{JSON.stringify(breadcrumbSchema)}</script>
+      </Helmet>
+
       {/* Hero Section */}
       <Box
+        component="header"
         sx={{
           background: "#000",
           color: "#fff",
@@ -128,6 +176,7 @@ const About = () => {
             transition={{ duration: 0.8, ease: "easeOut" }}
           >
             <Typography
+              component="h1"
               variant={isMobile ? "h3" : "h1"}
               fontWeight="bold"
               sx={{
@@ -136,7 +185,7 @@ const About = () => {
                 marginTop: { xs: "40px", md: "80px" },
               }}
             >
-              ABOUT DR.NAT
+              About Dr. Nat
             </Typography>
           </motion.div>
         </Container>
@@ -173,12 +222,13 @@ const About = () => {
               }}
             >
               <Typography
+                component="h2"
                 variant="h4"
                 fontWeight="bold"
                 color="#C8102E"
                 gutterBottom
               >
-                WHY MADE 2 MOVE?
+                Why Made 2 Move?
               </Typography>
               <Typography variant="body1" color="#fff">
                 I always knew sports physical therapy was where I belonged -

@@ -1,4 +1,3 @@
-// src/components/ServiceDetails.jsx
 import React, { useState } from "react";
 import {
   Container,
@@ -14,6 +13,7 @@ import {
   Slide,
   Paper,
 } from "@mui/material";
+import { Helmet } from "react-helmet-async";
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 import CTA2 from "./cta2";
@@ -25,6 +25,66 @@ import {
   FaChevronRight,
 } from "react-icons/fa";
 import Slider from "react-slick";
+
+const servicesSchema = {
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  "name": "Physical Therapy & Sports Medicine Services",
+  "url": "https://m2mdfw.com/services",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "item": {
+        "@type": "Service",
+        "@id": "https://m2mdfw.com/services#physical-therapy",
+        "name": "Physical Therapy",
+        "url": "https://m2mdfw.com/services#physical-therapy",
+        "description": "Evaluation and treatment for orthopedic injuries and post-operative rehabilitation. Includes manual therapy, soft tissue release, dry needling, cupping, therapeutic exercise, blood flow restriction, and neuromuscular re-education.",
+        "provider": { "@id": "https://m2mdfw.com/#business" },
+        "areaServed": "Dallas-Fort Worth Metroplex",
+        "serviceType": "Physical Therapy"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "item": {
+        "@type": "Service",
+        "@id": "https://m2mdfw.com/services#athletic-recovery",
+        "name": "Athletic Recovery",
+        "url": "https://m2mdfw.com/services#athletic-recovery",
+        "description": "Improve performance and recover faster between games, practices, and events. Includes dry needling, cupping therapy, Graston/IASTM, mobility tune-up, stretch therapy, and Normatec compression.",
+        "provider": { "@id": "https://m2mdfw.com/#business" },
+        "areaServed": "Dallas-Fort Worth Metroplex",
+        "serviceType": "Athletic Recovery"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "item": {
+        "@type": "Service",
+        "@id": "https://m2mdfw.com/services#injury-prevention",
+        "name": "Injury Prevention",
+        "url": "https://m2mdfw.com/services#injury-prevention",
+        "description": "Improve overall sport performance and career longevity by addressing muscular imbalances and movement deficits. Includes movement analysis, mobility screen, sport performance assessment, and running analysis.",
+        "provider": { "@id": "https://m2mdfw.com/#business" },
+        "areaServed": "Dallas-Fort Worth Metroplex",
+        "serviceType": "Injury Prevention"
+      }
+    }
+  ]
+};
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://m2mdfw.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Services", "item": "https://m2mdfw.com/services" }
+  ]
+};
 
 /* ---------- Arrows ---------- */
 const CustomPrevArrow = ({ onClick }) => (
@@ -201,7 +261,11 @@ const ServiceDetails = () => {
 
   return (
     <>
-      <Box sx={{ background: "#000", py: { xs: 1, md: 6 } }}>
+      <Helmet>
+        <script type="application/ld+json">{JSON.stringify(servicesSchema)}</script>
+        <script type="application/ld+json">{JSON.stringify(breadcrumbSchema)}</script>
+      </Helmet>
+      <Box component="article" sx={{ background: "#000", py: { xs: 1, md: 6 } }}>
         <Container maxWidth="lg" sx={{ px: { xs: 2, md: 3 } }}>
           <motion.div
             initial={{ opacity: 0, y: -30 }}
@@ -209,6 +273,7 @@ const ServiceDetails = () => {
             transition={{ duration: 0.8, ease: "easeOut" }}
           >
             <Typography
+              component="h1"
               variant={isMobile ? "h2" : "h1"}
               sx={{
                 py: 6,
@@ -262,6 +327,7 @@ const ServiceDetails = () => {
                     transition={{ duration: 0.6, ease: "easeOut" }}
                   >
                     <Typography
+                      component="h2"
                       variant="h4"
                       sx={{
                         color: "#C8102E",
@@ -389,5 +455,6 @@ const ServiceDetails = () => {
     </>
   );
 };
+
 
 export default ServiceDetails;

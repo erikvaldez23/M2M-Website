@@ -109,6 +109,7 @@ const Topbar = ({ notFound }) => {
   return (
     <>
       <AppBar
+        component="header"
         position="fixed"
         sx={{
           backgroundColor: notFound
@@ -160,7 +161,7 @@ const Topbar = ({ notFound }) => {
                 <Box
                   component="img"
                   src={logo}
-                  alt="Logo"
+                  alt="Made 2 Move Sports Medicine & Physical Therapy"
                   sx={{
                     display: { xs: scrolling ? "block" : "none", sm: "block" },
                     height: scrolling ? "55px" : { sm: "55px", md: "55px" },
@@ -177,7 +178,7 @@ const Topbar = ({ notFound }) => {
 
             {/* Desktop Navigation */}
             {!isMobile && (
-              <Box display="flex" gap={4}>
+              <Box component="nav" aria-label="Primary navigation" display="flex" gap={4}>
                 {["About", "Services", "Reviews", "FAQ", "Contact"].map(
                   (item) => (
                     <Button

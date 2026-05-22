@@ -1,4 +1,4 @@
-import { HashRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import { CssBaseline, ThemeProvider, createTheme } from "@mui/material";
 import { useEffect } from "react";
 import './App.css';
@@ -9,7 +9,6 @@ import Services from './components/Services';
 import Contact from './components/Contact';
 import Vision from './components/Vision';
 import Footer from './components/Footer';
-import Gallery from './components/Gallery';
 import ScrollToTop from './components/ScrollToTop';
 import PrivacyPolicy from './components/PrivacyPolicy';
 import FrameworkCarousel from './components/FrameworkCarousel';
@@ -53,6 +52,23 @@ const ScrollHandler = () => {
   return null;
 };
 
+const homepageSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "@id": "https://m2mdfw.com/#webpage",
+  "url": "https://m2mdfw.com/",
+  "name": "Made 2 Move Sports Medicine & Physical Therapy | Dallas-Fort Worth",
+  "description": "Premier sports medicine and concierge physical therapy in Dallas-Fort Worth. Mobile PT services and clinic location. Specializing in athlete recovery, injury prevention, and sports performance.",
+  "isPartOf": { "@id": "https://m2mdfw.com/#website" },
+  "about": { "@id": "https://m2mdfw.com/#business" },
+  "breadcrumb": {
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://m2mdfw.com/" }
+    ]
+  }
+};
+
 function App() {
   return (
     <ThemeProvider theme={theme}>
@@ -67,90 +83,79 @@ function App() {
             element={
               <>
                 <SEO
-                  title="M2M Sports Medicine | Elite Physical Therapy & Performance"
-                  description="Premier sports performance and physical therapy in Dallas-Fort Worth. Mobile concierge services and clinic location. Specializing in athlete recovery and injury prevention."
-                  keywords="Sports Physical Therapy Dallas, Mobile PT DFW, Athlete Recovery, Injury Prevention, Performance Training"
-                  url="https://m2mdfw.com/"
+                  title="Elite Physical Therapy & Sports Medicine in Dallas-Fort Worth"
+                  description="Made 2 Move offers premier concierge physical therapy and sports medicine in Dallas-Fort Worth. Mobile PT services and clinic location. Trusted by NFL, collegiate, and high school athletes for injury rehab, dry needling, and sports performance."
+                  keywords="physical therapy Dallas, sports medicine DFW, mobile physical therapy, concierge PT, dry needling Dallas, injury rehab Fort Worth, athletic recovery, sports performance training, Made 2 Move"
+                  canonical="https://m2mdfw.com/"
+                  image="https://m2mdfw.com/natalie.jpg"
+                  schemaMarkup={homepageSchema}
                 />
-                <Hero />
-                <CTA />
-                <MeetTheTeam />
-                <Services />
-                <CTA2 />
-                <FrameworkCarousel />
-                <Testimonials />
-                <Contact />
+                <main>
+                  <Hero />
+                  <CTA />
+                  <MeetTheTeam />
+                  <Services />
+                  <CTA2 />
+                  <FrameworkCarousel />
+                  <Testimonials />
+                  <Contact />
+                </main>
               </>
             }
           />
-          {/* <Route path="/gallery" element={
-            <>
-              <SEO
-                title="Gallery | M2M Sports Medicine"
-                description="View our athletes in action and our state-of-the-art facility. M2M Sports Medicine & Physical Therapy in Dallas."
-                url="https://m2mdfw.com/#/gallery"
-              />
-              <Gallery />
-            </>
-          } /> */}
           <Route path="/faq" element={
             <>
               <SEO
-                title="FAQ | M2M Physical Therapy Questions"
-                description="Frequently asked questions about insurance, mobile concierge services, and what to expect during your first visit at M2M."
-                url="https://m2mdfw.com/#/faq"
+                title="FAQ – Physical Therapy & Sports Medicine Questions"
+                description="Answers to frequently asked questions about Made 2 Move's physical therapy services in Dallas-Fort Worth. Learn about our cash-pay model, mobile concierge services, insurance superbills, and what to expect on your first visit."
+                keywords="physical therapy FAQ Dallas, do I need a referral for PT Texas, cash pay physical therapy, mobile PT questions, sports medicine DFW FAQ"
+                canonical="https://m2mdfw.com/faq"
+                image="https://m2mdfw.com/logo.png"
               />
-              <FAQ />
+              <main>
+                <FAQ />
+              </main>
             </>
           } />
-          {/* <Route path="/testimonials" element={
-            <>
-              <SEO
-                title="Client Reviews | M2M Sports Medicine"
-                description="See what professional, collegiate, and youth athletes are saying about Dr. Natalie Valdez and the M2M team."
-                url="https://m2mdfw.com/#/testimonials"
-              />
-              <Testimonials />
-            </>
-          } /> */}
-          {/* <Route path="/booking" element={
-            <>
-              <SEO
-                title="Book Appointment | M2M Sports Medicine"
-                description="Schedule your physical therapy or performance training session online. Mobile concierge or Dallas clinic location available."
-                url="https://m2mdfw.com/#/booking"
-              />
-              <Booking />
-            </>
-          } /> */}
           <Route path="/services" element={
             <>
               <SEO
-                title="Services | Physical Therapy & Performance"
-                description="Comprehensive services including Dry Needling, Cupping, Manual Therapy, ACL Rehab, and Sports Performance Training."
-                url="https://m2mdfw.com/#/services"
+                title="Services – Physical Therapy, Recovery & Injury Prevention"
+                description="Explore Made 2 Move's comprehensive services: Physical Therapy, Athletic Recovery (dry needling, cupping, Normatec), and Injury Prevention programs. Available mobile concierge in DFW or at our Dallas clinic."
+                keywords="physical therapy services Dallas, dry needling DFW, cupping therapy, injury prevention sports, athletic recovery, manual therapy Fort Worth, blood flow restriction therapy, sports performance"
+                canonical="https://m2mdfw.com/services"
+                image="https://m2mdfw.com/natalie.jpg"
               />
-              <ServiceDetails />
+              <main>
+                <ServiceDetails />
+              </main>
             </>
           } />
           <Route path="/about" element={
             <>
               <SEO
-                title="About Us | Dr. Natalie Valdez"
-                description="Meet Dr. Natalie Valdez and the expert team at M2M Sports Medicine. Dedicated to bridging the gap between rehab and performance."
-                url="https://m2mdfw.com/#/about"
+                title="About Dr. Natalie Valdez – Physical Therapist & Founder"
+                description="Meet Dr. Natalie Valdez, PT, DPT, SMTC, CSCS – founder of Made 2 Move Sports Medicine. A Dallas native and Kinesiology graduate trusted by professional, collegiate, and high school athletes to bridge rehab and peak performance."
+                keywords="Dr. Natalie Valdez physical therapist Dallas, sports PT DFW, Made 2 Move founder, DPT Dallas, CSCS physical therapist, athlete physical therapy"
+                canonical="https://m2mdfw.com/about"
+                image="https://m2mdfw.com/natalie.jpg"
               />
-              <About />
+              <main>
+                <About />
+              </main>
             </>
           } />
           <Route path="/privacy-policy" element={
             <>
               <SEO
-                title="Privacy Policy | M2M Sports Medicine"
-                description="Read our privacy policy regarding how we collect and use your data."
-                url="https://m2mdfw.com/#/privacy-policy"
+                title="Privacy Policy"
+                description="Read Made 2 Move Sports Medicine's privacy policy detailing how we collect, use, and protect your personal information."
+                canonical="https://m2mdfw.com/privacy-policy"
+                image="https://m2mdfw.com/logo.png"
               />
-              <PrivacyPolicy />
+              <main>
+                <PrivacyPolicy />
+              </main>
             </>
           } />
           <Route path="*" element={<ErrorPage />} />
