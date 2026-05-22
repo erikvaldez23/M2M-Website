@@ -1,3 +1,14 @@
 User-agent: *
 Allow: /
+Disallow: /dist/
+Disallow: /*.json$
+Disallow: /src/
+
+# Block AI training crawlers
+User-agent: GPTBot
+Disallow: /
+
+User-agent: CCBot
+Disallow: /
+
 Sitemap: https://m2mdfw.com/sitemap.xml

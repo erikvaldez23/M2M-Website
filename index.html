@@ -3,60 +3,200 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#000000" />
 
-    <!-- SEO Title -->
-    <title>Made 2 Move Sports Medicine & Physical Therapy</title>
+    <!-- GitHub Pages SPA redirect handler (pairs with public/404.html) -->
+    <script>
+      (function(l) {
+        if (l.search[1] === 'p' && l.search.indexOf('p=') !== -1) {
+          var params = l.search.slice(1).split('&');
+          var path = '';
+          var query = '';
+          params.forEach(function(p) {
+            if (p.indexOf('p=') === 0) path = p.slice(2).replace(/~and~/g, '&');
+            else if (p.indexOf('q=') === 0) query = p.slice(2).replace(/~and~/g, '&');
+          });
+          window.history.replaceState(
+            null, null,
+            '/' + path + (query ? '?' + query : '') + l.hash
+          );
+        }
+      }(window.location));
+    </script>
 
+    <!-- Primary SEO -->
+    <title>Made 2 Move Sports Medicine &amp; Physical Therapy | Dallas-Fort Worth</title>
+    <meta name="description" content="Made 2 Move Sports Medicine &amp; Physical Therapy offers elite concierge PT, injury rehab, dry needling, and sports performance in Dallas-Fort Worth. Trusted by NFL, collegiate, and high school athletes." />
+    <meta name="keywords" content="physical therapy Dallas, sports medicine Fort Worth, mobile physical therapy DFW, dry needling Dallas, injury rehab, sports performance training, Made 2 Move, m2mdfw, Dr. Natalie Valdez" />
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+    <meta name="author" content="Made 2 Move Sports Medicine &amp; Physical Therapy" />
 
-    <!-- Meta Description (Improve Click-through Rate) -->
-    <meta name="description" content="Made 2 Move is your go-to destination for high-quality physical therapy and rehabilitation services. Our expert team is dedicated to helping you recover and move better.">
+    <!-- Canonical -->
+    <link rel="canonical" href="https://m2mdfw.com/" />
 
-     <!-- Keywords (Optional) -->
-     <meta name="keywords" content="Made 2 Move, m2mdfw, m2m physical therapy, physical therapy in dfw, sports injury rehab, pain management, post-op recovery, manual therapy, Made 2 Move PT, m2m, physical therapy dallas, physical therapy fort worth" />
+    <!-- Open Graph -->
+    <meta property="og:site_name" content="Made 2 Move Sports Medicine" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Made 2 Move Sports Medicine &amp; Physical Therapy | Dallas-Fort Worth" />
+    <meta property="og:description" content="Elite concierge physical therapy and sports medicine in Dallas-Fort Worth. Personalized rehab, injury prevention, and performance training trusted by professional and collegiate athletes." />
+    <meta property="og:image" content="https://m2mdfw.com/og-image.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:url" content="https://m2mdfw.com/" />
+    <meta property="og:locale" content="en_US" />
 
-     <!-- Robots Tag -->
-     <meta name="robots" content="index, follow" />
- 
-     <!-- Open Graph Tags for Social Sharing -->
-     <meta property="og:title" content="Made 2 Move Physical Therapy" />
-     <meta property="og:description" content="Recover stronger with Made 2 Move Physical Therapy. Personalized rehab, injury prevention, and wellness — trusted by athletes and everyday movers." />
-     <meta property="og:image" content="https://m2mdfw.com/favicon.png" />
-     <meta property="og:url" content="https://m2mdfw.com" />
-     <meta property="og:type" content="business.business" />
- 
-     <!-- Canonical URL -->
-     <link rel="canonical" href="https://made2move.com" />
- 
-     <!-- Favicon -->
-     <link rel="icon" type="image/png" href="/favicon.png" />
- 
-     <!-- Preload & Load Fonts -->
-     <link rel="preload" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" as="style" />
-     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
- 
-     <!-- Local Business Schema (Structured Data) -->
-     <script type="application/ld+json">
-     {
-       "@context": "https://schema.org",
-       "@type": "PhysicalTherapy",
-       "name": "Made 2 Move",
-       "image": "https://m2mdfw.com/favicon.png",
-       "url": "https://m2mdfw.com",
-       "address": {
-         "@type": "PostalAddress",
-         "addressLocality": "Dallas",
-         "addressRegion": "TX",
-         "postalCode": "75001",
-         "addressCountry": "US"
-       },
-       "description": "Made 2 Move is your go-to destination for high-quality physical therapy and rehabilitation services. Our expert team is dedicated to helping you recover and move better.",
-     }
-     </script>
-     <script type="module" crossorigin src="/assets/index-FuSEkGoC.js"></script>
-     <link rel="stylesheet" crossorigin href="/assets/index-JWmimglD.css">
-   </head>
- 
-   <body>
-     <div id="root"></div>
-   </body>
- </html>
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@m2mdfw" />
+    <meta name="twitter:title" content="Made 2 Move Sports Medicine &amp; Physical Therapy | DFW" />
+    <meta name="twitter:description" content="Elite concierge physical therapy and sports medicine in Dallas-Fort Worth. Trusted by NFL, collegiate, and high school athletes." />
+    <meta name="twitter:image" content="https://m2mdfw.com/og-image.jpg" />
+
+    <!-- Favicon & Icons -->
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon.png" />
+
+    <!-- Fonts (preconnect first, then load) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+    <!-- WebSite Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "@id": "https://m2mdfw.com/#website",
+      "name": "Made 2 Move Sports Medicine & Physical Therapy",
+      "url": "https://m2mdfw.com",
+      "description": "Elite concierge physical therapy and sports medicine in Dallas-Fort Worth.",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": {
+          "@type": "EntryPoint",
+          "urlTemplate": "https://m2mdfw.com/?s={search_term_string}"
+        },
+        "query-input": "required name=search_term_string"
+      }
+    }
+    </script>
+
+    <!-- LocalBusiness / PhysicalTherapy Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": ["PhysicalTherapy", "LocalBusiness"],
+      "@id": "https://m2mdfw.com/#business",
+      "name": "Made 2 Move Sports Medicine & Physical Therapy",
+      "alternateName": ["M2M", "M2M DFW", "Made 2 Move PT"],
+      "url": "https://m2mdfw.com",
+      "logo": "https://m2mdfw.com/logo.png",
+      "image": [
+        "https://m2mdfw.com/natalie.jpg",
+        "https://m2mdfw.com/logo.png"
+      ],
+      "description": "Made 2 Move Sports Medicine & Physical Therapy offers elite concierge physical therapy, sports medicine, dry needling, cupping, injury prevention, and performance training in the Dallas-Fort Worth Metroplex. Founded by Dr. Natalie Valdez, PT, DPT, CSCS.",
+      "telephone": "",
+      "email": "info@m2mdfw.com",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Park Cities Personal Training, Knox/Highland Park",
+        "addressLocality": "Dallas",
+        "addressRegion": "TX",
+        "postalCode": "75205",
+        "addressCountry": "US"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 32.8226,
+        "longitude": -96.7923
+      },
+      "areaServed": [
+        {
+          "@type": "City",
+          "name": "Dallas",
+          "sameAs": "https://en.wikipedia.org/wiki/Dallas"
+        },
+        {
+          "@type": "City",
+          "name": "Fort Worth",
+          "sameAs": "https://en.wikipedia.org/wiki/Fort_Worth,_Texas"
+        },
+        {
+          "@type": "AdministrativeArea",
+          "name": "Dallas-Fort Worth Metroplex"
+        }
+      ],
+      "serviceType": [
+        "Physical Therapy",
+        "Sports Medicine",
+        "Dry Needling",
+        "Cupping Therapy",
+        "Injury Prevention",
+        "Athletic Recovery",
+        "Post-Operative Rehabilitation",
+        "Manual Therapy",
+        "Blood Flow Restriction Therapy",
+        "Sports Performance Training"
+      ],
+      "priceRange": "$$",
+      "paymentAccepted": ["Cash", "Credit Card", "FSA", "HSA"],
+      "currenciesAccepted": "USD",
+      "sameAs": [
+        "https://www.instagram.com/m2mdfw/",
+        "https://www.facebook.com/people/Made-2-Move/61573160043411/",
+        "https://www.tiktok.com/@m2mdfw",
+        "https://www.linkedin.com/company/made-2-move-sports-medicine-physical-therapy/"
+      ],
+      "founder": {
+        "@type": "Person",
+        "@id": "https://m2mdfw.com/about#natalie",
+        "name": "Dr. Natalie Valdez",
+        "jobTitle": "Physical Therapist, Founder",
+        "hasCredential": [
+          "Doctor of Physical Therapy (DPT)",
+          "Sports Manual Therapy Certified (SMTC)",
+          "Certified Strength and Conditioning Specialist (CSCS)",
+          "Certified Dry Needling"
+        ]
+      },
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Physical Therapy & Sports Medicine Services",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Physical Therapy",
+              "url": "https://m2mdfw.com/services#physical-therapy"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Athletic Recovery",
+              "url": "https://m2mdfw.com/services#athletic-recovery"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Injury Prevention",
+              "url": "https://m2mdfw.com/services#injury-prevention"
+            }
+          }
+        ]
+      }
+    }
+    </script>
+    <script type="module" crossorigin src="/assets/index-B5XwhH8A.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-JWmimglD.css">
+  </head>
+
+  <body>
+    <div id="root"></div>
+  </body>
+</html>
