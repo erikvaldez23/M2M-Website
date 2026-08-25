@@ -98,8 +98,12 @@ const Topbar = ({ notFound }) => {
 
   // 🏆 Handlers for Modal
   const handleOpenQuote = () => {
-    setQuoteOpen(true);
-    setDrawerOpen(false); // Close the mobile menu when opening the modal
+    // Close the mobile drawer first, then open the dialog on the next tick.
+    // Toggling both MUI modals in the same event handler can make the
+    // scroll-lock they apply to <body> fail to release (most visible in
+    // Chrome), leaving the whole page stuck unable to scroll.
+    setDrawerOpen(false);
+    setTimeout(() => setQuoteOpen(true), 0);
   };
 
   const handleCloseQuote = () => {

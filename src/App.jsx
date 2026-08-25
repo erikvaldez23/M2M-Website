@@ -10,6 +10,7 @@ import Contact from './components/Contact';
 import Vision from './components/Vision';
 import Footer from './components/Footer';
 import ScrollToTop from './components/ScrollToTop';
+import ScrollLockGuard from './components/ScrollLockGuard';
 import PrivacyPolicy from './components/PrivacyPolicy';
 import FrameworkCarousel from './components/FrameworkCarousel';
 import MeetTheTeam from './components/Team';
@@ -75,6 +76,7 @@ function App() {
       <CssBaseline />
       <Router>
         <ScrollToTop />
+        <ScrollLockGuard />
         <ScrollHandler />
         <Topbar />
         <Routes>

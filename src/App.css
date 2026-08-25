@@ -12,7 +12,12 @@ html, body {
     padding: 0;
     width: 100%;
     overflow-x: hidden !important;
-    overscroll-behavior: none;
+    /* Only block horizontal bounce/back-swipe chaining. Setting this to
+       `none` (all axes) on both html and body has a known history of
+       intermittently disabling page scrolling entirely in Chrome, triggered
+       by real trackpad/wheel input in a way synthetic scroll events don't
+       reproduce, while leaving vertical scrolling untouched here avoids it. */
+    overscroll-behavior-x: none;
     font-family: "Poppins", sans-serif;
   }
 
